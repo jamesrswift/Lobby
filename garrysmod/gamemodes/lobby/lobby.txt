@@ -1,0 +1,7 @@
+"Gamemode"
+{
+	"base"		"Lobby_Base"
+	"title"		"Lobby"
+	"maps"		"^lobby_"
+	"menusystem"	"1"
+}
