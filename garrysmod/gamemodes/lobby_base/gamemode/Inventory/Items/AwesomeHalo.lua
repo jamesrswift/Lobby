@@ -17,7 +17,11 @@ end
 
 function ITEM:PreDrawHalos( ply, model, skin )
 	if self.Equiped and self.Player then
-		halo.Add( {self.Player}, Color( math.random(0,255),math.random(0,255),math.random(0,255)),5,5,3 )
+		if self.Player:Alive() then
+			halo.Add( {self.Player}, Color( math.random(0,255),math.random(0,255),math.random(0,255)),5,5,3 )
+		else
+			halo.Add( {self.Player:GetRagdollEntity()}, Color( math.random(0,255),math.random(0,255),math.random(0,255)),5,5,3 )
+		end
 	end
 end
 
