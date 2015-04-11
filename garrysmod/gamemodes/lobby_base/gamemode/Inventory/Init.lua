@@ -62,7 +62,7 @@ function _Player:GiveItem( Name, slot, extra )
 		
 		for _,hookname in pairs( item.Hooks ) do
 			if item[hookname] then
-				hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..self:UniqueID(), function( ... ) item[hookname](v[3], ...) end)
+				hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..self:UniqueID(), function( ... ) item[hookname](item, ...) end)
 			end
 		end
 		
