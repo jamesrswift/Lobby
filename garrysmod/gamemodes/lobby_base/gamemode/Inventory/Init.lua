@@ -11,6 +11,7 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "Shops.lua" )
 AddCSLuaFile( "Item.lua" )
 
+util.AddNetworkString("Lobby.InventoryClientReady");
 util.AddNetworkString("Lobby.UpdateInventory");
 util.AddNetworkString("Lobby.UpdateOtherClientsInventory");
 
@@ -133,13 +134,10 @@ function _Player:InitItems()
 		
 	end
 	
-	timer.Simple( 0.5 , function() -- Allow time for entities to be created
-		print "_Player:InitItems()"
-		self:UpdateClientInventory()
-		for k,v in pairs( player.GetAll() ) do
-			v:UpdateOtherClientsInventory()
-		end
-	end)
+	self:UpdateClientInventory()
+	for k,v in pairs( player.GetAll() ) do
+		v:UpdateOtherClientsInventory()
+	end
 end
 
 function _Player:BuyItem( name, slot, extra )
@@ -158,4 +156,4 @@ function _Player:BuyItem( name, slot, extra )
 	return false
 end
 
-hook.Add( "PlayerInitialSpawn", "Inventory.SendInventory", function ( pl ) pl:InitItems() end )
+net.Receive("Lobby.InventoryClientReady", function(len,pl) pl:InitItems() end)

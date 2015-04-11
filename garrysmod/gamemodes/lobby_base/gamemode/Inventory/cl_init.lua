@@ -34,8 +34,6 @@ function LobbyInventory.UpdateInventory(data)
 		v[3] = table.Copy( LobbyItem.Get( v[1] ) )
 		local item = v[3]
 		
-		print ("LobbyInventory.UpdateInventory(data)", LocalPlayer() )
-		
 		if (slot >= 0 and slot <= 10 ) then
 			if item:CanPlayerEquip( LocalPlayer() ) then
 				item:OnEquip(LocalPlayer())
@@ -56,8 +54,6 @@ end
 
 
 function LobbyInventory.UpdateOtherClientsInventory(data)
-	print "Recieved new clients inventory"
-	PrintTable( data )
 	LobbyInventory.OtherClientsInventory = data
 	for _Player, Inv in pairs( LobbyInventory.OtherClientsInventory ) do
 		if _Player then
@@ -94,4 +90,9 @@ end)
 net.Receive("Lobby.UpdateOtherClientsInventory", function()
 	local data = net.ReadTable();
 	LobbyInventory.UpdateOtherClientsInventory(data)
+end)
+
+hook.Add( "InitPostEntity", "LobbyInventory.PlayerIsReady", function()
+	net.Start( "Lobby.InventoryClientReady" )
+	net.SendToServer()
 end)
