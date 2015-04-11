@@ -71,7 +71,7 @@ function PlayerMeta:GetDisplayTextColor( )
 end
 
 
---[[function GM:PlayerSetModel( ply )
+function GM:PlayerSetModel( ply )
 	local model = ply:GetInfo( "cl_playermodel" )
 	local allow = hook.Call("AllowModel", GAMEMODE, ply, model, skin )
 	if !model || allow != true then
@@ -83,10 +83,14 @@ end
 	ply:SetModel( modelname )
 
 	hook.Call("PlayerSetModelPost", GAMEMODE, ply, model, skin )
-end]]--
+end
+
+local bannedmodels = {
+	"models/player/alyx.mdl"
+}
 
 function GM:AllowModel( ply, model )
-	return false
+	return not table.HasValue( bannedmodels, model )
 end
 
 function GM:PlayerSpray( ply )

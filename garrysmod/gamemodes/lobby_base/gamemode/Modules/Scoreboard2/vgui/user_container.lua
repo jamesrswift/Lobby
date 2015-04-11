@@ -46,5 +46,4 @@ function PANEL:AddPlayer( _Player )
 
 end
 
-
 vgui.Register( "scoreboard.user_container", PANEL, "DScrollPanel" )

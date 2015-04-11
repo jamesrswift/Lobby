@@ -19,8 +19,12 @@ hook.Add( "DatabaseConnect", "LobbyInventorys" , LobbyInventory.MySQL.Load )
 
 
 function LobbyInventory.MySQL.Save( ID )
-	print( "UPDATE gm_user SET Inventory='"..tmysql.escape(von.serialize( LobbyInventory.MySQL.GetUser( ID ) )) .. "' WHERE ID=".. tonumber(ID) )
-	mysql.Query( "UPDATE gm_user SET Inventory='"..tmysql.escape(von.serialize( LobbyInventory.MySQL.GetUser( ID ) )) .. "' WHERE ID="..tonumber(ID));
+	local inv = LobbyInventory.MySQL.GetUser( ID )
+	local data = {}
+	for k,v in pairs( inv ) do
+		data[k] = {v[1],v[2]}
+	end
+	mysql.Query( "UPDATE gm_user SET Inventory='"..tmysql.escape(von.serialize( data )) .. "' WHERE ID="..tonumber(ID));
 end
 
 

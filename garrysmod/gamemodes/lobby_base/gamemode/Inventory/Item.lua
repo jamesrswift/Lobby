@@ -9,16 +9,17 @@ LobbyItem._itemmeta = {
 	Description 	= "",
 	Price			= 0,
 	Model 			= "",
+	Hooks			= {},
 
 	OnBuy = function( Item, _Player ) end,
 	OnSell = function( Item, _Player ) end,
 	OnEquip = function ( Item, _Player ) end,
 	OnHolister = function ( Item, _Player ) end,
-	CanPlayerBuy = function( Item, _Player ) end,
-	CanPlayerSell = function( Item, _Player ) end,
-	CanPlayerTrade = function ( Item, _Player ) end,
-	CanPlayerEquip = function ( Item, _Player ) end,
-	CanPlayerHolister = function ( Item, _Player ) end
+	CanPlayerBuy = function( Item, _Player ) return true end,
+	CanPlayerSell = function( Item, _Player ) return true end,
+	CanPlayerTrade = function ( Item, _Player ) return true end,
+	CanPlayerEquip = function ( Item, _Player ) return true end,
+	CanPlayerHolister = function ( Item, _Player ) return true end
 }
 
 

@@ -2,6 +2,7 @@
 
 include( "scoreboard.lua" )
 include( "vgui/user.lua" )
+include( "vgui/user_teamheader.lua" )
 include( "vgui/user_container.lua" )
 
 local g_grds, g_wgrd, g_sz

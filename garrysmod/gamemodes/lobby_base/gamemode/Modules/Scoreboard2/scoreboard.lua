@@ -15,10 +15,12 @@ function GM:ScoreboardShow()
 	Scoreboard.Scores = vgui.Create("scoreboard.user_container" )
 	Scoreboard.Scores:SetSize( ScrW() * 3/4, ScrH() - 180 )
 	Scoreboard.Scores:SetPos( ScrW() * 1/8, 162 )
-	
-	for k,v in pairs( player.GetAll() ) do
+
+	for k,v in pairs ( player.GetAll() ) do
 		Scoreboard.Scores:AddPlayer(v)
 	end
+	
+	
 
 end
 
