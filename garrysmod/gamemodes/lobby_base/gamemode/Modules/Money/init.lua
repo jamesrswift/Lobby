@@ -14,7 +14,6 @@ end
 
 hook.Add( "DatabaseConnect" , "Currency", function()
 	mysql.SelectFromTable( "gm_user" , { "ID" , "Money" , "LastJoined" },  function(data) for k,v in pairs( data ) do Currency.Cache[ v[1] ] = { v[2] , v[3] } end end )
-	print ("Currency database loaded")
 end)
 
 hook.Add( "PlayerInitialSpawn" , "Currency", function( Pl )

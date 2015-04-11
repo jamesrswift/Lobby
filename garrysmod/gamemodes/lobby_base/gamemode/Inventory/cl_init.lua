@@ -3,6 +3,9 @@
 include( "Item.lua" )
 include( "shops.lua" )
 
+LobbyInventory = { }
+LobbyInventory.ClientInventory = {}
+
 usermessage.Hook( "ShopOpen" , function( um )
 
 	local ShopID = um:ReadShort()
@@ -19,3 +22,16 @@ function debugshops( )
 	ShopWindow:SetShop( 1 )
 	
 end
+
+function LobbyInventory.GetInventory()
+	return LobbyInventory.ClientInventory;
+end
+
+function LobbyInventory.UpdateInventory(data)
+	LobbyInventory.ClientInventory = data
+end
+
+net.Receive("Lobby.UpdateInventory", function()
+	local data = net.ReadTable();
+	LobbyInventory.UpdateInventory(data)
+end)

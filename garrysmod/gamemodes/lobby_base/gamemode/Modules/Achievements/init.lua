@@ -37,6 +37,14 @@ function Achievement.Register( ID , Table )
 		Table.Max = 1
 		Table.Type = ACHIEVEMENT_ONCE
 	end
+	
+	if Table.Hooks then
+		for k,v in pairs ( Table.Hooks ) do
+			if Table[v] then
+				hook.Add( v, "Achievement."..Table.ID, function(...) return Table[v](Table, ... ) end)
+			end
+		end
+	end
 
 	Achievement.Loaded[ ID ] = Table
 

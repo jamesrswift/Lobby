@@ -16,7 +16,7 @@ end
 
 function PANEL:Init( )
 
-	self:SetSize( 350 , ScrH() * 0.75 )
+	self:SetSize( ScrW() * 0.75 , ScrH() * 0.75 )
 	self:SetPos( ( ScrW() / 2 ) - self:GetWidth() / 2,  ( ScrH() / 2 ) - self:GetTall() / 2)
 	self:SetTitle( self.ShopName )
 	self:ShowCloseButton( true )
@@ -36,16 +36,14 @@ function PANEL:Close( )
 
 	gui.EnableScreenClicker( false )
 	RememberCursorPosition( )
-	
-	
+
 	self:SetVisible( false )
-	//oldc( self )
 	
 end
 
 function PANEL:SetShop( ID )
 
-	local name = Shops[ ID ].Name
+	local name = GAMEMODE.Shops[ ID ].Name
 	PANEL.ShopName = name
 	self:SetTitle( self.ShopName )
 	

@@ -71,7 +71,7 @@ function PlayerMeta:GetDisplayTextColor( )
 end
 
 
-function GM:PlayerSetModel( ply )
+--[[function GM:PlayerSetModel( ply )
 	local model = ply:GetInfo( "cl_playermodel" )
 	local allow = hook.Call("AllowModel", GAMEMODE, ply, model, skin )
 	if !model || allow != true then
@@ -83,7 +83,7 @@ function GM:PlayerSetModel( ply )
 	ply:SetModel( modelname )
 
 	hook.Call("PlayerSetModelPost", GAMEMODE, ply, model, skin )
-end
+end]]--
 
 function GM:AllowModel( ply, model )
 	return false
