@@ -44,7 +44,9 @@ function ITEM:CalculateOffset( pos, ang )
 	
 	Voffset:Rotate( ang )
 	
-	ang = Angle( ang.p ,ang.y + Aoffset.y,ang.r+ Aoffset.r)  - Angle( -90, -180, 90 )
+	ang:RotateAroundAxis(ang:Right(), 	self.Offset.Angle.r); --Rotate around the axis (to the right) -90 degree's
+	ang:RotateAroundAxis(ang:Up(), 		self.Offset.Angle.p); --Rotate around the axis (upwards) 90
+	ang:RotateAroundAxis(ang:Forward(), self.Offset.Angle.y);
 	pos = pos + Voffset
 
 	return pos, ang
