@@ -48,23 +48,7 @@ function _Player:GiveItem( Name, slot, extra )
 			v:UpdateOtherClientsInventory()
 		end
 		
-		LobbyInventory.MySQL.Cache[ ID ][slot][3] = table.Copy( LobbyItem.Get( Name ) )
-		local item = LobbyInventory.MySQL.Cache[ ID ][slot][3]
-		if (slot >= 0 and slot <= 10 ) then
-			if item:CanPlayerEquip( self ) then
-				item:OnEquip(self)
-			end
-		else
-			if item:CanPlayerHolister( self ) then
-				item:OnHolister(self)
-			end
-		end
-		
-		for _,hookname in pairs( item.Hooks ) do
-			if item[hookname] then
-				hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..self:UniqueID(), function( ... ) item[hookname](item, ...) end)
-			end
-		end
+		LobbyInventory.MySQL.Cache[ ID ][slot][3] = LobbyItem.CreateInstance( Name , slot, extra, self )
 		
 		hook.Call( "InventoryPlayerRecievedItem", GAMEMODE, self, Name, slot, extra )
 		
@@ -113,24 +97,7 @@ function _Player:InitItems()
 		local name = v[1]
 		local extra = v[2]
 		
-		v[3] = table.Copy( LobbyItem.Get( name ) )
-		local item = v[3]
-
-		if (slot >= 0 and slot <= 10 ) then
-			if item:CanPlayerEquip( self ) then
-				item:OnEquip(self)
-			end
-		else
-			if item:CanPlayerHolister( self ) then
-				item:OnHolister(self)
-			end
-		end
-		
-		for _,hookname in pairs( item.Hooks ) do
-			if item[hookname] then
-				hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..self:UniqueID(), function( ... ) item[hookname](v[3], ...) end)
-			end
-		end
+		v[3] = LobbyItem.CreateInstance( name , slot, extra, self )
 		
 	end
 	

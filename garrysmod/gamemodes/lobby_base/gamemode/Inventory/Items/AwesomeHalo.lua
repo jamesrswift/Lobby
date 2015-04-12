@@ -15,7 +15,7 @@ function ITEM:OnEquip( _Player )
 	self.Player = _Player
 end
 
-function ITEM:PreDrawHalos( ply, model, skin )
+function ITEM:PreDrawHalos()
 	if self.Equiped and self.Player then
 		if self.Player:Alive() then
 			halo.Add( {self.Player}, Color( math.random(0,255),math.random(0,255),math.random(0,255)),5,5,3 )

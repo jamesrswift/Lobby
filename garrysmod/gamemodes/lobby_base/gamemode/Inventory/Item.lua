@@ -68,4 +68,27 @@ function LobbyItem.Load( )
 	
 end
 
+function LobbyItem.CreateInstance( name , slot, extra, player )
+	local item = table.Copy( LobbyItem.Get( name ) )
+
+	if (slot >= 0 and slot <= 10 ) then
+		if item:CanPlayerEquip( player) then
+			item:OnEquip(player)
+		end
+	else
+		if item:CanPlayerHolister( player ) then
+			item:OnHolister(player)
+		end
+	end
+	
+	for _,hookname in pairs( item.Hooks ) do
+		if item[hookname] then
+			hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..player:UniqueID(), function( ... ) item[hookname](v[3], ...) end)
+		end
+	end
+	
+	return item
+
+end
+
 LobbyItem.Load( )

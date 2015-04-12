@@ -58,25 +58,7 @@ function LobbyInventory.UpdateOtherClientsInventory(data)
 	for _Player, Inv in pairs( LobbyInventory.OtherClientsInventory ) do
 		if _Player then
 			for slot,v in pairs( Inv ) do
-				v[3] = table.Copy( LobbyItem.Get( v[1] ) )
-				local item = v[3]
-				
-
-				if (slot >= 0 and slot <= 10 ) then
-					if item:CanPlayerEquip( _Player ) then
-						item:OnEquip(_Player)
-					end
-				else
-					if item:CanPlayerHolister(_Player) then
-						item:OnHolister(_Player)
-					end
-				end
-				
-				for _,hookname in pairs( item.Hooks ) do
-					if item[hookname] then
-						hook.Add( hookname, hookname ..":" .. item.UniqueName..":".._Player:UniqueID(), function( ... ) item[hookname](v[3], ...) end)
-					end
-				end
+				v[3] = LobbyItem.CreateInstance( v[1], slot, v[2] , _Player )
 			end
 		end
 	end
