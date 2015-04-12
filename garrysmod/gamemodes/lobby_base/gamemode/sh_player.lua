@@ -87,20 +87,6 @@ function GM:PlayerSetModel( ply )
 	hook.Call("PlayerSetModelPost", GAMEMODE, ply, model, skin )
 end
 
-local bannedmodels = {
-	"models/player/alyx.mdl",
-	"models/player/doberman/doberman4.mdl",
-	"models/player/doberman/doberman5.mdl",
-	"Doberman4",
-	"Doberman5",
-	"models/furry/furry.mdl",
-	"models/player/miku.mdl"
-}
-
-function GM:AllowModel( ply, model )
-	return not table.HasValue( bannedmodels, model )
-end
-
 function GM:PlayerSpray( ply )
 	return !(ply:IsAdmin())
 end

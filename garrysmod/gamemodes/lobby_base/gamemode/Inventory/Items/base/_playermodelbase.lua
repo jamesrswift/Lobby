@@ -9,11 +9,19 @@ ITEM.Price			= 200
 
 ITEM.Player			= false
 ITEM.Model 			= "models/player/alyx.mdl"
+ITEM.Hands			= {}
 ITEM.Hooks			= {"PlayerSetModelPost"}
 ITEM.BodyGroups		= {}
 
 function ITEM:Init( )
 	player_manager.AddValidModel( self.Name, self.Model )
+	if #self.Hands > 0 then
+		player_manager.AddValidHands( self.Name, unpack(self.Hands) )
+	end
+	hook.Add( "AllowModel", "AllowModel:" .. self.UniqueName, function( Player, Model )
+		if Model == self.Name then return false end
+	end)
+	
 end
 
 function ITEM:OnEquip( _Player )

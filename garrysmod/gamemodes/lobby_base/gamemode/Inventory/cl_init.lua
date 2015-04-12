@@ -35,11 +35,11 @@ function LobbyInventory.UpdateInventory(data)
 		local item = v[3]
 		
 		if (slot >= 0 and slot <= 10 ) then
-			if item:CanPlayerEquip( LocalPlayer() ) then
+			if item:CanPlayerEquip( LocalPlayer() ) and item.OnEquip then
 				item:OnEquip(LocalPlayer())
 			end
 		else
-			if item:CanPlayerHolister( LocalPlayer() ) then
+			if item:CanPlayerHolister( LocalPlayer() ) and item.OnHolister then
 				item:OnHolister(LocalPlayer())
 			end
 		end
