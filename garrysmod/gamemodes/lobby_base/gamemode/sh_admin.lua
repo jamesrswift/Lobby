@@ -90,6 +90,23 @@ GM:AddAdminCommand( "money", 1, PlayerMeta.IsAdmin, function(args, ply)
 	TargetPly:SetMoney( Amount )
 end, {display="Set Money", options={50,100,250,500,1000}, icon="icon16/coins.png"})
 
+
+local items = {}
+for k,v in pairs( LobbyItem.Items ) do
+	items[#items+1] = v.UniqueName
+end
+
+GM:AddAdminCommand( "giveitem", 1, PlayerMeta.IsAdmin, function(args, ply)
+	local TargetPly = Entity( tonumber( args[1] ) )
+	if TargetPly == nil then return end
+	if !TargetPly:IsPlayer() then return end
+	
+	local itemname = tostring( args[2] )
+	if itemname then
+		TargetPly:GiveItem( itemname )
+	end
+end, {display="Give Item", options=items, icon="icon16/map.png"})
+
 if SERVER then
 
 include( "Admin/noclip.lua" )

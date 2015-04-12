@@ -51,7 +51,6 @@ include("sh_vgui.lua")
 include("sh_player.lua")
 include("sh_admin.lua" )
 include("chat/main.lua")
-include("nwvar/nwvars.lua")
 
 -- Setting Up MySQL
 

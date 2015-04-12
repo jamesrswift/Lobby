@@ -83,7 +83,7 @@ function LobbyItem.CreateInstance( name , slot, extra, player )
 	
 	for _,hookname in pairs( item.Hooks ) do
 		if item[hookname] then
-			hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..player:UniqueID(), function( ... ) item[hookname](v[3], ...) end)
+			hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..player:UniqueID(), function( ... ) item[hookname](item, ...) end)
 		end
 	end
 	

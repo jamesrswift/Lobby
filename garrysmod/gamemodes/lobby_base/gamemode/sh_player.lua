@@ -81,6 +81,8 @@ function GM:PlayerSetModel( ply )
 	local modelname = player_manager.TranslatePlayerModel( model )
 	util.PrecacheModel( modelname )	
 	ply:SetModel( modelname )
+	
+	ply:SetPlayerColor( Vector(1,1,1) )
 
 	hook.Call("PlayerSetModelPost", GAMEMODE, ply, model, skin )
 end

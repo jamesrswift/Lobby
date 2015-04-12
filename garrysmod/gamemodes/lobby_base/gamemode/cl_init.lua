@@ -15,25 +15,14 @@ include("sh_modules.lua" )
 include("sh_vgui.lua")
 include("sh_modules.lua")
 include("sh_player.lua")
-include("sh_admin.lua")
 include("cl_hud.lua")
-
 include("inventory/cl_init.lua")
-
-include("nwvar/nwvars.lua")
+include("sh_admin.lua")
 include("chat/main.lua")
 include("Admin/alltalk.lua")
 
 
 CurMap = game.GetMap()
-SafeToSend = false
-
-hook.Add("Think", "PlayerValid", function()
-	if IsValid(LocalPlayer()) && (GetWorldEntity() != NULL) then
-		SafeToSend = true
-		hook.Remove("Think", "PlayerValid")
-	end
-end)
 
 hook.Add("UpdateAnimation", "Breathing", function(ply)
 	ply:SetPoseParameter("breathing", 0.2)
