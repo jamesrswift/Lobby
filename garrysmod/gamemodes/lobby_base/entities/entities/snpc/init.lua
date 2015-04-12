@@ -45,6 +45,13 @@ end
  
 function ENT:SelectSchedule()
  
-	self:StartSchedule( schdChase )
+	--self:StartSchedule( schdChase )
  
+end
+
+function ENT:Use( Activator , Use_Type )
+	print ("pressing enter in snpc")
+	if ( Activator:IsPlayer() ) then
+		umsg.Start( "ShopOpen" ) umsg.Short( k ) umsg.End()
+	end
 end
