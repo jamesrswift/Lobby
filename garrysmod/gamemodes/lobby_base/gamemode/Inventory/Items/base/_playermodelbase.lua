@@ -1,15 +1,19 @@
 -- Test Item
 
-ITEM.ShopID 		= 1
+ITEM.ShopID 		= 0
 
-ITEM.Name 			= "Alyx Player Model"
-ITEM.UniqueName 	= "AlyxPlayerModel"
-ITEM.Description 	= "This is just a test"
+ITEM.Name 			= "Playermodel Base"
+ITEM.UniqueName 	= "_playermodelbase"
+ITEM.Description 	= "Item base for playermodels"
 ITEM.Price			= 200
 
 ITEM.Player			= false
 ITEM.Model 			= "models/player/alyx.mdl"
 ITEM.Hooks			= {"PlayerSetModelPost"}
+
+function ITEM:Init( )
+	player_manager.AddValidModel( self.Name, self.Model )
+end
 
 function ITEM:OnEquip( _Player )
 	self.Equiped = true

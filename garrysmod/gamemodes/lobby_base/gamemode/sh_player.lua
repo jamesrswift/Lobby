@@ -137,3 +137,10 @@ hook.Add("PlayerSwitchFlashlight", "LobbyFlashLight", function(ply, isOn)
 	return true
 	
 end)
+
+function PlayerPickup( ply, ent )
+	if ply:IsAdmin() and ent:GetClass():lower() == "player" then
+		return true
+	end
+end
+hook.Add( "PhysgunPickup", "Allow Player Pickup", PlayerPickup )

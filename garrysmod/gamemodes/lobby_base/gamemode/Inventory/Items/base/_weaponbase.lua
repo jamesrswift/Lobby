@@ -1,15 +1,14 @@
 -- Blue halo Item
 
-ITEM.ShopID 		= 1
+ITEM.ShopID 		= 0
 
-ITEM.Name 			= "Physgun"
-ITEM.UniqueName 	= "WeaponPhysgun"
+ITEM.Name 			= "Weapon base"
+ITEM.UniqueName 	= "_weaponbase"
 ITEM.Description 	= "Admin weapon"
 ITEM.Price			= -1
 
 ITEM.Hooks			= {"PlayerLoadout"}
 ITEM.Player			= false
-ITEM.Weapon			= "weapon_physgun"
 
 function ITEM:CanPlayerBuy() return false end
 

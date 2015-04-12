@@ -93,7 +93,9 @@ end, {display="Set Money", options={50,100,250,500,1000}, icon="icon16/coins.png
 
 local items = {}
 for k,v in pairs( LobbyItem.Items ) do
-	items[#items+1] = v.UniqueName
+	if (string.sub( v.UniqueName, 1,1 ) != "_" ) then
+		items[#items+1] = v.UniqueName
+	end
 end
 
 GM:AddAdminCommand( "giveitem", 1, PlayerMeta.IsAdmin, function(args, ply)

@@ -1,25 +1,29 @@
 -- Test Item
 
-ITEM.ShopID 		= 1
+ITEM.ShopID 		= 0
 
-ITEM.Name 			= "Black Player Colour"
-ITEM.UniqueName 	= "BlackPlayerColour"
-ITEM.Description 	= "This is just a test"
+ITEM.Name 			= "Playercolour Base"
+ITEM.UniqueName 	= "_playercolourbase"
+ITEM.Description 	= "Item base for player colour"
 ITEM.Price			= 200
 
 ITEM.Player			= false
 ITEM.Color			= Vector( 0,0,0 ) -- Vector for SetPlayerColor
 ITEM.Hooks			= {"PlayerSetModelPost"}
 
+function ITEM:GetColor()
+	return self.Color or Vector(1,1,1)
+end
+
 function ITEM:OnEquip( _Player )
 	self.Equiped = true
 	self.Player = _Player
-	_Player:SetPlayerColor( self.Color )
+	_Player:SetPlayerColor( self:GetColor() )
 end
 
 function ITEM:PlayerSetModelPost( ply, model, skin )
 	if self.Equiped and self.Player then
-		self.Player:SetPlayerColor( self.Color )
+		self.Player:SetPlayerColor( self:GetColor() )
 	end
 end
 
