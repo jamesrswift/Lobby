@@ -10,6 +10,7 @@ ITEM.Price			= 200
 ITEM.Player			= false
 ITEM.Model 			= "models/player/alyx.mdl"
 ITEM.Hooks			= {"PlayerSetModelPost"}
+ITEM.BodyGroups		= {}
 
 function ITEM:Init( )
 	player_manager.AddValidModel( self.Name, self.Model )
@@ -19,11 +20,21 @@ function ITEM:OnEquip( _Player )
 	self.Equiped = true
 	self.Player = _Player
 	_Player:SetModel( self.Model )
+	self:UpdateBodyGroups()
+end
+
+function ITEM:UpdateBodyGroups()
+	if self.Player and self.Equiped then
+		for k,v in pairs(self.BodyGroups) do
+			self.Player:SetBodygroup( v[1], v[2] )
+		end
+	end
 end
 
 function ITEM:PlayerSetModelPost( ply, model, skin )
-	if self.Equiped and self.Player then
+	if self.Equiped and self.Player and self.Player == ply then
 		self.Player:SetModel( self.Model )
+		self:UpdateBodyGroups()
 	end
 end
 

@@ -88,7 +88,13 @@ function GM:PlayerSetModel( ply )
 end
 
 local bannedmodels = {
-	"models/player/alyx.mdl"
+	"models/player/alyx.mdl",
+	"models/player/doberman/doberman4.mdl",
+	"models/player/doberman/doberman5.mdl",
+	"Doberman4",
+	"Doberman5",
+	"models/furry/furry.mdl",
+	"models/player/miku.mdl"
 }
 
 function GM:AllowModel( ply, model )

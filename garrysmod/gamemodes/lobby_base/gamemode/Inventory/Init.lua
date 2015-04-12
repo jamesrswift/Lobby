@@ -98,6 +98,9 @@ function _Player:InitItems()
 		local extra = v[2]
 		
 		v[3] = LobbyItem.CreateInstance( name , slot, extra, self )
+		if ( string.len( extra ) > 0 and v[3].SetCustom ) then
+			v[3]:SetCustom( extra )
+		end
 		
 	end
 	
