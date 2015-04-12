@@ -9,7 +9,7 @@ ITEM.Price			= 200
 
 ITEM.Player			= false
 ITEM.Color			= Vector( 0,0,0 ) -- Vector for SetPlayerColor
-ITEM.Hooks			= {"PlayerSpawn"}
+ITEM.Hooks			= {"PlayerSetModelPost"}
 
 function ITEM:OnEquip( _Player )
 	self.Equiped = true
@@ -17,7 +17,7 @@ function ITEM:OnEquip( _Player )
 	_Player:SetPlayerColor( self.Color )
 end
 
-function ITEM:PlayerSpawn( )
+function ITEM:PlayerSetModelPost( ply, model, skin )
 	if self.Equiped and self.Player then
 		self.Player:SetPlayerColor( self.Color )
 	end
