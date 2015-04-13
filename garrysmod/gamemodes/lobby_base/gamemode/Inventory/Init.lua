@@ -200,4 +200,21 @@ function _Player:GetNextAvailableSlot( )
 	return false
 end
 
+function _Player:SetItemCustom( slot, custom )
+	local item = self:GetItem( slot )
+	if item then
+		item[2] = custom
+		item[3]:SetCustom( custom )
+		LobbyInventory.MySQL.Save( tonumber(self:UniqueID()) )
+		self:UpdateClientInventory()
+		for k,v in pairs( player.GetAll() ) do
+			v:UpdateOtherClientsInventory()
+		end
+	end
+end
+
+function _Player:GetItemCustom( slot )
+	local item = self:GetItem( slot )
+	if item then return item[2] end
+end
 net.Receive("Lobby.InventoryClientReady", function(len,pl) pl:InitItems() end)
