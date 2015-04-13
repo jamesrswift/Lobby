@@ -95,6 +95,14 @@ function GM:PlayerCanHearPlayersVoice( listener, talker )
 	return talker:IsAdmin()
 end
 
+function GM:InventoryShouldDrawHalo( ply )
+	return true
+end
+
+
+function GM:InventoryShouldDrawTrail( ply )
+	return true
+end
 
 -- Logger
 

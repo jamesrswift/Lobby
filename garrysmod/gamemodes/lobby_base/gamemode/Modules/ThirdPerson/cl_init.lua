@@ -70,7 +70,7 @@ hook.Add("CalcView", "LCalcView", function(pl, pos, ang, fov)
 		if CurTime()>pl.NextEndThirdperson then
 			pl.NextEndThirdperson = nil
 			pl.IsThirdperson = false
-			if not ValidEntity(GetViewEntity()) or GetViewEntity()==LocalPlayer() then
+			if not IsValid(GetViewEntity()) or GetViewEntity()==LocalPlayer() then
 				gamemode.Call("OnViewModeChanged", false)
 			end
 			return

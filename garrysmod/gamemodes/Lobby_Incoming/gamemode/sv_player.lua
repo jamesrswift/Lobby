@@ -29,11 +29,17 @@ function GM:PlayerDeath( Victim, Inflictor, Attacker )
 	Victim:EmitSound( DeathSounds[ math.random( 1, #DeathSounds ) ] )
 	
 	-- Create Ragdoll
-	Victim.DeathDoll = ents.Create( "prop_ragdoll" )
+	--[[Victim.DeathDoll = ents.Create( "prop_ragdoll" )
 	Victim.DeathDoll:SetModel( Victim:GetModel() )
 	Victim.DeathDoll:SetPos( Victim:GetPos() + Vector( 0, 0, 1 ) )
 	Victim.DeathDoll:SetAngles( Victim:GetAngles() )
-	Victim.DeathDoll:Spawn()
+	Victim.DeathDoll:Spawn()--]]
+	
+	Victim:CreateRagdoll()
+	Victim.DeathDoll = Victim:GetRagdollEntity()
+	Victim.DeathDoll:SetModel( Victim:GetModel() )
+	Victim.DeathDoll:SetPos( Victim:GetPos() + Vector( 0, 0, 1 ) )
+	Victim.DeathDoll:SetAngles( Victim:GetAngles() )
 	
 	--Spectate ragdoll
 	Victim:Spectate( OBS_MODE_CHASE )
@@ -51,6 +57,8 @@ function GM:PlayerDeath( Victim, Inflictor, Attacker )
 			bone:SetVelocity( Victim:GetVelocity() )
 		end
 	end
+	
+	Victim.NextSpawnTime = CurTime() + 3
 
 	umsg.Start( "PlayerKilled" )
 		umsg.Entity( Victim )

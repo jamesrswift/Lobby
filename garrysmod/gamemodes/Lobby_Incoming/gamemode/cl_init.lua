@@ -6,7 +6,7 @@ include( "cl_hud.lua" )
 function GM:Scoreboard( )
 
 	local r ={ 
-		{"Location",300, function(pl) return pl:GetLocation() end},
+		{"Location",300, function(pl) return "Incoming" end},
 		{"Tokens",150, function(pl) return pl:GetMoney() end},
 		{"Ping",30, function( pl ) return pl:Ping() end}
 	}

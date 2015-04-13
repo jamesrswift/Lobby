@@ -11,9 +11,20 @@ DeriveGamemode("Lobby_Base")
 LobbyModules.LoadModules( {
 	"translations",
 	"money",
+	"achievements",
 	"scoreboard2",
 	"thirdperson"
 } )
 
 team.SetUp( 1, "Alive", Color( 255, 255, 100, 255 ) )
 team.SetUp( 2, "Dead", Color( 100, 100, 50, 255 ) )
+
+
+function GM:InventoryShouldDrawHalo( ply )
+	return ( ply:Team() == 1 or IsValid(ply:GetRagdollEntity()))
+end
+
+
+function GM:InventoryShouldDrawTrail( ply )
+	return ply:Team() == 1
+end
