@@ -97,7 +97,9 @@ function PANEL:Paint( w, h )
 			
 		end
 	
-		self:DrawTag( )
+		if self.PrintName then
+			self:DrawTag( )
+		end
 	end
 end
 
@@ -213,6 +215,7 @@ function PANEL:UpdateContents()
 	self.Material = false
 	self.GetColor = false
 	self.Color = false
+	self.Custom = false
 	
 	-- set new settings
 	
@@ -220,6 +223,7 @@ function PANEL:UpdateContents()
 	
 	if item then
 		self.Item = item
+		self.Custom = item[2]
 		local itemmeta = item[3]
 		
 		self.PrintName = itemmeta.Name
@@ -228,6 +232,12 @@ function PANEL:UpdateContents()
 		elseif (itemmeta.Material) then self.Material = itemmeta.Material
 		elseif (itemmeta.GetColor) then self.GetColor = itemmeta.GetColor
 		elseif (itemmeta.Color) then self.Color = itemmeta.Color end
+		
+		if string.len(self.Custom) > 0 then
+			self:SetTooltip(self.Custom)
+		else
+			self:SetTooltip(false)
+		end
 	end
 end
 
@@ -241,15 +251,19 @@ end
 function PANEL:OnMousePressed(mc)
 	self.m_DragOffset = {0,0}
 	if (mc == MOUSE_LEFT) then
-		self:StartDragging()
+		if self.Item then
+			self:StartDragging()
+		end
 	end
 end
 
 function PANEL:OnMouseReleased()
-	local ox,oy = self:GetDragOffset()[1] or 0, self:GetDragOffset()[2] or 0
-	local mx,my = self:GetParent():ScreenToLocal(gui.MousePos())
-	self:SetPos(mx-ox,my-oy)       
-	self:StopDragging(mx-ox,my-oy)
+	if self.Item then
+		local ox,oy = self:GetDragOffset()[1] or 0, self:GetDragOffset()[2] or 0
+		local mx,my = self:GetParent():ScreenToLocal(gui.MousePos())
+		self:SetPos(mx-ox,my-oy)       
+		self:StopDragging(mx-ox,my-oy)
+	end
 end
  
 function PANEL:Think()
@@ -258,6 +272,7 @@ function PANEL:Think()
 		local mx,my =  self:GetParent():ScreenToLocal(gui.MousePos())
 		self:SetPos(mx-ox,my-oy)
 	end
+	self:UpdateContents()
 end
  
 function PANEL:StartDragging(t)

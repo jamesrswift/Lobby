@@ -95,7 +95,7 @@ function LobbyItem.CreateInstance( name , slot, extra, player )
 	
 	for _,hookname in pairs( item.Hooks ) do
 		if item[hookname] then
-			hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..player:UniqueID(), function( ... ) item[hookname](item, ...) end)
+			hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..player:UniqueID()..":"..tostring(item), function( ... ) item[hookname](item, ...) end)
 		end
 	end
 	
@@ -107,7 +107,7 @@ function LobbyItem.DestroyInstance( ItemTable, player )
 	if (ItemTable.OnRemove) then ItemTable:OnRemove() end
 	
 	for _,hookname in pairs( ItemTable.Hooks ) do
-		hook.Remove( hookname, hookname ..":" .. ItemTable.UniqueName..":"..player:UniqueID())
+		hook.Remove( hookname, hookname ..":" .. ItemTable.UniqueName..":"..player:UniqueID()..":"..tostring(ItemTable))
 	end
 end
 

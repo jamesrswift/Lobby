@@ -42,6 +42,8 @@ function LobbyInventory.UpdateInventory(data)
 		v[3] = table.Copy( LobbyItem.Get( v[1] ) )
 		local item = v[3]
 		
+		if item.SetCustom then item:SetCustom( v[2] ) end
+		
 		if (slot >= 0 and slot <= 10 ) then
 			if item:CanPlayerEquip( LocalPlayer() ) and item.OnEquip then
 				item:OnEquip(LocalPlayer())
