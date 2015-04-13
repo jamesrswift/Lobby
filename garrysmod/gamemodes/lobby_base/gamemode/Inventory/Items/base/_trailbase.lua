@@ -32,14 +32,17 @@ function ITEM:OnEquip( _Player )
 end
 
 function ITEM:PlayerSpawn(ply )
-	self.ShouldDraw = hook.Call( "InventoryShouldDrawTrail", GAMEMODE, ply )
-	if (ply == self.Player and not self.Trail and self.ShouldDraw and SERVER) then
-		self.Trail = util.SpriteTrail( self.Player, 0, self:GetColor(), false, 15, 1, 0.5, 1/(15+1)*0.5, self:GetMaterial() )
+	if ( ply == self.Player ) then
+		self.ShouldDraw = hook.Call( "InventoryShouldDrawTrail", GAMEMODE, ply)
+		if IsValid(self.Trail) then self.Trail:Remove() end
+		if ( self.ShouldDraw and SERVER) then
+			self.Trail = util.SpriteTrail( self.Player, 0, self:GetColor(), false, 15, 1, 0.5, 1/(15+1)*0.5, self:GetMaterial() )
+		end
 	end
 end
 
 function ITEM:PlayerDeath(ply)
-	if (ply == self.Player and self.Trail and SERVER) then
+	if (ply == self.Player and IsValid(self.Trail) and SERVER) then
 		self.Trail:Remove()
 		self.Trail = false;
 	end

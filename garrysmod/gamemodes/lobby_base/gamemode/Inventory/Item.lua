@@ -63,17 +63,17 @@ function LobbyItem.Get( Name )
 
 end
 
-function LobbyItem.Load( )
+function LobbyItem.LoadSubFolder( Folder )
 
-	local ItemFiles = file.Find( "Lobby_Base/gamemode/inventory/items/*" , "LUA" )
+	local ItemFiles = file.Find( "Lobby_Base/gamemode/inventory/items/"..Folder.."*" , "LUA" )
 	
 	for k,v in pairs( ItemFiles ) do
 		if SERVER then
-			AddCSLuaFile( "Lobby_Base/gamemode/inventory/items/" .. v )
+			AddCSLuaFile( "Lobby_Base/gamemode/inventory/items/"..Folder.. v)
 		end
 		
 		ITEM = table.Copy(LobbyItem._itemmeta)
-		include( "Lobby_Base/gamemode/inventory/items/" .. v )
+		include( "Lobby_Base/gamemode/inventory/items/"..Folder .. v )
 		LobbyItem.Add( table.Copy(ITEM) )
 		ITEM = nil;
 	end
@@ -129,4 +129,11 @@ function LobbyItem.LoadBases()
 end
 
 LobbyItem.LoadBases()
-LobbyItem.Load( )
+
+LobbyItem.LoadSubFolder( "" ) -- Items/
+LobbyItem.LoadSubFolder( "Hats/" )
+LobbyItem.LoadSubFolder( "Halos/" )
+LobbyItem.LoadSubFolder( "Playermodels/" )
+LobbyItem.LoadSubFolder( "Trails/" )
+LobbyItem.LoadSubFolder( "Playercolors/" )
+LobbyItem.LoadSubFolder( "Weapons/" )
