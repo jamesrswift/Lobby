@@ -9,6 +9,7 @@ ITEM.Price			= -1
 
 ITEM.Hooks			= {"PlayerLoadout"}
 ITEM.Player			= false
+ITEM.Model			= "models/weapons/w_pistol.mdl"
 
 function ITEM:CanPlayerBuy() return false end
 

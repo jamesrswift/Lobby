@@ -12,6 +12,7 @@ ITEM.Model 			= "models/player/alyx.mdl"
 ITEM.Hands			= {}
 ITEM.Hooks			= {"PlayerSetModelPost"}
 ITEM.BodyGroups		= {}
+ITEM.Skin			= 0
 
 function ITEM:Init( )
 	player_manager.AddValidModel( self.Name, self.Model )
@@ -29,6 +30,7 @@ function ITEM:OnEquip( _Player )
 	self.Player = _Player
 	_Player:SetModel( self.Model )
 	self:UpdateBodyGroups()
+	self:UpdateSkin()
 end
 
 function ITEM:UpdateBodyGroups()
@@ -39,10 +41,17 @@ function ITEM:UpdateBodyGroups()
 	end
 end
 
+function ITEM:UpdateSkin()
+	if self.Player and self.Equiped then
+		self.Player:SetSkin( self.Skin )
+	end
+end
+
 function ITEM:PlayerSetModelPost( ply, model, skin )
 	if self.Equiped and self.Player and self.Player == ply then
 		self.Player:SetModel( self.Model )
 		self:UpdateBodyGroups()
+		self:UpdateSkin()
 	end
 end
 

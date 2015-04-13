@@ -106,8 +106,8 @@ end
 function LobbyItem.DestroyInstance( ItemTable, player )
 	if (ItemTable.OnRemove) then ItemTable:OnRemove() end
 	
-	for _,hookname in pairs( item.Hooks ) do
-		hook.Remove( hookname, hookname ..":" .. item.UniqueName..":"..player:UniqueID())
+	for _,hookname in pairs( ItemTable.Hooks ) do
+		hook.Remove( hookname, hookname ..":" .. ItemTable.UniqueName..":"..player:UniqueID())
 	end
 end
 

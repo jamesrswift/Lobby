@@ -3,7 +3,7 @@
 ITEM.ShopID 		= 1
 ITEM.Base			= "_playermodelbase"
 
-ITEM.Name 			= "Tron Player Model"
+ITEM.Name 			= "Tron"
 ITEM.UniqueName 	= "TronPlayerModel"
 ITEM.Description 	= "This is just a test"
 ITEM.Price			= 200
