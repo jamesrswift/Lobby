@@ -35,7 +35,7 @@ local _Player = FindMetaTable( "Player" )
 
 function _Player:GiveItem( Name, slot, extra )
 	local ID = tonumber( self:UniqueID() )
-	slot = slot or #LobbyInventory.MySQL.GetUser( ID ) + 1
+	slot = slot or self:GetNextAvailableSlot( )
 	extra = extra or ""
 	
 	if ( LobbyItem.Get( Name ) ) then
@@ -191,6 +191,13 @@ function _Player:MoveItemToSlot( slot1, slot2 )
 		end
 	end
 	
+end
+
+function _Player:GetNextAvailableSlot( )
+	for i=1, 50 do
+		if ( not self:GetItem( i ) ) then return i end
+	end
+	return false
 end
 
 net.Receive("Lobby.InventoryClientReady", function(len,pl) pl:InitItems() end)

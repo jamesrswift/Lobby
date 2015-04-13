@@ -13,7 +13,7 @@ ITEM.HSV			= { ColorToHSV( Color(255,0,0) ) }
 ITEM.Hooks			= {"Think","PlayerSetModelPost"} --For the base
 
 function ITEM:GetColor()
-	self.HSV[1] = ( self.HSV[1] + 3 ) % 360
+	self.HSV[1] = ( self.HSV[1] + 40 * FrameTime() ) % 360
 	local c = HSVToColor( unpack(self.HSV) )
 	self.Color = Vector( c.r / 255 , c.g / 255, c.b / 255 )
 	

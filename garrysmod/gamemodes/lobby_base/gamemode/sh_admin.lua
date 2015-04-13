@@ -135,7 +135,9 @@ function GM.CreateAdminMenu(_Player) -- Focused around a player
 	if LocalPlayer():IsPrivAdmin() then
 		
 		local AMenu = DermaMenu();
-		AMenu:AddOption( "Administrate " .. _Player:Nick() ):SetIcon("icon16/comment.png" )
+		local a = AMenu:AddOption( "Administrate " .. _Player:Nick() )
+		a:SetIcon("icon16/comment.png" )
+		a:SetDisabled(true)
 		AMenu:AddSpacer()
 		
 		
@@ -143,9 +145,13 @@ function GM.CreateAdminMenu(_Player) -- Focused around a player
 			if v.menu then
 				if !(v.check(LocalPlayer())) then return end
 				local o;
-				if v.menu.options then
+				
+				local options = v.menu.options
+				if type (options) == "function" then options = v.menu.options() end
+				
+				if options then
 					o = AMenu:AddSubMenu( v.menu.display )
-					for k2,v2 in pairs( v.menu.options ) do
+					for k2,v2 in pairs( options ) do
 						local sm = o:AddOption( v2, function() RunConsoleCommand("lobby", "admin", k, _Player:EntIndex(), v2 ) end )
 						--if v.menu.icon then
 						--	sm:SetIcon( v.menu.icon )
@@ -155,7 +161,7 @@ function GM.CreateAdminMenu(_Player) -- Focused around a player
 					o = AMenu:AddOption( v.menu.display, function() RunConsoleCommand("lobby", "admin", k, _Player:EntIndex() ) end )
 				end
 				if v.menu.icon then
-					if v.menu.options then o = o:GetParent() end
+					if options then o = o:GetParent() end
 					o:SetIcon( v.menu.icon )
 				end
 			end

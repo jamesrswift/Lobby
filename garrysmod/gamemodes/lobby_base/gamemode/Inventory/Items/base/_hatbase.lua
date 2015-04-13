@@ -53,7 +53,7 @@ function ITEM:CalculateOffset( pos, ang )
 end
 
 function ITEM:PostDrawOpaqueRenderables( )
-	if not self.Player or self.Equiped then return end
+	if not self.Player or not self.Equiped then return end
 	if self.Player == LocalPlayer() and not self.Player:ShouldDrawLocalPlayer() then return end
 	local Ent = self.Player
 	if not self.Player:Alive() then Ent = self.Player:GetRagdollEntity() end
