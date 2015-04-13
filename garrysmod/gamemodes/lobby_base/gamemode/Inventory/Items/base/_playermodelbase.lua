@@ -49,4 +49,5 @@ end
 function ITEM:OnHolister( _Player )
 	self.Equiped = false
 	self.Player = false
+	hook.Call( "PlayerSetModel", GAMEMODE, _Player )
 end

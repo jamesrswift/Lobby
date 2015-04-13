@@ -103,6 +103,14 @@ function LobbyItem.CreateInstance( name , slot, extra, player )
 
 end
 
+function LobbyItem.DestroyInstance( ItemTable, player )
+	if (ItemTable.OnRemove) then ItemTable:OnRemove() end
+	
+	for _,hookname in pairs( item.Hooks ) do
+		hook.Remove( hookname, hookname ..":" .. item.UniqueName..":"..player:UniqueID())
+	end
+end
+
 function LobbyItem.LoadBases()
 	local ItemFiles = file.Find( "Lobby_Base/gamemode/inventory/items/base/*" , "LUA" )
 	

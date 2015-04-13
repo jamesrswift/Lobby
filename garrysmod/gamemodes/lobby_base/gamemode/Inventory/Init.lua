@@ -60,6 +60,10 @@ function _Player:GetItems( )
 	return LobbyInventory.MySQL.GetUser( ID )
 end
 
+function _Player:GetItem( slot )
+	return self:GetItems()[slot] or false
+end
+
 function _Player:UpdateClientInventory()
 
 	net.Start( "Lobby.UpdateInventory" )
@@ -124,6 +128,69 @@ function _Player:BuyItem( name, slot, extra )
 		end
 	end
 	return false
+end
+
+function _Player:DestroyItem( slot )
+	local item = self:GetItem( slot )
+	if item then
+		LobbyItem.DestroyInstance( item[3], self )
+		LobbyInventory.MySQL.GetUser( tonumber(self:UniqueID()) )[slot] = nil
+		LobbyInventory.MySQL.Save( ID )
+		self:UpdateClientInventory()
+		for k,v in pairs( player.GetAll() ) do
+			v:UpdateOtherClientsInventory()
+		end
+	end
+end
+
+function _Player:MoveItemToSlot( slot1, slot2 )
+	local uni = tonumber( self:UniqueID() )
+	local item = self:GetItem( slot1 )
+	if item then
+		local item2 = self:GetItem( slot2 )
+		if item2 then -- Switch slots
+			LobbyInventory.MySQL.GetUser(uni )[slot1], LobbyInventory.MySQL.GetUser(uni )[slot2] = LobbyInventory.MySQL.GetUser(uni )[slot2], LobbyInventory.MySQL.GetUser(uni )[slot1]			
+			if (slot2 >= 0 and slot2 <= 10 ) then
+				if item2[3]:CanPlayerEquip(self) and item2[3].OnEquip then
+					item2[3]:OnEquip(self)
+				end
+			else
+				if item2[3]:CanPlayerHolister(self ) and item2[3].OnHolister then
+					item2[3]:OnHolister(self)
+				end
+			end
+			
+			-- Slot2 first
+			if (slot1 >= 0 and slot1 <= 10 ) then
+				if item[3]:CanPlayerEquip(self) and item[3].OnEquip then
+					item[3]:OnEquip(self)
+				end
+			else
+				if item[3]:CanPlayerHolister(self ) and item[3].OnHolister then
+					item[3]:OnHolister(self)
+				end
+			end
+		
+		else -- simple move
+			LobbyInventory.MySQL.GetUser(uni )[slot1], LobbyInventory.MySQL.GetUser(uni )[slot2] = nil, LobbyInventory.MySQL.GetUser(uni )[slot1]
+			local item2 = LobbyInventory.MySQL.GetUser(uni )[slot2]
+			if (slot2 >= 0 and slot2 <= 10 ) then
+				if item2[3]:CanPlayerEquip(self) and item2[3].OnEquip then
+					item2[3]:OnEquip(self)
+				end
+			else
+				if item2[3]:CanPlayerHolister(self ) and item2[3].OnHolister then
+					item2[3]:OnHolister(self)
+				end
+			end
+		end
+		LobbyInventory.MySQL.Save( uni )
+		self:UpdateClientInventory()
+		for k,v in pairs( player.GetAll() ) do
+			v:UpdateOtherClientsInventory()
+		end
+	end
+	
 end
 
 net.Receive("Lobby.InventoryClientReady", function(len,pl) pl:InitItems() end)

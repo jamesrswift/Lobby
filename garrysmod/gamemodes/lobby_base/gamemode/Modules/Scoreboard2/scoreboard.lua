@@ -8,6 +8,17 @@ Scoreboard = {}
 Scoreboard.Columns = { }
 Scoreboard.CurrentTab = TAB_SCORES
 
+local Highlight = Color( 255, 255, 255, 255 )
+local bg = Color( 18, 89, 148, 255 )
+local mat = Material( "Lobby/logo.png" )
+local A = 200
+
+local ButtonText = Color( 240,240,240,255 )
+local ButtonBG = Color( 20, 140, 230, 255 )
+local ButtonBorder = Color( 45, 144, 208, 255 )
+	
+Scoreboard.HIGHLIGHT ,Scoreboard.BGCOLOR ,Scoreboard.SLBLOGOMAT ,Scoreboard.CELLALPHA, Scoreboard.BUTTONTEXT, Scoreboard.BUTTONBG, Scoreboard.BUTTONBORD = Highlight,bg, mat, A,ButtonText,ButtonBG,ButtonBorder
+
 function GM:ScoreboardShow()
 	self.ShowMenu = true
 	gui.EnableScreenClicker( true )
