@@ -35,30 +35,14 @@ end
 function LobbyInventory.UpdateInventory(data)
 	for slot,v in pairs( LobbyInventory.ClientInventory ) do
 		if (v[3]) then
-			LobbyItem.DestroyInstance(v[3], LocalPlayer() )
+			LobbyItem.DestroyInstance(v[3], LocalPlayer(), slot )
 		end
 	end
 	LobbyInventory.ClientInventory = data
 	for slot,v in pairs( LobbyInventory.ClientInventory ) do
-		v[3] = table.Copy( LobbyItem.Get( v[1] ) )
-		local item = v[3]
-		
-		if item.SetCustom then item:SetCustom( v[2] ) end
-		
-		if (slot >= 0 and slot <= 10 ) then
-			if item:CanPlayerEquip( LocalPlayer() ) and item.OnEquip then
-				item:OnEquip(LocalPlayer())
-			end
-		else
-			if item:CanPlayerHolister( LocalPlayer() ) and item.OnHolister then
-				item:OnHolister(LocalPlayer())
-			end
-		end
-		
-		for _,hookname in pairs( item.Hooks ) do
-			if item[hookname] then
-				hook.Add( hookname, hookname ..":" .. item.UniqueName..":"..LocalPlayer():UniqueID(), function( ... ) item[hookname](v[3], ...) end)
-			end
+		v[3] = LobbyItem.CreateInstance( v[1], slot, v[2], LocalPlayer() )
+		if ( v[2] and v[3].SetCustom ) then
+			v[3]:SetCustom( v[2] )
 		end
 	end
 	
@@ -72,7 +56,7 @@ function LobbyInventory.UpdateOtherClientsInventory(data)
 	for _Player, Inv in pairs( LobbyInventory.OtherClientsInventory ) do
 		for slot,v in pairs( Inv ) do
 			if (v[3]) then
-				LobbyItem.DestroyInstance(v[3], _Player)
+				LobbyItem.DestroyInstance(v[3], _Player, slot)
 			end
 		end
 	end
@@ -81,6 +65,9 @@ function LobbyInventory.UpdateOtherClientsInventory(data)
 		if _Player then
 			for slot,v in pairs( Inv ) do
 				v[3] = LobbyItem.CreateInstance( v[1], slot, v[2] , _Player )
+				if ( v[2] and v[3].SetCustom ) then
+					v[3]:SetCustom( v[2] )
+				end
 			end
 		end
 	end

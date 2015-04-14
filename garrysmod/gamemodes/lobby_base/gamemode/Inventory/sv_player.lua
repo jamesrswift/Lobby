@@ -101,7 +101,7 @@ end
 function _Player:DestroyItem( slot )
 	local item = self:GetItem( slot )
 	if item then
-		LobbyItem.DestroyInstance( item[3], self )
+		LobbyItem.DestroyInstance( item[3], self, slot )
 		LobbyInventory.MySQL.GetUser( tonumber(self:UniqueID()) )[slot] = nil
 		LobbyInventory.MySQL.Save( ID )
 		self:UpdateClientInventory()
@@ -117,39 +117,49 @@ function _Player:MoveItemToSlot( slot1, slot2 )
 	if item then
 		local item2 = self:GetItem( slot2 )
 		if item2 then -- Switch slots
-			LobbyInventory.MySQL.GetUser(uni )[slot1], LobbyInventory.MySQL.GetUser(uni )[slot2] = LobbyInventory.MySQL.GetUser(uni )[slot2], LobbyInventory.MySQL.GetUser(uni )[slot1]			
-			if (slot2 >= 0 and slot2 <= 10 ) then
-				if item2[3]:CanPlayerEquip(self) and item2[3].OnEquip then
-					item2[3]:OnEquip(self)
-				end
-			else
-				if item2[3]:CanPlayerHolister(self ) and item2[3].OnHolister then
-					item2[3]:OnHolister(self)
-				end
+		
+			LobbyItem.DestroyInstance( item2[3], self, slot2 )
+			LobbyItem.DestroyInstance( item[3], self, slot1 )
+			
+			local name1, custom1, name2, custom2 = LobbyInventory.MySQL.GetUser(uni )[slot1][1], LobbyInventory.MySQL.GetUser(uni )[slot1][2], LobbyInventory.MySQL.GetUser(uni )[slot2][1], LobbyInventory.MySQL.GetUser(uni )[slot2][2]
+			
+			LobbyInventory.MySQL.GetUser(uni )[slot1] = nil
+			LobbyInventory.MySQL.GetUser(uni )[slot2] = nil
+			
+			LobbyInventory.MySQL.GetUser(uni )[slot1] = { 
+				name1,
+				custom1,
+				LobbyItem.CreateInstance( name1 , slot1, custom1, self )
+			}
+			
+			if ( string.len( LobbyInventory.MySQL.GetUser(uni )[slot1][2][2] ) > 0 and LobbyInventory.MySQL.GetUser(uni )[slot1][3].SetCustom ) then
+				LobbyInventory.MySQL.GetUser(uni )[slot1][3]:SetCustom( extra )
 			end
 			
-			-- Slot2 first
-			if (slot1 >= 0 and slot1 <= 10 ) then
-				if item[3]:CanPlayerEquip(self) and item[3].OnEquip then
-					item[3]:OnEquip(self)
-				end
-			else
-				if item[3]:CanPlayerHolister(self ) and item[3].OnHolister then
-					item[3]:OnHolister(self)
-				end
+			LobbyInventory.MySQL.GetUser(uni )[slot2] = { 
+				name2,
+				custom2,
+				LobbyItem.CreateInstance( name2, slot2, custom2, self )
+			}
+			
+			if ( string.len( LobbyInventory.MySQL.GetUser(uni )[slot2][2][2] ) > 0 and LobbyInventory.MySQL.GetUser(uni )[slot2][3].SetCustom ) then
+				LobbyInventory.MySQL.GetUser(uni )[slot2][3]:SetCustom( LobbyInventory.MySQL.GetUser(uni )[slot2][2] )
 			end
+
 		
 		else -- simple move
-			LobbyInventory.MySQL.GetUser(uni )[slot1], LobbyInventory.MySQL.GetUser(uni )[slot2] = nil, LobbyInventory.MySQL.GetUser(uni )[slot1]
-			local item2 = LobbyInventory.MySQL.GetUser(uni )[slot2]
-			if (slot2 >= 0 and slot2 <= 10 ) then
-				if item2[3]:CanPlayerEquip(self) and item2[3].OnEquip then
-					item2[3]:OnEquip(self)
-				end
-			else
-				if item2[3]:CanPlayerHolister(self ) and item2[3].OnHolister then
-					item2[3]:OnHolister(self)
-				end
+			
+			LobbyInventory.MySQL.GetUser(uni )[slot2] = { 
+				item[1],
+				item[2],
+				LobbyItem.CreateInstance( item[1] , slot2, item[2], self )
+			}
+			
+			LobbyItem.DestroyInstance( item[3], self, slot1 )
+			LobbyInventory.MySQL.GetUser(uni )[slot1] = nil
+
+			if ( string.len( LobbyInventory.MySQL.GetUser(uni )[slot2][2] ) > 0 and LobbyInventory.MySQL.GetUser(uni )[slot2][3].SetCustom ) then
+				LobbyInventory.MySQL.GetUser(uni )[slot2][3]:SetCustom( LobbyInventory.MySQL.GetUser(uni )[slot2][2] )
 			end
 		end
 		LobbyInventory.MySQL.Save( uni )
