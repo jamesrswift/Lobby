@@ -104,6 +104,10 @@ function GM:InventoryShouldDrawTrail( ply )
 	return true
 end
 
+function GM:InventoryShouldDrawHats( ply )
+	return true
+end
+
 -- Logger
 
 hook.Add( "PlayerSay" , "ChatLogger" , function( pl , text )

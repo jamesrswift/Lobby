@@ -52,6 +52,7 @@ function AdjustSc(v)
 			end
 		end
 		SendOffset(v,v.Scale)
+		v:SetModelScale( v.Scale, 0 )
 	end
 	
 	if not v.OldPsc then

@@ -9,4 +9,4 @@ ITEM.Description 	= "This is just a test"
 ITEM.Price			= 200
 
 ITEM.Model 			= "models/props_2fort/hardhat001.mdl"
-ITEM.Offset			= {Vector = Vector( 3.5,0,0 ), Angle = Angle(90,0,-90), Scale = 0.65} --x is up, y is back, z is side
+ITEM.Offset			= {{Vector = Vector( 3.5,0,0 ), Angle = Angle(90,0,-90), Scale = 0.65}} --x is up, y is back, z is side

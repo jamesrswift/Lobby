@@ -2,7 +2,7 @@
 ITEM.ShopID 		= 1
 ITEM.Base			= "_playermodelbase"
 
-ITEM.Name 			= "Left Shark Player Model"
+ITEM.Name 			= "Left Shark"
 ITEM.UniqueName 	= "LSharkPlayerModel"
 ITEM.Description 	= "This is just a test"
 ITEM.Price			= 200

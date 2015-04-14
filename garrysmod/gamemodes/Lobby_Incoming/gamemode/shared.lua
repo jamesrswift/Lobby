@@ -24,7 +24,10 @@ function GM:InventoryShouldDrawHalo( ply )
 	return ( ply:Team() == 1 or IsValid(ply:GetRagdollEntity()))
 end
 
-
 function GM:InventoryShouldDrawTrail( ply )
 	return ply:Team() == 1
+end
+
+function GM:InventoryShouldDrawHats( ply )
+	return ( ply:Team() == 1 or IsValid(ply:GetRagdollEntity()))
 end

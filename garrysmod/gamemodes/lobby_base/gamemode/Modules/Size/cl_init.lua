@@ -9,7 +9,7 @@ local function Tick( um )
 		pscale = 1
 	end;
 	local ScaleVector = pscale * Vector(1,1,1)
-	v:SetModelScale( pscale )
+	v:SetModelScale( pscale, 0 )
 	v:SetRenderBounds( pscale * Sizing.Default.StandingHull.Minimum, pscale * Sizing.Default.StandingHull.Maximum )			
 
 	--get the view offset (shared function but executing it on client side fixes some screen shaking issues)

@@ -12,6 +12,8 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "cl_player.lua" )
 AddCSLuaFile( "vgui/inventory.lua" )
 AddCSLuaFile( "vgui/inventory_item.lua" )
+AddCSLuaFile( "vgui/hateditor_modelviewer.lua" )
+AddCSLuaFile( "vgui/hateditor.lua" )
 AddCSLuaFile( "Shops.lua" )
 AddCSLuaFile( "Item.lua" )
 

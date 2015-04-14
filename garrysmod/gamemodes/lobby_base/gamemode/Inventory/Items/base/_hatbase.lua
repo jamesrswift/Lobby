@@ -11,12 +11,16 @@ ITEM.Player			= false
 ITEM.Model 			= "models/props_interiors/pot02a.mdl"
 ITEM.Hat			= false
 ITEM.Hooks			= {"PostDrawOpaqueRenderables"}
-ITEM.Offset			= {Vector = Vector( 0,0,0 ), Angle = Angle(0,0,0), Scale = 1}
+ITEM.Offset			= {{Vector = Vector( 0,0,0 ), Angle = Angle(0,0,0), Scale = 1}}
+ITEM.BoneIndex		= 6
 
 function ITEM:CreateHat( )
 	self.Hat = ClientsideModel( self.Model , RENDERGROUP_OPAQUE )
 	self.Hat:SetNoDraw( true )
-	self.Hat:SetModelScale( self.Offset.Scale, 0 )
+	
+	local index = 1
+	if ( self.Offset[self.Player:GetModel()] ) then index = self.Player:GetModel() end
+	self.Hat:SetModelScale( self.Offset[index].Scale, 0 )
 end
 
 function ITEM:OnEquip( _Player )
@@ -39,14 +43,15 @@ end
 
 function ITEM:CalculateOffset( pos, ang )
 
-	local Aoffset = Angle( self.Offset.Angle.p, self.Offset.Angle.y, self.Offset.Angle.r )
-	local Voffset = Vector( self.Offset.Vector.x, self.Offset.Vector.y, self.Offset.Vector.z);
+	local index = 1
+	if ( self.Offset[self.Player:GetModel()] ) then index = self.Player:GetModel() end
+	local Voffset = Vector( self.Offset[index].Vector.x, self.Offset[index].Vector.y, self.Offset[index].Vector.z) * ( self.Player:GetModelScale() or 1 );
 	
 	Voffset:Rotate( ang )
 	
-	ang:RotateAroundAxis(ang:Right(), 	self.Offset.Angle.r); --Rotate around the axis (to the right) -90 degree's
-	ang:RotateAroundAxis(ang:Up(), 		self.Offset.Angle.p); --Rotate around the axis (upwards) 90
-	ang:RotateAroundAxis(ang:Forward(), self.Offset.Angle.y);
+	ang:RotateAroundAxis(ang:Right(), 	self.Offset[index].Angle.r); --Rotate around the axis (to the right) -90 degree's
+	ang:RotateAroundAxis(ang:Up(), 		self.Offset[index].Angle.p); --Rotate around the axis (upwards) 90
+	ang:RotateAroundAxis(ang:Forward(), self.Offset[index].Angle.y);
 	pos = pos + Voffset
 
 	return pos, ang
@@ -58,9 +63,14 @@ function ITEM:PostDrawOpaqueRenderables( )
 	local Ent = self.Player
 	if not self.Player:Alive() then Ent = self.Player:GetRagdollEntity() end
 
-	local pos, ang = self:CalculateOffset( Ent:GetBonePosition( 6 ) )
+	if (IsValid(Ent) and hook.Call( "InventoryShouldDrawHats", GAMEMODE, self.Player )) then
+		local pos, ang = self:CalculateOffset( Ent:GetBonePosition( self.BoneIndex ) )
 
-	self.Hat:SetPos( pos )
-	self.Hat:SetAngles( ang )
-	self.Hat:DrawModel( )
+		local index = 1
+		if ( self.Offset[self.Player:GetModel()] ) then index = self.Player:GetModel() end
+		self.Hat:SetPos( pos )
+		self.Hat:SetAngles( ang )
+		self.Hat:SetModelScale( self.Offset[index].Scale, 0 )
+		self.Hat:DrawModel( )
+	end
 end

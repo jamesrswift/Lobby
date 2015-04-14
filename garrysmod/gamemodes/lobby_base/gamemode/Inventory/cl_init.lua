@@ -5,6 +5,7 @@ include( "Item.lua" )
 include( "shops.lua" )
 include( "vgui/inventory.lua")
 include( "vgui/inventory_item.lua")
+include( "vgui/hateditor.lua")
 
 LobbyInventory = { }
 LobbyInventory.ClientInventory = {}
@@ -124,3 +125,4 @@ end)
 
 concommand.Add( "+inventory_show", function() if (!LobbyInventory.InventoryPanel) then LobbyInventory.InitializeInventoryPanel() end LobbyInventory:SetInventoryPanelShowing(true) gui.EnableScreenClicker( true ) end)
 concommand.Add( "-inventory_show", function() LobbyInventory:SetInventoryPanelShowing(false) gui.EnableScreenClicker( false ) end)
+
