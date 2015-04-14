@@ -50,51 +50,67 @@ function PANEL:Paint( w, h )
 	surface.DrawRect( 1, h-2, w-2, 1)
 	
 	if self.Item then
-		if (self.Entity) then
-			if !IsValid(self.Entity) then return end
-			local x, y = self:LocalToScreen( 0, 0 )
-
-			self:LayoutEntity( self.Entity )
-
-			local ang = self.aLookAngle
-			if ( !ang ) then
-				ang = (self.vLookatPos-self.vCamPos):Angle()
-			end
-
-			local w, h = self:GetSize()
-			cam.Start3D( self.vCamPos, ang, self.fFOV, x, y, w, h, 5, self.FarZ )
-			cam.IgnoreZ( true )
-
-			render.SuppressEngineLighting( true )
-			render.SetLightingOrigin( self.Entity:GetPos() )
-			render.ResetModelLighting( self.colAmbientLight.r/255, self.colAmbientLight.g/255, self.colAmbientLight.b/255 )
-			render.SetColorModulation( self.colColor.r/255, self.colColor.g/255, self.colColor.b/255 )
-			render.SetBlend( self.colColor.a/255 )
-
-			for i=0, 6 do
-				local col = self.DirectionalLight[ i ]
-				if ( col ) then
-					render.SetModelLighting( i, col.r/255, col.g/255, col.b/255 )
-				end
-			end
-
-			self:DrawModel()
-
-			render.SuppressEngineLighting( false )
-			cam.IgnoreZ( false )
-			cam.End3D()
-
-			self.LastPaint = RealTime()
-		elseif self.Material then
-		
-		
-		
-		elseif self.GetColor then
-		
-		
-		
-		elseif self.Color then
+		if ( self.ItemBase == "_hatbase" or self.ItemBase == "_weaponbase" or self.ItemBase == "_playermodelbase" or self.ItemBase == "_playercolourbase" ) then
 			
+			if (self.Entity) then
+				if !IsValid(self.Entity) then return end
+				local x, y = self:LocalToScreen( 0, 0 )
+
+				self:LayoutEntity( self.Entity )
+
+				local ang = self.aLookAngle
+				if ( !ang ) then
+					ang = (self.vLookatPos-self.vCamPos):Angle()
+				end
+
+				local w, h = self:GetSize()
+				cam.Start3D( self.vCamPos, ang, self.fFOV, x, y, w, h, 5, self.FarZ )
+				cam.IgnoreZ( true )
+
+				render.SuppressEngineLighting( true )
+				render.SetLightingOrigin( self.Entity:GetPos() )
+				render.ResetModelLighting( self.colAmbientLight.r/255, self.colAmbientLight.g/255, self.colAmbientLight.b/255 )
+				render.SetColorModulation( self.colColor.r/255, self.colColor.g/255, self.colColor.b/255 )
+				render.SetBlend( self.colColor.a/255 )
+
+				for i=0, 6 do
+					local col = self.DirectionalLight[ i ]
+					if ( col ) then
+						render.SetModelLighting( i, col.r/255, col.g/255, col.b/255 )
+					end
+				end
+
+				self:DrawModel()
+
+				render.SuppressEngineLighting( false )
+				cam.IgnoreZ( false )
+				cam.End3D()
+
+				self.LastPaint = RealTime()
+			end
+
+		elseif self.ItemMaterial then
+			local c = self.ItemGetColor(self.Item[3])
+			if (c.x) then -- it's a color
+				c = Color( c.x * 255, c.y * 255, c.z*255 )
+			end
+			surface.SetDrawColor(c)
+			surface.SetMaterial( self.ItemMaterial )
+			surface.DrawRect( 2,2,w-2,h-2)
+		elseif self.ItemGetColor then
+			local c = self.ItemGetColor(self.Item[3])
+			if (c.x) then -- it's a color
+				c = Color( c.x * 255, c.y * 255, c.z*255 )
+			end
+			surface.SetDrawColor(c)
+			surface.DrawRect( 2,2,w-2,h-2)
+		elseif self.ItemColor then
+			local c = self.ItemColor
+			if (c.x) then -- it's a color
+				c = Color( c.x * 255, c.y * 255, c.z*255 )
+			end
+			surface.SetDrawColor(c)
+			surface.DrawRect( 2,2,w-2,h-2)
 		end
 	
 		if self.PrintName then
@@ -142,6 +158,14 @@ function PANEL:SetModel( strModelName )
 		local PrevMins, PrevMaxs = self.Entity:GetRenderBounds()
 		self:SetCamPos(PrevMins:Distance(PrevMaxs) * Vector(0.5, 0.5, 1))
 		self:SetLookAt((PrevMaxs + PrevMins) / 2)
+	end
+	
+	if (self.ItemBase == "_playercolourbase") then
+		if self.ItemGetColor then
+			self.Entity.GetPlayerColor = function() return self.ItemGetColor( self.Item[3] ) end
+		else
+			self.Entity.GetPlayerColor = function() return self.ItemColor end
+		end
 	end
 
 end
@@ -227,11 +251,49 @@ function PANEL:UpdateContents()
 		local itemmeta = item[3]
 		
 		self.PrintName = itemmeta.Name
+		self.ItemBase = itemmeta.Base
 		
+		if ( itemmeta.Base == "_playermodelbase" ) then
+			self:SetModel(itemmeta.Model)
+			if (self.Entity and IsValid(self.Entity)) then
+				for k,v in pairs( itemmeta.BodyGroups ) do
+					self.Entity:SetBodygroup( v[1], v[2] )
+				end
+				self.Entity:SetSkin( itemmeta.Skin or 0 )
+			end
+		elseif ( itemmeta.Base == "_weaponbase" ) then
+			self:SetModel(itemmeta.Model)
+		elseif ( itemmeta.Base == "_hatbase" ) then
+			self:SetModel(itemmeta.Model)
+		elseif ( itemmeta.Base == "_playercolourbase" ) then
+			self:SetModel( "models/player/kleiner.mdl" )
+			if (itemmeta.GetColor) then 
+				self.ItemGetColor = itemmeta.GetColor
+			else
+				self.ItemColor = itemmeta.Color
+			end
+		elseif ( itemmeta.Base == "_halobase" ) then
+			if (itemmeta.GetColor) then 
+				self.ItemGetColor = itemmeta.GetColor
+			else
+				self.ItemColor = itemmeta.Color
+			end
+		elseif ( itemmeta.Base == "_trailbase" ) then
+			if (itemmeta.GetColor) then 
+				self.ItemGetColor = itemmeta.GetColor
+			else
+				self.ItemColor = itemmeta.Color
+			end
+			self.ItemMaterial = Material( itemmeta.Material )
+		end
+		
+		--[[
 		if (itemmeta.Model) then self:SetModel(itemmeta.Model)
 		elseif (itemmeta.Material) then self.Material = itemmeta.Material
 		elseif (itemmeta.GetColor) then self.GetColor = itemmeta.GetColor
 		elseif (itemmeta.Color) then self.Color = itemmeta.Color end
+		
+		]]--
 		
 		if string.len(self.Custom) > 0 then
 			self:SetTooltip(self.Custom)

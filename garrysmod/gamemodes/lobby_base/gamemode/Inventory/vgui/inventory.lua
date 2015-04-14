@@ -14,6 +14,7 @@ end
 function PANEL:Paint( w, h )
 	surface.SetDrawColor(Color(0,0,0,150))
 	surface.DrawRect( 0, 0, w, h)
+	surface.DrawRect( 0, 0, w, h/2)
 end
 
 function PANEL:Think()

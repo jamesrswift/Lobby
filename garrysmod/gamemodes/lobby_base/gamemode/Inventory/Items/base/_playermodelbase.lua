@@ -15,12 +15,12 @@ ITEM.BodyGroups		= {}
 ITEM.Skin			= 0
 
 function ITEM:Init( )
-	player_manager.AddValidModel( self.Name, self.Model )
+	player_manager.AddValidModel( string.lower(self.Name), self.Model )
 	if #self.Hands > 0 then
-		player_manager.AddValidHands( self.Name, unpack(self.Hands) )
+		player_manager.AddValidHands( string.lower(self.Name), unpack(self.Hands) )
 	end
 	hook.Add( "AllowModel", "AllowModel:" .. self.UniqueName, function( Player, Model )
-		if Model == self.Name then return false end
+		if string.lower(Model) == string.lower(self.Name) then return false end
 	end)
 	
 end

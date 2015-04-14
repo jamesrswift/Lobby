@@ -198,8 +198,8 @@ function PANEL:GetHatScale() return self.HatScale end
 
 function PANEL:Output( )
 	local ret = "[\"".. self:GetModel() .."\"] = {"
-	ret = ret .. "Vector("..self.OffsetVector.x..","..self.OffsetVector.y ..",".. self.OffsetVector.z.."},"
-	ret = ret .. "Angle("..self.OffsetAngle.p..","..self.OffsetAngle.y ..",".. self.OffsetAngle.r .."},"
+	ret = ret .. "Vector = Vector("..self.OffsetVector.x..","..self.OffsetVector.y ..",".. self.OffsetVector.z.."),"
+	ret = ret .. "Angle = Angle("..self.OffsetAngle.p..","..self.OffsetAngle.y ..",".. self.OffsetAngle.r .."),"
 	ret = ret .. "Scale = " .. self:GetHatScale() .. "}"
 	return ret
 end

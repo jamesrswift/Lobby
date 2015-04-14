@@ -19,7 +19,7 @@ function ITEM:GetColor()
 end
 
 function ITEM:GetMaterial()
-	return self.Material or "tools/toolsblack.vmt"
+	return self.Material .. ".vmt" or "tools/toolsblack.vmt"
 end
 
 function ITEM:OnEquip( _Player )

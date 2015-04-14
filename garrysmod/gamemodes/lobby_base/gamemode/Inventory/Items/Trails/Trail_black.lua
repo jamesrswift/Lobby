@@ -9,4 +9,4 @@ ITEM.Description 	= "This is just a test"
 ITEM.Price			= 200
 
 ITEM.Color			= Color( 255,255,255 )
-ITEM.Material		= "tools/toolsblack.vmt"
+ITEM.Material		= "tools/toolsblack"
