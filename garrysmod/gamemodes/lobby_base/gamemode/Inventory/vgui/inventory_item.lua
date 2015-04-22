@@ -161,11 +161,7 @@ function PANEL:SetModel( strModelName )
 	end
 	
 	if (self.ItemBase == "_playercolourbase") then
-		if self.ItemGetColor then
-			self.Entity.GetPlayerColor = function() return self.ItemGetColor( self.Item[3] ) end
-		else
-			self.Entity.GetPlayerColor = function() return self.ItemColor end
-		end
+		self.Entity.GetPlayerColor = function() return LocalPlayer():GetPlayerColor() end
 	end
 
 end
@@ -240,6 +236,8 @@ function PANEL:UpdateContents()
 	self.GetColor = false
 	self.Color = false
 	self.Custom = false
+	self.Item = false
+	self.ItemBase = false
 	
 	-- set new settings
 	

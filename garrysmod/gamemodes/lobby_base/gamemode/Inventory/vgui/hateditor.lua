@@ -193,7 +193,6 @@ function OpenHatEditor()
 		for k,v in pairs( hats ) do if v[1] == hateditor_modelviewer:GetHatModel() then value = k end end
 		if value then
 			if hats[value][2][hateditor_modelviewer:GetModel()] then
-				PrintTable( hats[value] )
 				hateditor_modelviewer:SetHatModel( hats[value][1] )
 				hateditor_modelviewer:SetOffsetVector( hats[value][2][hateditor_modelviewer:GetModel()].Vector )
 				hateditor_modelviewer:SetOffsetAngle( hats[value][2][hateditor_modelviewer:GetModel()].Angle )

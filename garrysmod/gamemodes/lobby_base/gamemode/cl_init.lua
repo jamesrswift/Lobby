@@ -10,6 +10,8 @@
 --]]
  
  
+include( "extensions/animationsapi/cl_boneanimlib.lua" ); 
+
 include("shared.lua")
 include("sh_modules.lua" )
 include("sh_vgui.lua")

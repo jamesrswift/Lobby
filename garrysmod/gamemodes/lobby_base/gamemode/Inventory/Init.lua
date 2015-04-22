@@ -32,8 +32,8 @@ hook.Add( "InitPostEntity", "SpawnShops" , function( )
 			Shop:SetModel( v.WorldModel )
 		end
 		Shop:Spawn()
-		Shop:Activate()
 		Shop:SetShopID( k )
+		print( "spawning shop" )
 	end
 
 end)

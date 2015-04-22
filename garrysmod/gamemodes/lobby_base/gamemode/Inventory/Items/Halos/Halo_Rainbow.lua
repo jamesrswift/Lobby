@@ -10,9 +10,13 @@ ITEM.Price			= 200000
 
 ITEM.Color			= Color(255,0,0)
 ITEM.HSV			= { ColorToHSV( Color(255,0,0) ) }
+ITEM.LastDraw		= 0
 
 function ITEM:GetColor()
-	self.HSV[1] = ( self.HSV[1] + 40 * FrameTime() ) % 360
+	if self.LastDraw < CurTime() then
+		self.HSV[1] = ( self.HSV[1] + 40 * FrameTime() ) % 360
+		self.LastDraw = CurTime()
+	end
 	self.Color = HSVToColor( unpack(self.HSV) )
 	
 	return self.Color

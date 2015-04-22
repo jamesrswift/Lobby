@@ -123,11 +123,6 @@ function PANEL:Paint()
 	end
 
 	self:DrawModel()
-	
-	local pos, ang = self:CalculateOffset( self.Entity:GetBonePosition( self.BoneID ) )
-	self.HatEntity:SetPos( pos )
-	self.HatEntity:SetAngles( ang )
-	self.HatEntity:SetModelScale( self:GetHatScale(), 0 )
 	self:DrawHat()
 
 	render.SuppressEngineLighting( false )
@@ -135,6 +130,21 @@ function PANEL:Paint()
 	cam.End3D()
 
 	self.LastPaint = RealTime()
+
+end
+
+function PANEL:LayoutEntity( Entity )
+
+	if ( self.bAnimated ) then
+		self:RunAnimation()
+	end
+
+	Entity:SetAngles( Angle( 0, RealTime() * 10, 0 ) )
+	
+	local pos, ang = self:CalculateOffset( self.Entity:GetBonePosition( self.BoneID ) )
+	self.HatEntity:SetPos( pos )
+	self.HatEntity:SetAngles( ang )
+	self.HatEntity:SetModelScale( self:GetHatScale(), 0 )
 
 end
 

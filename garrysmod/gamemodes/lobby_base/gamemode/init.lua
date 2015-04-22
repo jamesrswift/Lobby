@@ -19,6 +19,7 @@ include( "extensions/serial.lua" ); -- Ditto
 include( "extensions/steamapi.lua" ); -- Useless piece of shit
 include( "extensions/command.lua" ); --require( "LobbyCommand" );-- Sure, why not
 include( "extensions/usermessage.lua" ); -- Saves me some trouble
+include( "extensions/animationsapi/boneanimlib.lua" ); -- Saves me some trouble
 
 -- MultiServer
 
