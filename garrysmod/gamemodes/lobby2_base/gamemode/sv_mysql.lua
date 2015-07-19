@@ -13,7 +13,7 @@
 -----------------------------------------------------------]]--
 
 require( "tmysql" );
-if ( not tmysql ) then print( "[px][mysql] tMySQL module not found!" ) return false end
+if ( not tmysql ) then GM:Print( "[mysql] tMySQL module not found!" ) return false end
 
 GM.MySQL = GM.MySQL or {}
 GM.MySQL.Database = GM.MySQL.Database or false;
