@@ -30,7 +30,7 @@ function GM.Modules.LoadModule( name )
 	
 	Module = {}
 	
-	local configuration = GM.Modules.LoadConfiguration( ModuleDir, string.lower( name ) .. ".vdf" )
+	local configuration = GM.Modules.LoadConfiguration( ModuleDir, string.lower( name ) .. ".dat" )
 	if ( configuration ) then
 		GM.Modules.ManageConfiguration( ModuleDir, configuration )
 	end
@@ -80,14 +80,14 @@ function GM.Modules.ManageConfiguration( path, config )
 		if ( config.includes ) then
 			
 			for Filename, Realm in ipairs( config.includes ) do
-				if ( SERVER and string.lower( Realm ) == "Server" ) then
+				if ( SERVER and string.lower( Realm ) == "server" ) then
 					include( path .. Filename )
-				elseif ( SERVER and ( string.lower( Realm ) == "Client" or string.lower( Realm ) == "Shared" ) ) then
+				elseif ( SERVER and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
 					AddCSLuaFile( path .. Filename )
 					if ( string.lower( Realm ) == "Shared" ) then
 						include ( path .. Filename )
 					end
-				elseif ( CLIENT and ( string.lower( Realm ) == "Client" or string.lower( Realm ) == "Shared" ) ) then
+				elseif ( CLIENT and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
 					include( path .. Filename )
 				end
 			end
