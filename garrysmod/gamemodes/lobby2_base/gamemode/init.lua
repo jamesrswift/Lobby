@@ -15,6 +15,7 @@
 include( "sh_util.lua" )
 include( "sv_mysql.lua" )
 include( "sh_modules.lua" )
+include( "sh_usergroups.lua" )
 include( "shared.lua" )
 
 
@@ -23,6 +24,7 @@ AddCSLuaFile( "extensions/utf8.lua" )
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "sh_util.lua" )
 AddCSLuaFile( "sh_modules.lua" )
+AddCSLuaFile( "sh_usergroups.lua" )
 AddCSLuaFile( "cl_init.lua" )
 
 function GM:Initialize()

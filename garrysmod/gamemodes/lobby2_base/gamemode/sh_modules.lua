@@ -19,8 +19,6 @@ GM.Modules.ModulesFolder = GM.Modules.ModulesFolder or "lobby2_base/gamemode/mod
 function GM.Modules.LoadModule( name )
 
 	local GM = GM or gmod.GetGamemode();
-
-	local FileName = SERVER and "init.lua" or "cl_init.lua"	
 	
 	local ModuleDir = GM.Modules.ModulesFolder .. name .. "/"
 	local ModuleFiles = file.Find( ModuleDir .. "*" , "LUA" )
@@ -32,15 +30,13 @@ function GM.Modules.LoadModule( name )
 	
 	Module = {}
 	
-	if table.HasValue( ModuleFiles, FileName ) then
-		include( ModuleDir .. FileName )
-	else
-		GM:Print( "Could not find file to load in %s!", name)
-		return
+	local configuration = GM.Modules.LoadConfiguration( ModuleDir, string.lower( name ) .. ".vdf" )
+	if ( configuration ) then
+		GM.Modules.ManageConfiguration( ModuleDir, configuration )
 	end
-	
+
 	if !GM.Modules.LoadedModules[ name ] then
-		GM.Modules.LoadedModules[ name ] = table.Copy( Module )
+		GM.Modules.LoadedModules[ name ] = Module
 	end
 	
 	GM.Modules.ManageHooks( GM.Modules.LoadedModules[ name ] )
@@ -57,6 +53,45 @@ function GM.Modules.ManageHooks( Module )
 	if ( Module.Hooks ) then
 		for k,v in pairs( Module.Hooks ) do
 			hook.Add( v, "Modules:" .. name .. ":" .. v, function( ... ) Module[v](Module, ... ) end)
+		end
+	end
+
+end
+
+function GM.Modules.LoadConfiguration( path, name )
+
+	local configuration = file.Read( path .. name, "LUA" )
+	if ( configuration and string.len( configuration ) > 0 ) then
+	
+		resource.AddFile( "gamemodes/" .. path .. name )
+		return util.KeyValuesToTable( configuration )
+	
+	end
+
+	(GM and GM or GAMEMODE):Print( "[module] Failed to load configuration for %s" , name )
+	
+	return false
+	
+end
+
+function GM.Modules.ManageConfiguration( path, config )
+
+	if ( config ) then
+		if ( config.includes ) then
+			
+			for Filename, Realm in ipairs( config.includes ) do
+				if ( SERVER and string.lower( Realm ) == "Server" ) then
+					include( path .. Filename )
+				elseif ( SERVER and ( string.lower( Realm ) == "Client" or string.lower( Realm ) == "Shared" ) ) then
+					AddCSLuaFile( path .. Filename )
+					if ( string.lower( Realm ) == "Shared" ) then
+						include ( path .. Filename )
+					end
+				elseif ( CLIENT and ( string.lower( Realm ) == "Client" or string.lower( Realm ) == "Shared" ) ) then
+					include( path .. Filename )
+				end
+			end
+			
 		end
 	end
 

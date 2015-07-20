@@ -19,7 +19,6 @@ GM.MySQL = GM.MySQL or {}
 GM.MySQL.Database = GM.MySQL.Database or false;
 
 GM.MySQL.MapData = GM.MySQL.MapData or {};
-GM.MySQL.PlayerData = GM.MySQL.PlayerData or {};
 GM.MySQL.ServerData = GM.MySQL.ServerData or {};
 
 
@@ -71,54 +70,7 @@ function GM.MySQL.BuildQuery( Query, ... )
 
 end
 
-
---[[--------------------------------
-	Player
---------------------------------]]--
-function GM:LoadPlayerInformation( Pl )
-
-	if ( self.MySQL.PlayerData[ Pl ] ) then
-		hook.Run( "PlayerInformationLoaded", Pl )
-		return true
-	end
-
-	local query = self.MySQL.BuildQuery( "SELECT * FROM gm_users WHERE SteamID64 = %s LIMIT 1", Pl:SteamID64() or 0 )
-
-	if ( query ) then
-		tmysql.query( query, function( results )
-			PrintTable( results )
-			if ( results[1] ) then
-			
-			
-		
-				hook.Run( "PlayerInformationLoaded", Pl )
-			else
-				self:Print( "[mysql] There was an error while loading player information!" );
-			end
-		end )
-	end
-
-end
-
-function GM:CleanPlayerInformation( )
-
-	for k,v in pairs( self.MySQL.PlayerData ) do
-		if ( not IsValid( k ) ) then
-			self.MySQL.PlayerData[ k ] = nil
-		end
-	end
-
-end
-
-local Meta = FindMetaTable("Player")
-
-function Meta:GetData( )
-
-	self.MySQL.PlayerData[ self ] = self.MySQL.PlayerData[ self ] or {}
-	return self.MySQL.PlayerData[ self ]
-
-end
-
+include( "mysql/sv_player.lua" )
 
 --[[--------------------------------
 	Map
