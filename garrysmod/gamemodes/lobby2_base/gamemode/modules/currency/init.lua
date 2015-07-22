@@ -13,18 +13,16 @@
 -----------------------------------------------------------]]--
 
 Module.Hooks = {
-	"PlayerAuthed",
 	"PlayerInformationLoaded"
 }
-
-function Module:PlayerAuthed( Pl )
-
-	gmod.GetGamemode():LoadPlayerInformation( Pl )
-
-end
 
 function Module:PlayerInformationLoaded( Pl )
 
 	gmod.GetGamemode():Print( "Module hook test" )
 
+end
+
+function Module:UpdatePlayerOnStates( Pl )
+	Pl:SetNWInt( "fMoney" , Pl:GetData().Money or 0 )
+	Pl:SaveData()
 end

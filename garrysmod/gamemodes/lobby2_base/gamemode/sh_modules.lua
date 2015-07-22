@@ -19,27 +19,28 @@ GM.Modules.ModulesFolder = GM.Modules.ModulesFolder or "lobby2_base/gamemode/mod
 function GM.Modules.LoadModule( name )
 
 	local GM = GM or gmod.GetGamemode();
-	
 	local ModuleDir = GM.Modules.ModulesFolder .. name .. "/"
-	local ModuleFiles = file.Find( ModuleDir .. "*" , "LUA" )
-	
-	if table.Count( ModuleFiles ) == 0 then
-		GM:Print( "Module folder %s not found!", name)
-		return
-	end
-	
+
 	Module = {}
 	
-	local configuration = GM.Modules.LoadConfiguration( ModuleDir, string.lower( name ) .. ".dat" )
+	local configuration = GM.Modules.LoadConfiguration( ModuleDir, string.lower( name ) .. ".conf" )
 	if ( configuration ) then
+	
+		Module.Configuration = configuration
 		GM.Modules.ManageConfiguration( ModuleDir, configuration )
+		
+	else
+	
+		GM:Print( "Module folder %s not found!", name)
+		return
+		
 	end
 
 	if !GM.Modules.LoadedModules[ name ] then
 		GM.Modules.LoadedModules[ name ] = Module
 	end
 	
-	GM.Modules.ManageHooks( GM.Modules.LoadedModules[ name ] )
+	GM.Modules.ManageHooks( GM.Modules.LoadedModules[ name ], name )
 	
 	Module = nil
 	
@@ -48,12 +49,18 @@ function GM.Modules.LoadModule( name )
 	end
 end
 
-function GM.Modules.ManageHooks( Module )
+function GM.Modules.ManageHooks( Module, name )
 
 	if ( Module.Hooks ) then
+	
 		for k,v in pairs( Module.Hooks ) do
-			hook.Add( v, "Modules:" .. name .. ":" .. v, function( ... ) Module[v](Module, ... ) end)
+		
+			if ( Module[v] and type( Module[v] ) == "function" ) then
+				hook.Add( v, "Modules:" .. name .. ":" .. v, function( ... ) Module[v](Module, ... ) end)
+			end
+			
 		end
+		
 	end
 
 end
@@ -76,23 +83,70 @@ end
 
 function GM.Modules.ManageConfiguration( path, config )
 
+	local GM = GM or gmod.GetGamemode()
+
 	if ( config ) then
+	
+		if ( config.dependences ) then
+			GM.Modules.ManageDependences( path, config )
+		end
+	
 		if ( config.includes ) then
-			
-			for Filename, Realm in ipairs( config.includes ) do
-				if ( SERVER and string.lower( Realm ) == "server" ) then
-					include( path .. Filename )
-				elseif ( SERVER and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
-					AddCSLuaFile( path .. Filename )
-					if ( string.lower( Realm ) == "Shared" ) then
-						include ( path .. Filename )
-					end
-				elseif ( CLIENT and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
-					include( path .. Filename )
-				end
+			GM.Modules.ManageFiles( path, config )
+		end
+		
+		if ( config.resources ) then
+			GM.Modules.ManageResources( path, config )
+		end
+		
+	end
+
+end
+
+function GM.Modules.ManageDependences( path, config )
+
+	local _module = Module
+
+	for key, dependency in pairs( config.dependences ) do
+	
+		if ( not GM.Modules.ModuleIsLoaded( dependency ) ) then
+			GM.Modules.LoadModule( dependency )
+		end
+		
+	end
+	
+	Module = _module
+	
+end
+
+function GM.Modules.ManageFiles( path, config )
+
+	for Filename, Realm in pairs( config.includes ) do
+	
+		if ( SERVER and string.lower( Realm ) == "server" ) then
+		
+			include( path .. Filename )
+		elseif ( SERVER and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
+		
+			AddCSLuaFile( path .. Filename )
+			if ( string.lower( Realm ) == "shared" ) then
+				include ( path .. Filename )
 			end
 			
+		elseif ( CLIENT and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
+		
+			include( path .. Filename )
+			
 		end
+		
+	end
+
+end
+
+function GM.Modules.ManageResources( path, config )
+
+	for key, resources in pairs( config.resources ) do
+		resource.AddFile( resources )
 	end
 
 end

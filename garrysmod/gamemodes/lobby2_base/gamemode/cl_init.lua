@@ -16,4 +16,5 @@ include( "extensions/utf8.lua" )
 
 include( "sh_util.lua" )
 include( "sh_modules.lua" )
+include( "chat/cl_smilies.lua" )
 include( "shared.lua" )

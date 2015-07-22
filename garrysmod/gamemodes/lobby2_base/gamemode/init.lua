@@ -25,6 +25,7 @@ AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "sh_util.lua" )
 AddCSLuaFile( "sh_modules.lua" )
 AddCSLuaFile( "sh_usergroups.lua" )
+AddCSLuaFile( "chat/cl_smilies.lua" )
 AddCSLuaFile( "cl_init.lua" )
 
 function GM:Initialize()
