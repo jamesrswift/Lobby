@@ -14,6 +14,6 @@
 
 function GM:Print( s , ... )
 	
-	MsgC( (SERVER and Color(78,177,277) or Color(277,217,78)), "[lobby2] ", color_white, string.format( s, ... ) , "\n" )
+	MsgC( (SERVER and Color(78,177,255) or Color(255,217,78)), "[lobby2] ", color_white, string.format( s, ... ) , "\n" )
 
 end

@@ -35,6 +35,10 @@ function GM.Modules.LoadModule( name )
 		return
 		
 	end
+	
+	if ( Module.Initialize ) then
+		Module:Initialize( )
+	end
 
 	if !GM.Modules.LoadedModules[ name ] then
 		GM.Modules.LoadedModules[ name ] = Module
