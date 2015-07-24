@@ -18,14 +18,21 @@ include( "sh_util.lua" )
 include( "cl_notification.lua" )
 include( "cl_fonts.lua" )
 include( "sh_modules.lua" )
-include( "chat/cl_smilies.lua" )
-include( "shared.lua" )
+include( "sh_usergroups.lua" )
 
+include( "chat/main.lua" )
+include( "chat/cl_smilies.lua" )
+
+include( "vgui/richtext_scrollbar.lua" )
+include( "vgui/richtext.lua" )
 include( "vgui/lobby_notification.lua" )
+
+include( "shared.lua" )
 
 function GM:Initialize( )
 	
 	self:CreateFonts( )
+	self.Chat.Initialize( )
 
 end
 
@@ -35,14 +42,11 @@ function GM:Think( )
 
 end
 
-function GM:TestNotification( )
+function GM:TestRichText( )
 
-	local notification = vgui.Create( "lobby_notification" )
+	local notification = vgui.Create( "Chat_RichText" )
 	notification:SetPos( 50, 50 )
-	notification:SetSize( 200, 30 )
-	--notification:SetColor( Color( 78, 155, 237 ) ) 
-	notification:SetIcon( "vgui/notices/hint" )
-	notification:SetDuration( 10 )
-	notification:SetText( "Woof! It works!" )
+	notification:SetSize( 400, 400 )
+	notification:AppendLine( {Type="Text", Data="Hello World!"} )
 
 end

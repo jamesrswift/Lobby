@@ -5,13 +5,13 @@ local string	= string
 local table		= table
 local unpack	= unpack
 
-module( "utf8" )
+utf8 = { }
 
 --
 -- Pattern that can be used with the string library to match a single UTF-8 byte-sequence.
 -- This expects the string to contain valid UTF-8 data.
 --
-charpattern = "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF]*"
+utf8.charpattern = "[%z\x01-\x7F\xC2-\xF4][\x80-\xBF]*"
 
 --
 -- Transforms indexes of a string to be positive.
@@ -77,7 +77,7 @@ end
 --
 -- Takes zero or more integers and returns a string containing the UTF-8 representation of each
 --
-function char( ... )
+function utf8.char( ... )
 
 	local buf = {}
 
@@ -129,7 +129,7 @@ end
 -- Iterates over a UTF-8 string similarly to pairs
 -- k = index of sequence, v = string value of sequence
 --
-function codes( str )
+function utf8.codes( str )
 
 	local i = 1
 
@@ -158,7 +158,7 @@ end
 -- Returns an integer-representation of the UTF-8 sequence(s) in a string
 -- startPos defaults to 1, endPos defaults to startPos
 --
-function codepoint( str, startPos, endPos )
+function utf8.codepoint( str, startPos, endPos )
 
 	startPos, endPos = strRelToAbs( str, startPos or 1, endPos or startPos or 1 )
 
@@ -210,7 +210,7 @@ end
 -- Returns the length of a UTF-8 string. false, index is returned if an invalid sequence is hit
 -- startPos defaults to 1, endPos defaults to -1
 --
-function len( str, startPos, endPos )
+function utf8.len( str, startPos, endPos )
 
 	startPos, endPos = strRelToAbs( str, startPos or 1, endPos or -1 )
 
@@ -240,7 +240,7 @@ end
 -- startPos defaults to 1 when n is positive and -1 when n is negative
 -- If 0 is zero, this function instead returns the byte-index of the UTF-8-character startPos lies within.
 --
-function offset( str, n, startPos )
+function utf8.offset( str, n, startPos )
 
 	startPos = strRelToAbs( str, startPos or ( n >= 0 and 1 ) or #str )
 
@@ -302,7 +302,7 @@ end
 -- Forces a string to contain only valid UTF-8 data.
 -- Invalid sequences are replaced with U+FFFD.
 --
-function force( str )
+function utf8.force( str )
 
 	local buf = {}
 

@@ -1,6 +1,4 @@
-include "RichText_ScrollBar.lua"
 
-require( "utf8" )
 
 local mat_Grad = surface.GetTextureID("gui/gradient")
 
@@ -99,7 +97,7 @@ end
 
 function PANEL:StartInsertion()
 
-	self.CurFont	= "DermaDefaultBold"
+	self.CurFont	= "LobbyChat"
 	self.CurColor	= Color( 162, 255, 162 )
 	self.CurLine	= { Time = RealTime(), Height = 0 }
 
@@ -161,6 +159,10 @@ function PANEL:EndInsertion()
 						end
 					end
 
+				else
+
+					alpha = 255
+					
 				end
 
 				color.a = alpha
@@ -225,7 +227,11 @@ function PANEL:EndInsertion()
 							return
 						end
 					end
+					
+				else
 
+					alpha = 255
+					
 				end
 
 				color.a = alpha

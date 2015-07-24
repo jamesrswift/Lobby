@@ -60,9 +60,11 @@ end
 
 function Meta:GetDisplayTextColor( )
 
-	local Colors = GAMEMODE.Uergroups.Colors
+	local GM = GM or gmod.GetGamemode( )
+
+	local Colors = GM.Usergroups.Colors
 	
-	if GAMEMODE.TeamBased then return table.Copy(Colors.user) end
+	if GM.TeamBased then return table.Copy(Colors.user) end
 
 	if self:GetNWBool( "bIsUndercover" ) then
 		return table.Copy(Colors.user)

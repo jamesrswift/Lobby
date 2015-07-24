@@ -52,7 +52,7 @@ function PANEL:PerformLayout( )
 
 	local w, h = self:GetSize()
 	
-	self.icon:SetSize( h - 4 , h - 4 )
+	self.icon:SetSize( h - 6 , h - 6 )
 	self.icon:Dock( LEFT )
 	self.text:Dock( FILL )
 

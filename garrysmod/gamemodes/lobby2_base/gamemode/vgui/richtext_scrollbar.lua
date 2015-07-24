@@ -12,22 +12,25 @@
 	
 -----------------------------------------------------------]]--
 
-function GM:CreateFonts( )
+local PANEL = { }
 
-	surface.CreateFont( "LobbyNotification", {
-		font = "Roboto Bold",
-		size = 14,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
-	
-	surface.CreateFont( "LobbyChat", {
-		font = "Roboto Bold",
-		size = 14,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
+function PANEL:AtBottom( )
+
+	return self.Scroll == self.CanvasSize 
 
 end
+
+function PANEL:ScrollToBottom( )
+
+	self:SetScroll( self.CanvasSize )
+
+end
+
+function PANEL:GetRealWidth( )
+
+	return self:GetWide( )
+
+end
+
+
+vgui.Register( "Chat_RichText_ScrollBar", PANEL, "DVScrollBar" )

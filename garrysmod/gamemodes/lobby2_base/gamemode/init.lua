@@ -25,10 +25,15 @@ AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "sh_util.lua" )
 AddCSLuaFile( "sh_modules.lua" )
 AddCSLuaFile( "sh_usergroups.lua" )
+
+AddCSLuaFile( "chat/main.lua" )
 AddCSLuaFile( "chat/cl_smilies.lua" )
+
 AddCSLuaFile( "cl_notification.lua" )
 AddCSLuaFile( "cl_fonts.lua" )
 
+AddCSLuaFile( "vgui/richtext_scrollbar.lua" )
+AddCSLuaFile( "vgui/richtext.lua" )
 AddCSLuaFile( "vgui/lobby_notification.lua" )
 
 AddCSLuaFile( "cl_init.lua" )

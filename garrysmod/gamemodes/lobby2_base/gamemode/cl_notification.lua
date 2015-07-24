@@ -54,7 +54,7 @@ function GM.Notification.CalculatePosition( index )
 
 	local GM = GM or gmod.GetGamemode( )
 
-	local y = ScrH() - 50 - ( index - 1 ) * 40
+	local y = ScrH() - (#GM.Notification.Active * 40 ) + ( index - 1 ) * 40
 	local x = ScrW() - GM.Notification.Active[ index ]:GetSize() - 50
 
 	return x, y
