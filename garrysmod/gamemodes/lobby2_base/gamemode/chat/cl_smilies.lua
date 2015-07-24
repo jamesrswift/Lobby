@@ -75,3 +75,5 @@ function GM:CanPlayerUseSmiley( Pl, tag )
 	return true
 	
 end
+
+GM.Chat:AddSmiley( ":smile:", Material( "icon16/user.png", "smooth" ) )

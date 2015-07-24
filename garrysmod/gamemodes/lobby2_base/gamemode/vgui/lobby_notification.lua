@@ -87,7 +87,10 @@ end
 
 function PANEL:SetIcon( Image )
 
-	self.icon:SetImage( Image )
+	self.icon.ImageName = "sorry"
+
+	self.icon:SetMaterial( Image )
+	self.icon:FixVertexLitMaterial()
 	self:PerformLayout( )
 
 end
@@ -117,6 +120,7 @@ function PANEL:PaintBar( w, h )
 	local darker = self:GetDarkerColor( )
 	surface.SetDrawColor( darker.r, darker.g, darker.b, self.Alpha * 255 )
 	surface.DrawRect( 0, h-4, math.Clamp((self:GetStartTime() + self:GetDuration() - CurTime())/self:GetDuration(), 0, math.huge )*w, 4 )
+
 end
 
 function PANEL:Paint( w, h )
@@ -142,9 +146,10 @@ function PANEL:Think( )
 		self.Closing = true
 	end
 
-	if ( self:GetStartTime() + self:GetDuration() < CurTime() ) then
+	if ( self:GetStartTime() + self:GetDuration() < CurTime() and not self.CalledCallback ) then
 	
 		self:OnTimeOver( )
+		self.CalledCallback = true
 		
 	end
 
