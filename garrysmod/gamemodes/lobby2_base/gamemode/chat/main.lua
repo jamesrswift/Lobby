@@ -21,8 +21,8 @@ function GM.Chat.Initialize( )
 	if ( not GM.Chat.Chatbox ) then
 	
 		GM.Chat.Chatbox = vgui.Create( "Chat_RichText" )
-		GM.Chat.Chatbox:SetPos( 50, 50 )
-		GM.Chat.Chatbox:SetSize( 400, 400 )
+		GM.Chat.Chatbox:SetPos( 50, ScrH() - 175 )
+		GM.Chat.Chatbox:SetSize( 400, 100 )
 	
 	end
 		
@@ -38,6 +38,7 @@ function GM:OnPlayerChat( Pl, sText, bTeam, bDead )
 		local icon = hook.Run( "GetPlayerChatIcon", Pl )
 		if ( icon ) then
 			table.insert( buffer, {Type="Image", Data=icon} )
+			table.insert( buffer, {Type="Text", Data="  "} )
 		end
 		
 		table.insert( buffer, {Type="Color", Data=Pl:GetDisplayTextColor( )} )
@@ -51,6 +52,26 @@ function GM:OnPlayerChat( Pl, sText, bTeam, bDead )
 		end
 		
 		self.Chat.Chatbox:AppendLine( unpack( buffer ) )
+		
+	end
+
+end
+
+function GM:StartChat( bTeam )
+
+	if ( IsValid( self.Chat.Chatbox ) ) then
+		
+		self.Chat.Chatbox:Open()
+		
+	end
+
+end
+
+function GM:FinishChat( )
+
+	if ( IsValid( self.Chat.Chatbox ) ) then
+		
+		self.Chat.Chatbox:Close()
 		
 	end
 

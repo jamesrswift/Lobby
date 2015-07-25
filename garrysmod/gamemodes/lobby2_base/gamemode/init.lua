@@ -28,6 +28,7 @@ AddCSLuaFile( "sh_usergroups.lua" )
 
 AddCSLuaFile( "chat/main.lua" )
 AddCSLuaFile( "chat/cl_smilies.lua" )
+AddCSLuaFile( "chat/cl_icons.lua" )
 
 AddCSLuaFile( "cl_notification.lua" )
 AddCSLuaFile( "cl_fonts.lua" )

@@ -15,10 +15,10 @@
 GM.Usergroups = GM.Usergroups or {}
 
 GM.Usergroups.Colors = GM.Usergroups.Colors or {
-	developer 	= Color( 30 , 125, 255, 255 ),
-	superadmin 	= Color( 255, 100, 100, 255 ),
-	admin 		= Color( 185, 100, 255, 255 ),
-	respected 	= Color( 120, 245, 87 , 255 ),
+	developer 	= Color( 120, 245, 87 , 255 ),
+	superadmin 	= Color( 30 , 125, 255, 255 ),
+	admin 		= Color( 255, 100, 100, 255 ),
+	respected 	= Color( 185, 100, 255, 255 ),
 	user 		= Color( 255, 255, 100, 255 )
 }
 
@@ -30,7 +30,7 @@ function GM.Usergroups.PlayerInformationLoaded( Pl )
 	local data = Pl:GetData( )
 	if ( data ) then
 		if ( data.usergroup ) then
-			Pl:SetUserGroup( data.usergroup )
+			Pl:SetUserGroup( string.lower( data.usergroup ) )
 		else
 			Pl:SetUserGroup( "user" )
 		end

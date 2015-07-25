@@ -7,6 +7,8 @@ local PANEL = {}
 AccessorFunc( PANEL, "m_Rebuilding", "Rebuilding" )
 AccessorFunc( PANEL, "m_ScrollOffset", "ScrollOffset" )
 AccessorFunc( PANEL, "m_ScrollDown", "ShouldScrollDown" )
+AccessorFunc( PANEL, "m_dietime", "DieTime" )
+AccessorFunc( PANEL, "m_fadetime", "FadeTime" )
 
 function PANEL:Init()
 
@@ -19,9 +21,12 @@ function PANEL:Init()
 	self:SetRebuilding( false )
 	self:SetScrollOffset( 0 )
 	self:SetShouldScrollDown( false )
+	self:SetFadeTime( 10 )
+	self:SetDieTime( 2 )
 
 	self.Scroll = vgui.Create( "Chat_RichText_ScrollBar", self )
-	self.Scroll : Dock( RIGHT )
+	self.Scroll:Dock( RIGHT )
+	self.Scroll:SetAlpha( 0 )
 
 	self:SetMouseInputEnabled( true )
 
@@ -134,7 +139,7 @@ function PANEL:EndInsertion()
 
 			local x2, y2 = x + textW, y + textH
 
-			local StartTime, DieTime = segment.Line.Time + 10, segment.Line.Time + 10.3
+			local StartTime, DieTime = segment.Line.Time + self:GetDieTime(), segment.Line.Time + self:GetDieTime() + self:GetFadeTime()
 
 			if #text == 0 then
 				continue
@@ -167,7 +172,7 @@ function PANEL:EndInsertion()
 
 				color.a = alpha
 
-				if x == 0 and not isOpen then
+				if x == 0 --[[and not isOpen]] then
 					surface.SetTexture( mat_Grad )
 					surface.SetDrawColor( 5, 5, 5, 200 * ( alpha / 255 ) )
 					surface.DrawTexturedRect( x - 8, realY + yOffset, panelWide, lineHeight )
@@ -205,7 +210,7 @@ function PANEL:EndInsertion()
 
 			local lineHeight = segment.Line.Height
 
-			local StartTime, DieTime = segment.Line.Time + 10, segment.Line.Time + 10.3
+			local StartTime, DieTime = segment.Line.Time + self:GetDieTime(), segment.Line.Time + self:GetDieTime() + self:GetFadeTime()
 
 			local color = Color( 255, 255, 255 )
 
@@ -237,7 +242,7 @@ function PANEL:EndInsertion()
 				color.a = alpha
 
 
-				if x == 0 and not isOpen then
+				if x == 0 --[[and not isOpen]] then
 					surface.SetTexture( mat_Grad )
 					surface.SetDrawColor( 5, 5, 5, 200 * ( alpha / 255 ) )
 					surface.DrawTexturedRect( x - 8, realY + yOffset, panelWide, lineHeight )
@@ -426,14 +431,14 @@ end
 
 function PANEL:Open()
 
-	self.Scroll:SetAlpha( 255 )
+	--self.Scroll:SetAlpha( 255 )
 	self.IsOpen = true
 
 end
 
 function PANEL:Close()
 
-	self.Scroll:SetAlpha( 0 )
+	--self.Scroll:SetAlpha( 0 )
 	self.IsOpen = false
 
 	self.Scroll:ScrollToBottom()

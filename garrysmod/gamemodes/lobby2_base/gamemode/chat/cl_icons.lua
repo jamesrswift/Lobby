@@ -12,42 +12,39 @@
 	
 -----------------------------------------------------------]]--
 
-include( "extensions/utf8.lua" )
+GM.Chat = GM.Chat or {}
+GM.Chat.Icons = GM.Chat.Icons or {}
 
-include( "sh_util.lua" )
-include( "cl_notification.lua" )
-include( "cl_fonts.lua" )
-include( "sh_modules.lua" )
-include( "sh_usergroups.lua" )
+function GM.Chat.GetIcon( Icon )
 
-include( "chat/main.lua" )
-include( "chat/cl_smilies.lua" )
-include( "chat/cl_icons.lua" )
-
-include( "vgui/richtext_scrollbar.lua" )
-include( "vgui/richtext.lua" )
-include( "vgui/lobby_notification.lua" )
-
-include( "shared.lua" )
-
-function GM:Initialize( )
+	local GM = GM or gmod.GetGamemode( )
 	
-	self:CreateFonts( )
-	self.Chat.Initialize( )
+	if ( not GM.Chat.Icons[ Icon ] ) then
+		GM.Chat.Icons[ Icon ] = Material( Icon )
+	end
+	
+	return GM.Chat.Icons[ Icon ]
 
 end
 
-function GM:Think( )
+function GM:GetPlayerChatIcon( Pl )
 
-	self.Notification.Think( )
+	if ( self.NoChatIcons ) then return false end
+	
+	if ( Pl:GetNWBool( "bIsUndercover", false ) ) then
+		return self.Chat.GetIcon( "icon16/user.png" )
+	end
+	
+	if ( Pl:IsDeveloper() ) then
+		return self.Chat.GetIcon( "icon16/user_gray.png" )
+	elseif ( Pl:IsSuperAdmin() ) then
+		return self.Chat.GetIcon( "icon16/star.png" )
+	elseif ( Pl:IsAdmin() ) then
+		return self.Chat.GetIcon( "icon16/shield.png" )
+	--elseif ( Pl:IsRespected() ) then
+	--	return self.Chat.GetIcon( "icon16/heart.png" )
+	end
 
-end
-
-function GM:TestRichText( )
-
-	local notification = vgui.Create( "Chat_RichText" )
-	notification:SetPos( 50, 50 )
-	notification:SetSize( 400, 400 )
-	notification:AppendLine( {Type="Text", Data="Hello World!"} )
-
+	return false
+	
 end

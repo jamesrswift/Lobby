@@ -25,15 +25,11 @@ function PANEL:Init( )
 
 	self:SetStartTime( CurTime( ) )
 	self:SetDuration( 10 )
-	self:DockPadding( 2, 2, 2, 6 )
 
 	self.icon = vgui.Create( "DImage", self )
-	self.icon:Dock( LEFT )
 	--self.icon:SetPaintedManually( true )
 	
 	self.text = vgui.Create( "DLabel", self )
-	self.text:DockMargin( 6, 0, 6, 0 )
-	self.text:Dock( FILL )
 	self.text:SetText( "You haven't set the text!" )
 	self.text:SetFont( "LobbyNotification" )
 	self.text:SetColor( color_white )
@@ -52,9 +48,10 @@ function PANEL:PerformLayout( )
 
 	local w, h = self:GetSize()
 	
-	self.icon:SetSize( h - 6 , h - 6 )
-	self.icon:Dock( LEFT )
-	self.text:Dock( FILL )
+	self.icon:SetSize( 16, 16 )
+	self.icon:SetPos( 4, 4 )
+	
+	self.text:SetPos( 24, 5 )
 
 end
 
@@ -66,23 +63,9 @@ function PANEL:SetText( str )
 	local tx, ty = self.text:GetSize( )
 	local ix, iy = self.icon:GetSize( )
 	
-	self:SetSize( tx + ty + 40, iy + 4 )
+	self:SetSize( tx + ty + 20, iy + 4 )
 	self:PerformLayout( )
 	
-end
-
-function PANEL:CalculateXSize( )
-
-	local x = 4
-	
-	for _, panel in pairs( self:GetChildren() ) do
-	
-		x = x + panel:GetSize() + 6
-
-	end
-	
-	return x
-
 end
 
 function PANEL:SetIcon( Image )

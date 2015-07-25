@@ -17,9 +17,9 @@ GM.Chat.Smilies = GM.Chat.Smilies or {}
 
 function GM.Chat:AddSmiley( tag, mat )
 	
-	if ( not self.Smilies[ tag ] ) then
+	if ( not self.Smilies[ string.lower( tag ) ] ) then
 	
-		self.Smilies[ tag ] = mat
+		self.Smilies[ string.lower( tag ) ] = mat
 		return true
 	
 	end
@@ -30,7 +30,7 @@ end
 
 function GM.Chat:GetSmiley( tag )
 
-	return self:GetSmilies()[ tag ] or false
+	return self:GetSmilies()[ string.lower( tag ) ] or false
 	
 end
 
@@ -49,7 +49,7 @@ function GM.Chat:ParseString( Pl, Str )
 	
 		table.insert( buffer, {Type = "Text", Data = string.sub( Str, 0, start-1 )} )
 		
-		local smiley = self:GetSmiley( tag )
+		local smiley = self:GetSmiley( string.lower( tag ) )
 		if ( smiley and hook.Run( "CanPlayerUseSmiley", Pl, tag ) ) then
 			table.insert( buffer, {Type = "Image", Data = smiley} )
 		else
@@ -76,4 +76,18 @@ function GM:CanPlayerUseSmiley( Pl, tag )
 	
 end
 
-GM.Chat:AddSmiley( ":smile:", Material( "icon16/emoticon_smile.png", "smooth" ) )
+GM.Chat:AddSmiley( ":smile:", Material( "icon16/emoticon_smile.png" ) )
+GM.Chat:AddSmiley( ":sad:", Material( "icon16/emoticon_unhappy.png" ) )
+GM.Chat:AddSmiley( ":3:", Material( "icon16/emoticon_waii.png" ) )
+GM.Chat:AddSmiley( ":p:", Material( "icon16/emoticon_tongue.png" ) )
+
+GM.Chat:AddSmiley( ":dumb:", Material( "icon16/box.png" ) )
+GM.Chat:AddSmiley( ":winner:", Material( "icon16/award_star_gold_1.png" ) )
+GM.Chat:AddSmiley( ":late:", Material( "icon16/clock.png" ) )
+GM.Chat:AddSmiley( ":zing:", Material( "icon16/lightning.png" ) )
+GM.Chat:AddSmiley( ":agree:", Material( "icon16/tick.png" ) )
+GM.Chat:AddSmiley( ":disagree:", Material( "icon16/cross.png" ) )
+GM.Chat:AddSmiley( ":informational:", Material( "icon16/information.png" ) )
+GM.Chat:AddSmiley( ":friendly:", Material( "icon16/heart.png" ) )
+GM.Chat:AddSmiley( ":tool:", Material( "icon16/wrench.png" ) )
+GM.Chat:AddSmiley( ":optimistic:", Material( "icon16/rainbow.png" ) )

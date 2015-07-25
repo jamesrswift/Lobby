@@ -113,21 +113,21 @@ GM.Notification:AddType( "Default", {
 } )
 
 GM.Notification:AddType( "Blue", {
-	icon = Material("lobby2/notification/justify1.png"),
+	icon = Material("icon16/information.png"),
 	color = Color( 45, 80, 111 ),
 	light = Color( 76, 109, 138 ),
 	dark = Color( 23, 56, 86 )
 } )
 
 GM.Notification:AddType( "Red", {
-	icon = Material("lobby2/notification/letter x.png"),
+	icon = Material("icon16/exclamation.png"),
 	color = Color( 172, 64, 61 ),
 	light = Color( 213, 114, 111 ),
 	dark = Color( 133, 31, 28 )
 } )
 
 GM.Notification:AddType( "Green", {
-	icon = Material("vgui/notices/hint"),
+	icon = Material("icon16/accept.png"),
 	color = Color( 113, 157, 56 ),
 	light = Color( 154, 194, 101 ),
 	dark = Color( 79, 121, 25 )

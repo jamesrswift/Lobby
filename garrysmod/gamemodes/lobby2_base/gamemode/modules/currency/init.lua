@@ -23,6 +23,6 @@ function Module:PlayerInformationLoaded( Pl )
 end
 
 function Module:UpdatePlayerOnStates( Pl )
-	Pl:SetNWInt( "fMoney" , Pl:GetData().Money or 0 )
+	Pl:SetNWInt( "fMoney" , Pl:GetData().money or 0 )
 	Pl:SaveData()
 end
