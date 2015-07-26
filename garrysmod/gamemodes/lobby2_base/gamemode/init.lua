@@ -18,6 +18,8 @@ include( "sh_modules.lua" )
 include( "sh_usergroups.lua" )
 
 include( "multiserver/sv_server.lua" )
+include( "multiserver/sv_client.lua" )
+include( "multiserver/sv_packet.lua" )
 
 include( "shared.lua" )
 

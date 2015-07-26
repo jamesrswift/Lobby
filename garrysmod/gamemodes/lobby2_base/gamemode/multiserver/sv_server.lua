@@ -41,11 +41,19 @@ function GM.Multiserver.Server.New( )
 end
 
 function GM.Multiserver.Server.Accept( serversock, clientsock )
+	
+	local GM = GM or gmod.GetGamemode( )
+
 	serversock:Accept();
 	
 	clientsock:SetCallbackReceive( function(s, p)
-		local packet_contents = p:ReadStringAll()
-
+		local r_num = p:ReadInt( )
+		
+		local packet = GM.Multiserver.Coms.HandleConnection( s, p )
+		if ( packet ) then
+			s:Send( packet )
+		end
+		
 	end	);
 	
 	clientsock:SetCallbackSend(function()

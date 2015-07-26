@@ -36,7 +36,7 @@ function GM.Multiserver.Client.New( ServerID, packet, callback )
 			return
 		end
 
-		client:Send( Packet )
+		client:Send( packet( client ) )
 		GM.Multiserver.Client.HandleConnection( ServerID, client, sock, ret, ip, port )
 		
 		client:Receive()
@@ -61,5 +61,18 @@ end
 function GM.Multiserver.Client.HandleResponse( ServerID, client, sock, packet, callback )
 
 	callback( ServerID, client, sock, packet )
+
+end
+
+function GM:TestConnection( )
+
+	self.Multiserver.Client.New( 0, function( client )
+	
+		local packet = BromPacket( client )
+		packet:WriteLine( "this is a test" )
+		packet:WriteLine( "" )
+		
+		return packet
+	end, function() end )
 
 end
