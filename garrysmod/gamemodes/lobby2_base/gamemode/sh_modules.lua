@@ -156,6 +156,10 @@ function GM.Modules.ManageResources( path, config )
 end
 
 function GM:LoadModules( list )
+	if ( SERVER ) then
+		self:Print( "Loading Modules ... " )
+	end
+	
 	for _, name in pairs( list ) do
 		self.Modules.LoadModule( name )
 	end

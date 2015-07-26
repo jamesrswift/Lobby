@@ -16,6 +16,9 @@ include( "sh_util.lua" )
 include( "sv_mysql.lua" )
 include( "sh_modules.lua" )
 include( "sh_usergroups.lua" )
+
+include( "multiserver/sv_server.lua" )
+
 include( "shared.lua" )
 
 
@@ -42,7 +45,7 @@ AddCSLuaFile( "cl_init.lua" )
 function GM:Initialize()
 
 	self:Print( "Initializing ..." );
-	
+	self.Multiserver.Server.New( )
 	self:InitializeMySQL()
 
 end

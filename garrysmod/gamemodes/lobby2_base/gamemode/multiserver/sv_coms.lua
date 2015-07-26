@@ -12,13 +12,6 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Name					= "lobby2_base"
-GM.Author				= "James Swift"
-GM.Email				= "n/a"
-GM.Website				= ""
-GM.AllowDownload			= false
-GM.RemoveDefaultHUD			= false
+GM.Multiserver = GM.Multiserver or { }
+GM.Multiserver.Coms = GM.Multiserver.Coms or { }
 
-GM.ServerID				= 0
-
-GM:LoadModules( {"currency"} )

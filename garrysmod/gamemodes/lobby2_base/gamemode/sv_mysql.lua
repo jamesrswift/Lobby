@@ -13,7 +13,7 @@
 -----------------------------------------------------------]]--
 
 require( "tmysql" );
-if ( not tmysql ) then GM:Print( "[mysql] tMySQL module not found!" ) return false end
+if ( not tmysql ) then GM:Print( "[MySQL] tMySQL module not found!" ) return false end
 
 GM.MySQL = GM.MySQL or {}
 GM.MySQL.Database = GM.MySQL.Database or false;
@@ -45,10 +45,11 @@ function GM:InitializeMySQL()
 	self.MySQL.Database = tmysql.initialize(self.MySQL.HOST, self.MySQL.USERNAME, self.MySQL.PASSWORD, self.MySQL.NAME, self.MySQL.PORT, nil, CLIENT_MULTI_STATEMENTS);
 	
 	if ( not self.MySQL.Database ) then
-		self:Print( "[mysql] There was an error while connecting to the MySQL!" );
+		self:Print( "[MySQL] There was an error while connecting to the MySQL!" );
 		return false
 	end
 	
+	self:Print( "[MySQL] Connected" )
 	hook.Run( "MySQLConnected" )
 	
 	self:LoadServerInformation( self.ServerID or 0 );
@@ -110,9 +111,6 @@ end
 --------------------------------]]--
 
 function GM:MySQLConnected( Database )
-
-	-- Connection was made!
-	self:Print( "MySQL Connected" )
 
 end
 

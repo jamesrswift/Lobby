@@ -13,47 +13,44 @@
 -----------------------------------------------------------]]--
 
 GM.Multiserver = GM.Multiserver or { }
-GM.Multiserver.Rcon = GM.Multiserver.Rcon or { }
+GM.Multiserver.Server = GM.Multiserver.Server or { }
 
-GM.Multiserver.Rcon.Connections = GM.Multiserver.Connections or { }
+GM.Multiserver.Server.StartPort = 44901
 
-function GM.Multiserver.Rcon.RandomID( )
+require( "bromsock");
 
-	return string.char( math.random( 0, 255 ) ) .. string.char( math.random( 0, 255 ) ) .. string.char( math.random( 0, 255 ) ) .. string.char( math.random( 0, 255 ) )
-
-end
-
-function GM.Multiserver.Rcon.BuildAuthPacket( Password, Callback )
-	
-	local GM = GM or gmod.GetGamemode( )
-
-	local ID = GM.Multiserver.Rcon.RandomID( )
-	local Type = string.char( 3 ) .. string.rep( string.char( 0 ) , 3 )
-	
-	local Packet = ID .. Type .. Password .. string.rep( string.char( 0 ) , 2 )
-
-end
-
-function GM.Multiserver.Rcon.GetConnection( IP , Port )
+function GM.Multiserver.Server.New( )
 
 	local GM = GM or gmod.GetGamemode( )
+	local port = GM.Multiserver.Server.StartPort + (GM.ServerID or 0)
 	
-	if ( GM.Multiserver.Rcon.Connections[ IP .. ":" .. Port ] ) then
-		return GM.Multiserver.Rcon.Connections[ IP .. ":" .. Port ]
+	if ( GM.Multiserver.Server.server ) then GM.Multiserver.Server.server:Close(); end
+	GM.Multiserver.Server.server = BromSock();
+	
+	if (not GM.Multiserver.Server.server:Listen(port)) then
+		GM:Print("[Multiserver] Failed to listen!");
+	else
+		GM:Print("[Multiserver] Server listening on port %u", port);
 	end
+
 	
-	return false
+	GM.Multiserver.Server.server:SetCallbackAccept( GM.Multiserver.Server.Accept );
+	GM.Multiserver.Server.server:Accept();
 
 end
 
-function GM.Multiserver.Rcon.NewConnection( IP, Port )
-
-	local connection = GM.Multiserver.Rcon.GetConnection( IP , Port )
-	if ( not connection ) then
+function GM.Multiserver.Server.Accept( serversock, clientsock )
+	serversock:Accept();
 	
-		connection = BromSock()
-		GM.Multiserver.Rcon.Connections[ IP .. ":" .. Port ] = connection
-		
-	end
+	clientsock:SetCallbackReceive( function(s, p)
+		local packet_contents = p:ReadStringAll()
 
+	end	);
+	
+	clientsock:SetCallbackSend(function()
+		clientsock:Close();
+	end);
+	
+	clientsock:SetTimeout(5000);
+	clientsock:ReceiveUntil("\r\n\r\n");
 end
