@@ -30,6 +30,7 @@ end
 
 function GM.Multiserver.Coms.GetMethod( Type )
 
+	local GM = GM or gmod.GetGamemode( )
 	return GM.Multiserver.Coms.Methods[ Type ] or false
 	
 end
@@ -72,10 +73,23 @@ function GM.Multiserver.Coms.HandleConnection( sock, packet )
 	local IP = sock:GetIP( )
 	local success, ID, Type, Password, Body = GM.Multiserver.Packet.ReadPacket( packet )
 	
+	print( success, ID, Type, Password, Body )
+	
 	if ( success ) then
 	
 		return GM.Multiserver.Coms.HandleMethod( IP, Type, ID, Password, Body )
 	
 	end
+
+end
+
+function GM.Multiserver.Coms.SendMessage( IP, ServerID, ID, Type, Password, Body )
+
+	local GM = GM or gmod.GetGamemode( )
+	local packet = GM.Multiserver.Packet.NewPacket( ID, Type, Password, Body )
+	
+	GM.Multiserver.Client.New( IP, ServerID, packet, function( )
+
+	end)
 
 end
