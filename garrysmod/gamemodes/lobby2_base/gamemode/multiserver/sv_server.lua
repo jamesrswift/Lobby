@@ -15,6 +15,7 @@
 GM.Multiserver = GM.Multiserver or { }
 GM.Multiserver.Server = GM.Multiserver.Server or { }
 
+-- Port range: 44901 - 44999
 GM.Multiserver.Server.StartPort = 44901
 
 require( "bromsock");
