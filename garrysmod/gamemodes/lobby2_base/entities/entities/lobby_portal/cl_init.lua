@@ -1,29 +1,48 @@
+--[[-----------------------------------------------------------
+
+	██╗      ██████╗ ██████╗ ██████╗ ██╗   ██╗    ██████╗ 
+	██║     ██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝    ╚════██╗
+	██║     ██║   ██║██████╔╝██████╔╝ ╚████╔╝      █████╔╝
+	██║     ██║   ██║██╔══██╗██╔══██╗  ╚██╔╝      ██╔═══╝ 
+	███████╗╚██████╔╝██████╔╝██████╔╝   ██║       ███████╗
+	╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝       ╚══════╝
+
+	
+	Copyright (c) James Swift, 2015
+	
+-----------------------------------------------------------]]--
+
 include('shared.lua')
+
+drawingrenderables = false
 
 function ENT:Initialize( )
 
-	self.RenderTarget = GetRenderTarget( "vgui/white", ScrW(), ScrH(), true )
-	self.TextureID = surface.GetTextureID( self:EntIndex() .. "rendertarget" )
-	self.RenderMaterial = CreateMaterial( "vgui/white", "unlitgeneric", {
-		["$basetexture"] = self.RenderTarget:GetName( )
+	self.RenderName = self:EntIndex() .. "RenderTarget"
+	self.RenderTarget = GetRenderTarget( self.RenderName, ScrW(), ScrH(), true )
+	self.RenderMaterial = CreateMaterial( self.RenderName, "GMODScreenspace", {
+		["$basetexture"] = self.RenderName,
+		[ '$texturealpha' ] = "0",
+		[ '$vertexalpha' ] = "1"
 	})
-	
-	hook.Add( "PreDrawOpaqueRenderables", self, self.PostDrawOpaqueRenderables )
+
+end
+
+local function IsInFront( posA, posB, normal )
+
+        local Vec1 = ( posB - posA ):GetNormalized()
+
+        return ( normal:Dot( Vec1 ) < 0 )
 
 end
  
 function ENT:Draw()
 
-	if ( self.drawingrenderables ) then
-		self:DrawModel()
-	end
+	local viewent = GetViewEntity()
+	local pos = ( IsValid( viewent ) and viewent != LocalPlayer() ) and GetViewEntity():GetPos() or EyePos()
+	
+	if IsInFront( pos, self:GetPos(), self:GetForward() ) then
 
-end
-
-function ENT:PostDrawOpaqueRenderables( bDrawingDepth, bDrawingSkybox )
-
-	if ( not self.drawingrenderables ) then
-		self.drawingrenderables = true
 		render.ClearStencil() --Clear stencil
 		render.SetStencilEnable( true ) --Enable stencil
 		
@@ -33,49 +52,52 @@ function ENT:PostDrawOpaqueRenderables( bDrawingDepth, bDrawingSkybox )
 			render.SetStencilPassOperation( STENCILOPERATION_REPLACE ) --If we pass (we see it) increase the pixels value by 1
 			render.SetStencilZFailOperation( STENCILOPERATION_KEEP ) --If it's behind something, dont do anything
 					
-			self:Draw( )
+			self:DrawModel()
 
 			render.SetStencilReferenceValue( 15 ) --Reference value 1
 			render.SetStencilCompareFunction( STENCILCOMPARISONFUNCTION_EQUAL ) --Only draw if pixel value == reference value
+			render.SetStencilPassOperation( STENCILOPERATION_REPLACE )
 				
-			self:DrawPortal( )
+			self:RenderPortal( )
+			self:DrawToScreen( )
 		
 		render.SetStencilEnable( false )
-		self.drawingrenderables = false
+		
 	end
-	
+
 end
 
-function ENT:DrawPortal( )
+function ENT:RenderPortal( )
 
-	if ( self.drawingrenderables ) then
+	if ( drawingrenderables ) then return end
 
-	cam.Start2D()
-	
-		local oldw, oldh = ScrW(), ScrH()
-	
-		local oldrt = render.GetRenderTarget( )
-		render.SetRenderTarget( self.RenderTarget )
-		render.SetViewPort( 0, 0, ScrW(), ScrH() )
-		render.Clear( 255, 255, 255, 0 )
-		
+	drawingrenderables = true
+
+	local oldrt = render.GetRenderTarget( )
+	render.SetRenderTarget( self.RenderTarget )
+		render.Clear( 0, 0, 0, 255 )
+		render.ClearDepth()
+        render.ClearStencil()
+								
 		render.RenderView({
-			origin = LocalPlayer( ):EyePos( ),
-			angles = LocalPlayer( ):EyeAngles( ),
+			origin = map_origin,
+			angles = Angle( 0, 0, 0),
 			x = 0,
 			y = 0,
 			w = ScrW( ),
-			h = ScrH( )
+			h = ScrH( ),
+			dopostprocess = false,
+			drawhud = false,
+			drawmonitors = false,
+			drawviewmodel = false,
+			ortho = false
 		})
 		
-		render.SetRenderTarget( oldrt )
-		render.SetViewPort( 0, 0, oldw, oldh )
-		
-		self:DrawToScreen( )
-		
-	cam.End2D()
+		render.UpdateScreenEffectTexture()
+
+	render.SetRenderTarget( oldrt )
 	
-	end
+	drawingrenderables = false
 
 end
 
@@ -83,7 +105,20 @@ function ENT:DrawToScreen( )
 
 	--render.DrawTextureToScreen( self.RenderTarget )
 
-	render.SetMaterial( self.RenderMaterial )
-	render.DrawScreenQuad()
+	--self.RenderMaterial:SetString( "$basetexture", self.RenderName )
+    render.SetMaterial( self.RenderMaterial )
+    render.DrawScreenQuad()
 	
 end
+
+hook.Add( "RenderScene", "Portal.RenderScene", function( Origin, Angles )
+        // render each portal
+        for k, v in ipairs( ents.FindByClass( "lobby_portal" ) ) do
+                local viewent = GetViewEntity()
+                local pos = ( IsValid( viewent ) and viewent != LocalPlayer() ) and GetViewEntity():GetPos() or Origin
+                if IsInFront( pos, v:GetPos(), v:GetForward() ) then
+                        v:RenderPortal( Origin, Angles )
+                end
+       
+        end
+end )
