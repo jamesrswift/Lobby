@@ -12,30 +12,31 @@
 	
 -----------------------------------------------------------]]--
 
-function GM:CreateFonts( )
+GM.ResourceDirectory = "lobby2_base/content/"
+GM.BadExtensions = {
+	
+}
 
-	surface.CreateFont( "LobbyNotification", {
-		font = "Roboto Bold",
-		size = 14,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
+function GM:SendResources( Directory, basedir )
+
+	basedir = basedir or self.ResourceDirectory
 	
-	surface.CreateFont( "LobbyChat", {
-		font = "Roboto Bold",
-		size = 14,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
+	local files, folders = file.Find( basedir .. Directory .. "/*", "LUA" )
 	
-	surface.CreateFont( "LobbyTitle", {
-		font = "Pacifico",
-		size = 32,
-		weight = 300,
-		blursize = 0,
-		antialias = true
-	})
+	for k, v in pairs( files ) do
+		if ( self:CheckResourceExtension( v ) ) then
+			resource.AddFile( basedir .. Directory .. "/" .. v )
+		end
+	end
+	
+	for k, folder in pairs( folders ) do
+		self:SendResources( Directory .. "/" .. folder, basedir )
+	end
+	
+end
+	
+function GM:CheckResourceExtension( filename )
+
+	return ( not table.HasValue( self.BadExtensions, string.GetExtensionFromFilename( filename ) ) )
 
 end

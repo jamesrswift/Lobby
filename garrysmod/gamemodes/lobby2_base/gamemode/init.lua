@@ -24,6 +24,7 @@ include( "mysql/sv_map.lua" )
 
 include( "sh_modules.lua" )
 include( "sh_usergroups.lua" )
+include( "sv_resources.lua" )
 
 include( "multiserver/sv_server.lua" )
 include( "multiserver/sv_client.lua" )
@@ -52,6 +53,7 @@ AddCSLuaFile( "cl_fonts.lua" )
 
 AddCSLuaFile( "vgui/richtext_scrollbar.lua" )
 AddCSLuaFile( "vgui/richtext.lua" )
+AddCSLuaFile( "vgui/lobby_frame.lua" )
 AddCSLuaFile( "vgui/lobby_notification.lua" )
 
 AddCSLuaFile( "cl_init.lua" )
@@ -63,6 +65,10 @@ function GM:Initialize()
 	self.Multiserver.Coms.AddLogin( "127.0.0.1", "Louisa" )
 	self.Multiserver.Server.New( )
 	self:InitializeMySQL()
+	
+	
+	self:SendResources( "materials" )
+	self:SendResources( "resource" )
 
 end
 

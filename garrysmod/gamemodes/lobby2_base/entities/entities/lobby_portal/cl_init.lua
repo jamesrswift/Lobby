@@ -2,11 +2,11 @@ include('shared.lua')
 
 function ENT:Initialize( )
 
-	self.RenderTarget = GetRenderTarget( self:EntIndex() .. "rendertarget", ScrW(), ScrH(), true )
-	self.RenderMaterial = CreateMaterial( self:EntIndex() .. "material", "unlitgeneric", {
+	self.RenderTarget = GetRenderTarget( "vgui/white", ScrW(), ScrH(), true )
+	self.TextureID = surface.GetTextureID( self:EntIndex() .. "rendertarget" )
+	self.RenderMaterial = CreateMaterial( "vgui/white", "unlitgeneric", {
 		["$basetexture"] = self.RenderTarget:GetName( )
 	})
-	
 	
 	hook.Add( "PreDrawOpaqueRenderables", self, self.PostDrawOpaqueRenderables )
 
@@ -57,30 +57,33 @@ function ENT:DrawPortal( )
 		local oldrt = render.GetRenderTarget( )
 		render.SetRenderTarget( self.RenderTarget )
 		render.SetViewPort( 0, 0, ScrW(), ScrH() )
-
+		render.Clear( 255, 255, 255, 0 )
+		
 		render.RenderView({
 			origin = LocalPlayer( ):EyePos( ),
 			angles = LocalPlayer( ):EyeAngles( ),
 			x = 0,
 			y = 0,
 			w = ScrW( ),
-			h = ScrH( ),
-			dopostprocess = true,
-			drawhud = false,
-			drawmonitors = true,
-			drawviewmodel = false,
-			fov = LocalPlayer():GetFOV( ),
-			ortho = false
+			h = ScrH( )
 		})
 		
 		render.SetRenderTarget( oldrt )
 		render.SetViewPort( 0, 0, oldw, oldh )
 		
-		render.DrawTextureToScreen( self.RenderTarget )
-		
+		self:DrawToScreen( )
 		
 	cam.End2D()
 	
 	end
 
+end
+
+function ENT:DrawToScreen( )
+
+	--render.DrawTextureToScreen( self.RenderTarget )
+
+	render.SetMaterial( self.RenderMaterial )
+	render.DrawScreenQuad()
+	
 end

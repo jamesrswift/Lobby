@@ -26,6 +26,7 @@ include( "chat/cl_icons.lua" )
 
 include( "vgui/richtext_scrollbar.lua" )
 include( "vgui/richtext.lua" )
+include( "vgui/lobby_frame.lua" )
 include( "vgui/lobby_notification.lua" )
 
 include( "shared.lua" )
@@ -43,11 +44,12 @@ function GM:Think( )
 
 end
 
-function GM:TestRichText( )
+function GM:TestFrame( )
 
-	local notification = vgui.Create( "Chat_RichText" )
+	local notification = vgui.Create( "lobby_frame" )
 	notification:SetPos( 50, 50 )
 	notification:SetSize( 400, 400 )
-	notification:AppendLine( {Type="Text", Data="Hello World!"} )
+	notification:SetTitle( "This is a test" )
+	notification:MakePopup( )
 
 end
