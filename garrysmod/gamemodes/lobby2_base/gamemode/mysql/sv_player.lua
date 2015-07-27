@@ -48,7 +48,7 @@ function GM:LoadPlayerInformation( Pl )
 				
 			else
 			
-				self:Print( "[mysql] There was an error while loading player information!" );
+				self:Print( "[MySQL] There was an error while loading player information!" );
 				
 			end
 		end )

@@ -71,8 +71,6 @@ function GM.MySQL.BuildQuery( Query, ... )
 
 end
 
-include( "mysql/sv_player.lua" )
-
 --[[--------------------------------
 	Map
 --------------------------------]]--

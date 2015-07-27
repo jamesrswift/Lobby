@@ -18,30 +18,40 @@ function GM:Print( s , ... )
 
 end
 
+function GM:Log( StartName, str, ... )
+
+	file.CreateDir( "lobby" )
+	local date = os.date( "%b-%d", os.time( ) )
+
+	file.Append( "lobby/" .. StartName .. " - " .. date .. ".dat" , os.date( "[%H:%M:%S] ", os.time( ) ) .. string.format( str, ... ) .."\n" )
+
+end
+
+
 if SERVER then
 
-util.AddNetworkString( "lobby_notification" )
+	util.AddNetworkString( "lobby_notification" )
 
-function GM:NotifyPlayer( Pl, Type, Text, Lifetime )
+	function GM:NotifyPlayer( Pl, Type, Text, Lifetime )
 
-	net.Start( "lobby_notification" )
-	net.WriteString( Type )
-	net.WriteString( Text )
-	net.WriteFloat( Lifetime )
-	net.Send( Pl )
+		net.Start( "lobby_notification" )
+		net.WriteString( Type )
+		net.WriteString( Text )
+		net.WriteFloat( Lifetime )
+		net.Send( Pl )
 
-end
-
-
-function GM:NotifyAll( Type, Text, Lifetime )
-
-	net.Start( "lobby_notification" )
-	net.WriteString( Type )
-	net.WriteString( Text )
-	net.WriteFloat( Lifetime )
-	net.Broadcast( )
+	end
 
 
-end
+	function GM:NotifyAll( Type, Text, Lifetime )
+
+		net.Start( "lobby_notification" )
+		net.WriteString( Type )
+		net.WriteString( Text )
+		net.WriteFloat( Lifetime )
+		net.Broadcast( )
+
+
+	end
 
 end

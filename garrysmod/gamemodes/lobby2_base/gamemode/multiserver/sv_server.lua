@@ -47,6 +47,7 @@ function GM.Multiserver.Server.Accept( serversock, clientsock )
 	serversock:Accept();
 	
 	clientsock:SetCallbackReceive( function(s, p)
+
 		local r_num = p:ReadInt( )
 		
 		local packet = GM.Multiserver.Coms.HandleConnection( s, p )
@@ -62,4 +63,5 @@ function GM.Multiserver.Server.Accept( serversock, clientsock )
 	
 	clientsock:SetTimeout(5000);
 	clientsock:ReceiveUntil("\r\n\r\n");
+	
 end

@@ -73,11 +73,15 @@ function GM.Multiserver.Coms.HandleConnection( sock, packet )
 	local IP = sock:GetIP( )
 	local success, ID, Type, Password, Body = GM.Multiserver.Packet.ReadPacket( packet )
 	
-	print( success, ID, Type, Password, Body )
-	
 	if ( success ) then
 	
+		GM:Log( "Coms", "New connection from %s (ID = %i, Type = %i, Body = %s)", IP, ID, Type, Body )
+	
 		return GM.Multiserver.Coms.HandleMethod( IP, Type, ID, Password, Body )
+	
+	else
+	
+		GM:Log( "Coms", "Failed connection from %s, Bad password \"%s\"", IP, Password )
 	
 	end
 

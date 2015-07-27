@@ -12,45 +12,36 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Multiserver = GM.Multiserver or { }
-GM.Multiserver.Packet = GM.Multiserver.Packet or { }
+GM.MySQL.MapData = GM.MySQL.MapData or {};
 
-require( "bromsock" )
+function GM:LoadMapInformation( MapName )
 
-function GM.Multiserver.Packet.ReadPacket( packet )
+	local query = self.MySQL.BuildQuery( "SELECT * FROM gm_maps WHERE map = %s LIMIT 1", MapName )
 
-	local Data = string.Explode( "\r\n", packet:ReadStringAll() )
-
-	local Protocol = Data[ 1 ]
-	if ( Protocol == "LobbyISCP" ) then
-	
-		local ID = tonumber( Data[ 2 ] )
-		local Type = tonumber( Data[ 3 ] )
-		local Password = Data[ 4 ]
-		local Body = Data[ 5 ]
+	if ( query ) then
+		tmysql.query( query, function( results )
+			PrintTable( results )
+			if ( results[1] ) then
+			
+			
 		
-		return true, ID, Type, Password, Body
-	
+				hook.Run( "MapInformationLoaded", MapName )
+			else
+				self:Print( "[MySQL] There was an error while loading map information!" );
+			end
+		end )
 	end
-	
-	return false
 
 end
 
-function GM.Multiserver.Packet.NewPacket( ID, Type, Password, Body )
-
-	local packet = BromPacket()
+function GM:GetMapData( MapName )
 	
-	packet:WriteLine( "LobbyISCP" )
-	
-	packet:WriteLine( tostring( ID ) )
-	packet:WriteLine( tostring( Type ) )
-	packet:WriteLine( Password )
-	packet:WriteLine( Body )
-	
-	packet:WriteLine( "" )
-	
-	return packet
+	GM.MySQL.MapData[MapName] = GM.MySQL.MapData[MapName] or { }
+	return GM.MySQL.MapData[MapName]
 
 end
 
+function GM:SaveMapData( MapName )
+
+
+end

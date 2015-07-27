@@ -33,6 +33,7 @@ function GM.Multiserver.Client.New( IP, ServerID, packet, callback )
 	
 		if (not ret) then
 			GM:Print( "[Multiserver] Failed to connect to ServerID %i", ServerID )
+			GM:Log( "Coms", "Failed to connect to ServerID %s", IP )
 			return
 		end
 

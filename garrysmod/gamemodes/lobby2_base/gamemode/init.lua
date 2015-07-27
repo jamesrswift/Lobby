@@ -12,8 +12,16 @@
 	
 -----------------------------------------------------------]]--
 
+--[[--------------------------------
+	Serverside and shared includes
+--------------------------------]]--
+
 include( "sh_util.lua" )
+
 include( "sv_mysql.lua" )
+include( "mysql/sv_player.lua" )
+include( "mysql/sv_map.lua" )
+
 include( "sh_modules.lua" )
 include( "sh_usergroups.lua" )
 
@@ -25,10 +33,12 @@ include( "multiserver/methods/cat.lua" )
 
 include( "shared.lua" )
 
+--[[--------------------------------
+	Clientside and shared files
+--------------------------------]]--
 
 AddCSLuaFile( "extensions/utf8.lua" )
 
-AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "sh_util.lua" )
 AddCSLuaFile( "sh_modules.lua" )
 AddCSLuaFile( "sh_usergroups.lua" )
@@ -45,6 +55,7 @@ AddCSLuaFile( "vgui/richtext.lua" )
 AddCSLuaFile( "vgui/lobby_notification.lua" )
 
 AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "shared.lua" )
 
 function GM:Initialize()
 
