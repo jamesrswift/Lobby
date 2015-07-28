@@ -20,7 +20,7 @@ function ENT:Initialize( )
 
 	self.RenderName = self:EntIndex() .. "RenderTarget"
 	self.RenderTarget = GetRenderTarget( self.RenderName, ScrW(), ScrH(), true )
-	self.RenderMaterial = CreateMaterial( self.RenderName, "GMODScreenspace", {
+	self.RenderMaterial = CreateMaterial( self.RenderName, "unlitgeneric", {
 		["$basetexture"] = self.RenderName,
 		[ '$texturealpha' ] = "0",
 		[ '$vertexalpha' ] = "1"
@@ -58,7 +58,7 @@ function ENT:Draw()
 			render.SetStencilCompareFunction( STENCILCOMPARISONFUNCTION_EQUAL ) --Only draw if pixel value == reference value
 			render.SetStencilPassOperation( STENCILOPERATION_REPLACE )
 				
-			self:RenderPortal( )
+			--self:RenderPortal( )
 			self:DrawToScreen( )
 		
 		render.SetStencilEnable( false )
@@ -103,11 +103,11 @@ end
 
 function ENT:DrawToScreen( )
 
-	--render.DrawTextureToScreen( self.RenderTarget )
+	render.DrawTextureToScreen( self.RenderTarget )
 
 	--self.RenderMaterial:SetString( "$basetexture", self.RenderName )
-    render.SetMaterial( self.RenderMaterial )
-    render.DrawScreenQuad()
+    --render.SetMaterial( self.RenderMaterial )
+    --render.DrawScreenQuad()
 	
 end
 

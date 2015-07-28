@@ -19,7 +19,7 @@ include('shared.lua')
  
 function ENT:Initialize()
 	
-	self:SetModel( "models/props_interiors/BathTub01a.mdl" )
+	self:SetModel( "models/props_lab/blastdoor001b.mdl" )
 	
 end
  
