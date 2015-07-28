@@ -23,7 +23,7 @@ function PANEL:Init( )
 	self.lblTitle = vgui.Create( "DLabel", self )
 	self.lblTitle:SetFont( "LobbyTitle" )
 	self.lblTitle:SetText( "Team Winner" )
-	self.lblTitle:SetTextColor( Color(255,255,255,255) )
+	self.lblTitle:SetTextColor( Color( 255, 255, 255, 255 ) )
 	
 	self:DockPadding( 5, 25 + 5, 5, 5 )
 
@@ -72,8 +72,8 @@ function PANEL:DrawHeader( w, h )
 			surface.SetDrawColor( 255,255,255,255 )
 			surface.SetMaterial( mat_header )
 			for i=0, math.huge do
-				if ( (i+1) * 25 > w ) then break end
-				surface.DrawTexturedRect(i*25, 0, 25, 25 )
+				if ( ( i + 1 ) * 25 > w ) then break end
+				surface.DrawTexturedRect( i * 25, 0, 25, 25 )
 			end
 	
 	render.SetStencilEnable( false )
@@ -91,11 +91,11 @@ function PANEL:DrawBackground( w, h )
 	
 	surface.SetDrawColor( 50, 50, 50, 150 )
 	draw.NoTexture()
-	surface.DrawRect( 1, 0, w-25, 1 ) -- Top
-	surface.DrawRect( 0, h-1, w, 1 ) -- Bottom
-	surface.DrawRect( 0, 0, 1, h-1 ) -- Left
-	surface.DrawRect( w - 1, 25, 1, h-25 ) -- Right
-	surface.DrawLine( w-25, 0, w, 25 ) -- Corner
+	surface.DrawRect( 1, 0, w - 25, 1 ) -- Top
+	surface.DrawRect( 0, h - 1, w, 1 ) -- Bottom
+	surface.DrawRect( 0, 0, 1, h - 1 ) -- Left
+	surface.DrawRect( w - 1, 25, 1, h - 25 ) -- Right
+	surface.DrawLine( w - 25, 0, w, 25 ) -- Corner
 
 end
 
