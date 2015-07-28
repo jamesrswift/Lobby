@@ -12,16 +12,16 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Name					= "lobby2_base"
-GM.Author				= "James Swift"
-GM.Email				= "n/a"
-GM.Website				= ""
-GM.AllowDownload			= false
-GM.RemoveDefaultHUD			= false
+local PlayerMeta = FindMetaTable("Player")
 
-GM.ServerID				= 0
+function PlayerMeta:GetMoney( )
 
-GM:LoadModules({
-	"currency",
-	"scoreboard"
-})
+	return tonumber( self:GetNWInt( "fMoney" ) )
+	
+end
+
+function PlayerMeta:CanAfford( iAmount )
+
+	return self:GetMoney() >= iAmount
+
+end

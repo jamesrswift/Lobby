@@ -46,10 +46,8 @@ end
 
 function GM:TestFrame( )
 
-	local notification = vgui.Create( "lobby_frame" )
+	local notification = vgui.Create( "lobby_scoreboard" )
 	notification:SetPos( 50, 50 )
 	notification:SetSize( 400, 400 )
-	notification:SetTitle( "This is a test" )
-	notification:MakePopup( )
 
 end

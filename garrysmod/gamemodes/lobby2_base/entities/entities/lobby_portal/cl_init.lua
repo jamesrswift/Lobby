@@ -14,7 +14,8 @@
 
 include('shared.lua')
 
-drawingrenderables = false
+PortalRecursion = 0
+MaxRecursion = 2
 
 function ENT:Initialize( )
 
@@ -26,6 +27,8 @@ function ENT:Initialize( )
 		[ '$vertexalpha' ] = "1"
 	})
 
+	
+	self:DrawShadow( false )
 end
 
 local function IsInFront( posA, posB, normal )
@@ -42,6 +45,10 @@ function ENT:Draw()
 	local pos = ( IsValid( viewent ) and viewent != LocalPlayer() ) and GetViewEntity():GetPos() or EyePos()
 	
 	if IsInFront( pos, self:GetPos(), self:GetForward() ) then
+	
+		/*self:SetNoDraw( true )
+			self:RenderPortal( )
+		self:SetNoDraw( false )*/
 
 		render.ClearStencil() --Clear stencil
 		render.SetStencilEnable( true ) --Enable stencil
@@ -69,19 +76,23 @@ end
 
 function ENT:RenderPortal( )
 
-	if ( drawingrenderables ) then return end
+	if ( not LocalPlayer() ) then return end
 
-	drawingrenderables = true
+	if ( PortalRecursion >= MaxRecursion ) then return end
+
+	PortalRecursion = PortalRecursion + 1
 
 	local oldrt = render.GetRenderTarget( )
 	render.SetRenderTarget( self.RenderTarget )
 		render.Clear( 0, 0, 0, 255 )
 		render.ClearDepth()
-        render.ClearStencil()
-								
+		render.ClearStencil()
+		
+		local v = self:GetPos() - LocalPlayer():EyePos()
+		v:Rotate( Angle( 0, 90, 0 ) )
 		render.RenderView({
-			origin = map_origin,
-			angles = Angle( 0, 0, 0),
+			origin = Vector( 0,0,0 ) - v,
+			angles = Angle( 0, 90, 0) + LocalPlayer():EyeAngles(),
 			x = 0,
 			y = 0,
 			w = ScrW( ),
@@ -97,7 +108,7 @@ function ENT:RenderPortal( )
 
 	render.SetRenderTarget( oldrt )
 	
-	drawingrenderables = false
+	PortalRecursion = PortalRecursion - 1
 
 end
 
@@ -106,17 +117,17 @@ function ENT:DrawToScreen( )
 	render.DrawTextureToScreen( self.RenderTarget )
 
 	--self.RenderMaterial:SetString( "$basetexture", self.RenderName )
-    --render.SetMaterial( self.RenderMaterial )
-    --render.DrawScreenQuad()
+	--render.SetMaterial( self.RenderMaterial )
+	--render.DrawScreenQuad()
 	
 end
 
 hook.Add( "RenderScene", "Portal.RenderScene", function( Origin, Angles )
         // render each portal
-        for k, v in ipairs( ents.FindByClass( "lobby_portal" ) ) do
+        for k, v in pairs( ents.FindByClass( "lobby_portal" ) ) do
                 local viewent = GetViewEntity()
                 local pos = ( IsValid( viewent ) and viewent != LocalPlayer() ) and GetViewEntity():GetPos() or Origin
-                if IsInFront( pos, v:GetPos(), v:GetForward() ) then
+                if IsInFront( pos, v:GetPos(), v:GetForward() ) /*and v:Visible( LocalPlayer() )*/ then
                         v:RenderPortal( Origin, Angles )
                 end
        
