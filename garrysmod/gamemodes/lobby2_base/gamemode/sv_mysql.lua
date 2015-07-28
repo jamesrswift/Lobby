@@ -12,14 +12,14 @@
 	
 -----------------------------------------------------------]]--
 
-require( "tmysql" );
+require( "tmysql" )
 if ( not tmysql ) then GM:Print( "[MySQL] tMySQL module not found!" ) return false end
 
 GM.MySQL = GM.MySQL or {}
-GM.MySQL.Database = GM.MySQL.Database or false;
+GM.MySQL.Database = GM.MySQL.Database or false
 
-GM.MySQL.MapData = GM.MySQL.MapData or {};
-GM.MySQL.ServerData = GM.MySQL.ServerData or {};
+GM.MySQL.MapData = GM.MySQL.MapData or {}
+GM.MySQL.ServerData = GM.MySQL.ServerData or {}
 
 
 --[[--------------------------------
@@ -42,17 +42,17 @@ function GM.MySQL:SetDBName( DBName ) self.NAME = DBName end
 --------------------------------]]--
 function GM:InitializeMySQL()
 
-	self.MySQL.Database = tmysql.initialize(self.MySQL.HOST, self.MySQL.USERNAME, self.MySQL.PASSWORD, self.MySQL.NAME, self.MySQL.PORT, nil, CLIENT_MULTI_STATEMENTS);
+	self.MySQL.Database = tmysql.initialize(self.MySQL.HOST, self.MySQL.USERNAME, self.MySQL.PASSWORD, self.MySQL.NAME, self.MySQL.PORT, nil, CLIENT_MULTI_STATEMENTS)
 	
 	if ( not self.MySQL.Database ) then
-		self:Print( "[MySQL] There was an error while connecting to the MySQL!" );
+		self:Print( "[MySQL] There was an error while connecting to the MySQL!" )
 		return false
 	end
 	
 	self:Print( "[MySQL] Connected" )
 	hook.Run( "MySQLConnected" )
 	
-	self:LoadServerInformation( self.ServerID or 0 );
+	self:LoadServerInformation( self.ServerID or 0 )
 	
 	timer.Create( "lobby2_base:MySQL:CleanPlayerInformation", 15*60, 0, function() self:CleanPlayerInformation() end)
 	
@@ -68,29 +68,6 @@ function GM.MySQL.BuildQuery( Query, ... )
 	end
 	
 	return string.format( Query, unpack( vararg ) )
-
-end
-
---[[--------------------------------
-	Map
---------------------------------]]--
-function GM:LoadMapInformation( MapName )
-
-	local query = self.MySQL.BuildQuery( "SELECT * FROM gm_maps WHERE map = %s LIMIT 1", MapName )
-
-	if ( query ) then
-		tmysql.query( query, function( results )
-			PrintTable( results )
-			if ( results[1] ) then
-			
-			
-		
-				hook.Run( "MapInformationLoaded", MapName )
-			else
-				print( "[px][mysql] There was an error while loading player information!" );
-			end
-		end )
-	end
 
 end
 
