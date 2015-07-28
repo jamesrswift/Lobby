@@ -49,24 +49,24 @@ function PANEL:DrawHeader( w, h )
 	render.SetStencilEnable( true ) --Enable stencil
 	
 		render.SetStencilReferenceValue( 15 )
-		render.SetStencilCompareFunction( STENCILCOMPARISONFUNCTION_ALWAYS ) --We don't actually draw the weapon, we just want it on our stencil
-		render.SetStencilFailOperation( STENCILOPERATION_KEEP ) --If we fail, do nothing
-		render.SetStencilPassOperation( STENCILOPERATION_REPLACE ) --If we pass (we see it) increase the pixels value by 1
-		render.SetStencilZFailOperation( STENCILOPERATION_KEEP ) --If it's behind something, dont do anything
+		render.SetStencilCompareFunction( STENCILCOMPARISONFUNCTION_ALWAYS )
+		render.SetStencilFailOperation( STENCILOPERATION_KEEP )
+		render.SetStencilPassOperation( STENCILOPERATION_REPLACE )
+		render.SetStencilZFailOperation( STENCILOPERATION_KEEP )
 				
 			local header_poly = {
-				{ x = 0,		y = 0 },
+				{ x = 0,	y = 0 },
 				{ x = w - 25,	y = 0 },
-				{ x = w, 		y = 25},
-				{ x = 0,		y = 25}
+				{ x = w, 	y = 25},
+				{ x = 0,	y = 25}
 			}
 	
 			surface.SetDrawColor( 255,255,255,255 )
 			draw.NoTexture()
 			surface.DrawPoly( header_poly )
 
-		render.SetStencilReferenceValue( 15 ) --Reference value 1
-		render.SetStencilCompareFunction( STENCILCOMPARISONFUNCTION_EQUAL ) --Only draw if pixel value == reference value
+		render.SetStencilReferenceValue( 15 )
+		render.SetStencilCompareFunction( STENCILCOMPARISONFUNCTION_EQUAL )
 		render.SetStencilPassOperation( STENCILOPERATION_REPLACE )
 			
 			surface.SetDrawColor( 255,255,255,255 )
