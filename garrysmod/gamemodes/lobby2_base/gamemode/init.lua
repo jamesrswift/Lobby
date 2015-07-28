@@ -61,7 +61,7 @@ AddCSLuaFile( "shared.lua" )
 
 function GM:Initialize()
 
-	self:Print( "Initializing ..." );
+	self:Print( "Initializing ..." )
 	self.Multiserver.Coms.AddLogin( "127.0.0.1", "Louisa" )
 	self.Multiserver.Server.New( )
 	self:InitializeMySQL()
