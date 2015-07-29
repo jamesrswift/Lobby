@@ -21,10 +21,12 @@ include( "sh_util.lua" )
 include( "sv_mysql.lua" )
 include( "mysql/sv_player.lua" )
 include( "mysql/sv_map.lua" )
+include( "mysql/sv_bans.lua" )
 
 include( "sh_modules.lua" )
 include( "sh_usergroups.lua" )
 include( "sv_resources.lua" )
+include( "sv_player.lua" )
 
 include( "multiserver/sv_server.lua" )
 include( "multiserver/sv_client.lua" )

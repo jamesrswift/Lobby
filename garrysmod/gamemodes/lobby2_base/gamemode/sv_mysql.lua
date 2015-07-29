@@ -52,6 +52,7 @@ function GM:InitializeMySQL()
 	self:Print( "[MySQL] Connected" )
 	hook.Run( "MySQLConnected" )
 	
+	self:LoadBans( )
 	self:LoadServerInformation( self.ServerID or 0 )
 	
 	timer.Create( "lobby2_base:MySQL:CleanPlayerInformation", 15*60, 0, function() self:CleanPlayerInformation() end)
