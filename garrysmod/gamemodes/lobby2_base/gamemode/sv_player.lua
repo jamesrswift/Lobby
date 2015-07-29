@@ -54,7 +54,7 @@ end
 
 function GM:PlayerSwitchFlashlight( Pl, IsOn )
 
-	if ( not ply:IsPrivAdmin( ) ) then
+	if ( not Pl:IsRespected( ) ) then
 		
 		if ( not Pl.FlashLightTime ) then Pl.FlashLightTime = 0 end
 		if ( Pl.FlashLightTime > CurTime() ) then return false end
