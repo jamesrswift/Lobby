@@ -89,7 +89,7 @@ function ENT:RenderPortal( )
 		local v = self:GetPos() - LocalPlayer():EyePos()
 		v:Rotate( Angle( 0, 90, 0 ) )
 		render.RenderView({
-			origin = Vector( 0,0,0 ) - v,
+			origin = Vector( -193, -229, -130 ) - v,
 			angles = Angle( 0, 90, 0) + LocalPlayer():EyeAngles(),
 			x = 0,
 			y = 0,

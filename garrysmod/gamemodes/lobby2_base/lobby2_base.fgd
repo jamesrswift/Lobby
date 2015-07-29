@@ -1,0 +1,30 @@
+//---------------------------------------------------------------
+//
+//	██╗      ██████╗ ██████╗ ██████╗ ██╗   ██╗    ██████╗ 
+//	██║     ██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝    ╚════██╗
+//	██║     ██║   ██║██████╔╝██████╔╝ ╚████╔╝      █████╔╝
+//	██║     ██║   ██║██╔══██╗██╔══██╗  ╚██╔╝      ██╔═══╝ 
+//	███████╗╚██████╔╝██████╔╝██████╔╝   ██║       ███████╗
+//	╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝       ╚══════╝
+//
+//	
+//	Copyright (c) James Swift, 2015
+//
+//---------------------------------------------------------------
+
+@include "base.fgd"
+@include "halflife2.fgd"
+@include "garrysmod.fgd"
+
+@SolidClass base(Trigger) = lobby_location :
+	"The trigger entity responsible for location in Lobby2"
+[
+	location(string) : "Location" : "Unknown" : "The name of the location. It doesn't need to be unique."
+]
+
+
+@NPCClass base(Targetname, Angles) studio("models/props_lab/blastdoor001b.mdl") = lobby_portal :
+	"Lobby portal"
+[
+	
+]
