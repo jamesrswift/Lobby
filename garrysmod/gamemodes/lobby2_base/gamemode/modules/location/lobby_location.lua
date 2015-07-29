@@ -42,7 +42,7 @@ end
 
 function ENT:StartTouch( ent )
 
-	if ( IsValid( ent ) and ent:IsPlayer( ) ) then
+	if ( IsValid( ent ) and ent:IsPlayer( ) and ent:GetLocation( ) ~= self:GetLocation( ) ) then
 		
 		ent:SetNWString( "sLocation", self:GetLocation() )
 		hook.Run( "OnPlayerLocationChange", ent, self:GetLocation(), self )

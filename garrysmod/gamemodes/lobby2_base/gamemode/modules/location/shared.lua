@@ -14,8 +14,8 @@
 
 local PlayerMeta = FindMetaTable("Player")
 
-function PlayerMeta:GetMoney( )
+function PlayerMeta:GetLocation( )
 
-	return tonumber( self:GetNWString( "sLocation" ) )
+	return self:GetNWString( "sLocation", "Unknown" )
 	
 end
