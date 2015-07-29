@@ -129,3 +129,20 @@ hook.Add( "RenderScene", "Portal.RenderScene", function( Origin, Angles )
 		
 	end
 end )
+
+hook.Add( "GetMotionBlurValues", "Portal.GetMotionBlurValues", function( x, y, fwd, spin )
+
+	if ( PortalRecursion > 0 ) then
+		return 0, 0, 0, 0
+	end
+	
+end )
+
+hook.Add( "PostProcessPermitted", "Portal.PostProcessPermitted", function( element )
+
+	if ( element == "bloom" and PortalRecursion > 0 ) then
+		return false
+	end
+	
+end )
+

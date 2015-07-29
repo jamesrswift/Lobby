@@ -20,6 +20,7 @@ include('shared.lua')
 function ENT:Initialize()
 	
 	self:SetModel( "models/props_lab/blastdoor001b.mdl" )
+	self:DrawShadow( false )
 	
 end
  
