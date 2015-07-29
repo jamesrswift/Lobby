@@ -23,5 +23,6 @@ GM.ServerID				= 0
 
 GM:LoadModules({
 	"currency",
-	"scoreboard"
+	"scoreboard",
+	"location"	
 })

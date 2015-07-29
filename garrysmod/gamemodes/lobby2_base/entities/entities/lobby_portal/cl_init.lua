@@ -28,6 +28,7 @@ function ENT:Initialize( )
 	})
 
 	self:DrawShadow( false )
+	self.LastRender = 0
 end
 
 local function IsInFront( posA, posB, normal )
@@ -63,6 +64,8 @@ function ENT:Draw()
 			self:DrawToScreen( )
 			
 		render.SetStencilEnable( false )
+		
+		self.LastRender = CurTime( )
 		
 	end
 
@@ -115,14 +118,14 @@ end
 
 hook.Add( "RenderScene", "Portal.RenderScene", function( Origin, Angles )
 
-        for k, v in pairs( ents.FindByClass( "lobby_portal" ) ) do
+	for k, v in pairs( ents.FindByClass( "lobby_portal" ) ) do
 		
 		local viewent = GetViewEntity()
 		local pos = ( IsValid( viewent ) and viewent != LocalPlayer() ) and GetViewEntity():GetPos() or Origin
 		
-		if IsInFront( pos, v:GetPos(), v:GetForward() ) then
-		        v:RenderPortal( Origin, Angles )
+		if IsInFront( pos, v:GetPos(), v:GetForward() ) and ( v.LastRender + 0.5 > CurTime( ) ) then
+			v:RenderPortal( Origin, Angles )
 		end
 		
-        end
+	end
 end )

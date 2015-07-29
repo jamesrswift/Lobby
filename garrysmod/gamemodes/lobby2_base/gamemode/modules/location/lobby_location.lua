@@ -12,59 +12,43 @@
 	
 -----------------------------------------------------------]]--
 
-Module.Hooks = {
-	"PlayerInformationLoaded"
-}
+local ENT = { }
 
-local PlayerMeta = FindMetaTable("Player")
+ENT.Type = "brush"
+ENT.Base = "base_brush"
 
-function Module:UpdatePlayerOnStates( Pl, NoUpdate )
+AccessorFunc( ENT, "m_LocationName", "Location", FORCE_STRING )
 
-	Pl:SetNWInt( "fMoney" , Pl:GetData().money or 0 )
+function ENT:Initialize( )
+
+	self:SetTrigger( true )
+	self:SetLocation( "Unknown" )
+
+end
+
+function ENT:KeyValue( key, value )
 	
-	if ( not NoUpdate ) then
-		Pl:SaveData()
-	end
-
-end
-
-function Module:PlayerInformationLoaded( Pl )
-
-	self:UpdatePlayerOnStates( Pl, true )
-
-end
-
-function PlayerMeta:AwardMoney( Amount )
-
-	self:GiveMoney( hook.Run( "OnAwardMoney", self, Amount ) or Amount )
-
-end
-
-function PlayerMeta:GiveMoney( Amount, NoHook )
-
-	local data = self:GetData()
-	data.money = (data.money or 0) + Amount
-	Module:UpdatePlayerOnStates( self )
-	
-	if ( not NoHook ) then
-		hook.Run( "OnGiveMoney", self, Amount )
+	if ( string.lower( key ) == "location" ) then
+		self:SetLocation( value )
 	end
 	
 end
 
-function PlayerMeta:TakeMoney( Amount )
-
-	self:GiveMoney( -Amount, true )
-	hook.Run( "OnTakeMoney", self, Amount )
+function ENT:PassesTriggerFilters( ent )
+	
+	return IsValid( ent ) and ent:IsPlayer( )
 	
 end
 
-function PlayerMeta:SetMoney( Amount )
+function ENT:StartTouch( ent )
 
-	local data = self:GetData()
-	data.money = Amount
-	Module:UpdatePlayerOnStates( self )
+	if ( IsValid( ent ) and ent:IsPlayer( ) ) then
+		
+		ent:SetNWString( "sLocation", self:GetLocation() )
+		hook.Run( "OnPlayerLocationChange", ent, self:GetLocation(), self )
+		
+	end
 
-	hook.Run( "OnSetMoney", self, Amount )
-	
 end
+
+scripted_ents.Register( ENT, "lobby_location" )

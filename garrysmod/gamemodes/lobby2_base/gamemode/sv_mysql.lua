@@ -97,6 +97,6 @@ end
 
 function GM:MapInformationLoaded( MapName )
 
-	self:Print( "Loaded player information" )
+	self:Print( "Loaded map information" )
 
 end
