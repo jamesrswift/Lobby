@@ -95,10 +95,10 @@ function ENT:RenderPortal( )
 			render.ClearStencil()
 			
 			local v = self:GetPos() - LocalPlayer():EyePos()
-			v:Rotate( Target:GetAngles() + self:GetAngles() )
+			v:Rotate( -Target:GetAngles() + self:GetAngles() )
 			render.RenderView({
 				origin = Target:GetPos( ) - v,
-				angles = Target:GetAngles() + self:GetAngles() + LocalPlayer():EyeAngles(),
+				angles = -Target:GetAngles() + self:GetAngles() + LocalPlayer():EyeAngles(),
 				x = 0,
 				y = 0,
 				w = ScrW( ),
