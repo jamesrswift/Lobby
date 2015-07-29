@@ -22,7 +22,10 @@ AccessorFunc( ENT, "m_LocationName", "Location", FORCE_STRING )
 function ENT:Initialize( )
 
 	self:SetTrigger( true )
-	self:SetLocation( "Unknown" )
+	
+	if ( not self:GetLocation() ) then
+		self:SetLocation( "Bad Value" )
+	end
 
 end
 

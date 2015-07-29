@@ -26,5 +26,5 @@
 @NPCClass base(Targetname, Angles) studio("models/props_lab/blastdoor001b.mdl") = lobby_portal :
 	"Lobby portal"
 [
-	
+	target(target_destination) : "Target Portal" : "" : "The portal this one is to be linked with. This setting should be reciprical on the other portal, however it is not required"
 ]

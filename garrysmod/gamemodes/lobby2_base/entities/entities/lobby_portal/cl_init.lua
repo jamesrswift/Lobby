@@ -31,6 +31,12 @@ function ENT:Initialize( )
 	self.LastRender = 0
 end
 
+function ENT:GetTarget( )
+
+	return self:GetNWEntity( "eTarget", NULL )
+	
+end
+
 local function IsInFront( posA, posB, normal )
 	
         local Vec1 = ( posB - posA ):GetNormalized()
@@ -74,37 +80,41 @@ end
 function ENT:RenderPortal( )
 
 	if ( not LocalPlayer() ) then return end
-
 	if ( PortalRecursion >= MaxRecursion ) then return end
+	
+	local Target = self:GetTarget( )
+	if ( IsValid( Target ) ) then
 
-	PortalRecursion = PortalRecursion + 1
+		PortalRecursion = PortalRecursion + 1
 
-	local oldrt = render.GetRenderTarget( )
-	render.SetRenderTarget( self.RenderTarget )
-		
-		render.Clear( 0, 0, 0, 255 )
-		render.ClearDepth()
-		render.ClearStencil()
-		
-		local v = self:GetPos() - LocalPlayer():EyePos()
-		v:Rotate( Angle( 0, 90, 0 ) )
-		render.RenderView({
-			origin = Vector( -193, -229, -130 ) - v,
-			angles = Angle( 0, 90, 0) + LocalPlayer():EyeAngles(),
-			x = 0,
-			y = 0,
-			w = ScrW( ),
-			h = ScrH( ),
-			dopostprocess = false,
-			drawhud = false,
-			drawmonitors = false,
-			drawviewmodel = false,
-			ortho = false
-		})
-		
-		render.UpdateScreenEffectTexture()
+		local oldrt = render.GetRenderTarget( )
+		render.SetRenderTarget( self.RenderTarget )
+			
+			render.Clear( 0, 0, 0, 255 )
+			render.ClearDepth()
+			render.ClearStencil()
+			
+			local v = self:GetPos() - LocalPlayer():EyePos()
+			v:Rotate( Target:GetAngles() + self:GetAngles() )
+			render.RenderView({
+				origin = Target:GetPos( ) - v,
+				angles = Target:GetAngles() + self:GetAngles() + LocalPlayer():EyeAngles(),
+				x = 0,
+				y = 0,
+				w = ScrW( ),
+				h = ScrH( ),
+				dopostprocess = false,
+				drawhud = false,
+				drawmonitors = false,
+				drawviewmodel = false,
+				ortho = false
+			})
+			
+			render.UpdateScreenEffectTexture()
 
-	render.SetRenderTarget( oldrt )
+		render.SetRenderTarget( oldrt )
+	
+	end
 	
 	PortalRecursion = PortalRecursion - 1
 

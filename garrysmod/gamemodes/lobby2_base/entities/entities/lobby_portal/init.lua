@@ -22,13 +22,19 @@ function ENT:Initialize()
 	self:SetModel( "models/props_lab/blastdoor001b.mdl" )
 	self:DrawShadow( false )
 	
+	if ( self.Target ) then
+	
+		local Ents = ents.FindByName( self.Target )
+		self:SetNWEntity( "eTarget", Ents[1] )
+	
+	end
+	
 end
  
-function ENT:Use( activator, caller )
-    return
+function ENT:KeyValue( key, value )
+
+	if ( string.lower( key ) == "target" ) then
+		self.Target = value
+	end
+
 end
- 
-function ENT:Think()
-    -- We don't need to think, we are just a prop after all!
-end
- 
