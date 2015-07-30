@@ -23,8 +23,15 @@
 ]
 
 
-@NPCClass base(Targetname, Angles) studio("models/props_lab/blastdoor001b.mdl") = lobby_portal :
+@PointClass base(Targetname, Angles) studio("models/props_lab/blastdoor001b.mdl") = lobby_portal :
 	"Lobby portal"
 [
 	target(target_destination) : "Target Portal" : "" : "The portal this one is to be linked with. This setting should be reciprical on the other portal, however it is not required"
 ]
+
+@SolidClass base(Trigger) = lobby_portal_teleporter :
+	"The teleporter for the lobby_portal entity"
+[
+	portal(target_destination) : "Portal" : "" : "The name of the lobby_portal entity this entity is linked with"
+]
+

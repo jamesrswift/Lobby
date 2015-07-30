@@ -15,7 +15,7 @@
 include('shared.lua')
 
 PortalRecursion = 0
-MaxRecursion = 2
+MaxRecursion = 3
 
 function ENT:Initialize( )
 
@@ -82,8 +82,12 @@ function ENT:RenderPortal( )
 	if ( not LocalPlayer() ) then return end
 	if ( PortalRecursion >= MaxRecursion ) then return end
 	
+	--print( "called" )
+	
 	local Target = self:GetTarget( )
 	if ( IsValid( Target ) ) then
+	
+		--print( "called 2" )
 
 		PortalRecursion = PortalRecursion + 1
 
