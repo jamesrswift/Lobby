@@ -29,11 +29,18 @@ function ENT:Initialize( )
 
 	self:DrawShadow( false )
 	self.LastRender = 0
+	
+	net.Start( "lobby_portal_request_info" )
+		net.WriteEntity( self )
+	net.SendToServer( )
+	
+	self.TargetPortal = NULL
+	
 end
 
 function ENT:GetTarget( )
 
-	return self:GetNWEntity( "eTarget", NULL )
+	return self.TargetPortal
 	
 end
 
@@ -160,3 +167,13 @@ hook.Add( "PostProcessPermitted", "Portal.PostProcessPermitted", function( eleme
 	
 end )
 
+net.Receive( "lobby_portal_request_info", function( len, ply )
+
+	local Ent = net.ReadEntity( )
+	local Target = net.ReadEntity( )
+	
+	if ( IsValid( Ent ) and IsValid( Target ) ) then
+		Ent.TargetPortal = Target
+	end
+
+end)
