@@ -18,3 +18,8 @@ GM.Multiserver.Coms.AddMethod( COMS_METHOD_CAT, function( Body )
 	local GM = GM or gmod.GetGamemode( )
 	GM:Print( Body )
 end)
+
+GM.Multiserver.Coms.AddMethod( 6, function( Body )
+	local GM = GM or gmod.GetGamemode( )
+	GM:NotifyAll( "Blue", Body, 10 )
+end)

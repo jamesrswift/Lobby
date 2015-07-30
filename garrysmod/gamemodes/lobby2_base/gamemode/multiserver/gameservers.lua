@@ -40,12 +40,6 @@ function GM.Multiserver.GameServers.GetGame( Name )
 
 end
 
-function GM:GetServer( Name )
-
-	return self.Multiserver.GameServers.GetGame( Name )
-
-end
-
 function GM.Multiserver.GameServers.LoadGames( )
 
 	local GM = GM or gmod.GetGamemode( )
@@ -68,11 +62,47 @@ function GM.Multiserver.GameServers.LoadGames( )
 
 end
 
+function GM:GetServer( Name )
+
+	return self.Multiserver.GameServers.GetGame( Name )
+
+end
+
+function GM:MessageAllServers( ID, Type, Body, Callback )
+
+	for Name, Game in pairs( self.Multiserver.GameServers.Games ) do
+	
+		Game:Message( ID, Type, Body, Callback )
+	
+	end
+
+end
+
 --[[--------------------------------
 	Game Meta
 --------------------------------]]--
 
-function GM.Multiserver.GameServers.GameMT:Message( ID, Type, Body )
+local Meta = GM.Multiserver.GameServers.GameMT
+
+function Meta:GetName( )
+	
+	return self.Name
+	
+end
+
+function Meta:GetIP( )
+	
+	return self.IP
+	
+end
+
+function Meta:GetServerID( )
+	
+	return self.ServerID
+	
+end
+
+function Meta:Message( ID, Type, Body, callback )
 
 	local GM = GM or gmod.GetGamemode( )
 
