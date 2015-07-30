@@ -75,6 +75,8 @@ function GM.Multiserver.Coms.HandleConnection( sock, packet )
 	
 	if ( success ) then
 	
+		print( ID, Type, Password, Body )
+	
 		GM:Log( "Coms", "New connection from %s (ID = %i, Type = %i, Body = %s)", IP, ID, Type, Body )
 	
 		return GM.Multiserver.Coms.HandleMethod( IP, Type, ID, Password, Body )
@@ -87,12 +89,12 @@ function GM.Multiserver.Coms.HandleConnection( sock, packet )
 
 end
 
-function GM.Multiserver.Coms.SendMessage( IP, ServerID, ID, Type, Password, Body )
+function GM.Multiserver.Coms.SendMessage( IP, ServerID, ID, Type, Password, Body, callback )
 
 	local GM = GM or gmod.GetGamemode( )
 	local packet = GM.Multiserver.Packet.NewPacket( ID, Type, Password, Body )
 	
-	GM.Multiserver.Client.New( IP, ServerID, packet, function( )
+	GM.Multiserver.Client.New( IP, ServerID, packet, callback or function( )
 
 	end)
 

@@ -32,6 +32,7 @@ include( "multiserver/sv_server.lua" )
 include( "multiserver/sv_client.lua" )
 include( "multiserver/sv_packet.lua" )
 include( "multiserver/sv_coms.lua" )
+include( "multiserver/gameservers.lua" )
 include( "multiserver/methods/cat.lua" )
 
 include( "shared.lua" )
@@ -66,6 +67,7 @@ function GM:Initialize()
 	self:Print( "Initializing ..." )
 	self.Multiserver.Coms.AddLogin( "127.0.0.1", "Louisa" )
 	self.Multiserver.Server.New( )
+	self.Multiserver.GameServers.LoadGames( )
 	self:InitializeMySQL()
 	
 	

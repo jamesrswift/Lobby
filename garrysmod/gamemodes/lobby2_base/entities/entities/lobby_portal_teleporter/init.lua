@@ -57,21 +57,17 @@ function ENT:StartTouch( ply )
 		
 		local TargetPortal = self.Portal:GetTarget( )
 		
-		ply:SetEyeAngles( self.Portal:GetAngles( ) + ply:EyeAngles() - TargetPortal:GetAngles() )
+		local NewAngles = self.Portal:GetAngles( ) + ply:EyeAngles() - TargetPortal:GetAngles()
+		ply:SetEyeAngles( NewAngles )
 		
 		TargetPortal.Teleporter.InBoundTravelers[ ply ] = true
 		
-		local offset = self.Portal:GetPos( ) - ply:GetPos( )
+		local offset = Vector( self.Portal:GetPos( ).x - ply:GetPos( ).x, self.Portal:GetPos( ).y - ply:GetPos( ).y, 0 )
 		offset:Rotate( TargetPortal:GetAngles() - self.Portal:GetAngles( ) )
-		ply:SetPos( TargetPortal:GetPos( ) + offset )
+		ply:SetPos( TargetPortal:GetPos( ) + offset + Vector( 0, 0, ply:GetPos( ).z- self.Portal:GetPos( ).z ) )
 		
-		local vel = ply:GetVelocity( )
-		vel:Rotate( self.Portal:GetAngles( ) - TargetPortal:GetAngles() )
-		
-		local phys = ply:GetPhysicsObject( )
-		if ( IsValid( phys ) ) then
-			phys:SetVelocityInstantaneous( vel )
-		end
+		local velocity = ply:GetVelocity( )
+		ply:SetVelocity( NewAngles:Forward() * velocity:Length() -velocity ) -- Cancel stuff out
 	
 	end
 	
