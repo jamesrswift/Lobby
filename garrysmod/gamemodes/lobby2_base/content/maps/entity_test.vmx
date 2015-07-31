@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6620"
-	"mapversion" "10"
+	"mapversion" "11"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,7 +20,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "10"
+	"mapversion" "11"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -1096,7 +1096,7 @@ world
 		side
 		{
 			"id" "330"
-			"plane" "(-76 212 107.5) (-52 212 107.5) (-52 206 107.5)"
+			"plane" "(-48 218 107.5) (-72 218 107.5) (-72 224 107.5)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1107,7 +1107,7 @@ world
 		side
 		{
 			"id" "329"
-			"plane" "(-52 212 0.499962) (-76 212 0.499962) (-76 206 0.499962)"
+			"plane" "(-48 224 0.499962) (-72 224 0.499962) (-72 218 0.499962)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1118,7 +1118,7 @@ world
 		side
 		{
 			"id" "328"
-			"plane" "(-76 212 0.499981) (-52 212 0.499981) (-52 212 107.502)"
+			"plane" "(-72 224 0.499981) (-48 224 0.499981) (-48 224 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1129,7 +1129,7 @@ world
 		side
 		{
 			"id" "327"
-			"plane" "(-52 206 0.499981) (-76 206 0.499981) (-76 206 107.502)"
+			"plane" "(-48 218 0.499981) (-72 218 0.499981) (-72 218 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1140,7 +1140,7 @@ world
 		side
 		{
 			"id" "326"
-			"plane" "(-52 212 0.499981) (-52 206 0.499981) (-52 206 107.502)"
+			"plane" "(-48 224 0.499981) (-48 218 0.499981) (-48 218 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01B"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1151,7 +1151,7 @@ world
 		side
 		{
 			"id" "325"
-			"plane" "(-76 206 0.499981) (-76 212 0.499981) (-76 212 107.502)"
+			"plane" "(-72 218 0.499981) (-72 224 0.499981) (-72 224 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1172,7 +1172,7 @@ world
 		side
 		{
 			"id" "336"
-			"plane" "(-76 212 113) (-52 212 113) (-52 116 113)"
+			"plane" "(-48 128 113) (-72 128 113) (-72 224 113)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1183,7 +1183,7 @@ world
 		side
 		{
 			"id" "335"
-			"plane" "(-52 212 107) (-76 212 107) (-76 116 107)"
+			"plane" "(-48 224 107) (-72 224 107) (-72 128 107)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1194,7 +1194,7 @@ world
 		side
 		{
 			"id" "334"
-			"plane" "(-76 212 107) (-52 212 107) (-52 212 113)"
+			"plane" "(-72 224 107) (-48 224 107) (-48 224 113)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1205,7 +1205,7 @@ world
 		side
 		{
 			"id" "333"
-			"plane" "(-52 116 107) (-76 116 107) (-76 116 113)"
+			"plane" "(-48 128 107) (-72 128 107) (-72 128 113)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1216,7 +1216,7 @@ world
 		side
 		{
 			"id" "332"
-			"plane" "(-52 212 107) (-52 116 107) (-52 116 113)"
+			"plane" "(-48 224 107) (-48 128 107) (-48 128 113)"
 			"material" "DEV/DEV_MEASUREGENERIC01B"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1227,7 +1227,7 @@ world
 		side
 		{
 			"id" "331"
-			"plane" "(-76 116 107) (-76 212 107) (-76 212 113)"
+			"plane" "(-72 128 107) (-72 224 107) (-72 224 113)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1248,7 +1248,7 @@ world
 		side
 		{
 			"id" "342"
-			"plane" "(-76 122 107.5) (-52 122 107.5) (-52 116 107.5)"
+			"plane" "(-48 128 107.5) (-72 128 107.5) (-72 134 107.5)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1259,7 +1259,7 @@ world
 		side
 		{
 			"id" "341"
-			"plane" "(-52 122 0.499962) (-76 122 0.499962) (-76 116 0.499962)"
+			"plane" "(-48 134 0.499962) (-72 134 0.499962) (-72 128 0.499962)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1270,7 +1270,7 @@ world
 		side
 		{
 			"id" "340"
-			"plane" "(-76 122 0.499981) (-52 122 0.499981) (-52 122 107.502)"
+			"plane" "(-72 134 0.499981) (-48 134 0.499981) (-48 134 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1281,7 +1281,7 @@ world
 		side
 		{
 			"id" "339"
-			"plane" "(-52 116 0.499981) (-76 116 0.499981) (-76 116 107.502)"
+			"plane" "(-48 128 0.499981) (-72 128 0.499981) (-72 128 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1292,7 +1292,7 @@ world
 		side
 		{
 			"id" "338"
-			"plane" "(-52 122 0.499981) (-52 116 0.499981) (-52 116 107.502)"
+			"plane" "(-48 134 0.499981) (-48 128 0.499981) (-48 128 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01B"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1303,7 +1303,7 @@ world
 		side
 		{
 			"id" "337"
-			"plane" "(-76 116 0.499981) (-76 122 0.499981) (-76 122 107.502)"
+			"plane" "(-72 128 0.499981) (-72 134 0.499981) (-72 134 107.502)"
 			"material" "DEV/DEV_MEASUREGENERIC01"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1802,7 +1802,7 @@ entity
 	"angles" "0 0 0"
 	"target" "Portal 1"
 	"targetname" "Portal 2"
-	"origin" "-64 164 1"
+	"origin" "-60 176 1"
 	editor
 	{
 		"color" "220 30 220"
@@ -1815,7 +1815,7 @@ entity
 {
 	"id" "368"
 	"classname" "lobby_portal_teleporter"
-	"origin" "-63.5 164 53.5"
+	"origin" "-59.5 176 53.5"
 	"portal" "Portal 2"
 	"spawnflags" "1"
 	"StartDisabled" "0"
@@ -1825,7 +1825,7 @@ entity
 		side
 		{
 			"id" "348"
-			"plane" "(-68 122 107) (-68 206 107) (-59 206 107)"
+			"plane" "(-64 134 107) (-64 218 107) (-55 218 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1836,7 +1836,7 @@ entity
 		side
 		{
 			"id" "347"
-			"plane" "(-68 206 0) (-68 122 0) (-59 122 0)"
+			"plane" "(-64 218 0) (-64 134 0) (-55 134 0)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -1847,7 +1847,7 @@ entity
 		side
 		{
 			"id" "346"
-			"plane" "(-68 122 0) (-68 206 0) (-68 206 107)"
+			"plane" "(-64 134 0) (-64 218 0) (-64 218 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1858,7 +1858,7 @@ entity
 		side
 		{
 			"id" "345"
-			"plane" "(-59 206 0) (-59 122 0) (-59 122 107)"
+			"plane" "(-55 218 0) (-55 134 0) (-55 134 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1869,7 +1869,7 @@ entity
 		side
 		{
 			"id" "344"
-			"plane" "(-68 206 0) (-59 206 0) (-59 206 107)"
+			"plane" "(-64 218 0) (-55 218 0) (-55 218 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -1880,7 +1880,7 @@ entity
 		side
 		{
 			"id" "343"
-			"plane" "(-59 122 0) (-68 122 0) (-68 122 107)"
+			"plane" "(-55 134 0) (-64 134 0) (-64 134 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"

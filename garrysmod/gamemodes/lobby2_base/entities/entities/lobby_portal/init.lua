@@ -57,6 +57,8 @@ net.Receive( "lobby_portal_request_info", function( len, ply )
 	net.Start( "lobby_portal_request_info" )
 		net.WriteEntity( Ent )
 		net.WriteEntity( Ent.TargetPortal )
+		net.WriteVector( Ent.TargetPortal:GetPos( ) )
+		net.WriteAngle( Ent.TargetPortal:GetAngles( ) )
 	net.Send( ply )
 
 end)

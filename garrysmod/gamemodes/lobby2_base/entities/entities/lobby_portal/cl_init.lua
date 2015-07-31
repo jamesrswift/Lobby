@@ -30,11 +30,11 @@ function ENT:Initialize( )
 	self:DrawShadow( false )
 	self.LastRender = 0
 	
-	net.Start( "lobby_portal_request_info" )
-		net.WriteEntity( self )
-	net.SendToServer( )
+	self:RequestInformation( )
 	
 	self.TargetPortal = NULL
+	self.TargetPos = Vector( 0, 0, 0 )
+	self.TargetAngles = Angle( 0, 0, 0 )
 	
 end
 
@@ -44,12 +44,36 @@ function ENT:GetTarget( )
 	
 end
 
+function ENT:GetInterimInformation( )
+
+	return self.TargetPos, self.TargetAngles
+	
+end
+
+function ENT:RequestInformation( )
+
+	net.Start( "lobby_portal_request_info" )
+		net.WriteEntity( self )
+	net.SendToServer( )
+
+end
+
 local function IsInFront( posA, posB, normal )
 	
-        local Vec1 = ( posB - posA ):GetNormalized()
+	local Vec1 = ( posB - posA ):GetNormalized()
 	
-        return ( normal:Dot( Vec1 ) < 0 )
+	return ( normal:Dot( Vec1 ) < 0 )
 	
+end
+
+function ENT:Think( )
+
+	if ( not IsValid( self.Target ) ) then
+		
+		--self:RequestInformation( )
+		
+	end
+
 end
  
 function ENT:Draw()
@@ -89,43 +113,36 @@ function ENT:RenderPortal( )
 	if ( not LocalPlayer() ) then return end
 	if ( PortalRecursion >= MaxRecursion ) then return end
 	
-	--print( "called" )
-	
-	local Target = self:GetTarget( )
-	if ( IsValid( Target ) ) then
-	
-		--print( "called 2" )
+	local pos, ang = self:GetInterimInformation( )
 
-		PortalRecursion = PortalRecursion + 1
+	PortalRecursion = PortalRecursion + 1
 
-		local oldrt = render.GetRenderTarget( )
-		render.SetRenderTarget( self.RenderTarget )
-			
-			render.Clear( 0, 0, 0, 255 )
-			render.ClearDepth()
-			render.ClearStencil()
-			
-			local v = self:GetPos() - LocalPlayer():EyePos()
-			v:Rotate( -Target:GetAngles() + self:GetAngles() )
-			render.RenderView({
-				origin = Target:GetPos( ) - v,
-				angles = -Target:GetAngles() + self:GetAngles() + LocalPlayer():EyeAngles() + LocalPlayer():GetViewPunchAngles(),
-				x = 0,
-				y = 0,
-				w = ScrW( ),
-				h = ScrH( ),
-				dopostprocess = false,
-				drawhud = false,
-				drawmonitors = false,
-				drawviewmodel = false,
-				ortho = false
-			})
-			
-			render.UpdateScreenEffectTexture()
+	local oldrt = render.GetRenderTarget( )
+	render.SetRenderTarget( self.RenderTarget )
+		
+		render.Clear( 0, 0, 0, 255 )
+		render.ClearDepth()
+		render.ClearStencil()
+		
+		local v = self:GetPos() - LocalPlayer():EyePos()
+		v:Rotate( -ang + self:GetAngles() )
+		render.RenderView({
+			origin = pos - v,
+			angles = -ang + self:GetAngles() + LocalPlayer():EyeAngles() + LocalPlayer():GetViewPunchAngles(),
+			x = 0,
+			y = 0,
+			w = ScrW( ),
+			h = ScrH( ),
+			dopostprocess = false,
+			drawhud = false,
+			drawmonitors = false,
+			drawviewmodel = false,
+			ortho = false
+		})
+		
+		render.UpdateScreenEffectTexture()
 
-		render.SetRenderTarget( oldrt )
-	
-	end
+	render.SetRenderTarget( oldrt )
 	
 	PortalRecursion = PortalRecursion - 1
 
@@ -172,8 +189,20 @@ net.Receive( "lobby_portal_request_info", function( len, ply )
 	local Ent = net.ReadEntity( )
 	local Target = net.ReadEntity( )
 	
+	local pos = net.ReadVector( )
+	local ang = net.ReadAngle( )
+	
 	if ( IsValid( Ent ) and IsValid( Target ) ) then
 		Ent.TargetPortal = Target
+		Ent.TargetPos = Target:GetPos( )
+		Ent.TargetAngles = Target:GetAngles( )
+		
+	else
+	
+		Ent.TargetPortal = NULL
+		Ent.TargetPos = pos
+		Ent.TargetAngles = ang
+	
 	end
 
 end)
