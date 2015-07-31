@@ -24,7 +24,7 @@ function GM:CreateFonts( )
 	
 	surface.CreateFont( "LobbyChat", {
 		font = "Roboto Bold",
-		size = 14,
+		size = 16,
 		weight = 500,
 		blursize = 0,
 		antialias = true

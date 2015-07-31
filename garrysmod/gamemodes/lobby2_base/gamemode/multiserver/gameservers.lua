@@ -46,8 +46,6 @@ function GM.Multiserver.GameServers.LoadGames( )
 
 	local games = file.Find( GM.Multiserver.GameServers.GamesDir .. "*", "LUA" )
 	
-	PrintTable( games )
-	
 	for _, gamefile in pairs( games ) do
 	
 		GAME = { }

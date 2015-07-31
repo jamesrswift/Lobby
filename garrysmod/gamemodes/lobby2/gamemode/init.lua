@@ -12,11 +12,7 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Name					= "lobby2_base"
-GM.Author				= "James Swift"
-GM.Email				= "n/a"
-GM.Website				= ""
-GM.AllowDownload			= false
-GM.RemoveDefaultHUD			= false
+include( "shared.lua")
 
-GM.ServerID				= 0
+AddCSLuaFile( "shared.lua" )
+AddCSLuaFile( "cl_init.lua" )

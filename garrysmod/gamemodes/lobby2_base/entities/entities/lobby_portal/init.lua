@@ -62,3 +62,12 @@ net.Receive( "lobby_portal_request_info", function( len, ply )
 	net.Send( ply )
 
 end)
+
+hook.Add( "SetupPlayerVisibility", "mySetupVis", function( ply, viewent )
+
+	for k, v in ipairs( ents.FindByClass( "lobby_portal" ) ) do
+		AddOriginToPVS( v:GetPos() ) --Add each portal to the players PVS. This is because they are sometimes rendering remote positions.
+	end
+	
+end )
+

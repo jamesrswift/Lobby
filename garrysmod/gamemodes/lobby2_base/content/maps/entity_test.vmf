@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "6620"
-	"mapversion" "12"
+	"mapversion" "13"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,7 +20,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "12"
+	"mapversion" "13"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -2543,7 +2543,7 @@ entity
 {
 	"id" "368"
 	"classname" "lobby_portal_teleporter"
-	"origin" "-59.5 176 53.5"
+	"origin" "-52 176 53.5"
 	"portal" "Portal 2"
 	"spawnflags" "1"
 	"StartDisabled" "0"
@@ -2553,7 +2553,7 @@ entity
 		side
 		{
 			"id" "348"
-			"plane" "(-64 134 107) (-64 218 107) (-55 218 107)"
+			"plane" "(-56 134 107) (-56 218 107) (-48 218 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -2564,7 +2564,7 @@ entity
 		side
 		{
 			"id" "347"
-			"plane" "(-64 218 0) (-64 134 0) (-55 134 0)"
+			"plane" "(-56 218 0) (-56 134 0) (-48 134 0)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -2575,7 +2575,7 @@ entity
 		side
 		{
 			"id" "346"
-			"plane" "(-64 134 0) (-64 218 0) (-64 218 107)"
+			"plane" "(-56 134 0) (-56 218 0) (-56 218 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -2586,7 +2586,7 @@ entity
 		side
 		{
 			"id" "345"
-			"plane" "(-55 218 0) (-55 134 0) (-55 134 107)"
+			"plane" "(-48 218 0) (-48 134 0) (-48 134 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -2597,7 +2597,7 @@ entity
 		side
 		{
 			"id" "344"
-			"plane" "(-64 218 0) (-55 218 0) (-55 218 107)"
+			"plane" "(-56 218 0) (-48 218 0) (-48 218 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -2608,7 +2608,7 @@ entity
 		side
 		{
 			"id" "343"
-			"plane" "(-55 134 0) (-64 134 0) (-64 134 107)"
+			"plane" "(-48 134 0) (-56 134 0) (-56 134 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -3019,7 +3019,7 @@ entity
 {
 	"id" "494"
 	"classname" "lobby_portal_teleporter"
-	"origin" "1012 -99.5 53.5"
+	"origin" "1012 -92 53.5"
 	"portal" "Portal 1"
 	"spawnflags" "1"
 	"StartDisabled" "0"
@@ -3029,7 +3029,7 @@ entity
 		side
 		{
 			"id" "594"
-			"plane" "(970 -104 107) (970 -95 107) (1054 -95 107)"
+			"plane" "(970 -96 107) (970 -88 107) (1054 -88 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -3040,7 +3040,7 @@ entity
 		side
 		{
 			"id" "593"
-			"plane" "(970 -95 0) (970 -104 0) (1054 -104 0)"
+			"plane" "(970 -88 0) (970 -96 0) (1054 -96 0)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
@@ -3051,7 +3051,7 @@ entity
 		side
 		{
 			"id" "592"
-			"plane" "(970 -104 0) (970 -95 0) (970 -95 107)"
+			"plane" "(970 -96 0) (970 -88 0) (970 -88 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -3062,7 +3062,7 @@ entity
 		side
 		{
 			"id" "591"
-			"plane" "(1054 -95 0) (1054 -104 0) (1054 -104 107)"
+			"plane" "(1054 -88 0) (1054 -96 0) (1054 -96 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -3073,7 +3073,7 @@ entity
 		side
 		{
 			"id" "590"
-			"plane" "(970 -95 0) (1054 -95 0) (1054 -95 107)"
+			"plane" "(970 -88 0) (1054 -88 0) (1054 -88 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
@@ -3084,7 +3084,7 @@ entity
 		side
 		{
 			"id" "589"
-			"plane" "(1054 -104 0) (970 -104 0) (970 -104 107)"
+			"plane" "(1054 -96 0) (970 -96 0) (970 -96 107)"
 			"material" "TOOLS/TOOLSTRIGGER"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"

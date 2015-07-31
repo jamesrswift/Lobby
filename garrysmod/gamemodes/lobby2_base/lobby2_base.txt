@@ -2,6 +2,6 @@
 {
 	"base"		"Base"
 	"title"		"lobby2_base"
-	"maps"		"^lobby_"
-	"menusystem"	"1"
+	"maps"		"^lobby2_"
+	"menusystem"	"0"
 }
