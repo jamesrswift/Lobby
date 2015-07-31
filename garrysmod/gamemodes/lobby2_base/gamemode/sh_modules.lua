@@ -36,8 +36,8 @@ function GM.Modules.LoadModule( name )
 		
 	end
 	
-	if ( Module.Initialize ) then
-		Module:Initialize( )
+	if ( Module.InitializeModule ) then
+		Module:InitializeModule( )
 	end
 
 	if !GM.Modules.LoadedModules[ name ] then
@@ -51,6 +51,7 @@ function GM.Modules.LoadModule( name )
 	if ( SERVER ) then
 		GM:Print( "Module Loaded: %s", name)
 	end
+	
 end
 
 function GM.Modules.ManageHooks( Module, name )
@@ -156,6 +157,7 @@ function GM.Modules.ManageResources( path, config )
 end
 
 function GM:LoadModules( list )
+
 	if ( SERVER ) then
 		self:Print( "Loading Modules ... " )
 	end
@@ -163,12 +165,17 @@ function GM:LoadModules( list )
 	for _, name in pairs( list ) do
 		self.Modules.LoadModule( name )
 	end
+	
 end
 
 function GM:GetModules( )
+
 	return self.Modules.LoadedModules
+	
 end
 
 function GM.Modules.ModuleIsLoaded( Name )
+
 	return ( gmod.GetGamemode().Modules.LoadedModules[Name] != nil )
+	
 end

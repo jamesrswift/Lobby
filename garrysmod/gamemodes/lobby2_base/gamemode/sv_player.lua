@@ -33,7 +33,7 @@ end
 
 function GM:PlayerSpray( Pl )
 
-	return ( not Pl:IsAdmin( ) )
+	return ( not Pl:IsRespected( ) )
 
 end
 
@@ -73,4 +73,12 @@ function GM:PhysgunPickup( Pl, ent )
 		return true
 	end
 	
+end
+
+function GM:ShowTeam( ply )
+
+	if ( !GAMEMODE.TeamBased ) then return end
+	
+	-- I'll figure out what to put here soon enough
+
 end

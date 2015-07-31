@@ -29,33 +29,43 @@ function GM.Usergroups.PlayerInformationLoaded( Pl )
 
 	local data = Pl:GetData( )
 	if ( data ) then
+		
 		if ( data.usergroup ) then
 			Pl:SetUserGroup( string.lower( data.usergroup ) )
 		else
 			Pl:SetUserGroup( "user" )
 		end
+		
 	else
+		
 		Pl:SetUserGroup( "user" )
+		
 	end
 
 end
 
-hook.Add( "PlayerInformationLoaded", "Usergroups", GM.Usergroups.PlayerInformationLoaded )
-
 function Meta:IsDeveloper( )
+	
 	return self:IsUserGroup( "developer" )
+	
 end
 
 function Meta:IsSuperAdmin( )
+	
 	return self:IsDeveloper() or self:IsUserGroup( "superadmin" )
+	
 end
 
 function Meta:IsAdmin( )
+	
 	return self:IsSuperAdmin() or self:IsUserGroup( "admin" )
+	
 end
 
 function Meta:IsRespected( )
+	
 	return self:IsAdmin() or self:IsUserGroup( "respected" )
+	
 end
 
 function Meta:GetDisplayTextColor( )
@@ -64,7 +74,9 @@ function Meta:GetDisplayTextColor( )
 
 	local Colors = GM.Usergroups.Colors
 	
-	if GM.TeamBased then return table.Copy(Colors.user) end
+	if GM.TeamBased then
+		return team.GetColor( self:Team() )
+	end
 
 	if self:GetNWBool( "bIsUndercover" ) then
 		return table.Copy(Colors.user)

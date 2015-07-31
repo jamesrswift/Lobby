@@ -44,6 +44,7 @@ function GM:LoadPlayerInformation( Pl )
 				
 				end
 				
+				self.Usergroups.PlayerInformationLoaded( Pl )
 				hook.Run( "PlayerInformationLoaded", Pl )
 				
 			else
