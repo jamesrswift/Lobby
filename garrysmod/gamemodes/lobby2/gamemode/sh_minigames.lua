@@ -12,48 +12,40 @@
 	
 -----------------------------------------------------------]]--
 
-local ENT = { }
+GM.Minigames = GM.Minigames or { }
+GM.Minigames.Registered = GM.Minigames.Registered or { }
+GM.Minigames.Directory = "lobby2/gamemode/minigames/"
+GM.Minigames.Mt = GM.Minigames.Mt or { }
 
-ENT.Type = "brush"
-ENT.Base = "base_brush"
+function GM.Minigames.Register( tbl )
 
-AccessorFunc( ENT, "m_LocationName", "Location", FORCE_STRING )
-
-function ENT:Initialize( )
-
-	self:SetTrigger( true )
+	if ( not tbl.Name ) then return end
 	
-	if ( not self:GetLocation() ) then
-		self:SetLocation( "Bad Value" )
+	GM.Minigames.Registered[ tbl.Name ] = tbl
+
+end
+
+function GM.Minigames.Load( )
+
+	local GM = GM or gmod.GetGamemode( )
+
+	local files = file.Find( GM.Minigames.Directory, "LUA" )
+	
+	for k,v in pairs( files ) do
+	
+		Minigame = { }
+		setmetatable( Minigame, { __index = GM.Minigames.Mt } )
+		
+		include( "minigames/" .. v )
+		
+		GM.Minigames.Register( Minigame )
+		Minigame = { }
+	
 	end
 
 end
 
-function ENT:KeyValue( key, value )
-	
-	if ( string.lower( key ) == "location" ) then
-		self:SetLocation( value )
-	end
-	
-end
+function GM.Minigames.OnLocationChange( Pl, OldLocation, NewLocation, lobby_location )
 
-function ENT:PassesTriggerFilters( ent )
-	
-	return IsValid( ent ) and ent:IsPlayer( )
-	
-end
-
-function ENT:StartTouch( ent )
-
-	if ( IsValid( ent ) and ent:IsPlayer( ) and ent:GetLocation( ) ~= self:GetLocation( ) ) then
-		
-		local oldlocation = ent:GetLocation( )
-		
-		ent:SetNWString( "sLocation", self:GetLocation() )
-		hook.Run( "OnPlayerLocationChange", ent, oldlocation, self:GetLocation(), self )
-		
-	end
 
 end
-
-scripted_ents.Register( ENT, "lobby_location" )

@@ -82,3 +82,9 @@ function GM:ShowTeam( ply )
 	-- I'll figure out what to put here soon enough
 
 end
+
+function GM:PlayerNoClip( Pl, bState )
+
+	return Pl:IsAdmin( )
+
+end
