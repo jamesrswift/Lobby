@@ -1,0 +1,13 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "lobby2\advert"
+	"$surfaceprop" "Concrete"
+	
+	Proxies
+	{
+		LobbyAdvert
+		{
+			"advert"	"1"
+		}
+	}
+}

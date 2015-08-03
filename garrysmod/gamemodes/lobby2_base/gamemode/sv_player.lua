@@ -40,6 +40,8 @@ end
 function GM:PlayerSpawn( Pl )
 
 	Pl:SetCollisionGroup( COLLISION_GROUP_DEBRIS_TRIGGER )
+	
+	hook.Run( "PlayerSetModel", Pl )
 
 end
 
@@ -86,5 +88,33 @@ end
 function GM:PlayerNoClip( Pl, bState )
 
 	return Pl:IsAdmin( )
+
+end
+
+function GM:PlayerSetModel( ply )
+
+	local model = ply:GetInfo( "cl_playermodel" )
+	local allow = hook.Run("AllowModel", ply, model, skin )
+	if ( not model or allow ~= true ) then
+		model, skin = "none", 0
+	end
+	
+	local modelname = player_manager.TranslatePlayerModel( model )
+	util.PrecacheModel( modelname )	
+	ply:SetModel( modelname )
+	
+	ply:SetPlayerColor( Vector(1,1,1) )
+
+	hook.Run("PlayerSetModelPost", ply, model, skin )
+	
+end
+
+function GM:AllowModel( Pl, Model, Skin )
+
+
+end
+
+function GM:PlayerSetModelPost( Pl, Model, Skin )
+
 
 end

@@ -53,6 +53,10 @@ function GM:OnPlayerChat( Pl, sText, bTeam, bDead )
 		
 		self.Chat.Chatbox:AppendLine( unpack( buffer ) )
 		
+		MsgC( Pl:GetDisplayTextColor( ), Pl:Nick( ), color_white, ": ", sText, "\n" )
+		
+		return true
+		
 	end
 
 end
@@ -74,5 +78,21 @@ function GM:FinishChat( )
 		self.Chat.Chatbox:Close()
 		
 	end
+
+end
+
+function chat.AddText( ... )
+
+	local buffer = { }
+
+	for k,v in ipairs( {...} ) do
+		if ( v.r ) then -- Color
+			table.insert( buffer, {Type="Color", Data=v} )
+		elseif ( type( v ) == "string" ) then
+			table.insert( buffer, {Type="Text", Data=v} )
+		end
+	end
+	
+	self.Chat.Chatbox:AppendLine( unpack( buffer ) )
 
 end

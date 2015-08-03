@@ -28,7 +28,8 @@ function GM:OnGamemodeLoaded( )
 	self:LoadModules({
 		"currency",
 		"scoreboard",
-		"location"	
+		"location",
+		"seats"
 	})
 
 end
