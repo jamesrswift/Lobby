@@ -14,3 +14,10 @@
 
 include( "shared.lua" )
 include( "cl_adverts.lua" )
+
+function GM:Think( )
+
+	self.BaseClass:Think( )
+	self.Adverts.Think( )
+
+end

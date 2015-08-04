@@ -65,7 +65,11 @@ function GM.MySQL.BuildQuery( Query, ... )
 	
 	-- Safe string
 	for k,v in pairs( {...} ) do
-		vararg[ k ] = tmysql.escape( tostring( v ) )
+		if ( type( v ) == "number" ) then
+			vararg[ k ] = tmysql.escape( tostring( v ) )
+		else
+			vararg[ k ] = v
+		end
 	end
 	
 	return string.format( Query, unpack( vararg ) )

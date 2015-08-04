@@ -29,7 +29,27 @@ function GM.Chat.Initialize( )
 
 end
 
+function GM:ChatText( index, name, text, type )
+
+	if ( type == "joinleave" ) then
+	
+		self.Chat.Chatbox:AppendLine( {Type = "Text", Data = text } )
+		
+	elseif ( type == "none" ) then
+	
+		self.Chat.Chatbox:AppendLine( {Type = "Text", Data = text } )
+	
+	end
+
+end
+
 function GM:OnPlayerChat( Pl, sText, bTeam, bDead )
+
+	if ( not IsValid( self.Chat.Chatbox ) ) then
+	
+		self.Chat.Initialize( )
+		
+	end
 
 	if ( IsValid( self.Chat.Chatbox ) ) then
 		
@@ -63,11 +83,19 @@ end
 
 function GM:StartChat( bTeam )
 
+	if ( not IsValid( self.Chat.Chatbox ) ) then
+	
+		self.Chat.Initialize( )
+		
+	end
+
 	if ( IsValid( self.Chat.Chatbox ) ) then
 		
 		self.Chat.Chatbox:Open()
 		
 	end
+	
+	return true
 
 end
 
