@@ -15,32 +15,25 @@
 GM.MySQL.Bans = GM.MySQL.Bans or {};
 
 function GM:LoadBans( )
-
-	local query = self.MySQL.BuildQuery( "SELECT * FROM gm_bans" )
 	
-	if ( query ) then
-		tmysql.query( query, function( results )
+	self.MySQL.SelectAll( "gm_bans", function( results )
+	
+		for k, ban in pairs( results ) do
+			
+			if ( ban.Start + ban.Length > os.time( ) ) then
 		
-			for k, ban in pairs( results ) do
-			
-				local start = tonumber( results[2] )
-				local length = tonumber( results[3] )
+				self.MySQL.Bans[ ban.SteamID64 ] = { 
+					start = ban.Start,
+					length = ban.Length,
+					reason = ban.Reason,
+					admin = ban.Admin64
+				}
 				
-				if ( start + length > os.time( ) ) then
-			
-					self.MySQL.Bans[ results[1] ] = { 
-						start = start,
-						length = length,
-						reason = results[4],
-						admin = results[5]
-					}
-					
-				end
-			
 			end
-			
-		end )
-	end
+		
+		end
+	
+	end)
 
 end
 
