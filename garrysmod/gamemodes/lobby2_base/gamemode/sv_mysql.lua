@@ -47,10 +47,13 @@ function GM:InitializeMySQL()
 	
 	if ( not self.MySQL.Database ) then
 		self:Print( "[MySQL] There was an error while connecting to the MySQL!" )
+		self:Log( "mysql", "There was an error while connecting to the MySQL!" )
 		return false
 	end
 	
 	self:Print( "[MySQL] Connected" )
+	self:Log( "mysql", "New Connection" )
+	
 	hook.Run( "MySQLConnected" )
 	
 	self:LoadBans( )

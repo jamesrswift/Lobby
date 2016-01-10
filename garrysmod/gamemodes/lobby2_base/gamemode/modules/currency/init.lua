@@ -54,8 +54,16 @@ end
 
 function PlayerMeta:TakeMoney( Amount )
 
-	self:GiveMoney( -Amount, true )
-	hook.Run( "OnTakeMoney", self, Amount )
+	if ( self:CanAfford( Amount ) ) then
+
+		self:GiveMoney( -Amount, true )
+		hook.Run( "OnTakeMoney", self, Amount )
+	
+		return true
+		
+	end
+	
+	return false
 	
 end
 

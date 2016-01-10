@@ -27,6 +27,7 @@ include( "sh_modules.lua" )
 include( "sh_usergroups.lua" )
 include( "sv_resources.lua" )
 include( "sv_player.lua" )
+include( "sv_admin.lua" )
 
 include( "multiserver/sv_server.lua" )
 include( "multiserver/sv_client.lua" )
