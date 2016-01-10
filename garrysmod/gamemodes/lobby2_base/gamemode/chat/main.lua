@@ -124,3 +124,14 @@ function chat.AddText( ... )
 	self.Chat.Chatbox:AppendLine( unpack( buffer ) )
 
 end
+
+function GM.Chat.PlayerChatPrintNMsg( len )
+
+	local str = net.ReadString( )
+	if ( str ) then
+		chat.AddText( color_white, str )
+	end
+
+end
+
+net.Receive( "lobby.chat.PlayerChatPrint", GM.Chat.PlayerChatPrintNMsg )

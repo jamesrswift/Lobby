@@ -75,9 +75,3 @@ function GM:Initialize()
 	self:SendResources( "resource" )
 
 end
-
-function GM:PlayerAuthed( Pl )
-
-	self:LoadPlayerInformation( Pl )
-
-end

@@ -12,6 +12,10 @@
 	
 -----------------------------------------------------------]]--
 
+util.AddNetworkString( "lobby.chat.PlayerChatPrint" )
+
+local Meta = FindMetaTable( "Player" )
+
 function GM:CheckPassword( steamid64, networkid, server_password, password, name )
 
 	local ban = self:IsPlayerBanned( steamid64 )
@@ -28,6 +32,22 @@ function GM:CheckPassword( steamid64, networkid, server_password, password, name
 	end
 
 	return true
+
+end
+
+function GM:PlayerAuthed( Pl )
+
+	self:LoadPlayerInformation( Pl )
+	local data = Pl:GetData( )
+	
+    if Pl.IsFullyAuthenticated and not Pl:IsFullyAuthenticated() then
+		Pl:ChatPrint( "Hey '%s' - Your SteamID wasn't fully authenticated, so your usergroup has not been set to '%s.'", Pl:Nick(), data.usergroup )
+		Pl:ChatPrint("Try restarting Steam.")
+		return
+    end
+
+	ply:SetUserGroup(SteamIDs[steamid].group)
+	ply:ChatPrint( "Hey '%s' - You're in the '%s' group on this server.", Pl:Nick(), data.usergroup )
 
 end
 
@@ -117,4 +137,16 @@ end
 function GM:PlayerSetModelPost( Pl, Model, Skin )
 
 
+end
+
+function Meta:ChatPrint( str, ... )
+
+	if ( str and string.len( str ) > 0 ) then
+	
+		net.Start( "lobby.chat.PlayerChatPrint" )
+		net.WriteString( string.format( str, ... ) )
+		net.Send( self )
+		
+	end
+	
 end
