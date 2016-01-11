@@ -103,6 +103,29 @@ function GM.MySQL.InitializeTable( tbl_name, schema_name )
 
 end
 
+function GM.MySQL.GetColumnInformationFromColumn( tbl_name, column_id )
+	
+	local GM = GM or gmod.GetGamemode( )
+	if ( not GM.MySQL.InformationSchema[ tbl_name ] ) then GM.MySQL.InitializeTable( tbl_name ) end
+	return GM.MySQL.InformationSchema[ tbl_name ][ column_id ]
+	
+end
+
+function GM.MySQL.GetColumnInformationFromColumnName( tbl_name, column_name )
+	
+	local GM = GM or gmod.GetGamemode( )
+	if ( not GM.MySQL.InformationSchema[ tbl_name ] ) then GM.MySQL.InitializeTable( tbl_name ) end
+	
+	for id, info in pairs( GM.MySQL.InformationSchema[ tbl_name ] ) do
+		if ( info[1] == column_name ) then
+			return info
+		end
+	end
+
+	return false
+
+end
+
 function GM.MySQL.SelectAll( tbl_name, callback, extra )
 
 	local GM = GM or gmod.GetGamemode( )
@@ -115,20 +138,57 @@ function GM.MySQL.SelectAll( tbl_name, callback, extra )
 
 			local result = { }
 			
-			for k,v in pairs( results ) do
+			for row,v in pairs( results ) do
 			
-				result[ k ] = { }
+				result[ row ] = { }
 				
-				for k2,v2 in pairs( v ) do
+				for column_id, data in pairs( v ) do
 					
-					if ( table.HasValue( {"integer", "int", "smallint", "tinyint", "mediumint", "bigint"}, GM.MySQL.InformationSchema[ tbl_name ][ k2 ][3] ) ) then
-						result[ k ][ GM.MySQL.InformationSchema[ tbl_name ][ k2 ][1] ] = tonumber(v2)
+					local info = GM.MySQL.GetColumnInformationFromColumn( tbl_name, column_id )
+					if ( table.HasValue( {"integer", "int", "smallint", "tinyint", "mediumint", "bigint"}, info[2] ) ) then
+						result[ row ][ info[1] ] = tonumber(data)
 					else
-						result[ k ][ GM.MySQL.InformationSchema[ tbl_name ][ k2 ][1] ] = v2
+						result[ row ][ info[1] ] = data
 					end
 				
 				end
 			
+			end
+			
+			callback( result, results )
+			
+		end)
+		
+	end
+
+end
+
+function GM.MySQL.Select( tbl_name, columns, callback, extra )
+
+	local GM = GM or gmod.GetGamemode( )
+	if ( not GM.MySQL.InformationSchema[ tbl_name ] ) then GM.MySQL.InitializeTable( tbl_name ) end
+	
+	local query = self.MySQL.BuildQuery( "SELECT " .. string.Implode( ", ", tmysql.escape( tostring(columns) ) .. " FROM %s " .. extra .. ";", tbl_name )
+	if ( query ) then
+	
+		tmysql.query( query, function( results )
+
+			local result = { }
+			
+			for row,v in pairs( results ) do
+				
+				result[ row ] = { }
+				
+				for column, column_name in pairs( columns ) do
+					
+					if ( table.HasValue( {"integer", "int", "smallint", "tinyint", "mediumint", "bigint"}, GM.MySQL.GetColumnInformationFromColumnName( tbl_name, column_name )[2] ) ) then
+						result[ row ][ column_name ] = tonumber(v2)
+					else
+						result[ row ][ column_name ] = v2
+					end
+				
+				end
+				
 			end
 			
 			callback( result, results )
