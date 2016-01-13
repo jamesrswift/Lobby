@@ -459,9 +459,9 @@ end
 
 function PANEL:Paint( w, h )
 
-	if not self.IsOpen then
-		DisableClipping( true )
-	end
+	--if not self.IsOpen then
+		--DisableClipping( true )
+	--end
 
 	for k, v in ipairs( self.Children ) do
 
@@ -469,7 +469,7 @@ function PANEL:Paint( w, h )
 
 	end
 
-	DisableClipping( false )
+	--DisableClipping( false )
 
 end
 

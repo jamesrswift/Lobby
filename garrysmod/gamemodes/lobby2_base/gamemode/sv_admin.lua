@@ -13,10 +13,19 @@
 -----------------------------------------------------------]]--
 
 GM.Admin = GM.Admin or { }
+GM.Admin.Commands = GM.Admin.Commands or { }
 
-function GM.Admin:RegisterCommand( name, callback )
+function GM.Admin:GetCommands( )
+
+	return self.Commands
+	
+end
+
+function GM.Admin:RegisterCommand( name, callback, args )
 
 	local GM = GM or gmod.GetGamemode( )
+	
+	self:GetCommands( )[name] = args
 
 	concommand.Add( name, function( Pl, cmd, args )
 	

@@ -84,7 +84,7 @@ function GM.MySQL.InitializeTable( tbl_name, schema_name )
 
 	local GM = GM or gmod.GetGamemode( )
 
-	local query = self.MySQL.BuildQuery( "SELECT COLUMN_NAME, ORDINAL_POSITION, DATA_TYPE FROM 'information_schema`.COLUMNS WHERE TABLE_NAME = %s AND TABLE_SCHEMA = %s;", tbl_name, schema_name or self.MySQL.NAME )
+	local query = GM.MySQL.BuildQuery( "SELECT COLUMN_NAME, ORDINAL_POSITION, DATA_TYPE FROM 'information_schema`.COLUMNS WHERE TABLE_NAME = %s AND TABLE_SCHEMA = %s;", tbl_name, schema_name or GM.MySQL.NAME )
 	if ( query ) then
 	
 		tmysql.query( query, function( results )
@@ -131,7 +131,7 @@ function GM.MySQL.SelectAll( tbl_name, callback, extra )
 	local GM = GM or gmod.GetGamemode( )
 	if ( not GM.MySQL.InformationSchema[ tbl_name ] ) then GM.MySQL.InitializeTable( tbl_name ) end
 	
-	local query = self.MySQL.BuildQuery( "SELECT * FROM %s " .. extra .. ";", tbl_name )
+	local query = GM.MySQL.BuildQuery( "SELECT * FROM %s " .. ( extra or "" ) .. ";", tbl_name )
 	if ( query ) then
 	
 		tmysql.query( query, function( results )
@@ -168,7 +168,7 @@ function GM.MySQL.Select( tbl_name, columns, callback, extra )
 	local GM = GM or gmod.GetGamemode( )
 	if ( not GM.MySQL.InformationSchema[ tbl_name ] ) then GM.MySQL.InitializeTable( tbl_name ) end
 	
-	local query = self.MySQL.BuildQuery( "SELECT " .. string.Implode( ", ", tmysql.escape( tostring(columns) ) .. " FROM %s " .. extra .. ";", tbl_name )
+	local query = GM.MySQL.BuildQuery( "SELECT " .. string.Implode( ", ", tmysql.escape( tostring(columns) ) ) .. " FROM %s " .. extra .. ";", tbl_name )
 	if ( query ) then
 	
 		tmysql.query( query, function( results )

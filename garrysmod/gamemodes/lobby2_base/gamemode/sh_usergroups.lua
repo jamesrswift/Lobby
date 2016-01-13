@@ -41,6 +41,22 @@ function GM.Usergroups.PlayerInformationLoaded( Pl )
 		Pl:SetUserGroup( "user" )
 		
 	end
+	
+	if ( SERVER ) then
+	
+		local data = Pl:GetData( )
+	
+		if Pl.IsFullyAuthenticated and not Pl:IsFullyAuthenticated() then
+			Pl:ChatPrint( "Hey '%s' - Your SteamID wasn't fully authenticated, so your usergroup has not been set to '%s.'", Pl:Nick(), data.usergroup )
+			Pl:ChatPrint( "Try restarting Steam." )
+			return
+		end
+
+		if ( data.usergroup ~= "user" ) then
+			Pl:ChatPrint( "Hey '%s' - You're in the '%s' group on this server.", Pl:Nick(), data.usergroup )
+		end
+	
+	end
 
 end
 

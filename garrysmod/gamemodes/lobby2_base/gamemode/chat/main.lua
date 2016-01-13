@@ -23,9 +23,15 @@ function GM.Chat.Initialize( )
 		GM.Chat.Chatbox = vgui.Create( "Chat_RichText" )
 		GM.Chat.Chatbox:SetPos( 50, ScrH() - 175 )
 		GM.Chat.Chatbox:SetSize( 400, 100 )
+		
+		-- Create chatbox textbox
+		
+		GM.Chat.TextBox = vgui.Create( "DTextEntry" )
+		GM.Chat.TextBox:SetPos( 50, ScrH() - 75 )
+		GM.Chat.TextBox:SetSize( 400, 20 )
+		GM.Chat.TextBox:SetVisible( false )
 	
 	end
-		
 
 end
 
@@ -92,9 +98,11 @@ function GM:StartChat( bTeam )
 	if ( IsValid( self.Chat.Chatbox ) ) then
 		
 		self.Chat.Chatbox:Open()
+		self.Chat.TextBox:SetVisible( true )
 		
 	end
 	
+	-- Hide default chatbox
 	return true
 
 end
@@ -104,6 +112,7 @@ function GM:FinishChat( )
 	if ( IsValid( self.Chat.Chatbox ) ) then
 		
 		self.Chat.Chatbox:Close()
+		self.Chat.TextBox:SetVisible( false )
 		
 	end
 
@@ -114,14 +123,14 @@ function chat.AddText( ... )
 	local buffer = { }
 
 	for k,v in ipairs( {...} ) do
-		if ( v.r ) then -- Color
+		if ( type(v) == "table" and v.r ) then -- Color
 			table.insert( buffer, {Type="Color", Data=v} )
 		elseif ( type( v ) == "string" ) then
 			table.insert( buffer, {Type="Text", Data=v} )
 		end
 	end
 	
-	self.Chat.Chatbox:AppendLine( unpack( buffer ) )
+	gmod.GetGamemode().Chat.Chatbox:AppendLine( unpack( buffer ) )
 
 end
 

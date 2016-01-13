@@ -38,16 +38,6 @@ end
 function GM:PlayerAuthed( Pl )
 
 	self:LoadPlayerInformation( Pl )
-	local data = Pl:GetData( )
-	
-	if Pl.IsFullyAuthenticated and not Pl:IsFullyAuthenticated() then
-		Pl:ChatPrint( "Hey '%s' - Your SteamID wasn't fully authenticated, so your usergroup has not been set to '%s.'", Pl:Nick(), data.usergroup )
-		Pl:ChatPrint("Try restarting Steam.")
-		return
-	end
-
-	ply:SetUserGroup(SteamIDs[steamid].group)
-	ply:ChatPrint( "Hey '%s' - You're in the '%s' group on this server.", Pl:Nick(), data.usergroup )
 
 end
 
