@@ -2,13 +2,14 @@
 
 ## To do list:
 - Apartments
-- Seats
 - Translation
 - HUD
 - Inventory
 - Achievements
 - Administration
 - player shit
+- Jukebox
+- Pets? (Things following you, maybe a melon pet)
 
 ## Doing
 - Scoreboard
@@ -22,3 +23,4 @@
 - Module system
 - Location
 - Currency
+- - Seats
