@@ -14,8 +14,19 @@
 
 GM.Inventory = GM.Inventory or { }
 GM.Inventory.Ghost = GM.Inventory.Ghost or { }
+GM.Inventory.Ghost.Offset = GM.Inventory.Ghost.Offset or Angle( 0, 0, 90 )
 
-function GM.Inventory.Ghost:MakeGhostEntity( model, pos, angle )
+function GM.Inventory.Ghost:Move( )
+
+	if ( input.WasMousePressed( MOUSE_WHEEL_UP ) ) then
+		self.Offset = self.Offset + Angle( 0, 15, 0 )
+	elseif ( input.WasMousePressed( MOUSE_WHEEL_DOWN ) ) then
+		self.Offset = self.Offset - Angle( 0, 15, 0 )
+	end
+
+end
+
+function GM.Inventory.Ghost:MakeGhostEntity( model )
 
 	util.PrecacheModel( model )
 	self:ReleaseGhostEntity()
@@ -32,8 +43,8 @@ function GM.Inventory.Ghost:MakeGhostEntity( model, pos, angle )
 	end
 	
 	self.GhostEntity:SetModel( model )
-	self.GhostEntity:SetPos( pos )
-	self.GhostEntity:SetAngles( angle )
+	self.GhostEntity:SetPos( Vector(0,0,0) )
+	self.GhostEntity:SetAngles( Angle(0,0,0) )
 	self.GhostEntity:Spawn()
 	
 	self.GhostEntity:SetSolid( SOLID_VPHYSICS );
@@ -48,7 +59,7 @@ end
 function GM.Inventory.Ghost:ReleaseGhostEntity()
 	
 	if ( self.GhostEntity ) then
-		if ( not self.GhostEntity:IsValid() ) then self.GhostEntity = nil return end
+		--if ( not self.GhostEntity:IsValid() ) then self.GhostEntity = nil return end
 		self.GhostEntity:Remove()
 		self.GhostEntity = nil
 	end
@@ -57,8 +68,8 @@ end
 
 function GM.Inventory.Ghost:UpdateGhostEntity()
 
-	if ( self.GhostEntity == nil ) then print("No Ghost") return end
-	if ( not self.GhostEntity:IsValid() ) then print("No valid Ghost") self.GhostEntity = nil return end
+	if ( self.GhostEntity == nil ) then return end
+	if ( not self.GhostEntity:IsValid() ) then self:ReleaseGhostEntity() return end
 	
 	local vStart = LocalPlayer():GetShootPos()
 	local vForward = LocalPlayer():GetAimVector()
@@ -70,10 +81,8 @@ function GM.Inventory.Ghost:UpdateGhostEntity()
 
 	local tr = util.TraceLine( trace )
 
-	local ang = LocalPlayer():EyeAngles()
-	ang.yaw = ang.yaw + 180 -- Rotate it 180 degrees in my favour
-	ang.roll = 0
-	ang.pitch = 0
+	local ang = tr.HitNormal:Angle()
+	ang:RotateAroundAxis( tr.HitNormal, self.Offset.y )
 	
 	self.GhostEntity:SetAngles( ang )
 	self.GhostEntity:SetPos( tr.HitPos )
@@ -129,7 +138,7 @@ function GM.Inventory.Ghost:CheckPenetration( )
 		local trace = {}
 		trace.start = self.GhostEntity:GetPos() + v[1]
 		trace.endpos = self.GhostEntity:GetPos() + v[2]
-		trace.filter = {"worldspawn"}
+		--trace.filter = {"worldspawn"}
 
 		local tr = util.TraceLine( trace )
 		
