@@ -120,6 +120,14 @@ end
 
 function chat.AddText( ... )
 
+	local GM = GM or gmod.GetGamemode( )
+
+	if ( not IsValid( GM.Chat.Chatbox ) ) then
+	
+		GM.Chat.Initialize( )
+		
+	end
+
 	local buffer = { }
 
 	for k,v in ipairs( {...} ) do
@@ -131,6 +139,7 @@ function chat.AddText( ... )
 	end
 	
 	gmod.GetGamemode().Chat.Chatbox:AppendLine( unpack( buffer ) )
+	MsgC( ... )
 
 end
 

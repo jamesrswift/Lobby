@@ -12,51 +12,52 @@
 	
 -----------------------------------------------------------]]--
 
-function GM:CreateFonts( )
+local Meta = FindMetaTable("Player")
 
-	surface.CreateFont( "LobbyNotification", {
-		font = "Roboto Bold",
-		size = 14,
-		weight = 500,
-		blursize = 0,
-		antialias = true,
-		additive = true
-	})
+function Meta:SpawnBall( Position )
+
+	if ( not IsValid(self) ) then return end
 	
-	surface.CreateFont( "LobbyChat", {
-		font = "Roboto Bold",
-		size = 16,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
+	self:KillBall()
+
+	self.Ball = ents.Create("lobby2_bounce_ball")
+	self.Ball:SetPos(Position or self:GetPos())
+	self.Ball:SetOwner(self)
+	self.Ball:Spawn()
+	self.Ball:Activate()
+	self.Ball:SetColor(Color(255, 255, 255, 0))
 	
-	surface.CreateFont( "LobbyTitle", {
-		font = "Pacifico",
-		size = 32,
-		weight = 300,
-		blursize = 0,
-		antialias = true
-	})
+	self:SpectateEntity(self.Ball)
+	self:CrosshairDisable()
+	self:SetBall( self.Ball )
+	
+	
+	self:SetColor( Color(255, 255, 255, 0) )
+	self:SetMoveType( MOVETYPE_OBSERVER )
+	self:Spectate( OBS_MODE_CHASE );
+	
+end
+
+function Meta:HasBall()
+
+	return IsValid( self.Ball )
+	
+end
+
+function Meta:SetBall( Ball )
+
+	self.Ball = Ball
+	self:SetNetworkedEntity("Ball", self.Ball)
 
 end
 
-matproxy.Add( {
-	name = "lobbyspherebot",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 0,0.8,1 ) )
-	end
-} )
+function Meta:BreakMelon()
 
-matproxy.Add( {
-	name = "lobbyspheretop",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 1,1,1 ) )
+	if ( self:HasMelon() ) then
+		
+		self.Melon:Break()
+		self.Melon = nil
+		
 	end
-} )
+	
+end

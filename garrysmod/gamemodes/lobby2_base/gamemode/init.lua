@@ -55,6 +55,8 @@ AddCSLuaFile( "chat/cl_icons.lua" )
 AddCSLuaFile( "cl_notification.lua" )
 AddCSLuaFile( "cl_fonts.lua" )
 
+AddCSLuaFile( "inventory/cl_ghost.lua" )
+
 AddCSLuaFile( "vgui/richtext_scrollbar.lua" )
 AddCSLuaFile( "vgui/richtext.lua" )
 AddCSLuaFile( "vgui/lobby_frame.lua" )

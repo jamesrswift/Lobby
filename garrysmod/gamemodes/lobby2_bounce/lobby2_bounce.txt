@@ -1,0 +1,7 @@
+"Gamemode"
+{
+	"base"		"lobby2_base"
+	"title"		"Lobby: Bounce"
+	"maps"		"^lobby2_bounce_"
+	"menusystem"	"1"
+}

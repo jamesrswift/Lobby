@@ -12,51 +12,23 @@
 	
 -----------------------------------------------------------]]--
 
-function GM:CreateFonts( )
+GM.Name					= "Lobby2: Bounce"
+GM.Author				= "James Swift"
+GM.Email				= "n/a"
+GM.Website				= ""
+GM.AllowDownload			= false
+GM.RemoveDefaultHUD			= false
 
-	surface.CreateFont( "LobbyNotification", {
-		font = "Roboto Bold",
-		size = 14,
-		weight = 500,
-		blursize = 0,
-		antialias = true,
-		additive = true
-	})
-	
-	surface.CreateFont( "LobbyChat", {
-		font = "Roboto Bold",
-		size = 16,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
-	
-	surface.CreateFont( "LobbyTitle", {
-		font = "Pacifico",
-		size = 32,
-		weight = 300,
-		blursize = 0,
-		antialias = true
+GM.ServerID				= 4
+
+DeriveGamemode( "lobby2_base" )
+
+function GM:OnGamemodeLoaded( )
+
+	self:LoadModules({
+		"currency",
+		"scoreboard",
+		"location"
 	})
 
 end
-
-matproxy.Add( {
-	name = "lobbyspherebot",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 0,0.8,1 ) )
-	end
-} )
-
-matproxy.Add( {
-	name = "lobbyspheretop",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 1,1,1 ) )
-	end
-} )

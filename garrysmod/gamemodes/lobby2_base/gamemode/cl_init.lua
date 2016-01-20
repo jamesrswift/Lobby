@@ -24,6 +24,8 @@ include( "chat/main.lua" )
 include( "chat/cl_smilies.lua" )
 include( "chat/cl_icons.lua" )
 
+include( "inventory/cl_ghost.lua" )
+
 include( "vgui/richtext_scrollbar.lua" )
 include( "vgui/richtext.lua" )
 include( "vgui/lobby_frame.lua" )
@@ -41,5 +43,6 @@ end
 function GM:Think( )
 
 	self.Notification.Think( )
+	self.Inventory.Ghost:UpdateGhostEntity()
 
 end
