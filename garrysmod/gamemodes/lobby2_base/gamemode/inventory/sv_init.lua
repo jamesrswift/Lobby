@@ -12,46 +12,29 @@
 	
 -----------------------------------------------------------]]--
 
-include( "extensions/utf8.lua" )
+GM.Inventory = GM.Inventory or { }
 
-include( "sh_util.lua" )
-include( "cl_notification.lua" )
-include( "cl_fonts.lua" )
-include( "sh_modules.lua" )
-include( "sh_usergroups.lua" )
+include( "sv_player.lua" )
+include( "sh_item.lua" )
+include( "sh_shops.lua" )
 
-include( "chat/main.lua" )
-include( "chat/cl_smilies.lua" )
-include( "chat/cl_icons.lua" )
+AddCSLuaFile( "cl_ghost.lua" )
+AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "cl_player.lua" )
+AddCSLuaFile( "sh_shops.lua" )
+AddCSLuaFile( "sh_item.lua" )
 
-include( "inventory/cl_init.lua" )
+AddCSLuaFile( "vgui/inventory.lua" )
+AddCSLuaFile( "vgui/inventory_item.lua" )
+AddCSLuaFile( "vgui/hateditor_modelviewer.lua" )
+AddCSLuaFile( "vgui/hateditor.lua" )
 
-include( "vgui/richtext_scrollbar.lua" )
-include( "vgui/richtext.lua" )
-include( "vgui/lobby_frame.lua" )
-include( "vgui/lobby_notification.lua" )
+util.AddNetworkString("Lobby.InventoryClientReady");
+util.AddNetworkString("Lobby.UpdateInventory");
+util.AddNetworkString("Lobby.UpdateOtherClientsInventory");
+util.AddNetworkString("Lobby.ItemSwitch");
 
-include( "shared.lua" )
 
-function GM:Initialize( )
-	
-	self:CreateFonts( )
-	self.Chat.Initialize( )
+net.Receive("Lobby.InventoryClientReady", function(len,pl) pl:InitItems() end)
 
-end
-
-function GM:Think( )
-
-	self.Notification.Think( )
-	self.Inventory:Think( )
-
-end
-
-function GM:CreateMove( cmd )
-
-	self.Inventory.Ghost:Move( cmd )
-	
-	if ( drive.CreateMove( cmd ) ) then return true end
-	if ( player_manager.RunClass( LocalPlayer(), "CreateMove", cmd ) ) then return true end
-
-end
+net.Receive("Lobby.ItemSwitch", function(len,pl) pl:MoveItemToSlot( net.ReadInt(8), net.ReadInt(8) ) end)

@@ -36,6 +36,8 @@ include( "multiserver/sv_coms.lua" )
 include( "multiserver/gameservers.lua" )
 include( "multiserver/methods/cat.lua" )
 
+include( "inventory/sv_init.lua" )
+
 include( "shared.lua" )
 
 --[[--------------------------------
@@ -55,7 +57,7 @@ AddCSLuaFile( "chat/cl_icons.lua" )
 AddCSLuaFile( "cl_notification.lua" )
 AddCSLuaFile( "cl_fonts.lua" )
 
-AddCSLuaFile( "inventory/cl_ghost.lua" )
+AddCSLuaFile( "inventory/cl_init.lua" )
 
 AddCSLuaFile( "vgui/richtext_scrollbar.lua" )
 AddCSLuaFile( "vgui/richtext.lua" )

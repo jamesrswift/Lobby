@@ -98,7 +98,7 @@ function Meta:SaveData( )
 	local data = self:GetData( )
 
 	local query = self.MySQL.BuildQuery( "REPLACE INTO gm_users ( SteamID64, Money, Usergroup, Inventory, Achievements ) Values ( '%s', %i, '%s', '%s', '%s' )",
-		self:SteamID64() or 0, data.money, self.usergroup, data.inventory, data.achievements )
+		self:SteamID64() or 0, data.money, self.usergroup, util.TableToJSON( data.inventory ), util.TableToJSON( data.achievements ) )
 
 	if ( query ) then
 		tmysql.query( query, function( results )

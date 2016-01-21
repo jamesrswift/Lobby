@@ -1,57 +1,46 @@
 --[[-----------------------------------------------------------
-
 	██╗      ██████╗ ██████╗ ██████╗ ██╗   ██╗    ██████╗ 
 	██║     ██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝    ╚════██╗
 	██║     ██║   ██║██████╔╝██████╔╝ ╚████╔╝      █████╔╝
 	██║     ██║   ██║██╔══██╗██╔══██╗  ╚██╔╝      ██╔═══╝ 
 	███████╗╚██████╔╝██████╔╝██████╔╝   ██║       ███████╗
 	╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝       ╚══════╝
-
 	
 	Copyright (c) James Swift, 2015
 	
 -----------------------------------------------------------]]--
 
-include( "extensions/utf8.lua" )
+AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "shared.lua" )
+ 
+include('shared.lua')
 
-include( "sh_util.lua" )
-include( "cl_notification.lua" )
-include( "cl_fonts.lua" )
-include( "sh_modules.lua" )
-include( "sh_usergroups.lua" )
+ENT.Item = "none"
 
-include( "chat/main.lua" )
-include( "chat/cl_smilies.lua" )
-include( "chat/cl_icons.lua" )
-
-include( "inventory/cl_init.lua" )
-
-include( "vgui/richtext_scrollbar.lua" )
-include( "vgui/richtext.lua" )
-include( "vgui/lobby_frame.lua" )
-include( "vgui/lobby_notification.lua" )
-
-include( "shared.lua" )
-
-function GM:Initialize( )
+function ENT:Initialize()
 	
-	self:CreateFonts( )
-	self.Chat.Initialize( )
+	
+	
 
 end
 
-function GM:Think( )
+function ENT:SetOwner( Pl )
 
-	self.Notification.Think( )
-	self.Inventory:Think( )
-
+	if ( IsValid(Pl) and Pl:IsPlayer() ) then
+	
+		self:SetNWEntity( "owner", Pl )
+		
+	end
+	
 end
 
-function GM:CreateMove( cmd )
+function ENT:Pickup( Pl )
 
-	self.Inventory.Ghost:Move( cmd )
-	
-	if ( drive.CreateMove( cmd ) ) then return true end
-	if ( player_manager.RunClass( LocalPlayer(), "CreateMove", cmd ) ) then return true end
+	if ( self:CanPickup( Pl ) ) then
+
+		Pl:GiveItem( self.Item )
+		self:Remove( )
+		
+	end
 
 end
