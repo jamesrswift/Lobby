@@ -28,10 +28,13 @@ include( "inventory/cl_init.lua" )
 
 include( "vgui/richtext_scrollbar.lua" )
 include( "vgui/richtext.lua" )
+include( "vgui/lobby_chatbox.lua" )
 include( "vgui/lobby_frame.lua" )
 include( "vgui/lobby_notification.lua" )
 
 include( "shared.lua" )
+
+GM.HideElements = { }
 
 function GM:Initialize( )
 	
@@ -54,4 +57,10 @@ function GM:CreateMove( cmd )
 	if ( drive.CreateMove( cmd ) ) then return true end
 	if ( player_manager.RunClass( LocalPlayer(), "CreateMove", cmd ) ) then return true end
 
+end
+
+function GM:HUDShouldDraw( name )
+
+	return not table.HasValue( self.HideElements, name )
+	
 end

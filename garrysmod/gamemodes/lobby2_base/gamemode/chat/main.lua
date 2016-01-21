@@ -18,18 +18,13 @@ function GM.Chat.Initialize( )
 
 	local GM = GM or gmod.GetGamemode( )
 
-	if ( not GM.Chat.Chatbox ) then
+	if ( not GM.Chat.ChatboxVGUI ) then
 	
-		GM.Chat.Chatbox = vgui.Create( "Chat_RichText" )
-		GM.Chat.Chatbox:SetPos( 50, ScrH() - 175 )
-		GM.Chat.Chatbox:SetSize( 400, 100 )
-		
-		-- Create chatbox textbox
-		
-		GM.Chat.TextBox = vgui.Create( "DTextEntry" )
-		GM.Chat.TextBox:SetPos( 50, ScrH() - 75 )
-		GM.Chat.TextBox:SetSize( 400, 20 )
-		GM.Chat.TextBox:SetVisible( false )
+		GM.Chat.ChatboxVGUI = vgui.Create( "lobby_chatbox" )
+		GM.Chat.ChatboxVGUI:SetPos( 50, ScrH() - 225 )
+		GM.Chat.ChatboxVGUI:SetSize( 400, 150 )
+	
+		GM.Chat.Chatbox = GM.Chat.ChatboxVGUI.Chatbox
 	
 	end
 
@@ -89,16 +84,21 @@ end
 
 function GM:StartChat( bTeam )
 
-	if ( not IsValid( self.Chat.Chatbox ) ) then
+	if ( not IsValid( self.Chat.ChatboxVGUI ) ) then
 	
 		self.Chat.Initialize( )
 		
 	end
 
-	if ( IsValid( self.Chat.Chatbox ) ) then
+	if ( IsValid( self.Chat.ChatboxVGUI ) ) then
 		
-		self.Chat.Chatbox:Open()
-		self.Chat.TextBox:SetVisible( true )
+		self.Chat.ChatboxVGUI:SetDisplayed( true )
+		self.Chat.Chatbox:Open( )
+		
+		
+		-- The following doesn't work, TODO
+		--[[self.Chat.ChatboxVGUI:MakePopup( )
+		self.Chat.ChatboxVGUI.TextBox:RequestFocus( )--]]
 		
 	end
 	
@@ -112,7 +112,7 @@ function GM:FinishChat( )
 	if ( IsValid( self.Chat.Chatbox ) ) then
 		
 		self.Chat.Chatbox:Close()
-		self.Chat.TextBox:SetVisible( false )
+		self.Chat.ChatboxVGUI:SetDisplayed( false )
 		
 	end
 
@@ -139,7 +139,7 @@ function chat.AddText( ... )
 	end
 	
 	gmod.GetGamemode().Chat.Chatbox:AppendLine( unpack( buffer ) )
-	MsgC( ... )
+	MsgC( ..., "\n" )
 
 end
 

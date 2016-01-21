@@ -15,52 +15,52 @@
 GM.MySQL.PlayerData = GM.MySQL.PlayerData or {};
 
 function GM:LoadPlayerInformation( Pl )
-
-	local query = self.MySQL.BuildQuery( "SELECT * FROM gm_users WHERE SteamID64 = %s LIMIT 1", Pl:SteamID64() or 0 )
-
-	if ( query ) then
-		tmysql.query( query, function( results )
+	
+	self.MySQL.SelectAll( "gm_users", function( results )
 		
-			if ( IsValid( Pl ) ) then
+		if ( IsValid( Pl ) ) then
 			
-				local data = Pl:GetData()
-			
-				if ( results[1] ) then
-					
-					data.money = results[1][2]
-					data.usergroup = results[1][3]
-					
-					if ( string.len( results[1][4] ) > 0 ) then
-						data.inventory = util.JSONToTable( results[1][4] )
-					else
-						data.inventory = { }
-					end
-					
-					if ( string.len( results[1][5] ) > 0 ) then
-						data.achievements = util.JSONToTable( results[1][5] )
-					else
-						data.achievements = { }
-					end
+			local data = Pl:GetData()
+		
+			if ( results[1] ) then
 				
+				data.money = results[1].Money
+				data.usergroup = results[1].Usergroup or "user"
+				
+				if ( string.len( results[1].Inventory ) > 0 ) then
+					data.inventory = util.JSONToTable( results[1].Inventory )
 				else
-				
-					data.money = 0
-					data.usergroup = "user"
 					data.inventory = { }
-					data.achievements = { }
-				
 				end
 				
-				self.Usergroups.PlayerInformationLoaded( Pl )
-				hook.Run( "PlayerInformationLoaded", Pl )
+				if ( string.len( results[1].Achievements ) > 0 ) then
+					data.achievements = util.JSONToTable( results[1].Achievements  )
+				else
+					data.achievements = { }
+				end
 				
+				data.model = results[1].Model or "kleiner"
+			
 			else
 			
-				self:Print( "[MySQL] There was an error while loading player information!" );
-				
+				data.money = 0
+				data.usergroup = "user"
+				data.inventory = { }
+				data.achievements = { }
+				data.model = "kleiner"
+			
 			end
-		end )
-	end
+			
+			self.Usergroups.PlayerInformationLoaded( Pl )
+			hook.Run( "PlayerInformationLoaded", Pl )
+			
+		else
+		
+			self:Print( "[MySQL] There was an error while loading player information!" );
+			
+		end
+	
+	end, "WHERE SteamID64 = %s LIMIT 1", Pl:SteamID64() or 0 )
 
 end
 
@@ -97,8 +97,8 @@ function Meta:SaveData( )
 
 	local data = self:GetData( )
 
-	local query = self.MySQL.BuildQuery( "REPLACE INTO gm_users ( SteamID64, Money, Usergroup, Inventory, Achievements ) Values ( '%s', %i, '%s', '%s', '%s' )",
-		self:SteamID64() or 0, data.money, self.usergroup, util.TableToJSON( data.inventory ), util.TableToJSON( data.achievements ) )
+	local query = self.MySQL.BuildQuery( "REPLACE INTO gm_users ( SteamID64, Money, Usergroup, Inventory, Achievements, Model ) Values ( '%s', %i, '%s', '%s', '%s', '%s' )",
+		self:SteamID64() or 0, data.money or 0, self.usergroup or "user", util.TableToJSON( data.inventory or {} ), util.TableToJSON( data.achievements or {} ), data.Model or "kleiner" )
 
 	if ( query ) then
 		tmysql.query( query, function( results )

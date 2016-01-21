@@ -61,6 +61,7 @@ AddCSLuaFile( "inventory/cl_init.lua" )
 
 AddCSLuaFile( "vgui/richtext_scrollbar.lua" )
 AddCSLuaFile( "vgui/richtext.lua" )
+AddCSLuaFile( "vgui/lobby_chatbox.lua" )
 AddCSLuaFile( "vgui/lobby_frame.lua" )
 AddCSLuaFile( "vgui/lobby_notification.lua" )
 
@@ -73,7 +74,10 @@ function GM:Initialize()
 	self.Multiserver.Coms.AddLogin( "127.0.0.1", "Louisa" )
 	self.Multiserver.Server.New( )
 	self.Multiserver.GameServers.LoadGames( )
+	
 	self:InitializeMySQL()
+	self.MySQL.InitializeTable( "gm_users" )
+	self.MySQL.InitializeTable( "gm_bans" )
 	
 	
 	self:SendResources( "materials" )

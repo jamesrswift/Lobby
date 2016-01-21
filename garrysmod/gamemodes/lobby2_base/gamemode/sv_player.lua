@@ -12,6 +12,7 @@
 	
 -----------------------------------------------------------]]--
 
+GM.BannedPlayerModels = { } -- If a model is purchasable, you shouldn't have it for free
 util.AddNetworkString( "lobby.chat.PlayerChatPrint" )
 
 local Meta = FindMetaTable( "Player" )
@@ -102,11 +103,13 @@ function GM:PlayerNoClip( Pl, bState )
 end
 
 function GM:PlayerSetModel( ply )
+	
+	local model = "kleiner"
 
-	local model = ply:GetInfo( "cl_playermodel" )
-	local allow = hook.Run("AllowModel", ply, model, skin )
-	if ( not model or allow ~= true ) then
-		model, skin = "none", 0
+	if ( hook.Run("AllowModel", ply, ply:GetData().model ) ) then
+		model = ply:GetData().model
+	elseif ( hook.Run("AllowModel", ply, ply:GetInfo( "cl_playermodel" ) ) ) then	
+		model = ply:GetInfo( "cl_playermodel" )
 	end
 	
 	local modelname = player_manager.TranslatePlayerModel( model )
@@ -115,16 +118,23 @@ function GM:PlayerSetModel( ply )
 	
 	ply:SetPlayerColor( Vector(1,1,1) )
 
-	hook.Run("PlayerSetModelPost", ply, model, skin )
+	hook.Run("PlayerSetModelPost", ply, model )
 	
 end
 
-function GM:AllowModel( Pl, Model, Skin )
+function GM:AllowModel( Pl, Model )
 
+	return not ( self.BannedPlayerModels[ Model ] == true )
 
 end
 
-function GM:PlayerSetModelPost( Pl, Model, Skin )
+function GM:AddBannedPlayerModel( Model )
+
+	self.BannedPlayerModels[ Model ] = true
+
+end
+
+function GM:PlayerSetModelPost( Pl, Model )
 
 
 end
