@@ -53,7 +53,7 @@ end
 
 function GM.Inventory:UpdateOtherClientsInventory(data)
 
-	for _Player, Inv in pairs( LobbyInventory.OtherClientsInventory ) do
+	for _Player, Inv in pairs( self.OtherClientsInventory ) do
 		for slot,item in pairs( Inv ) do
 			if ( item.Instance ) then
 				GM.Item:DestroyInstance(item.Instance, _Player, slot )
@@ -61,8 +61,8 @@ function GM.Inventory:UpdateOtherClientsInventory(data)
 		end
 	end
 	
-	LobbyInventory.OtherClientsInventory = data
-	for _Player, Inv in pairs( LobbyInventory.OtherClientsInventory ) do
+	self.OtherClientsInventory = data
+	for _Player, Inv in pairs( self.OtherClientsInventory ) do
 		if ( _Player and IsValid( _Player ) and _Player:IsPlayer() ) then
 			for slot,item in pairs( Inv ) do
 				item.Instance = LobbyItem.CreateInstance( item.ID, slot, item.Custom, LocalPlayer() )

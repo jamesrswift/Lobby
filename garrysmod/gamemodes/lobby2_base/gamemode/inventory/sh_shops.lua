@@ -29,6 +29,10 @@ GM.Shops = {
 
 hook.Add( "InitPostEntity", "SpawnShops" , function( )
 
+	if ( CLIENT ) then return end
+
+	if ( SERVER ) then return end -- disable for the moment
+	
 	local GM = GM or gmod.GetGamemode( )
 
 	for shop_id, shop_info in pairs( GM.Shops ) do

@@ -66,7 +66,7 @@ function _Player:UpdateOtherClientsInventory()
 	
 	local data = {}
 	
-	for k, Pl in pairs ( player.Getall() ) do
+	for k, Pl in pairs ( player.GetAll() ) do
 	
 		if ( Pl and IsValid( Pl ) and Pl:IsPlayer() and Pl ~= self ) then
 			data[ Pl ] = { }

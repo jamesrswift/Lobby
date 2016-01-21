@@ -12,30 +12,15 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Inventory = GM.Inventory or { }
+local _Player = FindMetaTable("Player")
 
-include( "sv_player.lua" )
-include( "sh_item.lua" )
-include( "sh_shops.lua" )
+function _Player:GetItems( )
+	if self == LocalPlayer() then return gmod.GetGamemode().Inventory.ClientInventory end
+	return  gmod.GetGamemode().Inventory.OtherClientsInventory[self] or false
+end
 
-AddCSLuaFile( "cl_ghost.lua" )
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "cl_player.lua" )
-AddCSLuaFile( "sh_shops.lua" )
-AddCSLuaFile( "sh_item.lua" )
-
---[[
-AddCSLuaFile( "vgui/inventory.lua" )
-AddCSLuaFile( "vgui/inventory_item.lua" )
-AddCSLuaFile( "vgui/hateditor_modelviewer.lua" )
-AddCSLuaFile( "vgui/hateditor.lua" )--]]
-
-util.AddNetworkString("Lobby.InventoryClientReady");
-util.AddNetworkString("Lobby.UpdateInventory");
-util.AddNetworkString("Lobby.UpdateOtherClientsInventory");
-util.AddNetworkString("Lobby.ItemSwitch");
-
-
-net.Receive("Lobby.InventoryClientReady", function(len,pl) pl:InitItems() end)
-
-net.Receive("Lobby.ItemSwitch", function(len,pl) pl:MoveItemToSlot( net.ReadInt(8), net.ReadInt(8) ) end)
+function _Player:GetItem( slot )
+	local items = self:GetItems()
+	if not items then return false end
+	return items[slot] or false
+end
