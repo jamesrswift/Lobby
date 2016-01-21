@@ -82,8 +82,6 @@ end
 
 function GM.MySQL.InitializeTable( tbl_name, schema_name )
 
-	print( "initializing MySQL schema ", tbl_name )
-
 	local GM = GM or gmod.GetGamemode( )
 
 	local query = GM.MySQL.BuildQuery( "SELECT COLUMN_NAME, ORDINAL_POSITION, DATA_TYPE FROM `information_schema`.COLUMNS WHERE TABLE_NAME = '%s' AND TABLE_SCHEMA = '%s';", tbl_name, schema_name or GM.MySQL.NAME )
@@ -99,8 +97,6 @@ function GM.MySQL.InitializeTable( tbl_name, schema_name )
 			
 			end
 			
-			print( "initializing MySQL schema ", tbl_name, "#2", #results )
-			
 		end)
 		
 	end
@@ -108,8 +104,6 @@ function GM.MySQL.InitializeTable( tbl_name, schema_name )
 end
 
 function GM.MySQL.GetColumnInformationFromColumn( tbl_name, column_id )
-
-	print( "GetColumn info ", tbl_name, column_id)
 	
 	local GM = GM or gmod.GetGamemode( )
 	if ( not GM.MySQL.InformationSchema[ tbl_name ] ) then GM.MySQL.InitializeTable( tbl_name ) end

@@ -26,7 +26,7 @@ function PANEL:Init()
 	self.btnUp.DoClick = function ( self ) self:GetParent():AddScroll( -1 ) end
 	--self.btnUp.Paint = function( panel, w, h ) end
 	
-	--self.btnDown = vgui.Create( "DButton", self )
+	self.btnDown = vgui.Create( "DButton", self )
 	self.btnDown:SetText( "" )
 	self.btnDown.DoClick = function ( self ) self:GetParent():AddScroll( 1 ) end
 	--self.btnDown.Paint = function( panel, w, h ) end

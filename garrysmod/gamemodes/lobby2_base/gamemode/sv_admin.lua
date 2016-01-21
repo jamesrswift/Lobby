@@ -32,10 +32,12 @@ function GM.Admin:RegisterCommand( name, callback, args )
 		if ( Pl:IsAdmin( ) ) then
 
 			GM:Log( "admin", "%s ran the admin command %s", Pl:Nick(), name)
-			callback( unpack( args ) )
+			callback( Pl, unpack( args ) )
 		
 		end
 	
 	end)
 
 end
+
+include( "admin/undercover.lua" )

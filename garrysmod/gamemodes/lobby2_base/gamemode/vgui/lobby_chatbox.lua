@@ -30,7 +30,50 @@ function PANEL:Init( )
 	self.TextBox:SetPos( 2, 102 )
 	self.TextBox:SetSize( 400, 20 )
 	self.TextBox:SetVisible( false )
+	
+	self.TextBox.OnKeyCodeTyped = function(self_textbox, key)
+	
+		if ( key == KEY_ESCAPE ) then
+		
+			self:SafeClose( )
+			
+			timer.Simple(0, function()
+				RunConsoleCommand("cancelselect")
+			end)
+			
+		end
+		
+		if ( key == KEY_ENTER ) then
+		
+			if ( self_textbox:GetText():Trim() ~= "" ) then
+				RunConsoleCommand("say", self_textbox:GetText():Trim() )
+			end
+			
+			self:SafeClose( )
+			
+		end
+		
+	end
+	
+	self.TextBox.OnEnter = function( self_textbox )
+	
+		if ( self_textbox:GetText():Trim() ~= "" ) then
+			RunConsoleCommand("say", self_textbox:GetText():Trim() )
+		end
+		
+		self:SafeClose( )
+		
+	end
 
+end
+
+function PANEL:SafeClose( )
+
+	self:SetDisplayed(false)
+	self.Chatbox:Close()
+	self.TextBox:KillFocus()
+	self:SetText("")
+	
 end
 
 function PANEL:PerformLayout( )
@@ -74,4 +117,4 @@ function PANEL:Think( )
 	
 end
 
-vgui.Register( "lobby_chatbox", PANEL, "Panel" )
+vgui.Register( "lobby_chatbox", PANEL, "EditablePanel" )

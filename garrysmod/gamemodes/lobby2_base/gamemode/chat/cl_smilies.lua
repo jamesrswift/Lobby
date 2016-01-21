@@ -14,14 +14,19 @@
 
 GM.Chat = GM.Chat or {}
 GM.Chat.Smilies = GM.Chat.Smilies or {}
+GM.Chat.Smilies.Banned = GM.Chat.Smilies.Banned
 
-function GM.Chat:AddSmiley( tag, mat )
+function GM.Chat:AddSmiley( tag, mat, banned )
 	
 	if ( not self.Smilies[ string.lower( tag ) ] ) then
 	
 		self.Smilies[ string.lower( tag ) ] = mat
 		return true
 	
+	end
+	
+	if ( banned ) then
+		self:AddBannedSmiley( tag )
 	end
 	
 	return false
@@ -69,8 +74,19 @@ function GM.Chat:ParseString( Pl, Str )
 
 end
 
+function GM.Chat:AddBannedSmiley( tag )
+
+	self.BannedSmiley[ tag ] = true
+	
+end
 
 function GM:CanPlayerUseSmiley( Pl, tag )
+
+	if ( self.Chat.BannedSmiley[tag] ) then
+	
+		-- Does the player have the item required?
+	
+	end
 
 	return true
 	

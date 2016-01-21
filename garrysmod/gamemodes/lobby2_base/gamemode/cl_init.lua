@@ -34,7 +34,7 @@ include( "vgui/lobby_notification.lua" )
 
 include( "shared.lua" )
 
-GM.HideElements = { }
+GM.HideElements = { "CHudChat" }
 
 function GM:Initialize( )
 	

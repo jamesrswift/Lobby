@@ -97,8 +97,8 @@ function GM:StartChat( bTeam )
 		
 		
 		-- The following doesn't work, TODO
-		--[[self.Chat.ChatboxVGUI:MakePopup( )
-		self.Chat.ChatboxVGUI.TextBox:RequestFocus( )--]]
+		self.Chat.ChatboxVGUI:MakePopup( )
+		self.Chat.ChatboxVGUI.TextBox:RequestFocus( )
 		
 	end
 	
@@ -113,6 +113,8 @@ function GM:FinishChat( )
 		
 		self.Chat.Chatbox:Close()
 		self.Chat.ChatboxVGUI:SetDisplayed( false )
+		self.Chat.ChatboxVGUI.TextBox:KillFocus( )
+		self.Chat.ChatboxVGUI:KillFocus( )
 		
 	end
 

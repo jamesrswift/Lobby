@@ -12,18 +12,17 @@
 	
 -----------------------------------------------------------]]--
 
-local _Player = FindMetaTable("Player")
 
-function _Player:GetItems( )
+local PlayerMeta = FindMetaTable("Player")
 
-	return ( self == LocalPlayer() and gmod.GetGamemode().Inventory.ClientInventory or gmod.GetGamemode().Inventory.OtherClientsInventory[self] )
+function PlayerMeta:SetUndercover( bool )
+
+	self:SetNWBool( "bIsUndercover" , bool )
 	
 end
 
-function _Player:GetItem( slot )
+GM.Admin:RegisterCommand( "lobby_undercover", function( Pl, arguments )
 
-	local items = self:GetItems()
-	if not items then return false end
-	return items[slot] or false
-
-end
+	Pl:SetUndercover( tobool( arguments[1] ) );
+	
+end, { "bool" } )
