@@ -116,6 +116,10 @@ function GM:FinishChat( )
 		self.Chat.ChatboxVGUI.TextBox:KillFocus( )
 		self.Chat.ChatboxVGUI:KillFocus( )
 		
+		self.Chat.ChatboxVGUI:SetMouseInputEnabled( false )
+		self.Chat.ChatboxVGUI:SetKeyboardInputEnabled( false )
+		gui.EnableScreenClicker( false )
+		
 	end
 
 end
