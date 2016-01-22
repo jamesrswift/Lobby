@@ -20,7 +20,7 @@ function Meta:SpawnBall( Position )
 	
 	self:KillBall()
 
-	self.Ball = ents.Create("lobby2_bounce_ball")
+	self.Ball = ents.Create("lobby_ball")
 	self.Ball:SetPos(Position or self:GetPos())
 	self.Ball:SetOwner(self)
 	self.Ball:Spawn()
@@ -51,12 +51,12 @@ function Meta:SetBall( Ball )
 
 end
 
-function Meta:BreakMelon()
+function Meta:KillBall()
 
-	if ( self:HasMelon() ) then
+	if ( self:HasBall() ) then
 		
-		self.Melon:Break()
-		self.Melon = nil
+		self.Ball:Break()
+		self.Ball = nil
 		
 	end
 	
