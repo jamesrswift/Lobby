@@ -97,8 +97,10 @@ function Meta:SaveData( )
 
 	local data = self:GetData( )
 
-	local query = self.MySQL.BuildQuery( "REPLACE INTO gm_users ( SteamID64, Money, Usergroup, Inventory, Achievements, Model ) Values ( '%s', %i, '%s', '%s', '%s', '%s' )",
-		self:SteamID64() or 0, data.money or 0, self.usergroup or "user", util.TableToJSON( data.inventory or {} ), util.TableToJSON( data.achievements or {} ), data.Model or "kleiner" )
+	local GM = GM or gmod.GetGamemode( )
+	
+	local query = GM.MySQL.BuildQuery( "REPLACE INTO gm_users ( SteamID64, Money, Usergroup, Inventory, Achievements, Model ) Values ( '%s', %i, '%s', '%s', '%s', '%s' )",
+		self:SteamID64() or 0, data.money or 0, data.usergroup or "user", util.TableToJSON( data.inventory or {} ), util.TableToJSON( data.achievements or {} ), data.Model or "kleiner" )
 
 	if ( query ) then
 		tmysql.query( query, function( results )

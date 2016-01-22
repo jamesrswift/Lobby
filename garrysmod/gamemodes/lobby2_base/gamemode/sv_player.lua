@@ -139,6 +139,12 @@ function GM:PlayerSetModelPost( Pl, Model )
 
 end
 
+function GM:OnGiveMoney( Pl, Amount )
+
+	self:NotifyPlayer( Pl, "Blue", "You've recieved " .. tonumber( Amount ) .. " credits!", 10 )
+
+end
+
 function Meta:ChatPrint( str, ... )
 
 	if ( str and string.len( str ) > 0 ) then
@@ -149,4 +155,11 @@ function Meta:ChatPrint( str, ... )
 		
 	end
 	
+end
+
+function Meta:Notify( Type, Text, Lifetime )
+	
+	local GM = GM or gmod.GetGamemode( )
+	GM:NotifyPlayer( self, Type, Text, Lifetime )
+
 end

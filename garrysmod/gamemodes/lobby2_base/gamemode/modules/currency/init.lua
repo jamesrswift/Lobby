@@ -12,6 +12,8 @@
 	
 -----------------------------------------------------------]]--
 
+local Module = Module
+
 Module.Hooks = {
 	"PlayerInformationLoaded"
 }
