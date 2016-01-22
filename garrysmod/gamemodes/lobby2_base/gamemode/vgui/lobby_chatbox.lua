@@ -15,21 +15,15 @@
 local PANEL = { }
 
 AccessorFunc( PANEL, "m_Color", "Color" )
-AccessorFunc( PANEL, "m_Displayed", "Displayed", FORCE_BOOL  )
 
 function PANEL:Init( )
 
-	self:SetColor( Color( 100, 100, 100 ) )
-	self:SetDisplayed( false )
-
-	self.Chatbox = vgui.Create( "Chat_RichText", self )
-	self.Chatbox:SetPos( 2, 2 )
-	self.Chatbox:SetSize( 400, 100 )
+	self:SetColor( Color( 0, 0, 0, 100 ) )
 	
 	self.TextBox = vgui.Create( "DTextEntry", self )
 	self.TextBox:SetPos( 2, 102 )
 	self.TextBox:SetSize( 400, 20 )
-	self.TextBox:SetVisible( false )
+	self.TextBox:SetFont( "LobbyChat" )
 	
 	self.TextBox.OnKeyCodeTyped = function(self_textbox, key)
 	
@@ -51,6 +45,10 @@ function PANEL:Init( )
 			
 			self:SafeClose( )
 			
+			timer.Simple(0, function()
+				RunConsoleCommand("cancelselect")
+			end)
+			
 		end
 		
 	end
@@ -63,29 +61,17 @@ function PANEL:Init( )
 		
 		self:SafeClose( )
 		
+		timer.Simple(0, function()
+			RunConsoleCommand("cancelselect")
+		end)
+		
 	end
 
 end
 
 function PANEL:SafeClose( )
 
-	self.Chatbox:Close()
-	
-	self.TextBox:KillFocus()
-	self.TextBox:SetMouseInputEnabled( false )
-	self.TextBox:SetKeyboardInputEnabled( false )
-	gui.EnableScreenClicker( false )
-	
-	self:KillFocus()
-	self:SetMouseInputEnabled( false )
-	self:SetKeyboardInputEnabled( false )
-	
 	gamemode.Call("FinishChat")
-	
-	self.TextBox:SetText( "" )
-	gamemode.Call( "ChatTextChanged", "" )
-	
-	self:SetDisplayed(false)
 	
 end
 
@@ -116,81 +102,11 @@ end
 
 function PANEL:Paint( w, h )
 
-	if ( not self:GetDisplayed( ) ) then return end
-
 	self:PaintBackground( w, h )
 
 end
 
-function PANEL:SetDisplayed( bool )
-
-	if ( type( bool ) ~= "boolean" ) then return end
-	self.m_Displayed = bool
-	
-	if ( IsValid( self.TextBox ) ) then
-	
-		if ( bool ) then
-		
-			self.TextBox = vgui.Create( "DTextEntry", self )
-			self.TextBox:SetPos( 2, 102 )
-			self.TextBox:SetSize( 400, 20 )
-			self.TextBox:SetVisible( false )
-			
-			self.TextBox.OnKeyCodeTyped = function(self_textbox, key)
-	
-				if ( key == KEY_ESCAPE ) then
-				
-					self:SafeClose( )
-					
-					timer.Simple(0, function()
-						RunConsoleCommand("cancelselect")
-					end)
-					
-				end
-				
-				if ( key == KEY_ENTER ) then
-				
-					if ( self_textbox:GetText():Trim() ~= "" ) then
-						RunConsoleCommand("say", self_textbox:GetText():Trim() )
-					end
-					
-					self:SafeClose( )
-					
-				end
-				
-			end
-			
-			self.TextBox.OnEnter = function( self_textbox )
-			
-				if ( self_textbox:GetText():Trim() ~= "" ) then
-					RunConsoleCommand("say", self_textbox:GetText():Trim() )
-				end
-				
-				self:SafeClose( )
-				
-			end
-		
-			self:InvalidateLayout( )
-		
-		else
-		
-			self.TextBox:Remove( ) 
-		
-		end
-		
-	end
-
-end
-
 function PANEL:Think( )
-
-	if ( IsValid( self.TextBox ) ) then
-		if ( self:GetDisplayed( ) ) then
-			self.TextBox:SetVisible( true )
-		else
-			self.TextBox:SetVisible( false )
-		end
-	end
 	
 end
 

@@ -20,11 +20,9 @@ function GM.Chat.Initialize( )
 
 	if ( not GM.Chat.ChatboxVGUI ) then
 	
-		GM.Chat.ChatboxVGUI = vgui.Create( "lobby_chatbox" )
-		GM.Chat.ChatboxVGUI:SetPos( 50, ScrH() - 225 )
-		GM.Chat.ChatboxVGUI:SetSize( 400, 150 )
-	
-		GM.Chat.Chatbox = GM.Chat.ChatboxVGUI.Chatbox
+		GM.Chat.Chatbox = vgui.Create( "Chat_RichText", self )
+		GM.Chat.Chatbox:SetPos( 50 + 2 , ScrH() - 225 + 2)
+		GM.Chat.Chatbox:SetSize( 400, 100 )
 	
 	end
 
@@ -84,41 +82,48 @@ end
 
 function GM:StartChat( bTeam )
 
-	if ( not IsValid( self.Chat.ChatboxVGUI ) ) then
+	if ( not IsValid( self.Chat.Chatbox ) ) then
 	
 		self.Chat.Initialize( )
 		
 	end
 
-	if ( IsValid( self.Chat.ChatboxVGUI ) ) then
+	if ( not IsValid( self.Chat.ChatboxVGUI ) and IsValid( self.Chat.Chatbox ) ) then
 		
-		self.Chat.ChatboxVGUI:SetDisplayed( true )
-		self.Chat.Chatbox:Open( )
+		self.Chat.ChatboxVGUI = vgui.Create( "lobby_chatbox" )
+		self.Chat.ChatboxVGUI:SetPos( 50, ScrH() - 225 )
+		self.Chat.ChatboxVGUI:SetSize( 400, 150 )
 		
+		self.Chat.ChatboxVGUI.Chatbox = self.Chat.Chatbox
+		self.Chat.Chatbox:SetParent( self.Chat.ChatboxVGUI )
+		self.Chat.Chatbox:SetPos( 2, 2 )
 		
-		-- The following doesn't work, TODO
+		self.Chat.ChatboxVGUI:InvalidateLayout( )
+		
 		self.Chat.ChatboxVGUI:MakePopup( )
 		self.Chat.ChatboxVGUI.TextBox:RequestFocus( )
 		
+		self.Chat.Chatbox:Open( )
+		
+		return true
+		
 	end
-	
-	-- Hide default chatbox
-	return true
 
 end
 
 function GM:FinishChat( )
 
-	if ( IsValid( self.Chat.Chatbox ) ) then
+	if ( IsValid( self.Chat.ChatboxVGUI ) and IsValid( self.Chat.Chatbox ) ) then
+
+		self.Chat.Chatbox:SetParent( nil )
+		self.Chat.Chatbox:Close( )
+		self.Chat.Chatbox:SetPos( 50 + 2 , ScrH() - 225 + 2)
 		
-		self.Chat.Chatbox:Close()
-		self.Chat.ChatboxVGUI:SetDisplayed( false )
 		self.Chat.ChatboxVGUI.TextBox:KillFocus( )
 		self.Chat.ChatboxVGUI:KillFocus( )
+		self.Chat.ChatboxVGUI:Remove( )
 		
-		self.Chat.ChatboxVGUI:SetMouseInputEnabled( false )
-		self.Chat.ChatboxVGUI:SetKeyboardInputEnabled( false )
-		gui.EnableScreenClicker( false )
+		return true
 		
 	end
 
