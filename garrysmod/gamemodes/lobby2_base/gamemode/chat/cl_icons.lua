@@ -32,7 +32,8 @@ function GM:GetPlayerChatIcon( Pl )
 	if ( self.NoChatIcons ) then return false end
 	
 	if ( Pl:GetNWBool( "bIsUndercover", false ) ) then
-		return self.Chat.GetIcon( "icon16/user.png" )
+		--return self.Chat.GetIcon( "icon16/user.png" )
+		return false
 	end
 	
 	if ( Pl:IsDeveloper() ) then
