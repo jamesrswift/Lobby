@@ -18,7 +18,7 @@ function GM.Chat.Initialize( )
 
 	local GM = GM or gmod.GetGamemode( )
 
-	if ( not GM.Chat.ChatboxVGUI ) then
+	if ( not GM.Chat.Chatbox ) then
 	
 		GM.Chat.Chatbox = vgui.Create( "Chat_RichText", self )
 		GM.Chat.Chatbox:SetPos( 50 + 2 , ScrH() - 225 + 2)
@@ -39,6 +39,8 @@ function GM:ChatText( index, name, text, type )
 		self.Chat.Chatbox:AppendLine( {Type = "Text", Data = text } )
 	
 	end
+	
+	return true
 
 end
 
@@ -90,20 +92,7 @@ function GM:StartChat( bTeam )
 
 	if ( not IsValid( self.Chat.ChatboxVGUI ) and IsValid( self.Chat.Chatbox ) ) then
 		
-		self.Chat.ChatboxVGUI = vgui.Create( "lobby_chatbox" )
-		self.Chat.ChatboxVGUI:SetPos( 50, ScrH() - 225 )
-		self.Chat.ChatboxVGUI:SetSize( 400, 150 )
-		
-		self.Chat.ChatboxVGUI.Chatbox = self.Chat.Chatbox
-		self.Chat.Chatbox:SetParent( self.Chat.ChatboxVGUI )
-		self.Chat.Chatbox:SetPos( 2, 2 )
-		
-		self.Chat.ChatboxVGUI:InvalidateLayout( )
-		
-		self.Chat.ChatboxVGUI:MakePopup( )
-		self.Chat.ChatboxVGUI.TextBox:RequestFocus( )
-		
-		self.Chat.Chatbox:Open( )
+		hook.Run( "OpenChat", bTeam )
 		
 		return true
 		
@@ -129,6 +118,37 @@ function GM:FinishChat( )
 
 end
 
+function GM:OpenChat( bTeam )
+
+	self.Chat.ChatboxVGUI = vgui.Create( "lobby_chatbox" )
+	self.Chat.ChatboxVGUI:SetPos( 50, ScrH() - 225 )
+	self.Chat.ChatboxVGUI:SetSize( 400, 150 )
+	
+	self.Chat.ChatboxVGUI.Chatbox = self.Chat.Chatbox
+	self.Chat.Chatbox:SetParent( self.Chat.ChatboxVGUI )
+	self.Chat.Chatbox:SetPos( 2, 2 )
+	
+	self.Chat.ChatboxVGUI:InvalidateLayout( )
+	
+	self.Chat.ChatboxVGUI:MakePopup( )
+	self.Chat.ChatboxVGUI.TextBox:RequestFocus( )
+	
+	self.Chat.Chatbox:Open( )
+
+end
+
+hook.Add("PlayerBindPress", "OpenChatCheck", function( ply, bind, pressed )
+
+	if ( pressed and string.find( bind, "messagemode" ) ) then
+	
+		local teamchat = string.find( bind, "messagemode2" ) ~= nil
+		hook.Run( "OpenChat", bTeam )
+		
+		return true
+	end
+	
+end)
+
 function chat.AddText( ... )
 
 	local GM = GM or gmod.GetGamemode( )
@@ -149,7 +169,7 @@ function chat.AddText( ... )
 		end
 	end
 	
-	gmod.GetGamemode().Chat.Chatbox:AppendLine( unpack( buffer ) )
+	GM.Chat.Chatbox:AppendLine( unpack( buffer ) )
 	MsgC( ..., "\n" )
 
 end
