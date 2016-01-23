@@ -11,7 +11,7 @@
 	Copyright (c) James Swift, 2015
 	
 -----------------------------------------------------------]]--
-
+ 
 local Module = Module
 
 Module.Hooks = {

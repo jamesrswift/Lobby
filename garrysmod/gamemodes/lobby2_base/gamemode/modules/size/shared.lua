@@ -8,29 +8,34 @@
 	╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝       ╚══════╝
 
 	
-	Copyright (c) James Swift, 2015
+	Copyright (c) James Swift, Alex Swift, ULX, 2015
 	
 -----------------------------------------------------------]]--
 
-GM.Name					= "Lobby2"
-GM.Author				= "James Swift"
-GM.Email				= "n/a"
-GM.Website				= ""
-GM.AllowDownload			= false
-GM.RemoveDefaultHUD			= false
+Module.Sizing = { }
 
-GM.ServerID				= 99
+Module.Sizing.Default = {
 
-DeriveGamemode( "lobby2_base" )
-
-function GM:OnGamemodeLoaded( )
-
-	self:LoadModules({
-		"currency",
-		"scoreboard",
-		"location",
-		"seats",
-		"size"
-	})
-
-end
+	StandingHull = {
+		Minimum = Vector( -16, -16, 00 ),
+		Maximum = Vector(  16,  16, 72 ),
+	},
+	
+	DuckingHull = {
+		Minimum = Vector( -16, -16, 00 ),
+		Maximum = Vector(  16,  16, 36 ),
+	},
+	
+	JumpPower 	= 160,
+	StepSize 	= 18,
+	
+	MaxStepSize = 500,
+	MaxHullScale = 3,
+	
+	RunSpeed 	= 500,
+	WalkSpeed 	= 250,
+	Scale 		= Vector( 0, 0, 0 ),
+	ViewOffset 	= Vector( 0, 0, 64 ),
+	ViewOffsetDuck 	= Vector( 0, 0, 28 ),
+	
+}

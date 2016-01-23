@@ -20,6 +20,7 @@ GM.AllowDownload			= false
 GM.RemoveDefaultHUD			= false
 
 GM.ServerID				= 0
+GM.TeamBase				= false
 
 
 function GM:Move( ply, mv )
