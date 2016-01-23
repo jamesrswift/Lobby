@@ -8,7 +8,7 @@
 	╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝       ╚══════╝
 
 	
-	Copyright (c) James Swift, 2015
+	Copyright (c) James Swift, Chewgum, 2015
 	
 -----------------------------------------------------------]]--
 
@@ -47,6 +47,13 @@ function Meta:WinRound()
 	end
 end
 
+function Meta:CalculateDistance( )
+
+	local GM = GM or gmod.GetGamemode( )
+	return math.abs( math.floor( self:GetPos():Distance( GAMEMODE.WinnerSpots[ game.GetMap() ].Spot ) / GAMEMODE.WinnerSpots[ game.GetMap() ].Distance * 100 - 100 ))
+	
+end
+
 function GM:PlayerLoadout( Pl )
 
 	return true
@@ -66,11 +73,8 @@ function GM:PlayerDeath( Pl, Inflictor, Attacker )
 	Pl:Spectate( OBS_MODE_CHASE )
 	Pl:SpectateEntity( Pl.DeathDoll )
 	
-	-- Message player about progress, change to work with chat
-    local Dist = math.abs( math.floor( Pl:GetPos():Distance( GAMEMODE.WinnerSpots[ game.GetMap() ].Spot ) / GAMEMODE.WinnerSpots[ game.GetMap() ].Distance * 100 - 100 ))
-	self:NotifyPlayer( Pl, "Blue", "You made it " ..Dist .. "% up the map", 5 )
+	self:NotifyPlayer( Pl, "Blue", "You made it " .. Pl:CalculateDistance( ) .. "% up the map", 10 )
 	
-	-- Make ragdoll flail
 	for i = 0, Pl.DeathDoll:GetPhysicsObjectCount() do
 		local bone = Pl.DeathDoll:GetPhysicsObjectNum( i )
 		
@@ -81,10 +85,6 @@ function GM:PlayerDeath( Pl, Inflictor, Attacker )
 	
 	Pl.NextSpawnTime = CurTime() + 3
 
-	--umsg.Start( "PlayerKilled" )
-	--	umsg.Entity( Pl )
-	--umsg.End()
-	
 end
 
 function GM:DoPlayerDeath( Pl, attacker, dmginfo )
@@ -106,12 +106,16 @@ function GM:DoPlayerDeath( Pl, attacker, dmginfo )
 end
 
 function GM:PlayerDeathSound()
+
 	return true
+	
 end
 
 function GM:CanPlayerSuicide( Pl )
+
 	if ( not Pl:Alive() ) then return false end
 	if ( Pl:Team() == 2 ) then return false end
 	
 	return true
+	
 end

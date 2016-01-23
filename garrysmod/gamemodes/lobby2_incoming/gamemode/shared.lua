@@ -8,18 +8,19 @@
 	╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝       ╚══════╝
 
 	
-	Copyright (c) James Swift, 2015
+	Copyright (c) James Swift, Chewgum, 2015
 	
 -----------------------------------------------------------]]--
 
 GM.Name					= "Lobby2: Incoming"
-GM.Author				= "James Swift"
+GM.Author				= "James Swift, Chewgum"
 GM.Email				= "n/a"
 GM.Website				= ""
 GM.AllowDownload			= false
 GM.RemoveDefaultHUD			= false
 
 GM.ServerID				= 5
+GM.TeamBased			= true
 
 DeriveGamemode( "lobby2_base" )
 
