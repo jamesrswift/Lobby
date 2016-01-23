@@ -52,6 +52,18 @@ function GM:Tick()
 		end
 		
 	end
+	
+	for k,ply in pairs( team.GetPlayers( 2 ) ) do
+	
+		if ( ply.Spectating and IsValid( ply.Spectating ) and not ply.Spectating:Alive( ) ) then
+		
+			ply.Spectating = team.GetPlayers( 1 )[ math.random( 1, #team.GetPlayers(1) ) ];
+			ply:SpectateEntity( ply.Spectating )
+		
+		end
+	
+	end
+	
 end
 
 function GM:Think()
@@ -76,7 +88,19 @@ function GM:PlayerSpawn( ply )
 	
 		ply:CrosshairDisable()
 		ply:Spectate( OBS_MODE_CHASE )
-		ply:SetMoveType( MOVETYPE_NOCLIP )
+		--ply:SetMoveType( MOVETYPE_NOCLIP )
+		
+		-- Player spectate, TODO
+		
+		local AlivePlayers = team.GetPlayers(1)
+		
+		if ( #AlivePlayers >= 1 ) then
+		
+			ply.Spectating = AlivePlayers[ math.random( 1, #AlivePlayers ) ];
+			ply:SpectateEntity( ply.Spectating )
+			
+		end
+		
 		
 	elseif ( ply:Team() == 1 ) then
 	
