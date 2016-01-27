@@ -21,6 +21,9 @@ include( "cl_player.lua" )
 include( "sh_item.lua" )
 include( "sh_shops.lua" )
 
+include( "vgui/inventory.lua" )
+include( "vgui/inventory_item.lua" )
+
 AccessorFunc( GM.Inventory, "InventoryPanelIsShowing", "InventoryPanelShowing", FORCE_BOOL )
 
 function GM.Inventory:GetInventory()
@@ -103,7 +106,7 @@ function GM.Inventory:Think( )
 
 	if ( not self.InventoryPanel ) then return end
 	
-	local x, y = GM.Inventory.InventoryPanel:GetPos();
+	local x, y = self.InventoryPanel:GetPos();
 	if self:GetInventoryPanelShowing() then
 		self.InventoryPanel:SetPos( x , Lerp( 0.2, y, 0 ) )
 	else

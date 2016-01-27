@@ -24,9 +24,10 @@ AddCSLuaFile( "cl_player.lua" )
 AddCSLuaFile( "sh_shops.lua" )
 AddCSLuaFile( "sh_item.lua" )
 
---[[
 AddCSLuaFile( "vgui/inventory.lua" )
 AddCSLuaFile( "vgui/inventory_item.lua" )
+
+--[[
 AddCSLuaFile( "vgui/hateditor_modelviewer.lua" )
 AddCSLuaFile( "vgui/hateditor.lua" )--]]
 
