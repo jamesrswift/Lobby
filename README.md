@@ -10,6 +10,7 @@
 - player shit
 - Jukebox
 - Pets? (Things following you, maybe a melon pet)
+- Hammer library for map editing
 
 ## Doing
 - Scoreboard
@@ -23,4 +24,4 @@
 - Module system
 - Location
 - Currency
-- - Seats
+- Seats
