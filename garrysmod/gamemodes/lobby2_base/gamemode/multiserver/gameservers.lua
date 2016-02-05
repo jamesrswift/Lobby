@@ -70,7 +70,7 @@ function GM:MessageAllServers( ID, Type, Body, Callback )
 
 	for Name, Game in pairs( self.Multiserver.GameServers.Games ) do
 	
-		if ( Game.ServerID == self.ServerID ) then continue end
+		--if ( Game.ServerID == self.ServerID ) then continue end
 	
 		Game:Message( ID, Type, Body, Callback )
 	

@@ -15,8 +15,8 @@
 GM.Multiserver = GM.Multiserver or { }
 GM.Multiserver.Server = GM.Multiserver.Server or { }
 
--- Port range: 44901 - 44999
-GM.Multiserver.Server.StartPort = 44901
+-- Port range: 44900 - 44999
+GM.Multiserver.Server.StartPort = 44900
 
 require( "bromsock");
 
@@ -36,6 +36,9 @@ function GM.Multiserver.Server.New( )
 
 	
 	GM.Multiserver.Server.server:SetCallbackAccept( GM.Multiserver.Server.Accept );
+	GM.Multiserver.Server.server:SetBlocking( false )
+	GM.Multiserver.Server.server:SetOption( 0xFFFF, 0x0004, 1)
+	GM.Multiserver.Server.server:SetOption( 0xFFFF, 0x0001, 1)
 	GM.Multiserver.Server.server:Accept();
 
 end
@@ -47,7 +50,7 @@ function GM.Multiserver.Server.Accept( serversock, clientsock )
 	serversock:Accept();
 	
 	clientsock:SetCallbackReceive( function(s, p)
-
+	
 		local r_num = p:ReadInt( )
 		
 		local packet = GM.Multiserver.Coms.HandleConnection( s, p )

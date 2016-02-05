@@ -19,15 +19,14 @@ require( "bromsock" )
 
 function GM.Multiserver.Packet.ReadPacket( packet )
 
-	local Data = string.Explode( "\r\n", packet:ReadStringAll() )
+	local Data = Buffer( packet:ReadStringAll() )
 
-	local Protocol = Data[ 1 ]
-	if ( Protocol == "LobbyISCP" ) then
+	if ( Data:ReadStringNT( ) == "LobbyISCP" ) then
 	
-		local ID = tonumber( Data[ 2 ] )
-		local Type = tonumber( Data[ 3 ] )
-		local Password = Data[ 4 ]
-		local Body = Data[ 5 ]
+		local ID = Data:ReadInteger( )
+		local Type = Data:ReadInteger( )
+		local Password = Data:ReadStringNT( )
+		local Body = Data:ReadStringNT( )
 		
 		return true, ID, Type, Password, Body
 	
@@ -39,18 +38,17 @@ end
 
 function GM.Multiserver.Packet.NewPacket( ID, Type, Password, Body )
 
-	local packet = BromPacket()
+	local packet = Buffer( )
 	
-	packet:WriteLine( "LobbyISCP" )
+	packet:WriteStringNT( "LobbyISCP" )
+	packet:WriteInteger( ID )
+	packet:WriteInteger( Type )
+	packet:WriteStringNT( Password )
+	packet:WriteStringNT( Body )
 	
-	packet:WriteLine( tostring( ID ) )
-	packet:WriteLine( tostring( Type ) )
-	packet:WriteLine( Password )
-	packet:WriteLine( Body )
+	PrintTable( string.ToTable( packet:GetData() ) )
 	
-	packet:WriteLine( "" )
-	
-	return packet
+	return packet:ToPacket( )
 
 end
 

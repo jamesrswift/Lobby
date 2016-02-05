@@ -83,6 +83,7 @@ function GM.Multiserver.Coms.HandleConnection( sock, packet )
 	
 	else
 	
+		GM:Print( "[Coms] Failed connection from %s, Bad password \"%s\"", IP, Password )
 		GM:Log( "Coms", "Failed connection from %s, Bad password \"%s\"", IP, Password )
 	
 	end

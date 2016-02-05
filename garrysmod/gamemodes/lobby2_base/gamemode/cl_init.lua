@@ -12,6 +12,7 @@
 	
 -----------------------------------------------------------]]--
 
+include( "extensions/buffer.lua" )
 include( "extensions/utf8.lua" )
 
 include( "sh_util.lua" )
