@@ -12,58 +12,46 @@
 	
 -----------------------------------------------------------]]--
 
-function GM:CreateFonts( )
+AddCSLuaFile( "shared.lua" )
+AddCSLuaFile( "cl_init.lua" )
+include('shared.lua')
 
-	surface.CreateFont( "LobbyNotification", {
-		font = "Roboto Bold",
-		size = 16,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
+function ENT:Initialize()
 	
-	surface.CreateFont( "LobbyChat", {
-		font = "Roboto Bold",
-		size = 16,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
+	self:PhysicsInit( SOLID_VPHYSICS )
+	self:SetMoveType( MOVETYPE_NONE )
+	self:SetSolid( SOLID_VPHYSICS )
+	self:SetColor(255, 255, 255, 255)
+	self:SetNotSolid(true)
 	
-	surface.CreateFont( "LobbyTitle", {
-		font = "Pacifico",
-		size = 32,
-		weight = 300,
-		blursize = 0,
-		antialias = true
-	})
+	if ( self.DisplayText ) then
+		
+		self:SetNWString( "DisplayText", tostring( self.DisplayText ) )
 	
-	surface.CreateFont( "LobbySkyText", {
-		font = "Roboto Bold",
-		size = 48*2,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
-
+	end
+	
+	if ( self.DisplaySize ) then
+		
+		self:SetNWFloat( "DisplaySize", tonumber( self.DisplaySize ) )
+	
+	end
+	
+	if ( self.DisplayStatic ) then
+		
+		self:SetNWBool( "DisplayStatic", tonumber( self.DisplayStatic ) )
+	
+	end
+	
 end
 
-matproxy.Add( {
-	name = "lobbyspherebot",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 0,0.8,1 ) )
-	end
-} )
+function ENT:KeyValue( key, value )
 
-matproxy.Add( {
-	name = "lobbyspheretop",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 1,1,1 ) )
+	if ( string.lower( key ) == "displaytext" ) then
+		self.DisplayText = value
+	elseif ( string.lower( key ) == "displaysize" ) then
+		self.DisplaySize = tonumber( value )
+	elseif ( string.lower( key ) == "displaystatic" ) then
+		self.DisplayStatic = tobool( value )
 	end
-} )
+	
+end

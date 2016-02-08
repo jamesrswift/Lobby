@@ -12,58 +12,49 @@
 	
 -----------------------------------------------------------]]--
 
-function GM:CreateFonts( )
+include( "shared.lua" )
 
-	surface.CreateFont( "LobbyNotification", {
-		font = "Roboto Bold",
-		size = 16,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
-	
-	surface.CreateFont( "LobbyChat", {
-		font = "Roboto Bold",
-		size = 16,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
-	
-	surface.CreateFont( "LobbyTitle", {
-		font = "Pacifico",
-		size = 32,
-		weight = 300,
-		blursize = 0,
-		antialias = true
-	})
-	
-	surface.CreateFont( "LobbySkyText", {
-		font = "Roboto Bold",
-		size = 48*2,
-		weight = 500,
-		blursize = 0,
-		antialias = true
-	})
+function ENT:GetDrawText( )
+
+	return self:GetNWString( "DisplayText", "<No Display Text>" )
 
 end
 
-matproxy.Add( {
-	name = "lobbyspherebot",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 0,0.8,1 ) )
-	end
-} )
+function ENT:GetDrawTextSize( )
 
-matproxy.Add( {
-	name = "lobbyspheretop",
-	init = function( self, mat, values )
-		self.ResultTo = values.resultvar
-	end,
-	bind = function( self, mat, ent )
-		mat:SetVector( self.ResultTo, Vector( 1,1,1 ) )
+	return self:GetNWFloat( "DisplaySize", 1 )
+
+end
+
+function ENT:GetDrawTextStatic( )
+
+	return self:GetNWBool( "DisplayStatic", true )
+
+end
+
+
+function ENT:DrawText( pos, ang )
+	
+	cam.Start3D2D(pos, ang, (0.75/4) * self:GetDrawTextSize( ) )
+		draw.SimpleTextOutlined(self:GetDrawText( ), "LobbySkyText", 0, 0, Color(255,255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0,0,0,255))
+	cam.End3D2D()
+
+end
+
+function ENT:Draw()
+
+	self:SetRenderBounds( Vector(-1000,-1000,-1000),  Vector(1000,1000,1000) )
+	
+	local pos = self:GetPos()
+	if ( not self:GetDrawTextStatic( ) ) then
+		pos = self:GetPos() + Vector( 0 , 0 , math.abs(math.cos(CurTime()*2)*15) )
 	end
-} )
+	
+	local ang = self:GetAngles() + Angle(0,90,90)
+	
+	self:DrawText( pos, ang )
+	self:DrawText( pos, ang + Angle( 0, 180, 0) )
+	
+	return true
+	
+end

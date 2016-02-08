@@ -35,3 +35,15 @@
 	portal(target_destination) : "Portal" : "" : "The name of the lobby_portal entity this entity is linked with"
 ]
 
+@PointClass base(Targetname, Angles, Origin) = lobby_skytext :
+	"Lobby portal"
+[
+	DisplayText(string) : "Display Text" : "<No Display Text>" : "The text to display"
+	DisplaySize(float) : "Display Size" : "1" : "Scale the size of the text (Does not scale resolution!)"
+	
+	DisplayStatic(choices) : "Choose how the SkyText should move (if at all)" : "1" = 
+	[
+		0 : "Bounce"
+		1 : "Static (default)"
+	]
+]
