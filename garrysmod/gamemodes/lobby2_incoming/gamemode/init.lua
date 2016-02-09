@@ -27,9 +27,6 @@ include("sv_player.lua")
 GM.HasWon = false
 GM.PropSpawnTimer = 0
 
-local Delay = GM.Maps[ game.GetMap() ].PropSpawnDelay
-local Props = GM.Maps[ game.GetMap() ].FallingProps
-
 function GM:Tick()
 
 	if ( self.HasWon )then return end
@@ -40,14 +37,11 @@ function GM:Tick()
 		
 			for k, v in pairs( ents.FindByClass( "inc_prop_spawner" ) ) do
 			
-				self.PropSpawnTimer = CurTime() + Delay
-				local Ent = ents.Create( "prop_physics" )
-				Ent:SetModel( Props[ math.random( 1, #Props ) ] )
-				Ent:SetPos( v:GetPos() )
-				Ent:Spawn()
-				Ent:GetPhysicsObject():SetMass( 40000 )
+				self:SpawnProp( self.Maps[ game.GetMap() ].FallingProps, v:GetPos() )
 				
 			end
+			
+			self.PropSpawnTimer = CurTime() + self.Maps[ game.GetMap() ].PropSpawnDelay
 			
 		end
 		
@@ -64,6 +58,21 @@ function GM:Tick()
 	
 	end
 	
+end
+
+function GM:SpawnProp( Props, Pos )
+
+	local Ent = ents.Create( "prop_physics" )
+	Ent:SetModel( Props[ math.random( 1, #Props ) ] )
+	Ent:SetPos( Pos )
+	Ent:Spawn()
+	
+	local phys = Ent:GetPhysicsObject( )
+	if ( phys and IsValid( phys ) ) then
+		phys:SetMass( 40000 )
+		phys:AddAngleVelocity( Vector( math.random( -100, 100 ), math.random( -100, 100 ), math.random( -100, 100 ) ):GetNormalized() * math.random( 0, 25 ) )
+	end
+
 end
 
 function GM:Think()

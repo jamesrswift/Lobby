@@ -33,7 +33,6 @@ function GM:OnGamemodeLoaded( )
 	})
 	
 	if ( CLIENT ) then
-		print( "calling" )
 		table.insert( self.HideElements, "CHudHealth" )
 		table.insert( self.HideElements, "CHudBattery" )
 	end

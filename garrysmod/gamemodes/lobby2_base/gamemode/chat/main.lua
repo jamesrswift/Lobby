@@ -158,14 +158,20 @@ function chat.AddText( ... )
 		GM.Chat.Initialize( )
 		
 	end
-
+	
+	local LastColor = Color( 255, 255, 255 )
 	local buffer = { }
 
 	for k,v in ipairs( {...} ) do
 		if ( type(v) == "table" and v.r ) then -- Color
-			table.insert( buffer, {Type="Color", Data=v} )
+			table.insert( buffer, {Type = "Color", Data = v} )
+			LastColor = v
 		elseif ( type( v ) == "string" ) then
-			table.insert( buffer, {Type="Text", Data=v} )
+			table.insert( buffer, {Type = "Text", Data = v} )
+		elseif ( type( v ) == "Player" ) then
+			table.insert( buffer, {Type = "Color", Data = v:GetDisplayTextColor( )} )
+			table.insert( buffer, {Type = "Text", Data = v:Nick()} )
+			table.insert( buffer, {Type = "Color", Data = LastColor} )
 		end
 	end
 	
