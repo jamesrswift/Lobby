@@ -61,3 +61,16 @@ function Meta:KillBall()
 	end
 	
 end
+
+
+function Meta:GetBall( )
+
+	if ( self:HasBall() ) then
+	
+		return self.Ball
+		
+	end
+	
+	return false
+	
+end

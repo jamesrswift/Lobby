@@ -28,9 +28,10 @@ function GM:Log( StartName, str, ... )
 end
 
 
-if SERVER then
+if ( SERVER ) then
 
 	util.AddNetworkString( "lobby_notification" )
+	util.AddNetworkString( "lobby_clientready" )
 
 	function GM:NotifyPlayer( Pl, Type, Text, Lifetime )
 
@@ -53,5 +54,26 @@ if SERVER then
 
 
 	end
+	
+	net.Receive( "lobby_clientready", function( len, Pl )
+	
+		hook.Run( "LobbyClientReady", Pl )
+	
+	end)
+
+end
+
+if ( CLIENT ) then
+
+	hook.Add( "Think", "NotifyReady", function()
+	
+		if ( GAMEMODE.FirstThink ) then return end
+	
+		net.Start( "lobby_clientready" )
+		net.SendToServer( )
+		
+		GAMEMODE.FirstThink = true
+	
+	end)
 
 end

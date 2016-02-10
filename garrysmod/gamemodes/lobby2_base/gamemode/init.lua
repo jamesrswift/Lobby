@@ -86,3 +86,10 @@ function GM:Initialize()
 	self:SendResources( "resource" )
 
 end
+
+function GM:LobbyClientReady( Pl )
+
+	self.Modules.SendToClient( Pl )
+
+
+end

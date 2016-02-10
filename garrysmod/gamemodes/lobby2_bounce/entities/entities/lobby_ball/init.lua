@@ -19,22 +19,37 @@ include("shared.lua")
 
 function ENT:Initialize()
 
-	self.Entity:SetModel( "models/lobby/sphere.mdl" )
-	self.Entity:PhysicsInit(SOLID_VPHYSICS)
-	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
-	self.Entity:SetSolid(SOLID_VPHYSICS)
+	self:SetModel( "models/lobby/sphere.mdl" )
+	--self:PhysicsInit(SOLID_VPHYSICS)
+	self:PhysicsInitSphere( 40, "default_silent" )
+	self:SetMoveType(MOVETYPE_VPHYSICS)
+	self:SetSolid(SOLID_VPHYSICS)
 	
 	local Phys = self:GetPhysicsObject()
 	if ( Phys:IsValid() ) then
+		Phys:SetMass( 500 )
 		Phys:Wake()
 	end
 	
 	-- Change the speeds depending on the tickrate (based on 33 tickrate)
-	local Tickrate = FrameTime() * 33
+	local Tickrate = FrameTime() / engine.TickInterval()
 	self.ForwardSpeed = math.Round(self.ForwardSpeed * Tickrate)
 	self.ReverseSpeed = math.Round(self.ReverseSpeed * Tickrate)
 	self.StrafeSpeed = math.Round(self.StrafeSpeed * Tickrate)
-
+	
+	self.Player = ents.Create( "lobby_ball_player" )
+	self.Player:SetPos( self:GetPos() - Vector( 0, 0, 65 ) )
+	self.Player.Ball = self
+	self.Player:SetOwner( self:GetOwner() )
+	self.Player:Spawn()
+	self.Player:Activate()
+	self.Player:SetColor(Color(255, 255, 255, 0))
+	
+	--self.Player:SetParent( self )
+	
+	-- spawn lobby_ball_player
+	-- set player as owner
+	
 end
 
 
@@ -45,6 +60,17 @@ function ENT:Think()
 	local Aim = Owner:EyeAngles()
 	Aim.r = 0
 	Aim.p = 0
+	
+	--self.Player:SetPos( self:GetPos() )
+	
+	local Phys = self:GetPhysicsObject()
+	if ( Phys:IsValid() ) then
+		Phys:SetMass( 500 )
+		Phys:Wake()
+		self.Player:SetPos( Phys:GetPos() )
+	end
+	
+	self.Player:UpdateAnimation( self:GetVelocity(), 250 )
 
 	Owner:SetPos( self:GetPos() )
 	
@@ -77,5 +103,12 @@ end
 function ENT:Break()
 
 	self:Remove()
+	
+end
+
+function ENT:OnRemove()
+
+	-- remove lobby_ball_player
+	self.Player:Remove( )
 	
 end

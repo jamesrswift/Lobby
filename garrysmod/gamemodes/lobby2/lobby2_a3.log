@@ -20420,3 +20420,2797 @@ Level flags = 1
 Total triangle count: 1777
 Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
 27 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...10**** leaked ****
+Entity prop_static (-239.79 -382.77 48.00) leaked!
+Processing areas...
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 18 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994549 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (578 bytes to 495)
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+LoadPortals: couldn't read d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+Loaded alpha texture materials\models\props\cs_militia\tree_large_militia.vtf
+Loaded alpha texture materials\models\props\de_inferno\tree_large.vtf
+No vis information, direct lighting only.
+768 faces
+55835 square feet [8040349.00 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+14 direct lights
+0...1...2...3...4...5...6...7...8...9...10Build Patch/Sample Hash Table(s).....Done<0.0076 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 3 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Computing static prop lighting : 00...1...2...3...4...5...6...7...8...9...10
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1471/65536       17652/786432   ( 2.2%) 
+nodes                  356/65536       11392/2097152  ( 0.5%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  768/65536       43008/3670016  ( 1.2%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              497/65536       27832/3670016  ( 0.8%) 
+leaves                 367/65536       11744/2097152  ( 0.6%) 
+leaffaces              771/65536        1542/131072   ( 1.2%) 
+leafbrushes            270/65536         540/131072   ( 0.4%) 
+areas                    3/256            24/2048     ( 1.2%) 
+surfedges             5425/512000      21700/2048000  ( 1.1%) 
+edges                 3307/256000      13228/1024000  ( 1.3%) 
+LDR worldlights         14/8192         1232/720896   ( 0.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             68/32768         680/327680   ( 0.2%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices          1131/65536        2262/131072   ( 1.7%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2323316/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]           0/16777216 ( 0.0%) 
+entdata               [variable]        9615/393216   ( 2.4%) 
+LDR ambient table      367/65536        1468/262144   ( 0.6%) 
+HDR ambient table      367/65536        1468/262144   ( 0.6%) 
+LDR leaf ambient      2013/65536       56364/1835008  ( 3.1%) 
+HDR leaf ambient       367/65536       10276/1835008  ( 0.6%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3234     ( 0.0%) 
+pakfile               [variable]      554139/0        ( 0.0%) 
+physics               [variable]      994549/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 1
+
+Total triangle count: 1883
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+36 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 18 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994549 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (578 bytes to 495)
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  43 portalclusters
+  85 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1623
+Average clusters visible: 37
+Building PAS...
+Average clusters audible: 43
+visdatasize:870  compressed from 688
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+Loaded alpha texture materials\models\props\cs_militia\tree_large_militia.vtf
+Loaded alpha texture materials\models\props\de_inferno\tree_large.vtf
+759 faces
+54951 square feet [7913050.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+759 patches before subdivision
+24223 patches after subdivision
+23 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1745163, max 508
+transfer lists:  13.3 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(210494, 186274, 135685)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(79247, 56852, 30034)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(22051, 15059, 7279)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(9434, 5784, 2357)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4168, 2405, 873)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2054, 1091, 346)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1035, 510, 142)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(533, 242, 59)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(276, 116, 25)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(144, 56, 11)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(75, 27, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(39, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(21, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(11, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(6, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(2, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0093 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 12 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Computing static prop lighting : 00...1...2...3...4...5...6...7...8...9...10
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1267/65536       15204/786432   ( 1.9%) 
+nodes                  194/65536        6208/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  759/65536       42504/3670016  ( 1.2%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 205/65536        6560/2097152  ( 0.3%) 
+leaffaces              786/65536        1572/131072   ( 1.2%) 
+leafbrushes            289/65536         578/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5388/512000      21552/2048000  ( 1.1%) 
+edges                 3280/256000      13120/1024000  ( 1.3%) 
+LDR worldlights         23/8192         2024/720896   ( 0.3%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             47/32768         470/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           750/65536        1500/131072   ( 1.1%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2309848/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         870/16777216 ( 0.0%) 
+entdata               [variable]        9615/393216   ( 2.4%) 
+LDR ambient table      205/65536         820/262144   ( 0.3%) 
+HDR ambient table      205/65536         820/262144   ( 0.3%) 
+LDR leaf ambient       640/65536       17920/1835008  ( 1.0%) 
+HDR leaf ambient       205/65536        5740/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3218     ( 0.0%) 
+pakfile               [variable]      554139/0        ( 0.0%) 
+physics               [variable]      994549/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 1
+
+Total triangle count: 1872
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+30 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 18 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994549 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (585 bytes to 502)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  43 portalclusters
+  85 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1623
+Average clusters visible: 37
+Building PAS...
+Average clusters audible: 43
+visdatasize:870  compressed from 688
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+759 faces
+54951 square feet [7913050.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+759 patches before subdivision
+24205 patches after subdivision
+14 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1737599, max 506
+transfer lists:  13.3 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(215393, 253947, 234190)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(79215, 64930, 40485)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(22241, 17069, 9324)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(9512, 6282, 2788)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4204, 2563, 988)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2068, 1147, 381)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1041, 532, 155)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(536, 252, 64)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(277, 120, 27)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(144, 57, 11)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(75, 28, 5)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(39, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(11, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(6, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(2, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0101 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 3 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1267/65536       15204/786432   ( 1.9%) 
+nodes                  194/65536        6208/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  759/65536       42504/3670016  ( 1.2%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 205/65536        6560/2097152  ( 0.3%) 
+leaffaces              786/65536        1572/131072   ( 1.2%) 
+leafbrushes            289/65536         578/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5388/512000      21552/2048000  ( 1.1%) 
+edges                 3280/256000      13120/1024000  ( 1.3%) 
+LDR worldlights         14/8192         1232/720896   ( 0.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             47/32768         470/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           750/65536        1500/131072   ( 1.1%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2310968/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         870/16777216 ( 0.0%) 
+entdata               [variable]        9615/393216   ( 2.4%) 
+LDR ambient table      205/65536         820/262144   ( 0.3%) 
+HDR ambient table      205/65536         820/262144   ( 0.3%) 
+LDR leaf ambient       644/65536       18032/1835008  ( 1.0%) 
+HDR leaf ambient       205/65536        5740/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3218     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994549/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1872
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+16 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 18 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994549 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 146 texinfos to 74
+Reduced 26 texdatas to 21 (607 bytes to 524)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  43 portalclusters
+  85 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1623
+Average clusters visible: 37
+Building PAS...
+Average clusters audible: 43
+visdatasize:870  compressed from 688
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+759 faces
+54951 square feet [7913050.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+759 patches before subdivision
+24217 patches after subdivision
+19 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1739696, max 506
+transfer lists:  13.3 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(187563, 179943, 134479)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(75855, 56167, 29815)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(21321, 15060, 7352)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(9301, 5828, 2389)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4139, 2431, 886)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2046, 1102, 350)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1032, 514, 144)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(531, 244, 60)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(275, 117, 25)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(143, 56, 11)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(75, 27, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(39, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(11, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(6, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(2, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0093 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 8 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1267/65536       15204/786432   ( 1.9%) 
+nodes                  194/65536        6208/2097152  ( 0.3%) 
+texinfos                74/12288        5328/884736   ( 0.6%) 
+texdata                 21/2048          672/65536    ( 1.0%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  759/65536       42504/3670016  ( 1.2%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 205/65536        6560/2097152  ( 0.3%) 
+leaffaces              786/65536        1572/131072   ( 1.2%) 
+leafbrushes            289/65536         578/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5388/512000      21552/2048000  ( 1.1%) 
+edges                 3280/256000      13120/1024000  ( 1.3%) 
+LDR worldlights         19/8192         1672/720896   ( 0.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             47/32768         470/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           750/65536        1500/131072   ( 1.1%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2309848/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         870/16777216 ( 0.0%) 
+entdata               [variable]        9615/393216   ( 2.4%) 
+LDR ambient table      205/65536         820/262144   ( 0.3%) 
+HDR ambient table      205/65536         820/262144   ( 0.3%) 
+LDR leaf ambient       643/65536       18004/1835008  ( 1.0%) 
+HDR leaf ambient       205/65536        5740/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3218     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994549/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1872
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+16 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(196318, 172121, 130564)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(78513, 56503, 30951)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(21970, 15053, 7483)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(9513, 5852, 2435)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4208, 2435, 898)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2073, 1103, 354)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1043, 515, 145)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(537, 244, 60)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(278, 117, 25)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(144, 56, 11)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(75, 27, 5)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(39, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(21, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(11, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(6, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(2, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0094 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       16533/393216   ( 4.2%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       588/65536       16464/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+17 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(157051, 133945, 93955)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(71542, 50411, 25790)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(20175, 13691, 6534)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(8997, 5496, 2222)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4034, 2325, 841)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2003, 1063, 336)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1013, 498, 139)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(522, 237, 58)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(271, 113, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(141, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(73, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0093 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       16490/393216   ( 4.2%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       591/65536       16548/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+17 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(145413, 122610, 83062)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(69524, 48637, 24278)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(19655, 13296, 6257)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(8849, 5394, 2160)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(3984, 2294, 825)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(1984, 1052, 331)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1004, 493, 137)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(518, 235, 57)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(269, 112, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(140, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(73, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 12, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0093 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       19973/393216   ( 5.1%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       591/65536       16548/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+17 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(145413, 122610, 83062)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(69524, 48637, 24278)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(19655, 13296, 6257)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(8849, 5394, 2160)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(3984, 2294, 825)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(1984, 1052, 331)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1004, 493, 137)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(518, 235, 57)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(269, 112, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(140, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(73, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 12, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0092 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       19973/393216   ( 5.1%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       591/65536       16548/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+17 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(157051, 133945, 93955)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(71542, 50411, 25790)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(20175, 13691, 6534)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(8997, 5496, 2222)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4034, 2325, 841)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2003, 1063, 336)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1013, 498, 139)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(522, 237, 58)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(271, 113, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(141, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(73, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0091 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       19844/393216   ( 5.0%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       591/65536       16548/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+17 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(159021, 135495, 95069)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(72544, 51141, 26235)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(20576, 13987, 6721)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(9155, 5604, 2283)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4106, 2371, 864)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2037, 1083, 345)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1029, 507, 142)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(530, 241, 59)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(275, 115, 25)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(143, 55, 11)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(75, 27, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(39, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(11, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(6, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(2, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0092 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       19844/393216   ( 5.0%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       591/65536       16548/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+17 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(143927, 121185, 81713)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(69212, 48374, 24064)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(19575, 13236, 6216)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(8824, 5377, 2151)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(3976, 2289, 822)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(1980, 1050, 330)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1002, 493, 137)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(517, 234, 57)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(268, 112, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(140, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(73, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 12, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0101 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     3795960/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       21091/393216   ( 5.4%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       591/65536       16548/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+18 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(146899, 123657, 83329)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(69838, 48831, 24320)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(19735, 13340, 6266)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(8873, 5406, 2162)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(3993, 2298, 825)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(1987, 1053, 331)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1005, 494, 137)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(519, 235, 57)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(269, 112, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(140, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(73, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 12, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0094 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       21263/393216   ( 5.4%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       591/65536       16548/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+17 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (994565 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 144 texinfos to 72
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  37 portalclusters
+  73 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1289
+Average clusters visible: 34
+Building PAS...
+Average clusters audible: 37
+visdatasize:673  compressed from 592
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+745 faces
+54956 square feet [7913805.50 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+745 patches before subdivision
+24151 patches after subdivision
+54 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1729294, max 505
+transfer lists:  13.2 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(150539, 126246, 84439)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(70590, 49258, 24427)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(19825, 13353, 6231)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(8888, 5400, 2148)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(3991, 2291, 819)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(1986, 1050, 329)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1005, 493, 136)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(518, 234, 57)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(269, 112, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(140, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(73, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 12, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0093 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                199/8192         2388/98304    ( 2.4%) 
+brushsides            1627/65536       13016/524288   ( 2.5%) 
+planes                1296/65536       25920/1310720  ( 2.0%) 
+vertexes              1251/65536       15012/786432   ( 1.9%) 
+nodes                  182/65536        5824/2097152  ( 0.3%) 
+texinfos                72/12288        5184/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  745/65536       41720/3670016  ( 1.1%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              495/65536       27720/3670016  ( 0.8%) 
+leaves                 193/65536        6176/2097152  ( 0.3%) 
+leaffaces              758/65536        1516/131072   ( 1.2%) 
+leafbrushes            277/65536         554/131072   ( 0.4%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5312/512000      21248/2048000  ( 1.0%) 
+edges                 3244/256000      12976/1024000  ( 1.3%) 
+LDR worldlights         54/8192         4752/720896   ( 0.7%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             48/32768         480/327680   ( 0.1%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           756/65536        1512/131072   ( 1.2%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2307388/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         673/16777216 ( 0.0%) 
+entdata               [variable]       21306/393216   ( 5.4%) 
+LDR ambient table      193/65536         772/262144   ( 0.3%) 
+HDR ambient table      193/65536         772/262144   ( 0.3%) 
+LDR leaf ambient       590/65536       16520/1835008  ( 0.9%) 
+HDR leaf ambient       193/65536        5404/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      994565/4194304  (23.7%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1824
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+25 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (997773 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 145 texinfos to 73
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  42 portalclusters
+  83 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1540
+Average clusters visible: 36
+Building PAS...
+Average clusters audible: 42
+visdatasize:852  compressed from 672
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+Loaded alpha texture materials\models\props\cs_militia\tree_large_militia.vtf
+Loaded alpha texture materials\models\props\de_inferno\tree_large.vtf
+766 faces
+54965 square feet [7914982.00 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+766 patches before subdivision
+24250 patches after subdivision
+97 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1818291, max 507
+transfer lists:  13.9 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(160245, 133838, 89043)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(72849, 50869, 25322)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(20446, 13747, 6420)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(9060, 5499, 2192)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4046, 2320, 830)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2007, 1060, 332)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1014, 497, 137)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(523, 236, 57)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(271, 113, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(141, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(74, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(39, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(11, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(6, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(2, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0092 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Computing static prop lighting : 00...1...2...3...4...5...6...7...8...9...10
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                208/8192         2496/98304    ( 2.5%) 
+brushsides            1699/65536       13592/524288   ( 2.6%) 
+planes                1324/65536       26480/1310720  ( 2.0%) 
+vertexes              1295/65536       15540/786432   ( 2.0%) 
+nodes                  196/65536        6272/2097152  ( 0.3%) 
+texinfos                73/12288        5256/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  766/65536       42896/3670016  ( 1.2%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              511/65536       28616/3670016  ( 0.8%) 
+leaves                 207/65536        6624/2097152  ( 0.3%) 
+leaffaces              792/65536        1584/131072   ( 1.2%) 
+leafbrushes            295/65536         590/131072   ( 0.5%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5479/512000      21916/2048000  ( 1.1%) 
+edges                 3344/256000      13376/1024000  ( 1.3%) 
+LDR worldlights         97/8192         8536/720896   ( 1.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             53/32768         530/327680   ( 0.2%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           840/65536        1680/131072   ( 1.3%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2308484/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         852/16777216 ( 0.0%) 
+entdata               [variable]       33002/393216   ( 8.4%) 
+LDR ambient table      207/65536         828/262144   ( 0.3%) 
+HDR ambient table      207/65536         828/262144   ( 0.3%) 
+LDR leaf ambient       640/65536       17920/1835008  ( 1.0%) 
+HDR leaf ambient       207/65536        5796/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      554139/0        ( 0.0%) 
+physics               [variable]      997773/4194304  (23.8%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 1
+
+Total triangle count: 1885
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+41 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (997773 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+9...10
+Compacting texture/material tables...
+Reduced 146 texinfos to 74
+Reduced 25 texdatas to 20 (601 bytes to 518)
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  42 portalclusters
+  83 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1540
+Average clusters visible: 36
+Building PAS...
+Average clusters audible: 42
+visdatasize:852  compressed from 672
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+Loaded alpha texture materials\models\props\cs_militia\tree_large_militia.vtf
+Loaded alpha texture materials\models\props\de_inferno\tree_large.vtf
+771 faces
+54965 square feet [7914982.00 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+771 patches before subdivision
+25357 patches after subdivision
+97 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 2954605, max 613
+transfer lists:  22.5 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(59954, 49031, 30552)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(26676, 19502, 10224)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(12724, 8689, 4030)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(6255, 3889, 1555)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(3179, 1833, 644)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(1627, 863, 265)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(844, 413, 112)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(439, 198, 47)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(229, 95, 20)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(120, 46, 8)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(63, 22, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(33, 11, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(17, 5, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(9, 2, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(2, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0097 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Computing static prop lighting : 00...1...2...3...4...5...6...7...8...9...10
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                208/8192         2496/98304    ( 2.5%) 
+brushsides            1699/65536       13592/524288   ( 2.6%) 
+planes                1324/65536       26480/1310720  ( 2.0%) 
+vertexes              1302/65536       15624/786432   ( 2.0%) 
+nodes                  196/65536        6272/2097152  ( 0.3%) 
+texinfos                74/12288        5328/884736   ( 0.6%) 
+texdata                 20/2048          640/65536    ( 1.0%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  771/65536       43176/3670016  ( 1.2%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              511/65536       28616/3670016  ( 0.8%) 
+leaves                 207/65536        6624/2097152  ( 0.3%) 
+leaffaces              801/65536        1602/131072   ( 1.2%) 
+leafbrushes            295/65536         590/131072   ( 0.5%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5503/512000      22012/2048000  ( 1.1%) 
+edges                 3356/256000      13424/1024000  ( 1.3%) 
+LDR worldlights         97/8192         8536/720896   ( 1.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             54/32768         540/327680   ( 0.2%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           864/65536        1728/131072   ( 1.3%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2332944/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         852/16777216 ( 0.0%) 
+entdata               [variable]       33002/393216   ( 8.4%) 
+LDR ambient table      207/65536         828/262144   ( 0.3%) 
+HDR ambient table      207/65536         828/262144   ( 0.3%) 
+LDR leaf ambient       642/65536       17976/1835008  ( 1.0%) 
+HDR leaf ambient       207/65536        5796/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      554139/0        ( 0.0%) 
+physics               [variable]      997773/4194304  (23.8%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 1
+
+Total triangle count: 1899
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+39 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\materials
+Loading D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.vmf
+ConVarRef mat_reduceparticles doesn't point to an existing ConVar
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...Wrote D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin
+Areaportal leak ! File: D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.lin 
+Brush 3165: areaportal brush doesn't touch two areas
+
+Brush 3165: areaportal brush doesn't touch two areas
+done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 20 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/militia_hdr*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+WARNING: Map using power 4 displacements, terrain physics cannot be compressed, map will need additional memory and CPU.
+Degenerate Triangle
+(-272.00, -1349.72, 92.00), (-264.00, -1361.65, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-264.00, -1361.65, 92.00), (-256.00, -1371.71, 92.00), (-264.00, -1361.65, 92.00)
+Degenerate Triangle
+(-256.00, -436.29, 92.00), (-264.00, -446.35, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(-264.00, -446.35, 92.00), (-272.00, -458.28, 92.00), (-264.00, -446.35, 92.00)
+Degenerate Triangle
+(592.00, -458.28, 92.00), (584.00, -446.35, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(584.00, -446.35, 92.00), (576.00, -436.29, 92.00), (584.00, -446.35, 92.00)
+Degenerate Triangle
+(576.00, -1371.71, 92.00), (584.00, -1361.65, 92.00), (584.00, -1361.65, 92.00)
+Degenerate Triangle
+(584.00, -1361.65, 92.00), (592.00, -1349.72, 92.00), (584.00, -1361.65, 92.00)
+done (0) (997773 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8..Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND005_2 uses unknown detail object type militia_rock_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+Material NATURE/BLENDMILGROUND008_2_PLANTS uses unknown detail object type militia_leaves_grass!
+.9...10
+Compacting texture/material tables...
+Reduced 145 texinfos to 73
+Reduced 24 texdatas to 19 (575 bytes to 492)
+Writing D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+1 second elapsed
+
+
+
+8 threads
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+reading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.prt
+  42 portalclusters
+  83 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 0 visible clusters (0.00%)
+Total clusters visible: 1540
+Average clusters visible: 36
+Building PAS...
+Average clusters audible: 42
+visdatasize:852  compressed from 672
+writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+766 faces
+54965 square feet [7914982.00 square inches]
+40 Displacements
+5222 Square Feet [752095.75 Square Inches]
+766 patches before subdivision
+24250 patches after subdivision
+97 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 1813784, max 505
+transfer lists:  13.8 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(161112, 134449, 89291)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(73038, 51010, 25376)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(20514, 13792, 6432)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(9091, 5518, 2196)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(4058, 2327, 831)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(2012, 1063, 332)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(1016, 498, 137)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(523, 236, 57)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(271, 113, 24)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(141, 54, 10)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #11 added RGB(74, 26, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #12 added RGB(38, 13, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #13 added RGB(20, 6, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #14 added RGB(10, 3, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #15 added RGB(5, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #16 added RGB(3, 1, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #17 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #18 added RGB(1, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0093 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  10/1024          480/49152    ( 1.0%) 
+brushes                208/8192         2496/98304    ( 2.5%) 
+brushsides            1699/65536       13592/524288   ( 2.6%) 
+planes                1324/65536       26480/1310720  ( 2.0%) 
+vertexes              1295/65536       15540/786432   ( 2.0%) 
+nodes                  196/65536        6272/2097152  ( 0.3%) 
+texinfos                73/12288        5256/884736   ( 0.6%) 
+texdata                 19/2048          608/65536    ( 0.9%) 
+dispinfos               40/0            7040/0        ( 0.0%) 
+disp_verts            4904/0           98080/0        ( 0.0%) 
+disp_tris             8192/0           16384/0        ( 0.0%) 
+disp_lmsamples      461608/0          461608/0        ( 0.0%) 
+faces                  766/65536       42896/3670016  ( 1.2%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              511/65536       28616/3670016  ( 0.8%) 
+leaves                 207/65536        6624/2097152  ( 0.3%) 
+leaffaces              792/65536        1584/131072   ( 1.2%) 
+leafbrushes            295/65536         590/131072   ( 0.5%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             5479/512000      21916/2048000  ( 1.1%) 
+edges                 3344/256000      13376/1024000  ( 1.3%) 
+LDR worldlights         97/8192         8536/720896   ( 1.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             53/32768         530/327680   ( 0.2%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           840/65536        1680/131072   ( 1.3%) 
+cubemapsamples           1/1024           16/16384    ( 0.1%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     2308484/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]         852/16777216 ( 0.0%) 
+entdata               [variable]       33002/393216   ( 8.4%) 
+LDR ambient table      207/65536         828/262144   ( 0.3%) 
+HDR ambient table      207/65536         828/262144   ( 0.3%) 
+LDR leaf ambient       640/65536       17920/1835008  ( 1.0%) 
+HDR leaf ambient       207/65536        5796/1835008  ( 0.3%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/3214     ( 0.0%) 
+pakfile               [variable]      174653/0        ( 0.0%) 
+physics               [variable]      997773/4194304  (23.8%) 
+physics terrain       [variable]           0/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1885
+Writing d:\steamlibrary\steamapps\common\garrysmod\garrysmod\gamemodes\lobby2\lobby2_a3.bsp
+32 seconds elapsed

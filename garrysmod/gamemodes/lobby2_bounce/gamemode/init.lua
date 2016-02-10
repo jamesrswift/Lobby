@@ -18,7 +18,7 @@ include( "sv_player.lua" )
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "cl_init.lua" )
 
-function GM:PlayerSpawn(Ply)
+function GM:PlayerSpawn( Ply )
 
 	Ply:DrawWorldModel(false)
 	
@@ -34,6 +34,33 @@ function GM:PlayerSpawn(Ply)
 		--if (not self.GameStarted) then
 		--	Ball:GetPhysicsObject():EnableMotion(false)
 		--end
+		
 	end
 	
+	self.BaseClass:PlayerSpawn( Ply )
+	
+end
+
+function GM:Think( )
+
+	for k, Pl in pairs( player.GetAll() ) do
+	
+		local ball = Pl:GetBall( )
+		
+		if ( ball ) then
+		
+			Pl:SetPos( ball:GetPos() )
+			
+			if ( IsValid( ball.Player ) ) then
+			
+				ball.Player:SetPos( ball:GetPos() )
+				ball.Player:SetAngles( Angle( 0, 0, 0 ) )
+			
+			end
+		end
+		
+	end
+	
+	self.BaseClass:Think( )
+
 end

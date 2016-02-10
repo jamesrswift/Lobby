@@ -16,14 +16,18 @@ GM.Modules = GM.Modules or {}
 GM.Modules.LoadedModules = GM.Modules.LoadedModules or {}
 GM.Modules.ModulesFolder = GM.Modules.ModulesFolder or "lobby2_base/gamemode/modules/"
 
-function GM.Modules.LoadModule( name )
+if ( SERVER ) then
+	util.AddNetworkString( "lobby_loadmodule" )
+end
+
+function GM.Modules.LoadModule( name, conf )
 
 	local GM = GM or gmod.GetGamemode();
 	local ModuleDir = GM.Modules.ModulesFolder .. name .. "/"
 
 	Module = {}
 	
-	local configuration = GM.Modules.LoadConfiguration( ModuleDir, string.lower( name ) .. ".conf" )
+	local configuration = ( SERVER and GM.Modules.LoadConfiguration( ModuleDir, string.lower( name ) .. ".conf" ) ) or conf
 	if ( configuration ) then
 	
 		Module.Configuration = configuration
@@ -75,7 +79,12 @@ function GM.Modules.LoadConfiguration( path, name )
 	local configuration = file.Read( path .. name, "LUA" )
 	if ( configuration and string.len( configuration ) > 0 ) then
 	
-		resource.AddFile( "gamemodes/" .. path .. name )
+		if ( SERVER ) then
+		
+			resource.AddFile( "gamemodes/" .. path .. name )
+			
+		end
+		
 		return util.KeyValuesToTable( configuration )
 	
 	end
@@ -158,9 +167,10 @@ end
 
 function GM:LoadModules( list )
 
-	if ( SERVER ) then
-		self:Print( "Loading Modules ... " )
-	end
+	-- Only run on server, now that we send through net
+	if ( CLIENT ) then return end
+
+	self:Print( "Loading Modules ... " )
 	
 	for _, name in pairs( list ) do
 		self.Modules.LoadModule( name )
@@ -178,4 +188,30 @@ function GM.Modules.ModuleIsLoaded( Name )
 
 	return ( gmod.GetGamemode().Modules.LoadedModules[Name] != nil )
 	
+end
+
+function GM.Modules.SendToClient( Pl )
+
+	for name, Module in pairs( (GM or GAMEMODE).Modules.LoadedModules ) do
+	
+		net.Start( "lobby_loadmodule" )
+			net.WriteString( name )
+			net.WriteTable( Module.Configuration or {} )
+		net.Send( Pl )
+	
+	end
+
+end
+
+if ( CLIENT ) then
+
+	net.Receive( "lobby_loadmodule", function( len )
+	
+		local name = net.ReadString( )
+		local conf = net.ReadTable( )
+	
+		GAMEMODE.Modules.LoadModule( name, conf )
+	
+	end)
+
 end
