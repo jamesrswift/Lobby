@@ -31,7 +31,13 @@ function GM.Modules.LoadModule( name, conf )
 	if ( configuration ) then
 	
 		Module.Configuration = configuration
-		GM.Modules.ManageConfiguration( ModuleDir, configuration )
+		local r = GM.Modules.ManageConfiguration( ModuleDir, configuration )
+		
+		-- configuration prevented module from loading
+		if ( r == false ) then
+			GM:Print( "Module \'%s\' did not load due to configuration", name)
+			return false
+		end
 		
 	else
 	
@@ -41,14 +47,12 @@ function GM.Modules.LoadModule( name, conf )
 	end
 	
 	if ( Module.InitializeModule ) then
-		Module:InitializeModule( )
+		Module:InitializeModule( SERVER )
 	end
 
 	if !GM.Modules.LoadedModules[ name ] then
 		GM.Modules.LoadedModules[ name ] = Module
 	end
-	
-	GM.Modules.ManageHooks( GM.Modules.LoadedModules[ name ], name )
 	
 	Module = nil
 	
@@ -58,19 +62,22 @@ function GM.Modules.LoadModule( name, conf )
 	
 end
 
-function GM.Modules.ManageHooks( Module, name )
+function GM.Modules.RunHook( Hook, ... )
 
-	if ( Module.Hooks ) then
+	local GM = GM or gmod.GetGamemode( )
+	local Return = { }
+
+	for name, Module in pairs( GM.Modules.LoadedModules ) do
 	
-		for k,v in pairs( Module.Hooks ) do
+		if ( Module.Hooks and Module.Hooks[Hook] ) then
 		
-			if ( Module[v] and type( Module[v] ) == "function" ) then
-				hook.Add( v, "Modules:" .. name .. ":" .. v, function( ... ) Module[v](Module, ... ) end)
-			end
-			
+			Return = { Module[ Hook ]( Module, ... ) }
+		
 		end
-		
+	
 	end
+	
+	return unpack( Return )
 
 end
 
@@ -101,19 +108,31 @@ function GM.Modules.ManageConfiguration( path, config )
 
 	if ( config ) then
 	
+		-- Allow module to be disabled from the configuration
+		if ( config.disable and config.disable == 1 ) then
+			return false
+		end
+	
+		-- Load modules required for this one to work
 		if ( config.dependences ) then
 			GM.Modules.ManageDependences( path, config )
 		end
-	
+		
+		-- Include the files
 		if ( config.includes ) then
 			GM.Modules.ManageFiles( path, config )
 		end
 		
+		-- Send the resources
 		if ( config.resources ) then
 			GM.Modules.ManageResources( path, config )
 		end
 		
+		return true
+		
 	end
+	
+	return false
 
 end
 
@@ -140,16 +159,17 @@ function GM.Modules.ManageFiles( path, config )
 		if ( SERVER and string.lower( Realm ) == "server" ) then
 		
 			include( path .. Filename )
-		elseif ( SERVER and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
+			
+		elseif ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) then
 		
-			AddCSLuaFile( path .. Filename )
-			if ( string.lower( Realm ) == "shared" ) then
-				include ( path .. Filename )
+		
+			if ( SERVER ) then
+				AddCSLuaFile( path .. Filename )
 			end
 			
-		elseif ( CLIENT and ( string.lower( Realm ) == "client" or string.lower( Realm ) == "shared" ) ) then
-		
-			include( path .. Filename )
+			if ( CLIENT or string.lower( Realm ) == "shared") then
+				include ( path .. Filename )
+			end
 			
 		end
 		

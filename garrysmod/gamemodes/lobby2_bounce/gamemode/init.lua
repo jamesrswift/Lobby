@@ -49,7 +49,7 @@ function GM:Think( )
 		
 		if ( ball ) then
 		
-			Pl:SetPos( ball:GetPos() )
+			--Pl:SetPos( ball:GetPos() )
 			
 			if ( IsValid( ball.Player ) ) then
 			

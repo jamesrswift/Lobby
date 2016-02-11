@@ -77,3 +77,24 @@ if ( CLIENT ) then
 	end)
 
 end
+
+-- Hook Override
+
+local old_hook_call = hook.Call
+
+function hook.Call( name, ENV, ... )
+
+	local GM = GM or gmod.GetGamemode( )
+	if ( GM.Modules ) then
+	
+		local a, b, c, d, e, f = GM.Modules.RunHook( name, ... )
+		
+		if ( a ~= nil ) then
+			return a, b, c, d, e, f
+		end
+		
+	end
+	
+	return old_hook_call( name, ENV, ... )
+
+end
