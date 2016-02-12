@@ -76,9 +76,9 @@ function buffer_meta:ReadInteger( )
 
 	local bytes = self:Peek(4)
 	return bit.rol( bit.bor( bit.lshift( 	string.byte( bytes, 1 ), 24 ),
-					bit.bor( bit.lshift( 	string.byte( bytes, 2 ), 16 ),
-					bit.bor( bit.lshift( 	string.byte( bytes, 3 ), 8 ),
-											string.byte( bytes, 4 )
+			bit.bor( bit.lshift( 	string.byte( bytes, 2 ), 16 ),
+			bit.bor( bit.lshift( 	string.byte( bytes, 3 ), 8 ),
+						string.byte( bytes, 4 )
 		))), 1 )
 	
 end
@@ -89,10 +89,10 @@ function buffer_meta:WriteInteger( int )
 
 	self:Push(
 		string.char(
-			bit.rshift( bit.band( int , 0xFF000000 ), 24 ),
-			bit.rshift( bit.band( int , 0x00FF0000 ), 16 ),
-			bit.rshift( bit.band( int , 0x0000FF00 ), 8 ),
-						bit.band( int , 0x000000FF )
+			bit.rshift( 	bit.band( int , 0xFF000000 ), 24 ),
+			bit.rshift( 	bit.band( int , 0x00FF0000 ), 16 ),
+			bit.rshift( 	bit.band( int , 0x0000FF00 ), 8 ),
+					bit.band( int , 0x000000FF )
 		)
 	)
 	
