@@ -65,14 +65,10 @@ end
 
 if ( CLIENT ) then
 
-	hook.Add( "Think", "NotifyReady", function()
-	
-		if ( GAMEMODE.FirstThink ) then return end
+	hook.Add( "InitPostEntity", "NotifyReady", function()
 	
 		net.Start( "lobby_clientready" )
 		net.SendToServer( )
-		
-		GAMEMODE.FirstThink = true
 	
 	end)
 

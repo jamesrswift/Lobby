@@ -66,7 +66,7 @@ function GM.Item:Add( Table )
 	end
 
 	local Uni = item.UniqueName
-	self.Items[ simplehash(Uni)] = item
+	self.Items[ Uni ] = item
 	
 	item:Init();
 
@@ -74,23 +74,23 @@ end
 
 function GM.Item:Get( Name )
 
-	return self.Items[ simplehash(Name) ] or false
+	return self.Items[ Name ] or false
 	
 end
 
 function GM.Item:LoadSubFolder( Folder )
 
-	local ItemFiles = file.Find( "Lobby_Base/gamemode/inventory/items/" .. Folder .. "*" , "LUA" )
+	local ItemFiles = file.Find( "lobby_base2/gamemode/inventory/items/" .. Folder .. "*" , "LUA" )
 	
 	for k,v in pairs( ItemFiles ) do
 	
 		if ( SERVER ) then
-			AddCSLuaFile( "Lobby_Base/gamemode/inventory/items/"..Folder.. v)
+			AddCSLuaFile( "lobby_base2/gamemode/inventory/items/"..Folder.. v)
 		end
 		
 		ITEM = table.Copy(self._itemmeta)
 		
-		include( "Lobby_Base/gamemode/inventory/items/" .. Folder .. v )
+		include( "lobby_base2/gamemode/inventory/items/" .. Folder .. v )
 		self:Add( table.Copy(ITEM) )
 		
 		ITEM = nil;

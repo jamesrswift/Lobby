@@ -85,12 +85,6 @@ net.Receive("Lobby.UpdateOtherClientsInventory", function()
 	GM.Inventory:UpdateOtherClientsInventory(net.ReadTable() or {})
 end)
 
-hook.Add( "InitPostEntity", "LobbyInventory.PlayerIsReady", function()
-	net.Start( "Lobby.InventoryClientReady" )
-	net.SendToServer()
-end)
-
-
 function GM.Inventory:InitializeInventoryPanel()
 
 	self.InventoryPanel = vgui.Create( "lobby.Inventory" );

@@ -56,6 +56,7 @@ AddCSLuaFile( "chat/main.lua" )
 AddCSLuaFile( "chat/cl_smilies.lua" )
 AddCSLuaFile( "chat/cl_icons.lua" )
 
+AddCSLuaFile( "cl_soundmanager.lua" )
 AddCSLuaFile( "cl_notification.lua" )
 AddCSLuaFile( "cl_fonts.lua" )
 
@@ -90,6 +91,6 @@ end
 function GM:LobbyClientReady( Pl )
 
 	self.Modules.SendToClient( Pl )
-
+	self.Inventory.ClientReady( Pl )
 
 end

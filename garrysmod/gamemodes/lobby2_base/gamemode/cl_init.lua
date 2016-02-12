@@ -16,6 +16,7 @@ include( "extensions/buffer.lua" )
 include( "extensions/utf8.lua" )
 
 include( "sh_util.lua" )
+include( "cl_soundmanager.lua" )
 include( "cl_notification.lua" )
 include( "cl_fonts.lua" )
 include( "sh_modules.lua" )
@@ -48,6 +49,7 @@ function GM:Think( )
 
 	self.Notification.Think( )
 	self.Inventory:Think( )
+	self.SoundManager:ManageCrossFades( )
 
 end
 

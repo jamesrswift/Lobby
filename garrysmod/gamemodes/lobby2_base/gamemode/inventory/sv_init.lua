@@ -31,12 +31,15 @@ AddCSLuaFile( "vgui/inventory_item.lua" )
 AddCSLuaFile( "vgui/hateditor_modelviewer.lua" )
 AddCSLuaFile( "vgui/hateditor.lua" )--]]
 
-util.AddNetworkString("Lobby.InventoryClientReady");
 util.AddNetworkString("Lobby.UpdateInventory");
 util.AddNetworkString("Lobby.UpdateOtherClientsInventory");
 util.AddNetworkString("Lobby.ItemSwitch");
 
 
-net.Receive("Lobby.InventoryClientReady", function(len,pl) pl:InitItems() end)
+function GM.Inventory.ClientReady( Pl )
+
+	Pl:InitItems()
+	
+end
 
 net.Receive("Lobby.ItemSwitch", function(len,pl) pl:MoveItemToSlot( net.ReadInt(8), net.ReadInt(8) ) end)
