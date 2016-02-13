@@ -12,12 +12,25 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Name					= "lobby2_base"
-GM.Author				= "James Swift"
-GM.Email				= "n/a"
-GM.Website				= ""
-GM.AllowDownload			= false
-GM.RemoveDefaultHUD			= false
+include( "shared.lua" )
+include( "player_class/class_default.lua" )
 
-GM.ServerID				= 0
-GM.TeamBase				= false
+--[[---------------------------------------------------------
+   Name: gamemode:GetMotionBlurSettings()
+   Desc: Allows you to edit the motion blur values
+---------------------------------------------------------]]--
+
+function GM:GetMotionBlurValues( x, y, fwd, spin )
+
+	local EyeAngles = LocalPlayer():EyeAngles()
+	
+	local Velocity = LocalPlayer():GetVelocity()
+	fwd = ( Velocity:Dot( EyeAngles:Forward() ) - 100 ) / 20000
+	
+	fwd = math.Clamp( fwd, 0, 1 )
+	
+	y = ( Velocity:Dot( EyeAngles:Up() ) ) / 20000
+	
+	return x, y, fwd, spin
+	
+end

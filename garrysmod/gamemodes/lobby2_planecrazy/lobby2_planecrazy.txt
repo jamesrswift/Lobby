@@ -1,0 +1,7 @@
+"Gamemode"
+{
+	"base"		"lobby2_base"
+	"title"		"Lobby: Plane Crazy"
+	"maps"		"^lobby2_pc_"
+	"menusystem"	"1"
+}

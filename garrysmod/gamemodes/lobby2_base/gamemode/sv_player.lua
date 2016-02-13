@@ -50,9 +50,21 @@ end
 
 function GM:PlayerSpawn( Pl )
 
+	if ( self.TeamBased && ( Pl:Team() == TEAM_SPECTATOR || Pl:Team() == TEAM_UNASSIGNED ) ) then
+
+		self:PlayerSpawnAsSpectator( Pl )
+		return
+	
+	end
+
 	Pl:SetCollisionGroup( COLLISION_GROUP_DEBRIS_TRIGGER )
 	
 	hook.Run( "PlayerSetModel", Pl )
+	
+	Pl:SetupHands()
+	
+	player_manager.OnPlayerSpawn( Pl )
+	player_manager.RunClass( Pl, "Spawn" )
 
 end
 
@@ -118,7 +130,8 @@ function GM:PlayerSetModel( ply )
 	
 	ply:SetPlayerColor( Vector(1,1,1) )
 
-	hook.Run("PlayerSetModelPost", ply, model )
+	player_manager.RunClass( ply, "SetModel" )
+	hook.Run("PlayerSetModelPost", ply, ply:GetModel() )
 	
 end
 
