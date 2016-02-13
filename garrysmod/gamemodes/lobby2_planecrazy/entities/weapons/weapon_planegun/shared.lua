@@ -104,7 +104,7 @@ function SWEP:ShootBullet( damage, num_bullets, aimcone )
 	
 	local bullet = {}
 	bullet.Num 		= num_bullets
-	bullet.Src 		= self.Owner:GetShootPos()			-- Source
+	bullet.Src 		= self.Owner:GetPos()			-- Source
 	bullet.Dir 		= self.Owner:GetAimVector()			-- Dir of bullet
 	bullet.Spread 	= Vector( aimcone, aimcone, 0 )		-- Aim Cone
 	bullet.Tracer	= 1									-- Show a tracer on every x bullets 
@@ -112,7 +112,7 @@ function SWEP:ShootBullet( damage, num_bullets, aimcone )
 	bullet.Damage	= damage
 	bullet.AmmoType = "Pistol"
 	bullet.HullSize = 2
-	--bullet.TracerName = "LaserTracer"
+	bullet.TracerName = "LaserTracer"
 	
 	self.Owner:FireBullets( bullet )
 	

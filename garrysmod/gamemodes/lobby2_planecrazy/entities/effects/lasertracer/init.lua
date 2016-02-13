@@ -49,7 +49,7 @@ end
 ---------------------------------------------------------]]--
 function EFFECT:Think( )
 
-	self.Alpha = self.Alpha - FrameTime() * 50
+	self.Alpha = self.Alpha - FrameTime() * 400
 	
 	self.Entity:SetRenderBoundsWS( self.StartPos, self.EndPos )
 	
@@ -81,14 +81,14 @@ function EFFECT:Render( )
 	
 		render.DrawBeam( self.StartPos, 										-- Start
 						self.EndPos,											-- End
-						i * self.Alpha * 0.025,													-- Width
+						i * self.Alpha * 0.0025,													-- Width
 						texcoord,														-- Start tex coord
 						texcoord + (self.Length / (128 + self.Alpha)),									-- End tex coord
 						self.Color )
 						
 		render.SetMaterial( matLight )
 
-		render.DrawSprite( self.StartPos, i * 15, i * 15, Color( self.Color.r, self.Color.g, self.Color.b, self.Alpha ) )
+		--render.DrawSprite( self.StartPos, i * 15, i * 15, Color( self.Color.r, self.Color.g, self.Color.b, self.Alpha ) )
 		render.DrawSprite( self.EndPos, i * 15, i * 15, Color( self.Color.r, self.Color.g, self.Color.b, self.Alpha ) )
 	
 	end

@@ -12,43 +12,55 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Multiserver = GM.Multiserver or { }
-GM.Multiserver.Packet = GM.Multiserver.Packet or { }
-
-require( "bromsock" )
-
-function GM.Multiserver.Packet.ReadPacket( packet )
-
-	local Data = Buffer( packet:ReadStringAll() )
-
-	if ( Data:ReadStringNT( ) == "LobbyISCP" ) then
+function GM:AddPlanePart( pl, pos, ang, mdl )
 	
-		local ID = Data:ReadInteger( )
-		local Type = Data:ReadInteger( )
-		local Password = Data:ReadStringNT( )
-		local Body = Data:ReadStringNT( )
+	pos = pos + Vector( 0, 0, -3 )
+	
+	local ent = ents.Create( "prop_dynamic" )
+
+		ent:SetModel( mdl )
+		ent:Spawn()
 		
-		return true, ID, Type, Password, Body
+		ent:SetParent( pl )
+		ent:SetPos( pos )
+		ent:SetAngles( ang )
+		
+	pl.parts = pl.parts or {}
+	table.insert( pl.parts, ent )
 	
-	end
-	
-	return false
-
 end
 
-function GM.Multiserver.Packet.NewPacket( ID, Type, Password, Body )
+function GM:ExplodePlaneParts( pl )
 
-	local packet = Buffer( )
+	if ( !pl.parts ) then return end
 	
-	packet:WriteStringNT( "LobbyISCP" )
-	packet:WriteInteger( ID )
-	packet:WriteInteger( Type )
-	packet:WriteStringNT( Password )
-	packet:WriteStringNT( Body )
+	for k, v in pairs( pl.parts ) do
+		
+		if ( IsValid( v ) ) then
+		
+			v:SetParent( NULL )
+			
+			local ent = ents.Create( "prop_physics" )
+
+			ent:SetModel( v:GetModel() )
+			ent:SetPos( v:GetPos() )
+			ent:SetAngles( v:GetAngles() )
+			ent:Spawn()
+			ent:Ignite( 60 )
+			
+			timer.Simple( math.random( 5, 10 ), function() 
+					if ( IsValid( ent ) ) then 
+						--local effectdata = EffectData()
+						--effectdata:SetOrigin( ent:GetPos() )
+						--util.Effect( "Explosion", effectdata, true, true )
+						ent:Remove() 
+					end 
+				end )
+			v:Remove()
+		end
+	end
 	
-	--PrintTable( string.ToTable( packet:GetData() ) )
-	
-	return packet:ToPacket( )
+	pl.parts = {}
 
 end
 

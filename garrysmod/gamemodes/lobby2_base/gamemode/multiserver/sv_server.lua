@@ -51,6 +51,8 @@ function GM.Multiserver.Server.Accept( serversock, clientsock )
 	
 	clientsock:SetCallbackReceive( function(s, p)
 	
+		print( "receiving" )
+	
 		local r_num = p:ReadInt( )
 		
 		local packet = GM.Multiserver.Coms.HandleConnection( s, p )

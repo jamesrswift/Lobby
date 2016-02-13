@@ -69,7 +69,7 @@ function GM.Modules.RunHook( Hook, ... )
 
 	for name, Module in pairs( GM.Modules.LoadedModules ) do
 	
-		if ( Module.Hooks and Module.Hooks[Hook] ) then
+		if ( Module[Hook] ) then
 		
 			Return = { Module[ Hook ]( Module, ... ) }
 		

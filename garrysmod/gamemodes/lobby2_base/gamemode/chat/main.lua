@@ -62,8 +62,13 @@ function GM:OnPlayerChat( Pl, sText, bTeam, bDead )
 			table.insert( buffer, {Type="Text", Data="  "} )
 		end
 		
-		table.insert( buffer, {Type="Color", Data=Pl:GetDisplayTextColor( )} )
-		table.insert( buffer, {Type="Text", Data=Pl:Nick( )} )
+		if ( not IsValid( Pl ) ) then
+			table.insert( buffer, {Type="Color", Data=Color( 255, 0, 0, 255 )} )
+			table.insert( buffer, {Type="Text", Data="Console"} )
+		else
+			table.insert( buffer, {Type="Color", Data=Pl:GetDisplayTextColor( )} )
+			table.insert( buffer, {Type="Text", Data=Pl:Nick( )} )
+		end
 		
 		table.insert( buffer, {Type="Color", Data=color_white} )
 		table.insert( buffer, {Type="Text", Data=": "} )
@@ -74,7 +79,12 @@ function GM:OnPlayerChat( Pl, sText, bTeam, bDead )
 		
 		self.Chat.Chatbox:AppendLine( unpack( buffer ) )
 		
-		MsgC( Pl:GetDisplayTextColor( ), Pl:Nick( ), color_white, ": ", sText, "\n" )
+		
+		if ( not IsValid( Pl ) ) then
+			MsgC( Color( 255, 0, 0, 255 ), "Console", color_white, ": ", sText, "\n" )
+		else
+			MsgC( Pl:GetDisplayTextColor( ), Pl:Nick( ), color_white, ": ", sText, "\n" )
+		end
 		
 		return true
 		

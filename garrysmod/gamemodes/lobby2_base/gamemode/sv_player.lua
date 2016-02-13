@@ -59,6 +59,7 @@ function GM:PlayerSpawn( Pl )
 
 	Pl:SetCollisionGroup( COLLISION_GROUP_DEBRIS_TRIGGER )
 	
+	hook.Run( "PlayerLoadout", Pl )
 	hook.Run( "PlayerSetModel", Pl )
 	
 	Pl:SetupHands()
@@ -168,6 +169,18 @@ function Meta:ChatPrint( str, ... )
 		
 	end
 	
+end
+
+function GM:PlayerSay( player, text, teamonly )
+
+	if ( not IsValid( player ) ) then
+		MsgC( Color( 255, 0, 0, 255 ), "Console", color_white, ": ", text, "\n" )
+	else
+		MsgC( player:GetDisplayTextColor( ), player:Nick( ), color_white, ": ", text, "\n" )
+	end
+	
+	return text
+
 end
 
 function Meta:Notify( Type, Text, Lifetime )

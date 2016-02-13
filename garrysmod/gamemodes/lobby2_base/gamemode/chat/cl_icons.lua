@@ -29,6 +29,8 @@ end
 
 function GM:GetPlayerChatIcon( Pl )
 
+	if ( not IsValid( Pl ) ) then return false end
+
 	if ( self.NoChatIcons ) then return false end
 	
 	if ( Pl:GetNWBool( "bIsUndercover", false ) ) then

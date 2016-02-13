@@ -65,3 +65,9 @@ function GM:HUDShouldDraw( name )
 	return not table.HasValue( self.HideElements, name )
 	
 end
+
+function GM:LobbyScoreboard( Pl )
+
+	return { }
+
+end

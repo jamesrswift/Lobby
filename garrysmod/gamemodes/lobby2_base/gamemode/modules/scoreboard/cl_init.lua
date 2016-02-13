@@ -12,26 +12,44 @@
 	
 -----------------------------------------------------------]]--
 
-Module.Hooks = {
+--[[---------------------------------------------------------
+	Name: gamemode:ScoreboardShow( )
+	Desc: Sets the scoreboard to visible
+-----------------------------------------------------------]]
+function Module:ScoreboardShow()
 
-}
+	if ( !IsValid( self.Scoreboard ) ) then
+		self.Scoreboard = vgui.Create( "lobby_scoreboard" )
+	end
 
-function Module:InitializeModule( )
+	if ( IsValid( self.Scoreboard ) ) then
+		self.Scoreboard:Show()
+		self.Scoreboard:MakePopup()
+		self.Scoreboard:SetKeyboardInputEnabled( false )
+	end
 
-	self.ScoreboardTeams = { }
-
+	return true
+	
 end
 
-function Module:BuildScoreboard( )
+--[[---------------------------------------------------------
+	Name: gamemode:ScoreboardHide( )
+	Desc: Hides the scoreboard
+-----------------------------------------------------------]]
+function Module:ScoreboardHide()
 
-	local ScoreboardTable = hook.Run( "SetupScoreboard" )
-	if ( ScoreboardTable ) then
-
-		for teamid, teaminfo in pairs( team.GetAllTeams() ) do
-		
-		
-		end
-	
+	if ( IsValid( self.Scoreboard ) ) then
+		self.Scoreboard:Hide()
 	end
+
+	return true
+	
+end
+
+--[[---------------------------------------------------------
+	Name: gamemode:HUDDrawScoreBoard( )
+	Desc: If you prefer to draw your scoreboard the stupid way (without vgui)
+-----------------------------------------------------------]]
+function Module:HUDDrawScoreBoard()
 
 end
