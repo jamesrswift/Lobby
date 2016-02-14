@@ -26,3 +26,26 @@ function GM:GetTeamColor( Entity )
 	end
 	
 end
+
+function GM:InitPostEntity( )
+
+	self.BaseClass:InitPostEntity( )
+	
+	self.NormalMusic = self.SoundManager:PlayFile( "sounds/incoming/music_loop1.mp3", true, 1, true, 1 )
+	self.WinMusic = self.SoundManager:PlayFile( "sounds/incoming/music_loop2.mp3", true, 2, false, 0 )
+
+end
+
+net.Receive( "IncomingWin", function( len )
+
+	local Winner = net.ReadEntity( )
+	
+	GAMEMODE.SoundManager:CrossFade( GAMEMODE.WinMusic, GAMEMODE.NormalMusic, 0.2 )
+
+	timer.Simple( 8, function()
+	
+		GAMEMODE.SoundManager:CrossFade( GAMEMODE.NormalMusic, GAMEMODE.WinMusic, 1 )
+	
+	end)
+
+end)

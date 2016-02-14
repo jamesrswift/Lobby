@@ -12,6 +12,8 @@
 	
 -----------------------------------------------------------]]--
 
+util.AddNetworkString( "IncomingWin" )
+
 
 GM.DeathSounds = GM.DeathSounds or {
 	Sound( "vo/npc/male01/no02.wav" ),
@@ -19,6 +21,27 @@ GM.DeathSounds = GM.DeathSounds or {
 	Sound( "vo/npc/Barney/ba_ohshit03.wav" ),
 	Sound( "vo/npc/Barney/ba_no01.wav" ),
 	Sound( "vo/npc/Barney/ba_no02.wav" )
+}
+
+GM.WinSounds = GM.WinSounds or {
+	Sound("vo/coast/odessa/female01/nlo_cheer01.wav"),
+	Sound("vo/coast/odessa/female01/nlo_cheer02.wav"),
+	Sound("vo/coast/odessa/female01/nlo_cheer03.wav"),
+	Sound("vo/coast/odessa/male01/nlo_cheer01.wav"),
+	Sound("vo/coast/odessa/male01/nlo_cheer02.wav"),
+	Sound("vo/coast/odessa/male01/nlo_cheer03.wav"),
+	Sound("vo/coast/odessa/male01/nlo_cheer04.wav"),
+	Sound("vo/npc/female01/nice01.wav"),
+	Sound("vo/npc/female01/nice02.wav"),
+	Sound("vo/npc/female01/thislldonicely01.wav"),
+	Sound("vo/npc/male01/nice.wav"),
+	Sound("vo/eli_lab/al_gooddoggie.wav"),
+	Sound("vo/k_lab/kl_mygoodness01.wav"),
+	Sound("vo/k_lab2/al_goodboy.wav"),
+	Sound("vo/npc/female01/goodgod.wav"),
+	Sound("vo/npc/male01/goodgod.wav"),
+	Sound("vo/coast/bugbait/vbaittrain_great.wav"),
+	Sound("vo/k_lab2/kl_greatscott.wav")
 }
 
 local Meta = FindMetaTable("Player")
@@ -31,14 +54,16 @@ function Meta:WinRound()
 	
 		self:GiveMoney( GM.WinnerSpots[ game.GetMap() ].WinAmount or 50 )
 		
-		for k, Pl in pairs( player.GetAll() ) do
+		GM:NotifyAll( "Blue", self:Nick() .. " has won the round! Round will restart in 10 seconds", 10 )
+		GM.HasWon = true
 		
-			GM:NotifyAll( "Blue", self:Nick() .. " has won the round! Round will restart in 5 seconds", 5 )
-			GM.HasWon = true
-			
-		end
+		net.Start( "IncomingWin" )
+			net.WriteEntity( self )
+		net.Broadcast( )
 		
-		timer.Simple(5, function( )
+		self:EmitSound( GM.WinSounds[ math.random( 1, #GM.WinSounds ) ] )
+		
+		timer.Simple(10, function( )
 		
 			hook.Run( "RestartRound" )
 			

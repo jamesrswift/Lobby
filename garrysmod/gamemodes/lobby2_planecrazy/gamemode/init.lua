@@ -42,13 +42,7 @@ function GM:PlayerSpawn( pl )
 	pl:SetModel( "models/props_c17/doll01.mdl" )
 	
 	-- Add Plane Parts
-	self:AddPlanePart( pl, Vector( 0, 0, 0 ), Angle( 0, 0, 0 ), "models/props_c17/doll01.mdl" )
-	
-	self:AddPlanePart( pl, Vector( 0, 0, -7 ), Angle( 0, 92, 0 ), "models/props_junk/plasticcrate01a.mdl" )
-	self:AddPlanePart( pl, Vector( 0, 19, -9 ), Angle( -1.682, 120.148, 10.0717 ), "models/props_c17/playground_swingset_seat01a.mdl" )
-	self:AddPlanePart( pl, Vector( 0, -19, -9 ), Angle( -1.682, 70.648, 10.0717 ), "models/props_c17/playground_swingset_seat01a.mdl" )
-	self:AddPlanePart( pl, Vector( 21, 0, -9 ), Angle( -90, 270 , -90 ), "models/props_junk/trafficcone001a.mdl" )
-	self:AddPlanePart( pl, Vector( -18, -1, -7 ), Angle( -90, 90 + 180, -90 ), "models/props_lab/powerbox02d.mdl" )
+	self:BuildPlane( pl )
 
 end
 
