@@ -50,7 +50,7 @@ end
 
 function GM:ShouldDrawLocalPlayer( pl )
 
-	return false
+	--return false
 	
 end
 
