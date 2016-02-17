@@ -75,8 +75,6 @@ end
 
 function GM:ForceDermaSkin()
 
-	print( "wha" )
-
 	return self.DermaSkin or "Lobby2"
 
 end

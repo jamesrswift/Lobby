@@ -12,25 +12,36 @@
 	
 -----------------------------------------------------------]]--
 
-local ProgressHud = surface.GetTextureID( "models/clannv/nvincoming/hud/progress_bar" )
+local hud_bg = Material( "gui/hud_bg" )
+local hud_fg = Material( "gui/hud_fg" )
 
 function GM:HUDPaint()
 
-	self.BaseClass:HUDPaint()
+	--self.BaseClass:HUDPaint()
 	
-	surface.SetTexture( ProgressHud )
+	local base_x, base_y = 0, ScrH() - 105
+	
+	surface.SetMaterial( hud_bg )
 	surface.SetDrawColor( 255, 255, 255, 255 )
-	surface.DrawTexturedRect( 0, ScrH() - 45, 256, 64 )
+	surface.DrawTexturedRect( base_x, base_y, 256, 256 )
 	
 	if ( self.WinnerSpots[ game.GetMap() ] and LocalPlayer():Team() == 1 ) then
 	
-		local Dist = math.floor( LocalPlayer():GetPos():Distance( self.WinnerSpots[ game.GetMap() ].Spot ) )
-		
-		surface.SetDrawColor( 0, 200, 0, 240 )
-		surface.DrawRect( 3, ScrH() - 35, 245 - math.Clamp( 245 * ( Dist / self.WinnerSpots[ game.GetMap() ].Distance ) - 1, 0, 245 ), 25 )
+		self:HUDPaintProgressBar( base_x, base_y, math.floor( LocalPlayer():GetPos():Distance( self.WinnerSpots[ game.GetMap() ].Spot ) ), self.WinnerSpots[ game.GetMap() ].Distance )
 		
 	end
 	
+	surface.SetMaterial( hud_fg )
+	surface.SetDrawColor( 255, 255, 255, 255 )
+	surface.DrawTexturedRect( base_x, base_y, 256, 256 )
+	
+end
+
+function GM:HUDPaintProgressBar( base_x, base_y, Distance, TotalDistance )
+
+	surface.SetDrawColor( 0, 200, 0, 240 )
+	surface.DrawRect( base_x + 53 , base_y + 53, math.Clamp( 190 * ( 1 - Distance / TotalDistance ), 0, 192 ), 36 )
+
 end
 
 function GM:HUDDrawTargetID()

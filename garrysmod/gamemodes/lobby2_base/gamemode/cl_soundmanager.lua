@@ -13,16 +13,19 @@
 -----------------------------------------------------------]]--
 
 GM.SoundManager = GM.SoundManager or { }
-GM.SoundManager.Chanels = GM.SoundManager.Chanels or { }
+GM.SoundManager.Channels = GM.SoundManager.Channels or { }
 GM.SoundManager.CrossFades = GM.SoundManager.CrossFades or { }
 
-function GM.SoundManager:PlayFile( path, looping, chanel, shouldfade, fade, cb )
+function GM.SoundManager:PlayFile( path, looping, channel, shouldfade, fade, cb )
 
 	local GM = GM or gmod.GetGamemode( )
-	chanel = chanel or #self.Chanels + 1
+	channel = channel or #self.Channels + 1
 	
 	shouldfade = shouldfade and shouldfade or true
 	fade = fade and fade or 2
+	
+	-- Mark channel as used but don't screw up other stuff
+	self.Channels[ channel ] = NULL
 	
 	sound.PlayFile( path, "noplay noblock", function( IGModAudioChannel, errorID, errorName ) 
 	
@@ -33,24 +36,24 @@ function GM.SoundManager:PlayFile( path, looping, chanel, shouldfade, fade, cb )
 			
 		end
 		
-		if ( self.Chanels[ chanel ] and IsValid( self.Chanels[ chanel ] ) ) then
+		if ( self.Channels[ channel ] and IsValid( self.Channels[ channel ] ) ) then
 		
-			if ( self.Chanels[ chanel ]:GetState() == GMOD_CHANNEL_STOPPED or not IsValid( self.Chanels[ chanel ] ) ) then
+			if ( self.Channels[ channel ]:GetState() == GMOD_CHANNEL_STOPPED or not IsValid( self.Channels[ channel ] ) ) then
 			
-				self.Chanels[ chanel ] = nil
-				self.Chanels[ chanel ] = IGModAudioChannel
+				self.Channels[ channel ] = nil
+				self.Channels[ channel ] = IGModAudioChannel
 				
 				if ( shouldfade ) then
-					self:CrossFade( chanel, nil, fade )
+					self:CrossFade( channel, nil, fade )
 				end
 				
 			else
 			
-				self.Chanels[ chanel + 1 ], self.Chanels[ chanel ] = self.Chanels[ chanel ], IGModAudioChannel
+				self.Channels[ channel + 1 ], self.Channels[ channel ] = self.Channels[ channel ], IGModAudioChannel
 				
 				-- Mark for cross fade
 				if ( shouldfade ) then
-					self:CrossFade( chanel, chanel + 1, fade )
+					self:CrossFade( channel, channel + 1, fade )
 				end
 			
 			
@@ -58,10 +61,10 @@ function GM.SoundManager:PlayFile( path, looping, chanel, shouldfade, fade, cb )
 			
 		else
 		
-			self.Chanels[ chanel ] = IGModAudioChannel
+			self.Channels[ channel ] = IGModAudioChannel
 			
 			if ( shouldfade ) then
-				self:CrossFade( chanel, nil, fade )
+				self:CrossFade( channel, nil, fade )
 			end
 			
 		end
@@ -72,27 +75,27 @@ function GM.SoundManager:PlayFile( path, looping, chanel, shouldfade, fade, cb )
 		
 		end
 		
-		self.Chanels[ chanel ]:SetVolume( 0 )
-		self.Chanels[ chanel ]:Play( )
-		self.Chanels[ chanel ]:EnableLooping( looping and looping or true )
+		self.Channels[ channel ]:SetVolume( 0 )
+		self.Channels[ channel ]:Play( )
+		self.Channels[ channel ]:EnableLooping( looping and looping or true )
 		
 	
 	end)
 	
-	return chanel
+	return channel
 
 end
 
-function GM.SoundManager:CrossFade( entering_chanel, exiting_chanel, duration )
+function GM.SoundManager:CrossFade( entering_channel, exiting_channel, duration )
 	
 	if ( duration == 0 ) then
 	
-		if ( self.Chanels[ entering_chanel ] ) then
-			self.Chanels[ entering_chanel ]:SetVolume( 1 )
+		if ( self.Channels[ entering_channel ] ) then
+			self.Channels[ entering_channel ]:SetVolume( 1 )
 		end
 		
-		if ( self.Chanels[ exiting_chanel ] ) then
-			self.Chanels[ exiting_chanel ]:SetVolume( 0 )
+		if ( self.Channels[ exiting_channel ] ) then
+			self.Channels[ exiting_channel ]:SetVolume( 0 )
 		end
 		
 		return
@@ -100,8 +103,8 @@ function GM.SoundManager:CrossFade( entering_chanel, exiting_chanel, duration )
 	end
 
 	table.insert( self.CrossFades, {
-		c_start = entering_chanel,
-		c_end = exiting_chanel,
+		c_start = entering_channel,
+		c_end = exiting_channel,
 		init = CurTime( ),
 		duration = duration
 	})
@@ -112,19 +115,19 @@ function GM.SoundManager:ManageCrossFades( )
 
 	for k, info in pairs( self.CrossFades ) do
 	
-		if ( not IsValid( self.Chanels[ info.c_start ] ) )  then
+		if ( not IsValid( self.Channels[ info.c_start ] ) )  then
 		
 			table.remove( self.CrossFades, k )
 			
 		else
 			
-			if ( IsValid( self.Chanels[ info.c_start ] ) ) then
-				self.Chanels[ info.c_start ]:SetVolume( Lerp( ( CurTime( ) - (info.init + info.duration ) ) / info.duration , 0, 1 ) )
+			if ( IsValid( self.Channels[ info.c_start ] ) ) then
+				self.Channels[ info.c_start ]:SetVolume( Lerp( ( CurTime( ) - (info.init + info.duration ) ) / info.duration , 0, 1 ) )
 				
-				if ( self.Chanels[ info.c_start ]:GetVolume() == 1 ) then
+				if ( self.Channels[ info.c_start ]:GetVolume() == 1 ) then
 				
-					if ( IsValid( self.Chanels[ info.c_end ]  ) ) then
-						self.Chanels[ info.c_end ]:SetVolume( 0 )
+					if ( IsValid( self.Channels[ info.c_end ]  ) ) then
+						self.Channels[ info.c_end ]:SetVolume( 0 )
 					end
 			
 					table.remove( self.CrossFades, k )
@@ -133,13 +136,13 @@ function GM.SoundManager:ManageCrossFades( )
 				
 			end
 			
-			if ( IsValid( self.Chanels[ info.c_end ] ) ) then
-				self.Chanels[ info.c_end ]:SetVolume( Lerp( ( CurTime( ) - (info.init + info.duration ) ) / info.duration , 1, 0 ) )
+			if ( IsValid( self.Channels[ info.c_end ] ) ) then
+				self.Channels[ info.c_end ]:SetVolume( Lerp( ( CurTime( ) - (info.init + info.duration ) ) / info.duration , 1, 0 ) )
 				
-				if ( self.Chanels[ info.c_end ]:GetVolume() == 0 ) then
+				if ( self.Channels[ info.c_end ]:GetVolume() == 0 ) then
 				
-					if ( IsValid( self.Chanels[ info.c_start ]  ) ) then
-						self.Chanels[ info.c_start ]:SetVolume( 1 )
+					if ( IsValid( self.Channels[ info.c_start ]  ) ) then
+						self.Channels[ info.c_start ]:SetVolume( 1 )
 					end
 			
 					table.remove( self.CrossFades, k )

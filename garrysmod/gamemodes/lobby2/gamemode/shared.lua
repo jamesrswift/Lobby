@@ -31,7 +31,8 @@ function GM:OnGamemodeLoaded( )
 		"location",
 		"seats",
 		"size",
-		"legs"
+		"legs",
+		"name"
 	})
 
 end

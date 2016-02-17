@@ -31,7 +31,8 @@ function GM:OnGamemodeLoaded( )
 	self:LoadModules({
 		"currency",
 		"scoreboard",
-		"location"
+		"location",
+		"legs"
 	})
 	
 	if ( CLIENT ) then
