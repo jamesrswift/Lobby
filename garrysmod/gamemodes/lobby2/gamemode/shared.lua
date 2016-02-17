@@ -30,7 +30,8 @@ function GM:OnGamemodeLoaded( )
 		"scoreboard",
 		"location",
 		"seats",
-		"size"
+		"size",
+		"legs"
 	})
 
 end

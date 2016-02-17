@@ -87,7 +87,9 @@ function GM.SoundManager:CrossFade( entering_chanel, exiting_chanel, duration )
 	
 	if ( duration == 0 ) then
 	
-		self.Chanels[ entering_chanel ]:SetVolume( 1 )
+		if ( self.Chanels[ entering_chanel ] ) then
+			self.Chanels[ entering_chanel ]:SetVolume( 1 )
+		end
 		
 		if ( self.Chanels[ exiting_chanel ] ) then
 			self.Chanels[ exiting_chanel ]:SetVolume( 0 )
@@ -116,17 +118,34 @@ function GM.SoundManager:ManageCrossFades( )
 			
 		else
 			
-			self.Chanels[ info.c_start ]:SetVolume( Lerp( ( CurTime( ) - (info.init + info.duration ) ) / info.duration , 0, 1 ) )
+			if ( IsValid( self.Chanels[ info.c_start ] ) ) then
+				self.Chanels[ info.c_start ]:SetVolume( Lerp( ( CurTime( ) - (info.init + info.duration ) ) / info.duration , 0, 1 ) )
+				
+				if ( self.Chanels[ info.c_start ]:GetVolume() == 1 ) then
+				
+					if ( IsValid( self.Chanels[ info.c_end ]  ) ) then
+						self.Chanels[ info.c_end ]:SetVolume( 0 )
+					end
+			
+					table.remove( self.CrossFades, k )
+			
+				end
+				
+			end
 			
 			if ( IsValid( self.Chanels[ info.c_end ] ) ) then
 				self.Chanels[ info.c_end ]:SetVolume( Lerp( ( CurTime( ) - (info.init + info.duration ) ) / info.duration , 1, 0 ) )
-			end
+				
+				if ( self.Chanels[ info.c_end ]:GetVolume() == 0 ) then
+				
+					if ( IsValid( self.Chanels[ info.c_start ]  ) ) then
+						self.Chanels[ info.c_start ]:SetVolume( 1 )
+					end
 			
+					table.remove( self.CrossFades, k )
 			
-			if ( self.Chanels[ info.c_start ]:GetVolume() == 1 ) then
-			
-				table.remove( self.CrossFades, k )
-			
+				end
+				
 			end
 			
 		end

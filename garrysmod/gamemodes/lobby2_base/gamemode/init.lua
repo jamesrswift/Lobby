@@ -67,11 +67,15 @@ AddCSLuaFile( "vgui/richtext.lua" )
 AddCSLuaFile( "vgui/lobby_chatbox.lua" )
 AddCSLuaFile( "vgui/lobby_frame.lua" )
 AddCSLuaFile( "vgui/lobby_notification.lua" )
+AddCSLuaFile( "vgui/lobby_skin.lua" )
 
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 
 function GM:Initialize()
+
+	resource.AddWorkshop( "625054630" )
+	resource.AddWorkshop( self.WorkshopID )
 
 	self:Print( "Initializing ..." )
 	self.Multiserver.Coms.AddLogin( "127.0.0.1", "Louisa" )
@@ -81,6 +85,7 @@ function GM:Initialize()
 	self:InitializeMySQL()
 	self.MySQL.InitializeTable( "gm_users" )
 	self.MySQL.InitializeTable( "gm_bans" )
+	self.MySQL.InitializeTable( "gm_maps" )
 	
 	
 	self:SendResources( "materials" )

@@ -21,3 +21,5 @@ GM.RemoveDefaultHUD			= false
 
 GM.ServerID				= 0
 GM.TeamBase				= false
+
+GM.WorkshopID 			= "625054630"

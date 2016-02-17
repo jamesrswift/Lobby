@@ -33,6 +33,7 @@ include( "vgui/richtext.lua" )
 include( "vgui/lobby_chatbox.lua" )
 include( "vgui/lobby_frame.lua" )
 include( "vgui/lobby_notification.lua" )
+include( "vgui/lobby_skin.lua" )
 
 include( "shared.lua" )
 
@@ -69,5 +70,13 @@ end
 function GM:LobbyScoreboard( Pl )
 
 	return { }
+
+end
+
+function GM:ForceDermaSkin()
+
+	print( "wha" )
+
+	return self.DermaSkin or "Lobby2"
 
 end

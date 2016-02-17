@@ -58,6 +58,7 @@ function GM:InitializeMySQL()
 	
 	self:LoadBans( )
 	self:LoadServerInformation( self.ServerID or 0 )
+	self:LoadMapInformation( game.GetMap() )
 	
 	timer.Create( "lobby2_base:MySQL:CleanPlayerInformation", 15*60, 0, function() self:CleanPlayerInformation() end)
 	

@@ -19,6 +19,8 @@ ENT.Contact			= "Don't"
 ENT.Purpose			= "Exemplar material"
 ENT.Instructions	= "Use with care. Always handle with gloves."
 
+ENT.Item 			= "none"
+
 DEFINE_BASECLASS( ENT.Base )
 
 

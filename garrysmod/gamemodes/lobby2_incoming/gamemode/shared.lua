@@ -22,6 +22,8 @@ GM.RemoveDefaultHUD			= false
 GM.ServerID				= 5
 GM.TeamBased			= true
 
+GM.WorkshopID 			= "625055625"
+
 DeriveGamemode( "lobby2_base" )
 
 function GM:OnGamemodeLoaded( )

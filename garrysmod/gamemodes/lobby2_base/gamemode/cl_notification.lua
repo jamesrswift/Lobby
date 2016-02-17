@@ -70,7 +70,7 @@ function GM.Notification.Think( )
 		local x, y = GM.Notification.CalculatePosition( k )
 		local curx, cury = v:GetPos()
 		
-		v:SetPos( Lerp( 5 * FrameTime() * (cury/y), curx, x ) , Lerp( 5 * FrameTime() * (curx/x) , cury, y ) )
+		v:SetPos( Lerp( 5 * FrameTime() * (cury/y), curx, x ) , Lerp( 20 * FrameTime() * (curx/x) , cury, y ) )
 		
 	end
 

@@ -15,8 +15,6 @@ AddCSLuaFile( "shared.lua" )
  
 include('shared.lua')
 
-ENT.Item = "none"
-
 function ENT:Initialize()
 	
 	
