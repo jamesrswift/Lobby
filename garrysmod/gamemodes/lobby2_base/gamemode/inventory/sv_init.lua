@@ -20,6 +20,7 @@ include( "sh_shops.lua" )
 
 AddCSLuaFile( "cl_ghost.lua" )
 AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "cl_trailmanager.lua" )
 AddCSLuaFile( "cl_player.lua" )
 AddCSLuaFile( "sh_shops.lua" )
 AddCSLuaFile( "sh_item.lua" )

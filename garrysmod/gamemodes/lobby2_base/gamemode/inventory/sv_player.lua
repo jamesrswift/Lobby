@@ -18,12 +18,22 @@ local _Player = FindMetaTable("Player")
 function _Player:GiveItem( Name, slot, extra )
 
 	local GM = GM or gmod.GetGamemode( )
-
-	local ID = tonumber( self:UniqueID() )
 	slot = slot or self:GetNextAvailableSlot( )
 	extra = extra or ""
+	local data = self:GetData()
 	
-	if ( GM.Item:Get( Name ) ) then
+	if ( GM.Item:Get( Name ) and data ) then
+		
+		data.inventory[slot] = { Name, extra }
+		self:SaveData( )
+
+		self:UpdateClientInventory()
+		
+		for k,v in pairs( player.GetAll() ) do
+			v:UpdateOtherClientsInventory()
+		end
+		
+		data.inventory[slot][3] = LobbyItem.CreateInstance( Name , slot, extra, self )
 		
 		hook.Run( "InventoryPlayerRecievedItem", self, Name, slot, extra )
 		

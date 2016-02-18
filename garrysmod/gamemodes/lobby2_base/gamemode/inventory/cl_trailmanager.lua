@@ -14,6 +14,7 @@
 
 GM.Inventory.TrailManager = GM.Inventory.TrailManager or { }
 GM.Inventory.TrailManager.Players = GM.Inventory.TrailManager.Players or { }
+GM.Inventory.TrailManager.DieTime = 1
 
 function GM.Inventory.TrailManager:ManagePlayer( Pl, Material )
 
@@ -27,7 +28,7 @@ function GM.Inventory.TrailManager:ManagePlayer( Pl, Material )
 	
 	self.Players[ Pl ] = {
 		Material = Material,
-		Mesh = Mesh( Material ),
+		--Mesh = Mesh( Material ),
 		Segments = { }
 	}
 
@@ -42,23 +43,57 @@ end
 
 function GM.Inventory.TrailManager:Think( )
 
-	for Pl, Data in pairs( self.Players ) do
+	for Pl, data in pairs( self.Players ) do
 	
 		local last_segment = data.Segments[ #data.Segments ]
 		
-		if ( Pl:GetPos():DistToSqr( last_segment ) > 1 ) then
+		if ( not last_segment ) then
+			table.insert( data.Segments, { pos = Pl:GetPos(), time = CurTime( ) } )
+			return
+		end
 		
-			if ( #data.Segments >= 200 ) then
+		if ( Pl:GetPos():DistToSqr( last_segment.pos ) > 15 and Pl:Alive( ) ) then
+		
+			if ( #data.Segments >= 400 ) then
 			
 				table.remove( data.Segments, 1 )
 			
 			end
 			
-			table.insert( data.Segments, Pl:GetPos() )
+			table.insert( data.Segments, { pos = Pl:GetPos(), time = CurTime( ) } )
 		
 		end
 	
 	end
+
+end
+
+function GM.Inventory.TrailManager:PruneOldSegments( Pl )
+
+	local delete = { }
+
+	for k, data in pairs( self.Players[ Pl ].Segments ) do
+	
+		if ( data.time + self.DieTime < CurTime() ) then
+		
+			table.insert( delete, k )
+			
+		end
+	
+	end
+	
+	for k, segment in pairs( delete ) do
+		table.remove( self.Players[ Pl ].Segments, segment )
+	end
+
+end
+
+function GM.Inventory.TrailManager:AddVertex( pos, u, v, color)
+
+	mesh.Position( pos )
+	mesh.TexCoord( 0, u, v )
+	mesh.Color( color.r, color.g, color.b, color.a )
+	mesh.AdvanceVertex()
 
 end
 
@@ -69,30 +104,49 @@ function GM.Inventory.TrailManager:RebuildMesh( Pl )
 	local lastpos
 	local verts = { }
 
-	for k, pos in ipairs( self.Players[ Pl ].Segments ) do
+	mesh.Begin( MATERIAL_TRIANGLES, ( #self.Players[ Pl ].Segments - 1 ) * 4 )
+	
+	for k, data in ipairs( self.Players[ Pl ].Segments ) do
 	
 		if ( not lastpos ) then
-		
-			lastpos = pos
+			lastpos = data
 			continue
-			
 		end
-	
-		table.insert( verts, {
-			lastpos,
-			lastpos + Vector( 0, 0, 5 ),
-			pos
-		})
 		
-		table.insert( verts, {
-			pos + Vector( 0, 0, 5 ),
-			lastpos + Vector( 0, 0, 5 ),
-			pos
-		})
+		local lastpos_up = Vector( 0, 0, 5 )
+		lastpos_up:Rotate( ( lastpos.pos - EyePos() ):Angle() )
+		
+		local pos_up = Vector( 0, 0, 5 )
+		pos_up:Rotate( ( data.pos - EyePos() ):Angle() )
+		
+		local last_color = Color( 255, 255, 255, math.max( 0, 255 * ( 1 - math.TimeFraction( lastpos.time , lastpos.time + self.DieTime, CurTime() ) ) ) )
+		local cur_color = Color( 255, 255, 255, math.max( 0, 255 * ( 1 - math.TimeFraction( data.time , data.time + self.DieTime, CurTime() ) ) ) )
+		
+		-- First
+		
+		self:AddVertex( lastpos.pos, 1, 1, last_color)
+		self:AddVertex( lastpos.pos + lastpos_up, 1, 0, last_color)
+		self:AddVertex( data.pos, 0, 1, cur_color)
+		
+		self:AddVertex( lastpos.pos, 1, 1, last_color)
+		self:AddVertex( data.pos, 0, 1, cur_color)
+		self:AddVertex( lastpos.pos + lastpos_up, 1, 0, last_color)
+		
+		-- Second
+		
+		self:AddVertex( data.pos + pos_up, 0, 0, last_color)
+		self:AddVertex( data.pos, 0, 1, cur_color)
+		self:AddVertex( lastpos.pos + lastpos_up, 1, 0, last_color)
+		
+		self:AddVertex( data.pos + pos_up, 0, 0, last_color)
+		self:AddVertex( lastpos.pos + lastpos_up, 1, 0, last_color)
+		self:AddVertex( data.pos, 0, 1, cur_color)
+	
+		lastpos = data
 	
 	end
 	
-	self.Players[ Pl ].Mesh:BuildFromTriangles( verts )
+	mesh.End()
 
 end
 
@@ -100,7 +154,23 @@ function GM.Inventory.TrailManager:Draw( Pl )
 
 	if ( not self.Players[ Pl ] ) then return end
 
+	self:PruneOldSegments( Pl )
+	
 	render.SetMaterial( self.Players[ Pl ].Material )
-	self.Players[ Pl ].Mesh:Draw()
+	self:RebuildMesh( Pl )
 
 end
+
+hook.Add( "PostDrawOpaqueRenderables", "Trails", function()
+
+	--render.SuppressEngineLighting( true )
+
+	for Pl, data in pairs( GAMEMODE.Inventory.TrailManager.Players ) do
+	
+		GAMEMODE.Inventory.TrailManager:Draw( Pl )
+	
+	end
+	
+	--render.SuppressEngineLighting( false )
+
+end)

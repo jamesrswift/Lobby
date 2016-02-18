@@ -15,7 +15,6 @@
 
 GM.Shops = {
 
-
 	[1] = {
 	
 		Name = "Template Shop",

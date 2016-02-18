@@ -18,6 +18,7 @@ GM.Inventory.OtherClientsInventory = {}
 
 include( "cl_ghost.lua" )
 include( "cl_player.lua" )
+include( "cl_trailmanager.lua" )
 include( "sh_item.lua" )
 include( "sh_shops.lua" )
 
@@ -97,6 +98,8 @@ end
 function GM.Inventory:Think( )
 
 	self.Ghost:UpdateGhostEntity()
+	self.TrailManager:Think( )
+
 
 	if ( not self.InventoryPanel ) then return end
 	

@@ -51,7 +51,7 @@ function GM:Think( )
 	self.Notification.Think( )
 	self.Inventory:Think( )
 	self.SoundManager:ManageCrossFades( )
-
+	
 end
 
 function GM:CreateMove( cmd )
