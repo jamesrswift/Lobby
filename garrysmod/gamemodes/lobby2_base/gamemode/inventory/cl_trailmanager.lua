@@ -14,20 +14,25 @@
 
 GM.Inventory.TrailManager = GM.Inventory.TrailManager or { }
 GM.Inventory.TrailManager.Players = GM.Inventory.TrailManager.Players or { }
+GM.Inventory.TrailManager.Materials = GM.Inventory.TrailManager.Materials or { }
 GM.Inventory.TrailManager.DieTime = 1
 
 function GM.Inventory.TrailManager:ManagePlayer( Pl, Material )
 
+	if ( not self.Materials[ Material ] ) then
+		self:CreateMaterial( Material )
+	end
+	
 	if ( self.Players[ Pl ] ) then
 		
 		-- Update the material
-		self.Players[ Pl ].Material = Material
+		self.Players[ Pl ].Material = self.Materials[ Material ]
 		return
 		
 	end
 	
 	self.Players[ Pl ] = {
-		Material = Material,
+		Material = self.Materials[ Material ],
 		--Mesh = Mesh( Material ),
 		Segments = { }
 	}
@@ -38,6 +43,24 @@ end
 function GM.Inventory.TrailManager:UnmanagePlayer( Pl )
 
 	self.Players[ Pl ] = nil
+
+end
+
+function GM.Inventory.TrailManager:CreateMaterial( Material )
+
+	if ( self.Materials[ Material ] ) then
+		return self.Materials[ Material ]
+	end
+	
+	self.Materials[ Material ] = CreateMaterial( "TrailManager_" .. Material, "UnlitGeneric", {
+		["$basetexture"] = Material,
+		["$vertexcolor"] = 1,
+		["$vertexalpha"] = 1,
+		["$model"] = 1,
+	
+	})
+	
+	return self.Materials[ Material ]
 
 end
 

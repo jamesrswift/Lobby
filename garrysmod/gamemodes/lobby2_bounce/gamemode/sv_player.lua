@@ -27,13 +27,14 @@ function Meta:SpawnBall( Position )
 	self.Ball:Activate()
 	self.Ball:SetColor(Color(255, 255, 255, 0))
 	
-	self:SpectateEntity(self.Ball)
 	self:CrosshairDisable()
 	self:SetBall( self.Ball )
 	
 	
 	self:SetColor( Color(255, 255, 255, 0) )
-	self:SetMoveType( MOVETYPE_OBSERVER )
+	--self:SetMoveType( MOVETYPE_OBSERVER )
+	
+	self:SpectateEntity(self.Ball)
 	self:Spectate( OBS_MODE_CHASE );
 	
 end
