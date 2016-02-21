@@ -99,8 +99,14 @@ function Meta:SaveData( )
 
 	local GM = GM or gmod.GetGamemode( )
 	
+	-- Inventory Sanitization
+	local inventory = { }
+	for k,v in pairs( data.inventory ) do
+		inventory[ k ] = { Name = v.Name, Extra = v.Extra }
+	end
+	
 	local query = GM.MySQL.BuildQuery( "REPLACE INTO gm_users ( SteamID64, Money, Usergroup, Inventory, Achievements, Model ) Values ( '%s', %i, '%s', '%s', '%s', '%s' )",
-		self:SteamID64() or 0, data.money or 0, data.usergroup or "user", util.TableToJSON( data.inventory or {} ), util.TableToJSON( data.achievements or {} ), data.model or "kleiner" )
+		self:SteamID64() or 0, data.money or 0, data.usergroup or "user", util.TableToJSON( inventory ), util.TableToJSON( data.achievements or {} ), data.model or "kleiner" )
 
 	if ( query ) then
 		tmysql.query( query, function( results )

@@ -91,6 +91,16 @@ function hook.Call( name, ENV, ... )
 		
 	end
 	
+	if ( GM.Item ) then
+	
+		local a, b, c, d, e, f = GM.Item:RunHook( name, ... )
+		
+		if ( a ~= nil ) then
+			return a, b, c, d, e, f
+		end
+		
+	end
+	
 	return old_hook_call( name, ENV, ... )
 
 end

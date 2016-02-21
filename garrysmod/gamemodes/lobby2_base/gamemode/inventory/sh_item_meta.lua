@@ -12,37 +12,50 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Inventory = GM.Inventory or { }
+local meta = GM.Item._itemmeta
 
-include( "sv_player.lua" )
-include( "sh_item.lua" )
-include( "sh_item_meta.lua" )
-include( "sh_shops.lua" )
+function meta:Init( )
 
-AddCSLuaFile( "cl_ghost.lua" )
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "cl_trailmanager.lua" )
-AddCSLuaFile( "cl_inventory.lua" )
-AddCSLuaFile( "cl_player.lua" )
-AddCSLuaFile( "sh_shops.lua" )
-AddCSLuaFile( "sh_item.lua" )
-AddCSLuaFile( "sh_item_meta.lua" )
+end
 
-AddCSLuaFile( "vgui/inventory.lua" )
-AddCSLuaFile( "vgui/inventory_item.lua" )
+function meta:OnBuy( Pl )
 
---[[
-AddCSLuaFile( "vgui/hateditor_modelviewer.lua" )
-AddCSLuaFile( "vgui/hateditor.lua" )--]]
+end
 
-util.AddNetworkString("Lobby.UpdateInventory");
---util.AddNetworkString("Lobby.ItemSwitch");
+function meta:OnSell( Pl )
 
+end
 
-function GM.Inventory.ClientReady( Pl )
+function meta:OnRemove( Pl )
 
-	Pl:InitItems()
+end
+
+function meta:CanPlayerBuy( Pl )
+	
+	return not self.Base 
 	
 end
 
-net.Receive("Lobby.ItemSwitch", function(len,pl) pl:MoveItemToSlot( net.ReadInt(8), net.ReadInt(8) ) end)
+function meta:CanPlayerSell( Pl )
+
+	return true
+
+end
+
+function meta:CanPlayerTrade( Pl )
+
+	return true
+
+end
+
+function meta:CanPlayerEquip( Pl )
+
+	return true
+
+end
+
+function meta:CanPlayerHolister( Pl )
+
+	return true
+
+end

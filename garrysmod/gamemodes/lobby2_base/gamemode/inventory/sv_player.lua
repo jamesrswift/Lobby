@@ -18,26 +18,32 @@ local _Player = FindMetaTable("Player")
 function _Player:GiveItem( Name, slot, extra )
 
 	local GM = GM or gmod.GetGamemode( )
-	slot = slot or self:GetNextAvailableSlot( )
-	extra = extra or ""
 	local data = self:GetData()
 	
-	if ( GM.Item:Get( Name ) and data ) then
+	slot = slot or self:GetNextAvailableSlot( )
+	extra = extra or ""
+	
+	if ( GM.Item:Get( Name ) and data and slot ) then
 		
-		data.inventory[slot] = { Name, extra }
+		data.inventory[slot] = { Name = Name, Extra = extra, Instance = GM.Item:CreateInstance( Name , slot, extra, self ) }
 		self:SaveData( )
 
-		self:UpdateClientInventory()
-		
-		for k,v in pairs( player.GetAll() ) do
-			v:UpdateOtherClientsInventory()
-		end
-		
-		data.inventory[slot][3] = LobbyItem.CreateInstance( Name , slot, extra, self )
+		GM.Item:SendUpdate( self, {
+			[slot] = {
+				Type = LOBBY_INV_CREATE,
+				Name = Name,
+				Extra = Extra
+			}
+		})
 		
 		hook.Run( "InventoryPlayerRecievedItem", self, Name, slot, extra )
 		
+		return true
+		
 	end
+	
+	return false
+	
 end
 
 function _Player:GetItems( )
@@ -55,58 +61,24 @@ function _Player:GetItem( slot )
 
 end
 
-function _Player:UpdateClientInventory()
-
-	net.Start( "Lobby.UpdateInventory" )
-
-	local data = {}
-	
-	for slot, item in pairs( self:GetItems() ) do
-		data[slot] = { ID = item.ID, Custom = item.Custom }
-	end
-	
-	net.WriteTable( data )
-	net.Send( self )
-	
-end
-
-function _Player:UpdateOtherClientsInventory()
-
-	net.Start( "Lobby.UpdateOtherClientsInventory" )
-	
-	local data = {}
-	
-	for k, Pl in pairs ( player.GetAll() ) do
-	
-		if ( Pl and IsValid( Pl ) and Pl:IsPlayer() and Pl ~= self ) then
-			data[ Pl ] = { }
-			for slot, item in pairs( Pl:GetItems() ) do
-				data[ Pl ][ slot ] = { ID = item.ID, Custom = item.Custom }
-			end
-			
-		end
-		
-	end
-	
-	net.WriteTable( data )
-	net.Send( self )
-	
-end
-
 function _Player:InitItems()
 
 	local GM = GM or gmod.GetGamemode( )
+	local net_data = { }
 
 	for slot, item in pairs( self:GetItems() ) do
 		
-		item.Instance = GM.Item:CreateInstance( item.ID , slot, item.Custom, self )
+		item.Instance = GM.Item:CreateInstance( item.Name , slot, item.Extra, self )
 		
+		net_data[slot] = {
+			Type = LOBBY_INV_CREATE,
+			Name = Name,
+			Extra = Extra
+		}
+
 	end
 	
-	self:UpdateClientInventory()
-	for k,v in pairs( player.GetAll() ) do
-		v:UpdateOtherClientsInventory()
-	end
+	GM.Item:SendUpdate( self, net_data )
 
 end
 
@@ -116,7 +88,7 @@ function _Player:BuyItem( name, slot, extra )
 	slot = slot or self:GetNextAvailableSlot( )
 	
 	local item = GM.Item:Get( name )
-	if item then
+	if ( item and slot ) then
 	
 		local price = item.Price
 		
@@ -142,14 +114,16 @@ function _Player:DestroyItem( slot )
 	if item then
 	
 		GM.Item:DestroyInstance( item.Instance, self, slot )
-		
 		self:GetData().inventory[slot] = nil
 		self:SaveData()
 		
-		self:UpdateClientInventory()
-		for k,v in pairs( player.GetAll() ) do
-			v:UpdateOtherClientsInventory()
-		end
+		GM.Item:SendUpdate( self, {
+			[slot] = {
+				Type = LOBBY_INV_DESTROY,
+				Name = Name,
+				Extra = Extra
+			}
+		})
 		
 	end
 	
@@ -175,14 +149,17 @@ function _Player:SetItemCustom( slot, custom )
 	local item = self:GetItem( slot )
 	if item then
 	
-		item.Custom = custom
+		item.Extra = custom
 		item.Instance:SetCustom( custom )
 		self:SaveData( )
 		
-		self:UpdateClientInventory()
-		for k,v in pairs( player.GetAll() ) do
-			v:UpdateOtherClientsInventory()
-		end
+		GM.Item:SendUpdate( self, {
+			[slot] = {
+				Type = LOBBY_INV_CUSTOM,
+				Name = Name,
+				Extra = custom
+			}
+		})
 		
 	end
 	
@@ -191,6 +168,6 @@ end
 function _Player:GetItemCustom( slot )
 
 	local item = self:GetItem( slot )
-	if item then return item.Custom end
+	if item then return item.Extra end
 	
 end

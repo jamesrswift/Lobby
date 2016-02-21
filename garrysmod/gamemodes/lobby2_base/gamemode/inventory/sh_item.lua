@@ -13,62 +13,32 @@
 
 GM.Item = GM.Item or { }
 GM.Item.Items = GM.Item.Items or { }
+GM.Item._itemmeta = GM.Item._itemmeta or {}
+GM.Item.Instances = GM.Item.Instances or { }
 
-GM.Item._itemmeta = {
-	Init = function( ) end,
-	OnBuy = function( Item, _Player ) end,
-	OnSell = function( Item, _Player ) end,
-	CanPlayerBuy = function( Item, _Player ) return not Item.Base end,
-	CanPlayerSell = function( Item, _Player ) return true end,
-	CanPlayerTrade = function ( Item, _Player ) return true end,
-	CanPlayerEquip = function ( Item, _Player ) return true end,
-	CanPlayerHolister = function ( Item, _Player ) return true end
-}
+-- Enums
+LOBBY_INV_CREATE = 1
+LOBBY_INV_DESTROY = 2
+LOBBY_INV_CUSTOM = 3
 
-
-function simplehash(str)
-	local hash = 1
-
-	for i=1, #str do
-		hash = (2 * hash) + string.byte(str, i)
-	end
-	hash = hash % 55565
-
-	return hash
-end
-
-function GM.Item:Add( Table )
+function GM.Item:Add( item )
 
 	local GM = GM or gmod.GetGamemode()
-	local item = {}
 	
-	if Table.Base then
+	if item.Base then
 	
-		local base = self.Get( Table.Base )
+		local base = self.Get( item.Base )
 		if base then
 		
-			for k,v in pairs( base ) do
-				if type(v) == "table" then
-					item[k] = table.Copy(v)
-				else
-					item[k] = v
-				end
-			end
-			
+			setmetatable( item, {__index = base} )
 		else
-			GM:Log( "item", "Attempted to create Lobby Item (%s) with unknown base (%s)!", Table.UniqueName, Table.Base )
+			GM:Log( "item", "Attempted to create Lobby Item (%s) with unknown base (%s)!", item.UniqueName, item.Base )
 		end
 		
 	end
-	
-	for k,v in pairs( Table ) do
-		item[k] = v
-	end
 
-	local Uni = item.UniqueName
-	self.Items[ Uni ] = item
-	
-	item:Init();
+	self.Items[ item.UniqueName ] = item
+	item:Init()
 
 end
 
@@ -88,73 +58,72 @@ function GM.Item:LoadSubFolder( Folder )
 			AddCSLuaFile( "lobby_base2/gamemode/inventory/items/"..Folder.. v)
 		end
 		
-		ITEM = table.Copy(self._itemmeta)
+		ITEM = { }
+		setmetatable( ITEM, {__index = self._itemmeta} )
 		
 		include( "lobby_base2/gamemode/inventory/items/" .. Folder .. v )
-		self:Add( table.Copy(ITEM) )
+		self:Add( ITEM )
 		
-		ITEM = nil;
+		ITEM = nil
 	end
 	
 end
 
 function GM.Item:CreateInstance( name , slot, extra, player )
 
-	local item = table.Copy( self:Get( name ) )
-
-	if (slot >= 0 and slot <= 10 ) then
-		if item:CanPlayerEquip( player) and item.OnEquip then
-			item:OnEquip(player)
-		end
-	else
-		if item:CanPlayerHolister( player ) and item.OnHolister then
-			item:OnHolister(player)
-		end
-	end
-	
-	for _,hookname in pairs( item.Hooks ) do
-		if item[hookname] then
-			hook.Add( hookname, hookname ..":" .. tostring(slot).. ":".. item.UniqueName..":"..player:UniqueID(), function( ... ) item[hookname](item, ...) end)
-		end
-	end
+	local item = { }
+	setmetatable( item, {__index = self:Get( name ) } )
 	
 	if ( string.len( extra ) > 0 and item.SetCustom ) then
 		item:SetCustom( extra )
 	end
 	
+	-- For Hooks
+	local key = table.insert( self.Instances, item )
+	item.m_ItemManagerInstanceKey = key
+	
 	return item
 
 end
 
-function GM.Item:DestroyInstance( ItemTable, player, slot )
+function GM.Item:DestroyInstance( item, Pl, slot )
 
-	if (ItemTable.OnRemove) then ItemTable:OnRemove() end
-	
-	for _,hookname in pairs( ItemTable.Hooks ) do
-		hook.Remove( hookname, hookname ..":" .. tostring(slot).. ":".. ItemTable.UniqueName..":"..player:UniqueID())
-	end
+	if ( item.OnRemove ) then item:OnRemove( Pl ) end
+	self.Instances[ item.m_ItemManagerInstanceKey ] = nil
 	
 end
 
-function GM.Item:LoadBases()
-	local ItemFiles = file.Find( "Lobby_Base/gamemode/inventory/items/base/*" , "LUA" )
+function GM.Item:RunHook( hook, ... )
+
+	local Return = { }
+
+	for m_ItemManagerInstanceKey, item in pairs( self.Instances ) do
 	
-	for k,v in pairs( ItemFiles ) do
-		if SERVER then
-			AddCSLuaFile( "Lobby_Base/gamemode/inventory/items/base/" .. v )
+		if ( item[ hook ] ) then
+		
+			Return = { item[hook]( item , ... ) }
+			
 		end
-		
-		ITEM = table.Copy(self._itemmeta)
-		
-		include( "Lobby_Base/gamemode/inventory/items/base/" .. v )
-		self:Add( table.Copy(ITEM) )
-		
-		ITEM = nil;
+	
 	end
+	
+	return unpack( Return )
 
 end
 
-GM.Item:LoadBases()
+function GM.Item:SendUpdate( Pl, data )
+
+	if ( not SERVER ) then return end
+
+	net.Start( "Lobby.UpdateInventory" )
+		net.WriteEntity( Pl )
+		net.WriteTable( data )
+	net.Broadcast( )
+	
+end
+
+-- Load
+GM.Item:LoadSubFolder( "base/" )
 
 GM.Item:LoadSubFolder( "" )
 GM.Item:LoadSubFolder( "Hats/" )

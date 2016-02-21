@@ -13,104 +13,97 @@
 -----------------------------------------------------------]]--
 
 GM.Inventory = GM.Inventory or { }
-GM.Inventory.ClientInventory = {}
-GM.Inventory.OtherClientsInventory = {}
+GM.Inventory.ClientInventories = {}
 
 include( "cl_ghost.lua" )
 include( "cl_player.lua" )
 include( "cl_trailmanager.lua" )
+include( "cl_inventory.lua" )
 include( "sh_item.lua" )
+include( "sh_item_meta.lua" )
 include( "sh_shops.lua" )
 
 include( "vgui/inventory.lua" )
 include( "vgui/inventory_item.lua" )
 
-AccessorFunc( GM.Inventory, "InventoryPanelIsShowing", "InventoryPanelShowing", FORCE_BOOL )
-
 function GM.Inventory:GetInventory()
 
-	return self.ClientInventory
+	return self.ClientInventories
 	
 end
 
-function GM.Inventory:UpdateInventory(data)
+function GM.Inventory:UpdateInventory( Pl,  data)
 
 	local GM = GM or gmod.GetGamemode()
-
-	for slot,item in pairs( self.ClientInventory ) do
-		if ( item.Instance ) then
-			GM.Item:DestroyInstance(item.Instance, LocalPlayer(), slot )
+	
+	if ( not self:GetInventory()[ Pl ] ) then self:GetInventory()[ Pl ] = { } end
+	
+	for slot, info in pairs( data ) do
+	
+		if ( info.Type == LOBBY_INV_CREATE ) then
+		
+			self:GetInventory()[ Pl ][ slot ] = {
+				Name = info.Name,
+				Extra = info.Extra,
+				Instance = GM.Item:CreateInstance( info.Name, slot, info.Extra, Pl )
+			}
+		
+		elseif ( info.Type == LOBBY_INV_DESTROY ) then
+			
+			GM.Item:DestroyInstance( self:GetInventory()[ Pl ][ slot ].Instance, Pl, slot )
+			self:GetInventory()[ Pl ][ slot ] = nil
+			
+		elseif ( info.Type == LOBBY_INV_CUSTOM ) then
+			
+			self:GetInventory()[ Pl ][ slot ].Extra = info.Extra
+			self:GetInventory()[ Pl ][ slot ].Instance:SetCustom( info.Extra )
+			
 		end
-	end
 	
-	self.ClientInventory = data
-	for slot,item in pairs( self.ClientInventory ) do
-		item.Instance = LobbyItem.CreateInstance( item.ID, slot, item.Custom, LocalPlayer() )
 	end
-	
-	if self.InventoryPanel then
-		self.InventoryPanel:UpdateContents()
+
+	if ( self.InventoryPanel and Pl == LocalPlayer() ) then
+		self.InventoryPanel:UpdateContents( data )
 	end
 	
 end
 
+function GM.Inventory:CreateInventoryItemElement( slot, parent )
 
-function GM.Inventory:UpdateOtherClientsInventory(data)
-
-	for _Player, Inv in pairs( self.OtherClientsInventory ) do
-		for slot,item in pairs( Inv ) do
-			if ( item.Instance ) then
-				GM.Item:DestroyInstance(item.Instance, _Player, slot )
-			end
-		end
-	end
+	local Inv = self:GetInventory()[ LocalPlayer() ]
+	if ( not Inv ) then return end
 	
-	self.OtherClientsInventory = data
-	for _Player, Inv in pairs( self.OtherClientsInventory ) do
-		if ( _Player and IsValid( _Player ) and _Player:IsPlayer() ) then
-			for slot,item in pairs( Inv ) do
-				item.Instance = LobbyItem.CreateInstance( item.ID, slot, item.Custom, LocalPlayer() )
-			end
-		end
-	end
+	local item = Inv[ slot ]
+	if ( not item ) then return end
+	
+	local Element = vgui.Create( "Lobby.InventoryItem", parent )
+	Element:SetData({
+		Name = item.Name
+		Model = item.Instance.Model,
+		Skin = item.Instance.Skin,
+		Material = item.Instance.Material,
+		Description = item.Instance.Description,
+		SetupMenu = item.Instance.SetupMenu,
+		Instance = item.Instance,
+		NoScroll = item.Intance.NoScroll
+	})
+	
+	return Element
 	
 end
+
 
 net.Receive("Lobby.UpdateInventory", function()
+
 	local GM = GM or gmod.GetGamemode( )
-	GM.Inventory:UpdateInventory(net.ReadTable() or {})
-end)
-
-net.Receive("Lobby.UpdateOtherClientsInventory", function()
-	local GM = GM or gmod.GetGamemode( )
-	GM.Inventory:UpdateOtherClientsInventory(net.ReadTable() or {})
-end)
-
-function GM.Inventory:InitializeInventoryPanel()
-
-	self.InventoryPanel = vgui.Create( "lobby.Inventory" );
-	self.InventoryPanel:SetSize( 1000, 200 ) 
-	self.InventoryPanel:SetPos( (ScrW() - 1000)/2, -210 )
-	self.InventoryPanel:FillSlots()
+	GM.Inventory:UpdateInventory( net.ReadEntity(), net.ReadTable() or {} )
 	
-end
+end)
 
 function GM.Inventory:Think( )
 
 	self.Ghost:UpdateGhostEntity()
 	self.TrailManager:Think( )
-
-
-	if ( not self.InventoryPanel ) then return end
-	
-	local x, y = self.InventoryPanel:GetPos();
-	if self:GetInventoryPanelShowing() then
-		self.InventoryPanel:SetPos( x , Lerp( 0.2, y, 0 ) )
-	else
-		self.InventoryPanel:SetPos( x , Lerp( 0.2, y, -210) )
-	end
+	self:PanelThink( )
 	
 end
-
-concommand.Add( "+inventory_show", function() local GM = GM or gmod.GetGamemode() if (not GM.Inventory.InventoryPanel) then GM.Inventory:InitializeInventoryPanel() end GM.Inventory:SetInventoryPanelShowing(true) gui.EnableScreenClicker( true ) end)
-concommand.Add( "-inventory_show", function() local GM = GM or gmod.GetGamemode() GM.Inventory:SetInventoryPanelShowing(false) gui.EnableScreenClicker( false ) end)

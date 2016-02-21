@@ -12,37 +12,43 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Inventory = GM.Inventory or { }
+AccessorFunc( GM.Inventory, "InventoryPanelIsShowing", "InventoryPanelShowing", FORCE_BOOL )
 
-include( "sv_player.lua" )
-include( "sh_item.lua" )
-include( "sh_item_meta.lua" )
-include( "sh_shops.lua" )
+function GM.Inventory:InitializeInventoryPanel()
 
-AddCSLuaFile( "cl_ghost.lua" )
-AddCSLuaFile( "cl_init.lua" )
-AddCSLuaFile( "cl_trailmanager.lua" )
-AddCSLuaFile( "cl_inventory.lua" )
-AddCSLuaFile( "cl_player.lua" )
-AddCSLuaFile( "sh_shops.lua" )
-AddCSLuaFile( "sh_item.lua" )
-AddCSLuaFile( "sh_item_meta.lua" )
-
-AddCSLuaFile( "vgui/inventory.lua" )
-AddCSLuaFile( "vgui/inventory_item.lua" )
-
---[[
-AddCSLuaFile( "vgui/hateditor_modelviewer.lua" )
-AddCSLuaFile( "vgui/hateditor.lua" )--]]
-
-util.AddNetworkString("Lobby.UpdateInventory");
---util.AddNetworkString("Lobby.ItemSwitch");
-
-
-function GM.Inventory.ClientReady( Pl )
-
-	Pl:InitItems()
+	self.InventoryPanel = vgui.Create( "lobby.Inventory" )
+	self.InventoryPanel:SetSize( 1000, 200 ) 
+	self.InventoryPanel:SetPos( (ScrW() - 1000)/2, -210 )
+	self.InventoryPanel:FillSlots()
 	
 end
 
-net.Receive("Lobby.ItemSwitch", function(len,pl) pl:MoveItemToSlot( net.ReadInt(8), net.ReadInt(8) ) end)
+function GM.Inventory:PanelThink( )
+
+	if ( not self.InventoryPanel ) then return end
+	
+	local x, y = self.InventoryPanel:GetPos();
+	if self:GetInventoryPanelShowing() then
+		self.InventoryPanel:SetPos( x , Lerp( 0.2, y, 0 ) )
+	else
+		self.InventoryPanel:SetPos( x , Lerp( 0.2, y, -210) )
+	end
+	
+end
+
+function GM.Inventory:BindPress( Pl, bind, bPressed )
+
+	if ( Pl ~= LocalPlayer() ) then return end
+	
+	if ( string.lower( bind ) == "contextmenuthingy" ) then
+	
+		if ( not self.InventoryPanel ) then
+			self:InitializeInventoryPanel()
+		end
+		
+		self:SetInventoryPanelShowing(bPressed)
+		gui.EnableScreenClicker( bPressed )
+		
+	end
+
+end
