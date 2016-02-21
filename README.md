@@ -4,10 +4,8 @@
 - Apartments
 - Translation
 - HUD
-- Inventory
 - Achievements
 - Administration
-- player shit
 - Jukebox
 - Pets? (Things following you, maybe a melon pet)
 - Hammer library for map editing
@@ -16,12 +14,14 @@
 - Scoreboard
 - Chat
 - Multiserver
-- MySQL
+- Inventory
 
 ## Already done
+- MySQL
 - Notifications
 - Usergroups
 - Module system
 - Location
 - Currency
 - Seats
+- Names
