@@ -14,16 +14,16 @@
 
 ITEM.ShopID 		= 0
 
-ITEM.Name 			= "Playermodel Base"
+ITEM.Name 		= "Playermodel Base"
 ITEM.UniqueName 	= "_playermodelbase"
 ITEM.Description 	= "Item base for playermodels"
-ITEM.Price			= 200
+ITEM.Price		= 200
 
-ITEM.Player			= false
-ITEM.Model 			= "models/player/alyx.mdl"
-ITEM.Hands			= {}
+ITEM.Player		= false
+ITEM.Model 		= "models/player/alyx.mdl"
+ITEM.Hands		= {}
 ITEM.BodyGroups		= {}
-ITEM.Skin			= 0
+ITEM.Skin		= 0
 
 function ITEM:Init( )
 
