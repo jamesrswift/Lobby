@@ -78,3 +78,12 @@ function GM:ForceDermaSkin()
 	return self.DermaSkin or "Lobby2"
 
 end
+
+function GM:PlayerBindPress( Pl, bind, bPressed )
+
+	local a = self.Inventory:BindPress( Pl, bind, bPressed )
+	if ( a ~= nil ) then return a end
+	
+	return self.baseclass.PlayerBindPress( self, Pl, bind, bPressed )
+	
+end

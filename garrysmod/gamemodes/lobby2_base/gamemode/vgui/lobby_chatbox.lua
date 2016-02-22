@@ -14,11 +14,13 @@
 
 local PANEL = { }
 
+local mat_Grad = surface.GetTextureID("gui/gradient_up")
+
 AccessorFunc( PANEL, "m_Color", "Color" )
 
 function PANEL:Init( )
 
-	self:SetColor( Color( 0, 0, 0, 100 ) )
+	self:SetColor( Color( 50, 175, 225, 100 ) )
 	
 	self.TextBox = vgui.Create( "DTextEntry", self )
 	self.TextBox:SetPos( 2, 102 )
@@ -97,6 +99,10 @@ function PANEL:PaintBackground( w, h )
 	
 	surface.SetDrawColor( color.r, color.g, color.b, 100 )
 	surface.DrawRect( 0, 0, w, h )
+	
+	surface.SetTexture( mat_Grad )
+	surface.SetDrawColor( 10, 10, 10, 100 )
+	surface.DrawTexturedRect( 0, 0, w, h )
 
 end
 

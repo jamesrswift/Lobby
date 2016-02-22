@@ -14,7 +14,7 @@
 GM.Item = GM.Item or { }
 GM.Item.Items = GM.Item.Items or { }
 GM.Item._itemmeta = GM.Item._itemmeta or {}
-GM.Item.Instances = GM.Item.Instances or { }
+GM.Item.Instances = GM.Item.Instances or setmetatable( {}, {__mode = "k"} ) -- Weak keys (Players), remove instance on disconnect
 GM.Item.Folder = GM.Item.Folder or "lobby2_base/gamemode/inventory/items/"
 
 -- Enums
@@ -31,6 +31,7 @@ function GM.Item:Add( item )
 		local base = self:Get( item.Base )
 		if base then
 		
+			-- Derive from base
 			setmetatable( item, {__index = base} )
 			
 		else
@@ -92,8 +93,14 @@ function GM.Item:CreateInstance( name , slot, extra, player )
 	end
 	
 	-- For Hooks
-	local key = table.insert( self.Instances, item )
-	item.m_ItemManagerInstanceKey = key
+	if ( not self.Instances[ player ] ) then
+		self.Instances[ player ] = { }
+	end
+	
+	self.Instances[ player ][ slot ] = setmetatable( {}, {
+		__index = item,
+		__mode = "v" -- Weak reference
+	})
 	
 	return item
 
@@ -109,19 +116,34 @@ end
 function GM.Item:RunHook( hook, ... )
 
 	local Return = { }
+	local GarbageCollect = { }
 
-	for m_ItemManagerInstanceKey, item in pairs( self.Instances ) do
+	-- Run the hooks
+	for Pl, inv in pairs( self.Instances ) do
 	
+		if ( not IsValid( Pl ) ) then
+			table.insert( GarbageCollect, Pl )
+			continue
+		end
 		
-		if ( item[ hook ] ) then
+		for slot, item in pairs( inv ) do
 		
-			Return = { item[hook]( item , ... ) }
-			--item[hook]( item , ... )
+			if ( item[ hook ] ) then
+			
+				Return = { item[hook]( item , ... ) }
+				
+			end
 			
 		end
 	
 	end
 	
+	-- Collect garbage
+	for i, key in pairs( GarbageCollect ) do
+		self.Instances[ key ] = nil
+	end
+	
+	-- Return hook stuff
 	return unpack( Return )
 
 end

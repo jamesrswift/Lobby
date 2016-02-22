@@ -180,6 +180,12 @@ function PANEL:EndInsertion()
 
 				--surface.SetDrawColor( Color( 0, 255, 0 ) )
 				--surface.DrawOutlinedRect( x, y + yOffset, textW, textH )
+				
+				draw.TextShadow( {
+					font = font,
+					pos = { x, y + yOffset },
+					text = text
+				}, 1, alpha )
 
 				surface.SetFont( font )
 				surface.SetTextPos( x, y + yOffset )

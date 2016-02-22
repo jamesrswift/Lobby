@@ -13,7 +13,7 @@
 -----------------------------------------------------------]]--
 
 GM.Inventory = GM.Inventory or { }
-GM.Inventory.ClientInventories = {}
+GM.Inventory.ClientInventories = GM.Inventory.ClientInventories or {}
 
 include( "cl_ghost.lua" )
 include( "cl_player.lua" )
