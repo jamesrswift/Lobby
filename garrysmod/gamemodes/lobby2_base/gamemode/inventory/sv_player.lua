@@ -32,7 +32,7 @@ function _Player:GiveItem( Name, slot, extra )
 			[slot] = {
 				Type = LOBBY_INV_CREATE,
 				Name = Name,
-				Extra = Extra
+				Extra = extra
 			}
 		})
 		
@@ -50,8 +50,12 @@ function _Player:GetItems( )
 
 	local data = self:GetData( )
 	if ( data ) then
-		return data.inventory or { }
+	
+		return data.inventory
+		
 	end
+	
+	return { }
 	
 end
 
@@ -65,15 +69,15 @@ function _Player:InitItems()
 
 	local GM = GM or gmod.GetGamemode( )
 	local net_data = { }
-
+	
 	for slot, item in pairs( self:GetItems() ) do
 		
 		item.Instance = GM.Item:CreateInstance( item.Name , slot, item.Extra, self )
 		
 		net_data[slot] = {
 			Type = LOBBY_INV_CREATE,
-			Name = Name,
-			Extra = Extra
+			Name = item.Name,
+			Extra = item.Extra
 		}
 
 	end

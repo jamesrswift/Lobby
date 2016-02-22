@@ -78,7 +78,7 @@ function GM.Inventory:CreateInventoryItemElement( slot, parent )
 	
 	local Element = vgui.Create( "Lobby.InventoryItem", parent )
 	Element:SetData({
-		Name = item.Name
+		Name = item.Name,
 		Model = item.Instance.Model,
 		Skin = item.Instance.Skin,
 		Material = item.Instance.Material,

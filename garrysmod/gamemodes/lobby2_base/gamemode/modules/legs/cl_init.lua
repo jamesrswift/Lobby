@@ -153,8 +153,10 @@ function Module:UpdateAnimation( Pl, Velocity, maxseqgroundspeed )
 
 	if ( IsValid( self.LegEnt ) ) then
 		
-		if ( self.LegEnt:GetModel() ~= player_manager.TranslatePlayerModel( LocalPlayer():GetModel( ) ) ) then
-			self.LegEnt:SetModel( player_manager.TranslatePlayerModel( LocalPlayer():GetModel( ) ) )
+		if ( self.LegEnt:GetModel() ~= LocalPlayer():GetModel( ) ) then	
+		
+			self.LegEnt:SetModel( LocalPlayer():GetModel( ) )
+			
 		end
 
 		for boneId = 0, self.LegEnt:GetBoneCount() do

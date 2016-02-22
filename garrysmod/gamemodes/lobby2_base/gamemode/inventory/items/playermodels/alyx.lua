@@ -12,19 +12,12 @@
 	
 -----------------------------------------------------------]]--
 
-local _Player = FindMetaTable("Player")
+ITEM.ShopID 		= 1
+ITEM.Base			= "_playermodelbase"
 
-function _Player:GetItems( )
-	
-	gmod.GetGamemode().Inventory.ClientInventories[self] = gmod.GetGamemode().Inventory.ClientInventories[self] or { }
-	return gmod.GetGamemode().Inventory.ClientInventories[self]
-	
-end
+ITEM.Name 			= "Alyx"
+ITEM.UniqueName 	= "AlyxPlayerModel"
+ITEM.Description 	= "This is just a test"
+ITEM.Price			= 200
 
-function _Player:GetItem( slot )
-
-	local items = self:GetItems()
-	if not items then return false end
-	return items[slot] or false
-
-end
+ITEM.Model 			= "models/player/alyx.mdl"

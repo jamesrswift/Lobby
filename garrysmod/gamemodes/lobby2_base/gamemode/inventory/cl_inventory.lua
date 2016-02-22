@@ -40,7 +40,7 @@ function GM.Inventory:BindPress( Pl, bind, bPressed )
 
 	if ( Pl ~= LocalPlayer() ) then return end
 	
-	if ( string.lower( bind ) == "contextmenuthingy" ) then
+	if ( string.lower( bind ) == "+menu_context" ) then
 	
 		if ( not self.InventoryPanel ) then
 			self:InitializeInventoryPanel()

@@ -221,6 +221,9 @@ end
 function GM:PlayerInformationLoaded( Pl )
 
 	self:Print( "Loaded player information" )
+	
+	self.Inventory.ClientReady( Pl )
+	hook.Run( "PlayerSetModel", Pl )
 
 end
 

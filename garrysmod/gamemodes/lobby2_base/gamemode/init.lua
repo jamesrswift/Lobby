@@ -96,6 +96,6 @@ end
 function GM:LobbyClientReady( Pl )
 
 	self.Modules.SendToClient( Pl )
-	self.Inventory.ClientReady( Pl )
+	--self.Inventory.ClientReady( Pl )
 
 end

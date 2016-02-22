@@ -15,6 +15,7 @@ GM.Item = GM.Item or { }
 GM.Item.Items = GM.Item.Items or { }
 GM.Item._itemmeta = GM.Item._itemmeta or {}
 GM.Item.Instances = GM.Item.Instances or { }
+GM.Item.Folder = GM.Item.Folder or "lobby2_base/gamemode/inventory/items/"
 
 -- Enums
 LOBBY_INV_CREATE = 1
@@ -27,18 +28,28 @@ function GM.Item:Add( item )
 	
 	if item.Base then
 	
-		local base = self.Get( item.Base )
+		local base = self:Get( item.Base )
 		if base then
 		
 			setmetatable( item, {__index = base} )
+			
 		else
+		
 			GM:Log( "item", "Attempted to create Lobby Item (%s) with unknown base (%s)!", item.UniqueName, item.Base )
+			GM:Print( "[item] Attempted to create Lobby Item (%s) with unknown base (%s)!", item.UniqueName, item.Base )
+			
+			return false
+			
 		end
+		
+		item.baseclass = base
 		
 	end
 
 	self.Items[ item.UniqueName ] = item
 	item:Init()
+	
+	GM:Print( "[item] Registered item (%s)!", item.UniqueName )
 
 end
 
@@ -50,18 +61,18 @@ end
 
 function GM.Item:LoadSubFolder( Folder )
 
-	local ItemFiles = file.Find( "lobby_base2/gamemode/inventory/items/" .. Folder .. "*" , "LUA" )
+	local ItemFiles = file.Find( self.Folder .. Folder .. "*" , "LUA" )
 	
 	for k,v in pairs( ItemFiles ) do
 	
 		if ( SERVER ) then
-			AddCSLuaFile( "lobby_base2/gamemode/inventory/items/"..Folder.. v)
+			AddCSLuaFile( self.Folder .. Folder .. v)
 		end
 		
 		ITEM = { }
 		setmetatable( ITEM, {__index = self._itemmeta} )
 		
-		include( "lobby_base2/gamemode/inventory/items/" .. Folder .. v )
+		include( self.Folder .. Folder .. v )
 		self:Add( ITEM )
 		
 		ITEM = nil
@@ -71,10 +82,12 @@ end
 
 function GM.Item:CreateInstance( name , slot, extra, player )
 
+	if ( not self:Get( name ) ) then return end
+
 	local item = { }
 	setmetatable( item, {__index = self:Get( name ) } )
 	
-	if ( string.len( extra ) > 0 and item.SetCustom ) then
+	if ( extra and string.len( extra ) > 0 and item.SetCustom ) then
 		item:SetCustom( extra )
 	end
 	
@@ -99,9 +112,11 @@ function GM.Item:RunHook( hook, ... )
 
 	for m_ItemManagerInstanceKey, item in pairs( self.Instances ) do
 	
+		
 		if ( item[ hook ] ) then
 		
 			Return = { item[hook]( item , ... ) }
+			--item[hook]( item , ... )
 			
 		end
 	
@@ -125,10 +140,4 @@ end
 -- Load
 GM.Item:LoadSubFolder( "base/" )
 
-GM.Item:LoadSubFolder( "" )
-GM.Item:LoadSubFolder( "Hats/" )
-GM.Item:LoadSubFolder( "Halos/" )
-GM.Item:LoadSubFolder( "Playermodels/" )
-GM.Item:LoadSubFolder( "Trails/" )
-GM.Item:LoadSubFolder( "Playercolors/" )
-GM.Item:LoadSubFolder( "Weapons/" )
+GM.Item:LoadSubFolder( "playermodels/" )

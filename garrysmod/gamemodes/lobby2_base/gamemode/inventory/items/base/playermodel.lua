@@ -27,8 +27,10 @@ ITEM.Skin			= 0
 
 function ITEM:Init( )
 
-	local GM = GM or gmod.GetGamemode( )
-	GM.BannedPlayerModels[ self.Model ] = true
+	if ( SERVER ) then
+		local GM = GM or gmod.GetGamemode( )
+		GM.BannedPlayerModels[ self.Model ] = true
+	end
 
 	player_manager.AddValidModel( string.lower(self.Name), self.Model )
 	if #self.Hands > 0 then
@@ -42,12 +44,12 @@ function ITEM:OnEquip( Pl )
 	self.Equiped = true
 	self.Player = Pl
 	
-	_Player:SetModel( self.Model )
+	Pl:SetModel( self.Model )
 	self:UpdateBodyGroups( Pl )
 	self:UpdateSkin( Pl )
 	
-	if ( Pl:GetData().model ~= self.Name ) then
-		Pl:GetData().model = self.Name
+	if ( Pl:GetData().model ~= self.Name:lower() ) then
+		Pl:GetData().model = self.Name:lower()
 		Pl:SaveData()
 	end
 	
@@ -56,6 +58,11 @@ end
 function ITEM:UpdateBodyGroups( Pl )
 
 	if self.Equiped then
+	
+		-- Reset body groups
+		for i=0, Pl:GetNumBodyGroups() do
+			Pl:SetBodygroup( i, 0 )
+		end
 	
 		for k,v in pairs(self.BodyGroups) do
 		
@@ -82,8 +89,8 @@ function ITEM:PlayerSetModelPost( Pl, model, skin )
 	if self.Player == Pl then
 	
 		Pl:SetModel( self.Model )
-		self:UpdateBodyGroups()
-		self:UpdateSkin()
+		self:UpdateBodyGroups( Pl )
+		self:UpdateSkin( Pl )
 		
 	end
 	

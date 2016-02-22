@@ -119,7 +119,7 @@ function GM:PlayerSetModel( ply )
 	
 	local model = "kleiner"
 
-	if ( hook.Run("AllowModel", ply, ply:GetData().model ) ) then
+	if ( ply:GetData().model and hook.Run("AllowModel", ply, ply:GetData().model ) ) then
 		model = ply:GetData().model
 	elseif ( hook.Run("AllowModel", ply, ply:GetInfo( "cl_playermodel" ) ) ) then	
 		model = ply:GetInfo( "cl_playermodel" )
@@ -138,7 +138,9 @@ end
 
 function GM:AllowModel( Pl, Model )
 
-	return not ( self.BannedPlayerModels[ Model ] == true )
+	--return not ( self.BannedPlayerModels[ Model ] == true )
+	
+	return true
 
 end
 
