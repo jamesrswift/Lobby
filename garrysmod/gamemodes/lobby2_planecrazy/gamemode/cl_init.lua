@@ -13,6 +13,7 @@
 -----------------------------------------------------------]]--
 
 include( "shared.lua" )
+include( "sh_move.lua")
 
 function GM:GetMotionBlurValues( x, y, fwd, spin )
 
@@ -52,42 +53,4 @@ function GM:ShouldDrawLocalPlayer( pl )
 
 	--return false
 	
-end
-
-function GM:InputMouseApply( cmd, x, y, angle )
-
-	local ply = LocalPlayer( )
-	
-	angle.roll = math.Approach( angle.roll, 0, angle.roll / 400 )
-	angle.yaw = angle.yaw + angle.roll * -0.0025
-	
-	local Ang = Matrix({
-		{1, 1, 1, 0},
-		{1, 1, 1, 0},
-		{1, 1, 1, 0},
-		{0, 0, 0, 0}
-	})
-	
-	Ang:SetAngles( angle )
-	
-	local speed = ply:GetNWFloat( "Speed", 0 )
-
-	local pitchchange = y * 0.02
-	local yawchange = x * -0.005
-	local rollchange = x * 0.022
-	
-	local stalling = 50 - speed
-	if ( speed < 50 ) then 
-		local rate = 1 - (speed / 50)
-		pitchchange = pitchchange + (rate ^ 10.0) * 20
-	end
-	
-	Ang:Rotate( Angle( pitchchange, yawchange, rollchange ) )
-	
-	local Ang = Ang:GetAngles()
-	Ang.roll = math.Clamp( Ang.roll, -90, 90 )
-	
-	cmd:SetViewAngles( Ang )
-	return true
-
 end

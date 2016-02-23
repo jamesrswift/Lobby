@@ -13,7 +13,7 @@
 -----------------------------------------------------------]]--
 
 GM.Inventory.TrailManager = GM.Inventory.TrailManager or { }
-GM.Inventory.TrailManager.Players = GM.Inventory.TrailManager.Players or { }
+GM.Inventory.TrailManager.Players = GM.Inventory.TrailManager.Players or setmetatable( { }, {__mode="k"} )
 GM.Inventory.TrailManager.Materials = GM.Inventory.TrailManager.Materials or { }
 GM.Inventory.TrailManager.DieTime = 1
 
@@ -66,28 +66,40 @@ end
 
 function GM.Inventory.TrailManager:Think( )
 
+	local Garbage = { }
+
 	for Pl, data in pairs( self.Players ) do
 	
-		local last_segment = data.Segments[ #data.Segments ]
+		if ( IsValid( Pl ) ) then
 		
-		if ( not last_segment ) then
-			table.insert( data.Segments, { pos = Pl:GetPos(), time = CurTime( ) } )
-			return
-		end
-		
-		if ( Pl:GetPos():DistToSqr( last_segment.pos ) > 15 and Pl:Alive( ) ) then
-		
-			if ( #data.Segments >= 400 ) then
+			local last_segment = data.Segments[ #data.Segments ]
 			
-				table.remove( data.Segments, 1 )
+			if ( not last_segment ) then
+				table.insert( data.Segments, { pos = Pl:GetPos(), time = CurTime( ) } )
+				return
+			end
+			
+			if ( Pl:GetPos():DistToSqr( last_segment.pos ) > 15 and Pl:Alive( ) ) then
+			
+				if ( #data.Segments >= 400 ) then
+				
+					table.remove( data.Segments, 1 )
+				
+				end
+				
+				table.insert( data.Segments, { pos = Pl:GetPos(), time = CurTime( ) } )
 			
 			end
 			
-			table.insert( data.Segments, { pos = Pl:GetPos(), time = CurTime( ) } )
+		else
+		
+			table.insert( Garbage, Pl )
 		
 		end
 	
 	end
+	
+	for k,v in pairs( Garbage ) do self.Players[ v ] = nil end
 
 end
 

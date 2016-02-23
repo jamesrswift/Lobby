@@ -14,9 +14,11 @@
 
 include( "shared.lua")
 include( "sv_plane.lua")
+include( "sh_move.lua")
 
 AddCSLuaFile( "shared.lua" )
 AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "sh_move.lua")
 
 function GM:PlayerLoadout( pl )
 

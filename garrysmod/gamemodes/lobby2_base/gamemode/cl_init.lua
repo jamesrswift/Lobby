@@ -14,6 +14,7 @@
 
 include( "extensions/buffer.lua" )
 include( "extensions/utf8.lua" )
+include( "extensions/meshpanel.lua" )
 
 include( "sh_util.lua" )
 include( "cl_soundmanager.lua" )
@@ -84,6 +85,6 @@ function GM:PlayerBindPress( Pl, bind, bPressed )
 	local a = self.Inventory:BindPress( Pl, bind, bPressed )
 	if ( a ~= nil ) then return a end
 	
-	return self.baseclass.PlayerBindPress( self, Pl, bind, bPressed )
+	return self.BaseClass:PlayerBindPress( Pl, bind, bPressed )
 	
 end

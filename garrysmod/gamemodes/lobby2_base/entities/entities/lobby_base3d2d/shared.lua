@@ -12,34 +12,20 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Name					= "Lobby2: Plane Crazy"
-GM.Author				= "James Swift"
-GM.Email				= "n/a"
-GM.Website				= ""
-GM.AllowDownload		= false
-GM.RemoveDefaultHUD		= false
+ENT.Type = "anim"
+ENT.Base = "base_gmodentity"
+ 
+ENT.PrintName		= "lobby_base3d2d"
+ENT.Author			= "James Swift"
+ENT.Contact			= "Don't"
+ENT.Purpose			= "Exemplar material"
+ENT.Instructions	= "Use with care. Always handle with gloves."
 
-GM.ServerID				= 6
+ENT.RenderGroup = RENDERGROUP_BOTH
 
-DeriveGamemode( "lobby2_base" )
+ENT.Scale = 0.1
+ENT.Width = 1000
+ENT.Height = 1000
+ENT.Cursor = true
 
-function GM:OnGamemodeLoaded( )
-
-	self:LoadModules({
-		"currency",
-		"scoreboard",
-		"location"
-	})
-
-end
-
-TEAM_PLAYERS = 200
-
-function GM:CreateTeams()
-
-
-	team.SetUp( TEAM_PLAYERS, "Players", Color( 255, 255, 100 ), true )
-	team.SetSpawnPoint( TEAM_PLAYERS, "info_player_start" )
-	team.SetClass( TEAM_PLAYERS, { "Default" } )
-	
-end
+DEFINE_BASECLASS( ENT.Base )

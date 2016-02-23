@@ -12,34 +12,21 @@
 	
 -----------------------------------------------------------]]--
 
-GM.Name					= "Lobby2: Plane Crazy"
-GM.Author				= "James Swift"
-GM.Email				= "n/a"
-GM.Website				= ""
-GM.AllowDownload		= false
-GM.RemoveDefaultHUD		= false
-
-GM.ServerID				= 6
-
-DeriveGamemode( "lobby2_base" )
-
-function GM:OnGamemodeLoaded( )
-
-	self:LoadModules({
-		"currency",
-		"scoreboard",
-		"location"
-	})
-
-end
-
-TEAM_PLAYERS = 200
-
-function GM:CreateTeams()
+AddCSLuaFile( "cl_init.lua" )
+AddCSLuaFile( "shared.lua" )
+ 
+include('shared.lua')
 
 
-	team.SetUp( TEAM_PLAYERS, "Players", Color( 255, 255, 100 ), true )
-	team.SetSpawnPoint( TEAM_PLAYERS, "info_player_start" )
-	team.SetClass( TEAM_PLAYERS, { "Default" } )
+function ENT:Initialize()
 	
+	--self:SetModel( "models/props_lab/blastdoor001b.mdl" )
+	self:DrawShadow( false )
+	self:SetAngles( Angle( 0, 0, 90 ) )
+	
+end
+ 
+function ENT:KeyValue( key, value )
+
+
 end

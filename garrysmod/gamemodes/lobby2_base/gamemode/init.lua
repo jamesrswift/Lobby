@@ -17,6 +17,7 @@
 --------------------------------]]--
 
 include( "extensions/buffer.lua" )
+include( "extensions/meshpanel.lua" )
 include( "sh_util.lua" )
 
 include( "sv_mysql.lua" )
@@ -47,6 +48,7 @@ include( "shared.lua" )
 
 AddCSLuaFile( "extensions/utf8.lua" )
 AddCSLuaFile( "extensions/buffer.lua" )
+AddCSLuaFile( "extensions/meshpanel.lua" )
 
 AddCSLuaFile( "sh_util.lua" )
 AddCSLuaFile( "sh_modules.lua" )
