@@ -19,7 +19,25 @@ function GM.Inventory:InitializeInventoryPanel()
 	self.InventoryPanel = vgui.Create( "lobby.Inventory" )
 	self.InventoryPanel:SetSize( 1000, 200 ) 
 	self.InventoryPanel:SetPos( (ScrW() - 1000)/2, -210 )
-	self.InventoryPanel:FillSlots()
+	
+	-- Fill the inventory with current items
+	local inv = LocalPlayer():GetItems( )
+	if ( inv ) then
+	
+		local data = { }
+	
+		for slot, item in pairs( inv ) do
+		
+			table.insert( data, {
+				Type = LOBBY_INV_CREATE,
+				Extra = item.Extra
+			})
+		
+		end
+		
+		self.InventoryPanel:UpdateContents( data )
+	
+	end
 	
 end
 
@@ -38,6 +56,8 @@ end
 
 function GM.Inventory:BindPress( Pl, bind, bPressed )
 
+	-- Remake the inventory as a profile page thing maybe, I dislike this GMTower idea remenant.
+
 	if ( Pl ~= LocalPlayer() ) then return end
 	
 	if ( string.lower( bind ) == "+menu_context" ) then
@@ -46,8 +66,13 @@ function GM.Inventory:BindPress( Pl, bind, bPressed )
 			self:InitializeInventoryPanel()
 		end
 		
-		self:SetInventoryPanelShowing(bPressed)
+		self:SetInventoryPanelShowing( bPressed )
 		gui.EnableScreenClicker( bPressed )
+		
+	elseif ( string.lower( bind ) == "-menu_context" ) then
+	
+		self:SetInventoryPanelShowing( false )
+		gui.EnableScreenClicker( false )
 		
 	end
 

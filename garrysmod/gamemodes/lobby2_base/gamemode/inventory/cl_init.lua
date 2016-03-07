@@ -85,8 +85,9 @@ function GM.Inventory:CreateInventoryItemElement( slot, parent )
 		Description = item.Instance.Description,
 		SetupMenu = item.Instance.SetupMenu,
 		Instance = item.Instance,
-		NoScroll = item.Intance.NoScroll
+		NoScroll = item.Instance.NoScroll
 	})
+	Element:SetSize( 100, 100 )
 	
 	return Element
 	

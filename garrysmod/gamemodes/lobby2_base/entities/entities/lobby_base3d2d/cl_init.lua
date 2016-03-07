@@ -23,8 +23,8 @@ function ENT:Initialize( )
 	self.Panel:SetWidth( self.Width or 100 )
 	self.Panel:SetHeight( self.Height or 100 )
 
-	self.Panel:SetUpdate( function( cursorx, cursory )
-		self:RenderScreen( cursorx, cursory )
+	self.Panel:SetUpdate( function( panel, cursorx, cursory )
+		self:RenderScreen( panel, cursorx, cursory )
 	end)
 	
 	local mins = Vector( self:GetPos( ).x + self.Width * self.Scale, 0, self:GetPos( ).z - self.Height * self.Scale )
@@ -35,7 +35,7 @@ function ENT:Initialize( )
 
 end
 
-function ENT:RenderScreen( cursorx, cursory )
+function ENT:RenderScreen( panel, cursorx, cursory )
 
 	-- For override
 
@@ -52,6 +52,8 @@ function ENT:RenderScreen( cursorx, cursory )
 
 	end
 
+	panel:DrawButton( cursorx, cursory, 2, 30, 30, 60, 30, "Test", "Trebuchet24", Color( 0 , 255, 0 ) , Color( 255, 255, 255 ), Color( 0, 0, 255 ), Color( 255, 255, 255 ) )
+	
 end
 
 function ENT:Think( )

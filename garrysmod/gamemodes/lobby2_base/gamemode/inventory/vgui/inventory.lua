@@ -75,6 +75,12 @@ function PANEL:UpdateContents( data )
 			
 			self.Contents[ slot ] = Item
 			
+			if ( info.Extra ) then
+			
+				self.Contents[ slot ]:SetCustom( info.Extra )
+			
+			end
+			
 		elseif ( info.Type == LOBBY_INV_DESTROY ) then
 			
 			self.Contents[ slot ]:Remove()

@@ -28,13 +28,13 @@ end
 function PANEL:DoRightClick( )
 
 	-- Setup menu
-	if ( data.SetupMenu ) then
+	if ( self.Data.SetupMenu ) then
 	
 		local Menu = DermaMenu()
 		Menu:SetDrawColumn( true )
 		Menu:SetDrawBorder( true )
 		
-		data.SetupMenu( data.Instance, Menu )
+		self.Data.SetupMenu( self.Data.Instance, Menu )
 		
 		Menu:Open( )
 		
@@ -46,7 +46,7 @@ function PANEL:SetData( data )
 
 	self.Data = data
 	
-	if data.Model then
+	if self.Data.Model then
 		
 		self:SetupModel( )
 
@@ -56,7 +56,7 @@ function PANEL:SetData( data )
 		
 	end
 	
-	if data.Description then
+	if self.Data.Description then
 		self:SetTooltip(data.Description)
 	end
 	
@@ -65,12 +65,12 @@ end
 function PANEL:SetupModel( )
 
 	local DModelPanel = vgui.Create('DModelPanel', self)
-	DModelPanel:SetModel(data.Model)
+	DModelPanel:SetModel( self.Data.Model )
 	DModelPanel:Dock(FILL)
 	DModelPanel:SetMouseInputEnabled( false )
 	
-	if data.Skin then
-		DModelPanel:SetSkin(data.Skin)
+	if self.Data.Skin then
+		DModelPanel:SetSkin( self.Data.Skin)
 	end
 	
 	local PrevMins, PrevMaxs = DModelPanel.Entity:GetRenderBounds()
@@ -88,7 +88,7 @@ end
 function PANEL:SetupImage( )
 
 	local DImageButton = vgui.Create('DImageButton', self)
-	DImageButton:SetMaterial(data.Material)
+	DImageButton:SetMaterial( self.Data.Material )
 	DImageButton.m_Image.FrameTime = 0
 	DImageButton:Dock(FILL)
 	DImageButton:SetMouseInputEnabled( false )

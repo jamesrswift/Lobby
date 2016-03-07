@@ -21,8 +21,8 @@ function GM.Chat.Initialize( )
 	if ( not GM.Chat.Chatbox ) then
 	
 		GM.Chat.Chatbox = vgui.Create( "Chat_RichText", self )
-		GM.Chat.Chatbox:SetPos( 50 + 2 , ScrH() - 225 + 2)
-		GM.Chat.Chatbox:SetSize( 400, 100 )
+		GM.Chat.Chatbox:SetPos( 50 + 1 , ScrH() - 225 + 1)
+		GM.Chat.Chatbox:SetSize( 400, 150 - 2 )
 	
 	end
 
@@ -116,7 +116,7 @@ function GM:FinishChat( )
 
 		self.Chat.Chatbox:SetParent( nil )
 		self.Chat.Chatbox:Close( )
-		self.Chat.Chatbox:SetPos( 50 + 2 , ScrH() - 225 + 2)
+		self.Chat.Chatbox:SetPos( 50 + 1 , ScrH() - 225 + 1)
 		
 		self.Chat.ChatboxVGUI.TextBox:KillFocus( )
 		self.Chat.ChatboxVGUI:KillFocus( )
@@ -136,7 +136,7 @@ function GM:OpenChat( bTeam )
 	
 	self.Chat.ChatboxVGUI.Chatbox = self.Chat.Chatbox
 	self.Chat.Chatbox:SetParent( self.Chat.ChatboxVGUI )
-	self.Chat.Chatbox:SetPos( 2, 2 )
+	self.Chat.Chatbox:SetPos( 1, 1 )
 	
 	self.Chat.ChatboxVGUI:InvalidateLayout( )
 	

@@ -9,6 +9,7 @@ AccessorFunc( PANEL, "m_ScrollOffset", "ScrollOffset" )
 AccessorFunc( PANEL, "m_ScrollDown", "ShouldScrollDown" )
 AccessorFunc( PANEL, "m_dietime", "DieTime" )
 AccessorFunc( PANEL, "m_fadetime", "FadeTime" )
+AccessorFunc( PANEL, "m_sizeoffset", "SideOffset" )
 
 function PANEL:Init()
 
@@ -21,8 +22,10 @@ function PANEL:Init()
 	self:SetRebuilding( false )
 	self:SetScrollOffset( 0 )
 	self:SetShouldScrollDown( false )
-	self:SetFadeTime( 10 )
-	self:SetDieTime( 2 )
+	self:SetFadeTime( 0.5 )
+	self:SetDieTime( 5 )
+	
+	self:SetSideOffset( 4 )
 
 	self.Scroll = vgui.Create( "Chat_RichText_ScrollBar", self )
 	self.Scroll:Dock( RIGHT )
@@ -113,6 +116,8 @@ function PANEL:StartInsertion()
 end
 
 function PANEL:EndInsertion()
+	
+	local side_x_offset = self:GetSideOffset( )
 
 	for _, segment in ipairs( self.SegmentBuffer ) do
 
@@ -172,25 +177,31 @@ function PANEL:EndInsertion()
 
 				color.a = alpha
 
-				if x == 0 --[[and not isOpen]] then
-					surface.SetTexture( mat_Grad )
+				if x == 0 then
+					--surface.SetTexture( mat_Grad )
+					surface.SetDrawColor( Color( 0, 0, 0, 75 ) )
 					surface.SetDrawColor( 5, 5, 5, 200 * ( alpha / 255 ) )
-					surface.DrawTexturedRect( x - 8, realY + yOffset, panelWide, lineHeight )
+					surface.DrawRect( x , realY + yOffset, panelWide, lineHeight )
 				end
+
 
 				--surface.SetDrawColor( Color( 0, 255, 0 ) )
 				--surface.DrawOutlinedRect( x, y + yOffset, textW, textH )
 				
-				draw.TextShadow( {
+				--[[draw.TextShadow( {
 					font = font,
 					pos = { x, y + yOffset },
 					text = text
-				}, 1, alpha )
+				}, 1, alpha )]]
 
 				surface.SetFont( font )
-				surface.SetTextPos( x, y + yOffset )
+				
+				surface.SetTextPos( x + 1 + side_x_offset, y + yOffset + 1 )
+				surface.SetTextColor( Color( 0, 0, 0, alpha ) )
+				surface.DrawText( text )
+				
+				surface.SetTextPos( x + side_x_offset, y + yOffset )
 				surface.SetTextColor( color )
-
 				surface.DrawText( text )
 
 			end
@@ -248,16 +259,18 @@ function PANEL:EndInsertion()
 				color.a = alpha
 
 
-				if x == 0 --[[and not isOpen]] then
-					surface.SetTexture( mat_Grad )
+				if x == 0 then
+					--surface.SetTexture( mat_Grad )
+					surface.SetDrawColor( Color( 0, 0, 0, 75 ) )
 					surface.SetDrawColor( 5, 5, 5, 200 * ( alpha / 255 ) )
-					surface.DrawTexturedRect( x - 8, realY + yOffset, panelWide, lineHeight )
+					surface.DrawRect( x , realY + yOffset, panelWide, lineHeight )
 				end
+
 
 				surface.SetDrawColor( color )
 				surface.SetMaterial( mat )
 
-				surface.DrawTexturedRect( x, y + yOffset, w, h )
+				surface.DrawTexturedRect( x + side_x_offset, y + yOffset, w, h )
 
 			end
 

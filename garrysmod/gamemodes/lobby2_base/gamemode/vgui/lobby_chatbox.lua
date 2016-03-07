@@ -15,12 +15,13 @@
 local PANEL = { }
 
 local mat_Grad = surface.GetTextureID("gui/gradient_up")
+local blur = Material("pp/blurscreen")
 
 AccessorFunc( PANEL, "m_Color", "Color" )
 
 function PANEL:Init( )
 
-	self:SetColor( Color( 50, 175, 225, 100 ) )
+	self:SetColor( Color( 50, 50, 50, 100 ) )
 	
 	self.TextBox = vgui.Create( "DTextEntry", self )
 	self.TextBox:SetPos( 2, 102 )
@@ -81,8 +82,8 @@ function PANEL:PerformLayout( )
 
 	local w, h = self:GetSize()
 	
-	self.Chatbox:SetPos( 2, 2 )
-	self.Chatbox:SetSize( w - 4, h - 2 - 20 - 2 )
+	self.Chatbox:SetPos( 1, 1 )
+	self.Chatbox:SetSize( w - 2, h - 2 - 20 - 2 )
 	
 	if ( IsValid( self.TextBox ) ) then
 	
@@ -96,6 +97,25 @@ end
 function PANEL:PaintBackground( w, h )
 
 	local color = self:GetColor( )
+	local x, y = self:GetPos( )
+	
+	DisableClipping( true )
+	surface.SetDrawColor(255,255,255, 100)
+	surface.SetMaterial(blur)
+
+	for i = 1, 5 do
+	
+		blur:SetFloat("$blur", (i / 3) * (5))
+		blur:Recompute()
+
+		render.UpdateScreenEffectTexture()
+		
+		render.SetScissorRect(x, y, x+w, y+h, true)
+			surface.DrawTexturedRect(-x, -y, ScrW(), ScrH())
+		render.SetScissorRect(0, 0, 0, 0, false)
+		
+	end
+	DisableClipping( false )
 	
 	surface.SetDrawColor( color.r, color.g, color.b, 100 )
 	surface.DrawRect( 0, 0, w, h )
@@ -103,6 +123,10 @@ function PANEL:PaintBackground( w, h )
 	surface.SetTexture( mat_Grad )
 	surface.SetDrawColor( 10, 10, 10, 100 )
 	surface.DrawTexturedRect( 0, 0, w, h )
+	
+	--draw.RoundedBox(0,0,0,w,h,Color(0,0,0,205))
+	surface.SetDrawColor(0,0,0, 255)
+	surface.DrawOutlinedRect(0,0,w,h)
 
 end
 
